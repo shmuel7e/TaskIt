@@ -3,7 +3,6 @@ import TopicList from '../cmps/topic/TopicList.jsx';
 import ShowMenu from '../cmps/sideMenu/ShowMenu.jsx';
 import ImageService from '../services/ImageService.js';
 
-
 import { connect } from 'react-redux';
 import { loadBoard } from '../actions/BoardActions';
 
