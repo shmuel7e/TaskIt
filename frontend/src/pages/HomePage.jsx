@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 
-class HomePage extends Component {
+export default class HomePage extends Component {
   
   
 
@@ -13,13 +13,13 @@ class HomePage extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-      loggedInUser: state.user.loggedInUser,
-      websites: state.website.selectedWebsite
-    };
-  };
-  const mapDispatchToProps = {
-  };
+// const mapStateToProps = state => {
+//     return {
+//       loggedInUser: state.user.loggedInUser,
+//       websites: state.website.selectedWebsite
+//     };
+//   };
+//   const mapDispatchToProps = {
+//   };
   
-  export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+//   export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
