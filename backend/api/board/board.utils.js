@@ -22,7 +22,7 @@ function createBoard() {
             }]
         },{
             id: utilsService.makeRandomId(),
-            title: 'doing',
+            title: 'things to do',
             tasks:[
                 {
                     id: utilsService.makeRandomId(),

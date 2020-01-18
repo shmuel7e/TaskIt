@@ -1,5 +1,5 @@
 import UtilsService from './UtilsService.js'
-
+import HttpService from './HttpService';
 let gBoard = {
     _id: UtilsService.makeRandomId(),
     members: ['tal', 'shmuel,gilad'],
@@ -22,9 +22,12 @@ let gBoard = {
 };
 
 
-function query() {
-    return Promise.resolve({...gBoard})
+async function query() {
+ return await  HttpService.get('board')
+  
 }
+
+
 
 export default {
     query
