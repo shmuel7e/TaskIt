@@ -8,9 +8,30 @@ async function query() {
 async function setBgCover(imgName) {
     return Promise.resolve(imgName);
 }
+async function addTask(taskTitle){
+   const newTask= _createTask(taskTitle)
+    return Promise.resolve({...newTask})
+}
+
+function _createTask(taskTitle){
+ return{   id: UtilsService.makeRandomId(),
+    title: taskTitle,
+    cover: '',
+    description: '',
+    createdAt: new Date,
+    comments: [],
+    details: [],
+    members: [],
+    labels: [],
+    checkList: [],
+    dueDate: '',
+    attachments: []
+ }
+}
 
 
 export default {
     query,
-    setBgCover
+    setBgCover,
+    addTask
 };

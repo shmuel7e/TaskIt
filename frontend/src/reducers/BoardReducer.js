@@ -5,8 +5,15 @@ const initialState = {
 
 export default function (state = initialState, action = {}) {
   switch (action.type) {
-    // case 'WEBSITE_ADD':
-    //   return { ...state, websites: [...state.websites, action.website] };
+     case 'TASK_ADD':
+     const topics= state.board.topics.map(topic=>{
+       if(topic.id===action.topicId){
+         topic.tasks.push({...action.newTask})
+       }
+        return topic
+      })
+      console.log(topics)
+       return { ...state,board:{...state.board,topics:topics} };
     case 'BOARD_SET':
       return { ...state, board: { ...action.board } };
     // case 'WEBSITE_CLEAR':

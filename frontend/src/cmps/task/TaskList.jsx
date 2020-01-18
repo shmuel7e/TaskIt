@@ -6,6 +6,6 @@ export default function taskList(props) {
     return <ul>
         {props.topic.tasks.map((task, i) =>
             <TaskPreview key={i} task={task}></TaskPreview>)}
-            <AddTask/>
+            <AddTask addTask={props.addTask} topicId={props.topic.id}/>
     </ul>
 }
