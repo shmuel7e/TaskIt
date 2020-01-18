@@ -4,20 +4,17 @@
 }
 
 .board-background-select {
-  border-radius: 10px;
-  box-sizing: border-box;
-  display: inline-block;
-  padding: 0 4px 8px;
-  position: relative;
-  text-align: left;
-  vertical-align: top;
-  width: 50%;
-  min-height: 120px;
-  cursor: pointer;
-  z-index: 1;
-  transition: ease-out 0.2s all;
+    border-radius: 10px;
+    display: inline-block;
+    width: 48%;
+    min-height: 120px;
+    cursor: pointer;
+    z-index: 1;
+    transition: ease-out 0.2s all;
+    margin: 3px 3px -3px;
 
   &:hover {
     opacity: 0.9;
   }
 }
+

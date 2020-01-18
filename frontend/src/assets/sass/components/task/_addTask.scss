@@ -23,7 +23,7 @@
             font-size: 14px;
             color: #41516e;
             font-family: montserrat, sans-serif;
-            padding: 4px 0 0 5px;
+            padding: 2px 0 0 2px;
         }
 
         textarea{
@@ -37,10 +37,14 @@
             outline: none;
             box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
             background-color: white;
+            font-size: 14px;
+            color: #41516e;
+            font-family: montserrat, sans-serif;
+            padding: 4px 0 0 5px;
         }
 
         button{
-            background-color: #5aac44;
+            background-color: #8b7ca5;
             box-shadow: none;
             border: none;
             color: #fff;
@@ -49,6 +53,22 @@
             font-size: 15px;
             border-radius: 4px;
             cursor: pointer;
+        }
+
+        .icon-cross {
+            padding-left: 10px;
+            font-weight: inherit;
+            font-size: 13px;
+            color: #7a89a3;
+            cursor: pointer;
+
+            &:hover {
+                color: #41516e;
+            }
+        }
+
+        &:hover {
+            background-color: #ebecf0;
         }
 
     }

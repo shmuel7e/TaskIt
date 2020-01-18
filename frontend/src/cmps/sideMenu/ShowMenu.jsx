@@ -10,16 +10,26 @@ export default class ShowMenu extends Component {
         this.setState({ isMenuOn: !this.state.isMenuOn });
     }
 
+    changeBgColor = (color) => {
+        this.props.changeBgColor(color);
+    }
+
     changeBgImg = (img) => {
         this.props.changeBgImg(img);
+    }
+    onGoBack=()=>{
+        
+        //this.setState({})
     }
 
     render() {
         return (
             <div>
                 <div className={`${this.state.isMenuOn ? ' menu menu-off' : 'menu menu-on'}`}><SideMenu imgs={this.props.imgs}
-                    changeBgImg={this.changeBgImg} />
-                    <span className="exit-menu" onClick={this.onToggleMenu}>X</span></div>
+                    changeBgImg={this.changeBgImg} changeBgColor={this.changeBgColor} colors={this.props.colors} />
+                    <span className="exit-menu" onClick={this.onToggleMenu}>X</span>
+                    <span className="goback-menu" onClick={this.onGoBack}>goback</span>
+                </div>
                 <button className="menu-button" onClick={this.onToggleMenu}>Show Menu</button>
             </div>
         )

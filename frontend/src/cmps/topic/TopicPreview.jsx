@@ -7,7 +7,7 @@ export default class TopicPreview extends Component {
         return (
             <div className='topic-container'>
                 <div className="topic-header">{topic.title}</div>
-                <TaskList topic={topic} />
+                <TaskList addTask={this.props.addTask} topic={topic} />
             </div>
         )
     }
