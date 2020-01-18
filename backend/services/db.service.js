@@ -8,7 +8,7 @@ module.exports = {
 }
 
 // Database Name
-const dbName = 'tester_db';
+const dbName = 'trello_db';
 
 var dbConn = null;
 
@@ -20,7 +20,7 @@ async function getCollection(collectionName) {
 async function connect() {
     if (dbConn) return dbConn;
     try {
-        const client = await MongoClient.connect(config.dbURL, {useNewUrlParser: true});
+        const client = await MongoClient.connect(config.dbURL, {useNewUrlParser: true, useUnifiedTopology: true });
         const db = client.db(dbName);
         dbConn = db;
         return db;
