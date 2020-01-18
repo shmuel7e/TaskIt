@@ -2,12 +2,6 @@
 const dbService = require('../../services/db.service')
 const ObjectId = require('mongodb').ObjectId
 
-module.exports = {
-    query,
-    remove,
-    add
-}
-
 async function query(filterBy = {}) {
     // const criteria = _buildCriteria(filterBy)
     const collection = await dbService.getCollection('review')
@@ -70,7 +64,6 @@ async function remove(reviewId) {
 
 
 async function add(review) {
-
     review.byUserId = ObjectId(review.byUserId);
     review.aboutUserId = ObjectId(review.aboutUserId);
 
@@ -87,6 +80,12 @@ async function add(review) {
 function _buildCriteria(filterBy) {
     const criteria = {};
     return criteria;
+}
+
+module.exports = {
+    query,
+    remove,
+    add
 }
 
 

@@ -1,7 +1,26 @@
+.menu {
+  margin-top: 70px;
+  top: 0;
+  right: 0;
+  position: fixed;
+  width: 400px;
+  height: 100vh;
+  background: #f4f5f7;
+  box-sizing: border-box;
+  padding: 12px 6px 12px 12px;
+  transition: ease 0.4s all;
+}
+
 .menu-on {
-  color: blue;
+  transform: translate(100%, 0);
 }
 
 .menu-off {
-  color: red;
+  transform: translate(0%, 0);
+}
+
+.exit-menu {
+  float: right;
+  cursor: pointer;
+  color: black;
 }
