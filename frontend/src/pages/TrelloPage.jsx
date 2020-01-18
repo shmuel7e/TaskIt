@@ -29,8 +29,6 @@ class TrelloPage extends Component {
     getGalleryColors = async () => {
         const colors = await ImageService.getGalleryColors();
         await this.setState({ colors });
-        console.log(this.state.colors);
-
     }
 
     getGalleryImgs = async () => {
@@ -52,6 +50,13 @@ class TrelloPage extends Component {
     addTask = (taskTitle,topicId) => {
         this.props.addTask(taskTitle,topicId)
     }
+    changeBgColor = (colorName) => {
+        const style = {
+            background: colorName,
+        }
+        this.props.setBgCover(colorName);
+        this.setState({ style });
+    }
 
     render() {
         const { board } = this.props
@@ -60,8 +65,8 @@ class TrelloPage extends Component {
         if (!board) return 'Loading...'
         return (
             <div style={this.state.style} className="trello-page-container header-padding">
-                <ShowMenu imgs={this.state.imgs} changeBgImg={this.changeBgImg} />
                 <TopicList addTask={this.addTask} board={board} />
+                <ShowMenu imgs={this.state.imgs} changeBgImg={this.changeBgImg} colors={this.state.colors} changeBgColor={this.changeBgColor} />
             </div>
 
         )

@@ -21,7 +21,10 @@ export function loadBoard() {
     };
 }
 
-// background change // 
+
+
+
+// background  IMG change // 
 function _setBgCover(imgName) {
     return {
         type: 'BOARD_COVER_SET',
@@ -64,6 +67,7 @@ export function addTask(taskTitle,topicId) {
 // cover: ""
 // description: "learn math"
 // createdAt: "2020-01-18T19:00:10.208Z"
+
 
 
 
