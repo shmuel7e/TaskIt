@@ -11,6 +11,8 @@ export default function (state = initialState, action = {}) {
       return { ...state, board: { ...action.board } };
     // case 'WEBSITE_CLEAR':
     //   return { ...state, selectedWebsite: { ...state.selectedWebsite, cmps: [] } }
+    case 'BOARD_COVER_SET':
+      return { ...state, board: { ...state.board, cover: action.imgName } }
     default:
       return state;
   }

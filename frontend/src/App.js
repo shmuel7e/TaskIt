@@ -2,7 +2,7 @@ import React from 'react';
 import { Router, Switch, Route } from 'react-router';
 import history from './history';
 
-import Header from './cmps/Header.jsx'
+import Header from '../src/cmps/header/Header.jsx';
 import HomePage from './pages/HomePage.jsx';
 import TrelloPage from './pages/TrelloPage';
 

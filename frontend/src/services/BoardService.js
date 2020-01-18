@@ -23,12 +23,15 @@ let gBoard = {
 
 
 async function query() {
- return await  HttpService.get('board')
-  
+    return await HttpService.get('board')
+}
+
+async function setBgCover(imgName) {
+    return Promise.resolve(imgName);
 }
 
 
-
 export default {
-    query
+    query,
+    setBgCover
 };

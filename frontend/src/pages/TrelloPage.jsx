@@ -4,18 +4,33 @@ import ShowMenu from '../cmps/sideMenu/ShowMenu.jsx';
 import ImageService from '../services/ImageService.js';
 
 import { connect } from 'react-redux';
-import { loadBoard } from '../actions/BoardActions';
+import { loadBoard, setBgCover } from '../actions/BoardActions';
 
 class TrelloPage extends Component {
 
     state = {
         imgs: [],
+        colors: [],
         style: {}
     }
 
     componentDidMount() {
         this.props.loadBoard()
         this.getGalleryImgs();
+        this.getGalleryColors();
+    }
+
+    componentDidUpdate() {
+        if (this.props.board && Object.entries(this.state.style).length === 0) {
+            this.changeBgImg(this.props.board.cover)
+        }
+    }
+
+    getGalleryColors = async () => {
+        const colors = await ImageService.getGalleryColors();
+        await this.setState({ colors });
+        console.log(this.state.colors);
+
     }
 
     getGalleryImgs = async () => {
@@ -30,19 +45,19 @@ class TrelloPage extends Component {
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat'
         }
-        console.log(style.background)
+        this.props.setBgCover(imgName);
         this.setState({ style })
     }
 
     render() {
         const { board } = this.props
         if (!board) return 'Loading...'
-        console.log(board);
         return (
             <div style={this.state.style} className="trello-page-container header-padding">
                 <ShowMenu imgs={this.state.imgs} changeBgImg={this.changeBgImg} />
                 <TopicList board={board} />
             </div>
+
         )
     }
 }
@@ -53,7 +68,12 @@ const mapStateToProps = state => {
     };
 };
 const mapDispatchToProps = {
-    loadBoard
+    loadBoard,
+    setBgCover
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TrelloPage);
+// backgroundImage: `url(${require(`../assets/images/${this.props.board.cover}`)})`,
+// position: 'fixed',
+// backgroundSize: 'cover',
+// backgroundRepeat: 'no-repeat'
