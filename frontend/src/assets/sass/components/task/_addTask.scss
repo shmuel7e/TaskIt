@@ -1,0 +1,61 @@
+.add-task-container {
+    max-width: 255px;
+    min-height: 31px;
+    margin: 0px auto 8px;
+    line-height: 33px;
+    border-radius: 4px;
+
+    .add-task-title {
+        font-size: 14px;
+        padding-left: 10px;
+        color: #6b778c;
+        cursor: pointer;
+
+        .icon-plus{
+            font-size: 10px;
+            margin-right: 2px;
+        }
+    }
+
+    .add-task-form{
+
+        ::placeholder {
+            font-size: 14px;
+            color: #41516e;
+            font-family: montserrat, sans-serif;
+            padding: 4px 0 0 5px;
+        }
+
+        textarea{
+            overflow: hidden;
+            width: 255px;
+            resize: none;
+            max-height: 162px;
+            min-height: 54px;
+            border-radius: 4px;
+            border: none;
+            outline: none;
+            box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
+            background-color: white;
+        }
+
+        button{
+            background-color: #5aac44;
+            box-shadow: none;
+            border: none;
+            color: #fff;
+            width: 79px;
+            height: 29px;
+            font-size: 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+    }
+
+    &:hover {
+        background-color: rgba(9,30,66,.08);
+        color: #455879;
+    }
+
+}
