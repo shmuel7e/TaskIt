@@ -31,5 +31,4 @@ export default [
     '#FF6496',
     '#FED825',
     '#A77A00',
-    '#8D8C8C',
 ]

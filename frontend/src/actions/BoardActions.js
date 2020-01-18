@@ -24,7 +24,7 @@ export function loadBoard() {
 
 
 
-// background change // 
+// background  IMG change // 
 function _setBgCover(imgName) {
     return {
         type: 'BOARD_COVER_SET',
@@ -41,6 +41,7 @@ export function setBgCover(imgName) {
         }
     };
 }
+
 
 
 

@@ -24,3 +24,32 @@
   cursor: pointer;
   color: black;
 }
+
+.menu-options {
+  width: 100%;
+}
+
+.menu-options img {
+  transition: 0.2 ease all;
+  cursor: pointer;
+  padding: 2px;
+  width: 50%;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.choose-options {
+  font-size: 1.1rem;
+  font-family: cursive;
+  text-align: center;
+}
+
+.menu-description {
+  font-family: cursive;
+}
+
+.goback-menu {
+  cursor: pointer;
+}
