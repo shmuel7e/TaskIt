@@ -4,11 +4,8 @@ const reviewService = require('./review.service')
 // TODO: needs error handling! try, catch
 
 async function getReviews(req, res) {
-    console.log(req.query);
     try {
         const reviews = await reviewService.query(req.query)
-        var num =9;
-        num.toLowerCase();
         res.send(reviews)
     } catch (err) {
         logger.error('Cannot get reviews', err);
@@ -27,6 +24,7 @@ async function addReview(req, res) {
     review.byUserId = req.session.user._id;
     review = await reviewService.add(review)
     review.byUser = req.session.user;
+    // TODO - need to find aboutUser
     review.aboutUser = {} 
     res.send(review)
 }

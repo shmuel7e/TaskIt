@@ -6,7 +6,7 @@ export default class TrelloPage extends Component {
     render() {
         return (
             <div className="trello-page-container">
-                <MenuButton />
+                <MenuButton/>
             </div>
         )
     }

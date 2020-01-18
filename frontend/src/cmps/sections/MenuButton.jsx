@@ -3,22 +3,21 @@ import Menu from '../sections/Menu.jsx';
 
 export default class MenuButton extends Component {
 
-    state = {
-        isMenuOn: false,
-    }
+
+    state = { isMenuOn: false }
 
 
 
-    onToggleMenu = () => {
-        this.setState(prevState => { prevState.isMenuOn = !prevState.isMenuOn }, () => this.render());
+    onToggleMenu = async () => {
+        this.setState({ isMenuOn: !this.state.isMenuOn });
     }
 
     render() {
         return (
             <div>
-                <Menu isMenuOn={this.isMenuOn}></Menu>
+                <div className={`${this.state.isMenuOn ? ' menu menu-off' : 'menu menu-on'}`}><Menu /></div>
                 <button className="menu-button" onClick={this.onToggleMenu}>Show Menu</button>
-            </div>
+            </div >
         )
     }
 }
