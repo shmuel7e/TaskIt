@@ -1,0 +1,20 @@
+.menu-button {
+  background: rgba(201, 204, 206, 0.24);
+  margin-right: 20px;
+  outline: none;
+  border-radius: 3px;
+  padding: 5px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  margin-top: 100px;
+  float: right;
+  transition: ease 0.2s all;
+}
+
+.menu-button:hover {
+  background: rgba(241, 243, 244, 0.24);
+}
+
+// .menu-button::before {
+// }

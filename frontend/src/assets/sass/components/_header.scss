@@ -1,0 +1,22 @@
+header{
+    top:0;
+    left:0;
+    position: fixed;
+    height: 70px;
+    font-family: Yanone-Regular;
+    width: 100%;
+    transition: linear 0.6s;
+    z-index: 999;
+   
+
+    &.colorful {
+        background-color: #fff;
+    }
+    .main-logo {
+        margin-left: 13px;
+
+        img {
+            width: 105px;
+        }
+    }
+}
