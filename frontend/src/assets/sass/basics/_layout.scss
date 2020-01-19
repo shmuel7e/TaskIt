@@ -13,6 +13,7 @@
   @include for-wide-layout {
     max-width: $normal-breakpoint;
   }
+<<<<<<< HEAD
 }
 
 // GRIDS
@@ -44,3 +45,17 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+=======
+  
+  //   display: grid;
+  //   grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  //   grid-gap: 10px;
+  // }
+  
+  .section-container {
+    margin-left: 200px;
+    margin-right: 200px;
+    border: 1px solid black;
+  }
+
+>>>>>>> development

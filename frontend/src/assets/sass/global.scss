@@ -11,6 +11,7 @@
 @import "basics/typography.scss";
 @import "basics/icons.scss";
 @import "basics/layout.scss";
+@import "basics/animations.scss";
 
 // Components
 @import "components/nav-bar.scss";
@@ -32,5 +33,6 @@
 
 // // Pages
 @import "views/home-page.scss";
-@import "views/TrelloPage";
+@import "views/TopicPage";
 @import "views/authPage";
+@import "views/taskDetails";

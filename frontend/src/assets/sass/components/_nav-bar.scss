@@ -1,15 +1,48 @@
-.link-container{
-    width: 104px;
-    height: 70px;
-    line-height: 70px;
-    text-align: center;
+.link-container {
+  width: 104px;
+  height: 70px;
+  line-height: 70px;
+  text-align: center;
 
-    a{
-        font-size: 21px;
-        color: #090909bd;;
-    }
+  a {
+    font-size: 21px;
+    color: #090909bd;
+  }
 
-    &:hover{
-        background-color: #8f8f8f1f;
-    }
+  &:hover {
+    background-color: #8f8f8f1f;
+  }
+  &:last-child {
+    width: 59px;
+    position: relative;
+  }
+
+  .userIcon-container {
+    cursor: pointer;
+    color: #f5ebeb;
+    width: 30px;
+    height: 30px;
+    background-color: $clr2;
+    border: 1px solid #ff000036;
+    border-radius: 50%;
+  }
+
+  .user-navBar {
+    position: absolute;
+    right: 0.8px;
+    top: 100%;
+    width: 200px;
+    color: #172b4d;
+    border-radius: 3px;
+    background-color: white;
+    box-shadow: 0 8px 16px -4px rgba(9, 30, 66, 0.25), 0 0 0 1px rgba(9, 30, 66, 0.08);
+    -webkit-animation: slide-left 0.6s 0.1s both;
+    animation: slide-left 0.6s 0.1s both;
+    
+  }
+  .user-navBar > * {
+    cursor: pointer;
+    width: 100%;
+    border-bottom: 0.8px solid rgba(9, 30, 66, 0.13);
+  }
 }

@@ -1,6 +1,9 @@
-* {
+
+*, *:before, *:after {
     box-sizing: border-box;
-}
+    margin: 0;
+    padding: 0;
+  }
 
 html {
     font-family: montserrat, sans-serif;

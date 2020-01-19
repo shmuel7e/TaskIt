@@ -1,30 +1,43 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Router, Switch, Route } from 'react-router';
+import { connect } from 'react-redux';
 import history from './history';
 
+import {logout} from './actions/UserActions'
 import Header from '../src/cmps/header/Header.jsx';
 import HomePage from './pages/HomePage.jsx';
-import TrelloPage from './pages/TrelloPage';
+import TopicPage from './pages/TopicPage';
 import AuthPage from './pages/AuthPage';
 
-
-function App() {
-  return (
-    <main>
-      <Router history={history}>
-        <Header></Header>
-        <Switch>
-          <Route component={HomePage} path="/" exact></Route>
-          <Route component={TrelloPage} path="/trello" exact></Route>
-          <Route component={AuthPage} path="/auth" exact></Route>
-          {/* <Route component={ToyDetails} path="/toys/:_id" exact></Route>
-          <Route component={ToyEdit} path="/toys/edit/:_id" exact></Route>
-          <Route component={ToyEdit} path="/toys/edit" exact></Route>
-          <Route component={NotFound} path="/"></Route> */}
-        </Switch>
-      </Router>
-    </main>
-  );
+class App extends Component{
+  
+  onLogout=()=>{
+    this.props.logout()
+  }
+  render(){
+    return (
+      <main>
+        <Router history={history}>
+          <Header
+          onLogout={this.onLogout}
+           user={this.props.user}></Header>
+          <Switch>
+            <Route component={HomePage} path="/" exact></Route>
+            <Route component={TopicPage} path="/topic" ></Route>
+            <Route component={AuthPage} path="/auth" exact></Route>
+          </Switch>
+        </Router>
+      </main>
+    );
+  }
+  
 }
-
-export default App;
+const mapDispatchToProps = {
+  logout
+};
+const mapStateToProps = state => {
+  return {
+      user: state.user.loggedInUser
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -1,6 +1,7 @@
 import BoardService from '../services/BoardService.js';
 
-// load board json // 
+// set board // 
+
 function _setBoard(board) {
     return {
         type: 'BOARD_SET',
@@ -21,8 +22,47 @@ export function loadBoard() {
     };
 }
 
+// set current topic // 
 
+function _setCurrTopic(topicId) {
+    return {
+        type: 'CURRENT_TOPIC_SET',
+        topicId
+    }
+}
 
+export function setCurrTopic(topicId) {
+    return async dispatch => {
+        try {
+            //TODO
+            //const topic = await BoardService.getTopicById();
+            dispatch(_setCurrTopic(topicId));
+        } catch (err) {
+            console.log('UserActions: err in setCurrTopic', err);
+        }
+    };
+}
+
+// set current task // 
+
+function _setCurrTask(taskId) {
+    return {
+        type: 'CURRENT_TASK_SET',
+        taskId
+    }
+}
+
+export function setCurrTask(taskId) {
+    return async dispatch => {
+        try {
+            //TODO
+            //const task = await BoardService.getTaskById();
+            dispatch(_setCurrTask(taskId));
+        } catch (err) {
+            console.log('UserActions: err in setCurrTask', err);
+        }
+    };
+}
 
 // background  IMG change // 
 function _setBgCover(imgName) {
@@ -42,7 +82,7 @@ export function setBgCover(imgName) {
     };
 }
 
-// add task // 
+// add task // deleteTopic
 function _addTask(newTask,topicId) {
     return {
         type: 'TASK_ADD',
@@ -58,6 +98,25 @@ export function addTask(taskTitle,topicId) {
             dispatch(_addTask(newTask,topicId));
         } catch (err) {
             console.log('UserActions: err in addTask', err);
+        }
+    };
+}
+
+// deleteTopic
+function _deleteTopic(topicId) {
+    return {
+        type: 'TOPIC_REMOVE',
+        topicId
+    }
+}
+export function deleteTopic(topicId) {
+    return async dispatch => {
+        try {
+        // TODO handle service and backend
+        //const deleteTopic = await BoardService.deleteTopic(topicId);
+            dispatch(_deleteTopic(topicId));
+        } catch (err) {
+            console.log('UserActions: err in deleteTopic', err);
         }
     };
 }

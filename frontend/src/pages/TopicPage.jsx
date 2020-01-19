@@ -2,11 +2,15 @@ import React, { Component } from 'react';
 import TopicList from '../cmps/topic/TopicList.jsx';
 import ShowMenu from '../cmps/sideMenu/ShowMenu.jsx';
 import ImageService from '../services/ImageService.js';
+import TaskDetails from './TaskDetails.jsx';
+
 
 import { connect } from 'react-redux';
-import { loadBoard, setBgCover, addTask } from '../actions/BoardActions';
+import { loadBoard, setBgCover, addTask, deleteTopic } from '../actions/BoardActions';
+import { Route, Router } from 'react-router';
+import history from '../history';
 
-class TrelloPage extends Component {
+class TopicPage extends Component {
 
     state = {
         imgs: [],
@@ -47,9 +51,14 @@ class TrelloPage extends Component {
         this.setState({ style })
     }
 
-    addTask = (taskTitle,topicId) => {
-        this.props.addTask(taskTitle,topicId)
+    addTask = (taskTitle, topicId) => {
+        this.props.addTask(taskTitle, topicId)
     }
+
+    deleteTopic = (topicId) => {
+        this.props.deleteTopic(topicId)
+    }
+
     changeBgColor = (colorName) => {
         const style = {
             background: colorName,
@@ -58,14 +67,22 @@ class TrelloPage extends Component {
         this.setState({ style });
     }
 
-    render() {
+    render() {   
         const { board } = this.props
-        
         if (!board) return 'Loading...'
         return (
             <div style={this.state.style} className="trello-page-container header-padding">
-                <TopicList addTask={this.addTask} board={board} />
-                <ShowMenu imgs={this.state.imgs} changeBgImg={this.changeBgImg} colors={this.state.colors} changeBgColor={this.changeBgColor} />
+                <TopicList
+                    addTask={this.addTask}
+                    deleteTopic={this.deleteTopic}
+                    board={board} />
+                <ShowMenu imgs={this.state.imgs}
+                    changeBgImg={this.changeBgImg}
+                    colors={this.state.colors}
+                    changeBgColor={this.changeBgColor} />
+                <Router history={history}>
+                    <Route component={TaskDetails} path="/topic/:topicId/:taskId" exact></Route>
+                </Router>
             </div>
 
         )
@@ -80,11 +97,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
     loadBoard,
     setBgCover,
-    addTask
+    addTask,
+    deleteTopic
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TrelloPage);
-// backgroundImage: `url(${require(`../assets/images/${this.props.board.cover}`)})`,
-// position: 'fixed',
-// backgroundSize: 'cover',
-// backgroundRepeat: 'no-repeat'
+export default connect(mapStateToProps, mapDispatchToProps)(TopicPage);
