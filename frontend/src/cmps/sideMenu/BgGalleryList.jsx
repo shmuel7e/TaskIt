@@ -12,6 +12,10 @@ export default class BgGalleryList extends Component {
         this.props.changeBgColor(color);
     }
 
+    onGoBack = () => {
+        this.props.goBack();
+    }
+
     DynamicCmp = () => {
         switch (this.props.bgGallery) {
             case 'colors':
@@ -31,8 +35,10 @@ export default class BgGalleryList extends Component {
     }
 
     render() {
-            if (!this.props.imgs) return 'loading..'
-        return this.DynamicCmp();
+        if (!this.props.imgs) return 'loading..'
+        return <div> <span className="goback-menu" onClick={this.onGoBack}>GO BACK</span> {this.DynamicCmp()}
+        </div>
+
     }
 }
 

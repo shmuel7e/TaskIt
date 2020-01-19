@@ -60,7 +60,6 @@ class TrelloPage extends Component {
 
     render() {
         const { board } = this.props
-        console.log(board);
         
         if (!board) return 'Loading...'
         return (

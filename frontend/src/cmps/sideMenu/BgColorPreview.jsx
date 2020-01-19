@@ -8,7 +8,7 @@ export default class BgColorPreview extends Component {
 
     render() {
         return (
-            <div style={{ backgroundColor: this.props.color }} onClick={this.changeBgColor} className="board-background-select"></div>
+            <div style={{ background: this.props.color }} onClick={this.changeBgColor} className="board-background-select"></div>
         )
     }
 }

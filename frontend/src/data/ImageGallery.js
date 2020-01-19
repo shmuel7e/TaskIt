@@ -27,4 +27,18 @@ export default [
     'bg26.jpg',
     'bg27.jpg',
     'bg28.jpg',
+    'bg29.jpg',
+    'bg30.jpg',
+    'bg31.png',
+    'bg32.jpg',
+    'bg33.jpg',
+    'bg34.jpg',
+    'bg35.png',
+    'bg36.jpg',
+    'bg37.jpg',
+    'bg38.jpg',
+    'bg39.jpg',
+    'bg40.jpg',
+    'bg41.jpg',
+    'bg42.jpg'
 ]
