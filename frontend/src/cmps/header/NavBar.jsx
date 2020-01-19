@@ -18,7 +18,7 @@ export default class NavBar extends Component {
         return (
             <nav className='flex'>
                 <div className='link-container'>
-                    <NavLink activeClassName="active" to='/Trello'>
+                    <NavLink activeClassName="active" to='/topic'>
                         My Trello
                         </NavLink>
                 </div>

@@ -18,7 +18,7 @@ class AuthPage extends Component {
           // Todo apropiate msg
       }else{
           //Todo appropiate msg
-          this.props.history.push('/trello')
+          this.props.history.push('/topic')
       }
     }
     onSignUp=async(credentials)=>{
@@ -28,7 +28,7 @@ class AuthPage extends Component {
           // Todo apropiate msg
       }else{
           //Todo appropiate msg
-          this.props.history.push('/trello')
+          this.props.history.push('/topic')
       }
     }
     render() {
