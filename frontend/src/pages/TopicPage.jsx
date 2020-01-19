@@ -66,13 +66,17 @@ class TopicPage extends Component {
         this.props.setBgCover(colorName);
         this.setState({ style });
     }
+    onAddNewTopic = (topicName) => {
+        console.log(topicName)
+    }
 
-    render() {   
+    render() {
         const { board } = this.props
         if (!board) return 'Loading...'
         return (
             <div style={this.state.style} className="trello-page-container header-padding">
                 <TopicList
+                    onAddNewTopic={this.onAddNewTopic}
                     addTask={this.addTask}
                     deleteTopic={this.deleteTopic}
                     board={board} />

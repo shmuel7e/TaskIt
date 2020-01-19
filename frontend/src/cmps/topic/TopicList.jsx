@@ -1,13 +1,18 @@
+import React, { Component } from 'react';
 import TopicPreview from "../topic/TopicPreview.jsx";
-import React from 'react';
+import AddTopic from './AddTopic.jsx'
+export default class TopicList extends Component {
 
-export default function TopicList(props) {
-    return <ul className='topics-container flex align-start'>
-        {props.board.topics.map((topic, i) =>
-         <TopicPreview 
-         deleteTopic={props.deleteTopic}
-         addTask={props.addTask} 
-         key={i} topic={topic}
-         ></TopicPreview>)}
-         </ul>
+    render() {
+        return <ul className='topics-container flex align-start'>
+            {this.props.board.topics.map((topic, i) =>
+                <TopicPreview
+                    deleteTopic={this.props.deleteTopic}
+                    addTask={this.props.addTask}
+                    key={i} topic={topic}
+                ></TopicPreview>)}
+                <AddTopic onAddNewTopic={this.props.onAddNewTopic}/>
+        </ul>
+    }
+
 }
