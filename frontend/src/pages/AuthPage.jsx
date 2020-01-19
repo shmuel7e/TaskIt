@@ -1,17 +1,41 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
+
+import {login} from '../actions/UserActions'
+import {signup} from '../actions/UserActions'
 import SignIn from '../cmps/auth/SignIn'
 import SignUp from '../cmps/auth/SignUp'
-export default class AuthPage extends Component {
+class AuthPage extends Component {
     state = { signupMode: false }
     toggleMode = () => {
         let signupMode = this.state.signupMode
         this.setState({ signupMode: !signupMode })
     }
+    onSignIn=async(credentials)=>{
+      await  this.props.login(credentials)
+      if(!this.props.user){
+          console.log('bad credentials')
+          // Todo apropiate msg
+      }else{
+          //Todo appropiate msg
+          this.props.history.push('/trello')
+      }
+    }
+    onSignUp=async(credentials)=>{
+        await  this.props.signup(credentials)
+      if(!this.props.user){
+          console.log('bad credentials')
+          // Todo apropiate msg
+      }else{
+          //Todo appropiate msg
+          this.props.history.push('/trello')
+      }
+    }
     render() {
         return (
             
                 <div className={this.state.signupMode ? 'cont s--signup' : 'cont'}>
-                    <SignIn />
+                    <SignIn onSignIn={this.onSignIn} />
                     <div className="sub-cont">
                         <div className="img">
                             <div className="img__text m--up">
@@ -27,7 +51,7 @@ export default class AuthPage extends Component {
                                 <span className="m--in form-span">Sign In</span>
                             </div>
                         </div>
-                        <SignUp />
+                        <SignUp onSignUp={this.onSignUp}/>
                     </div>
                 </div>
             
@@ -35,3 +59,15 @@ export default class AuthPage extends Component {
         )
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        user: state.user.loggedInUser
+    };
+};
+const mapDispatchToProps = {
+    login,
+    signup
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AuthPage);

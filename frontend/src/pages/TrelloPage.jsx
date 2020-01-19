@@ -59,9 +59,7 @@ class TrelloPage extends Component {
     }
 
     render() {
-        const { board } = this.props
-        console.log(board);
-        
+        const { board } = this.props      
         if (!board) return 'Loading...'
         return (
             <div style={this.state.style} className="trello-page-container header-padding">
@@ -85,7 +83,3 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TrelloPage);
-// backgroundImage: `url(${require(`../assets/images/${this.props.board.cover}`)})`,
-// position: 'fixed',
-// backgroundSize: 'cover',
-// backgroundRepeat: 'no-repeat'

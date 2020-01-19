@@ -1,13 +1,13 @@
 import HttpService from './HttpService'
 
 export default {
-    login,
-    logout,
-    signup,
     getUsers,
     getById,
     remove,
-    update
+    update,
+    login,
+    signup,
+    logout
 }
 
 function getUsers() {
@@ -24,7 +24,6 @@ function remove(userId) {
 function update(user) {
     return HttpService.put(`user/${user._id}`, user)
 }
-
 async function login(userCred) {
     const user = await HttpService.post('auth/login', userCred)
     return _handleLogin(user)

@@ -12,7 +12,6 @@ export default function (state = initialState, action = {}) {
        }
         return topic
       })
-      console.log(topics)
        return { ...state,board:{...state.board,topics:topics} };
     case 'BOARD_SET':
       return { ...state, board: { ...action.board } };
