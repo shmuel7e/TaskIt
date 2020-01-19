@@ -22,7 +22,7 @@ export default class Header extends Component {
         return (
             <header className={state.isHeaderTrans ? '' : 'colorful'}>
                 <div className=' main-header flex justify-between align-center'>
-                    <div className='main-logo'><NavLink activeClassName="active" to='/' exact><img src={require('../../assets/images/logo.svg')} alt="logo" /></NavLink></div>
+                    <div className='main-logo'><NavLink activeClassName="active" to='/' exact><img src={require('../../assets/images/logo.png')} alt="logo" /></NavLink></div>
                     <NavBar 
                     onLogout={this.props.onLogout}
                     user={this.props.user} />

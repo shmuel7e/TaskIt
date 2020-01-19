@@ -1,0 +1,55 @@
+.modal-body {
+  .sub-title {
+    position: relative;
+    font-size: 17px;
+    color: #41516e;
+    font-weight: bold;
+    padding-left: 10px;
+    margin-bottom: 5px;
+
+    .icon-paragraph-left {
+      position: absolute;
+      left: -27px;
+      top: 1px;
+      font-size: 15px;
+      color: #42526e;
+    }
+
+    .icon-message {
+        position: absolute;
+        left: -29px;
+        top: -1px;
+        font-size: 19px;
+        color: #42526e;
+    }
+  }
+  .description {
+    font-weight: initial;
+    padding: 2px 0 2px 10px;
+    font-size: 15px;
+    margin-bottom: 30px;
+  }
+}
+
+.comment-box {
+  padding: 8px 12px;
+  background-color: #fff;
+  width: 375px;
+
+  ::placeholder {
+    font-size: 14px;
+    color: #41516e;
+    font-family: montserrat, sans-serif;
+  }
+
+  textarea {
+    overflow: hidden;
+    overflow-wrap: break-word;
+    width: 360px;
+    resize: none;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    color: #41516e;
+  }
+}
