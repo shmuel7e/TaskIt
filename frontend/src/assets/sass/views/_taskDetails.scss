@@ -1,0 +1,102 @@
+.widow-screen {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.64);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  cursor: pointer;
+
+  .task-modal-container {
+    width: 750px;
+    height: 500px;
+    background-color: #f4f5f7;
+    margin: auto;
+    border-radius: 4px;
+    cursor: default;
+    position: relative;
+    padding: 15px 40px;
+
+    .icon-window {
+      position: absolute;
+      left: 12px;
+      top: 20px;
+      font-size: 17px;
+      color: #42526e;
+    }
+
+    .icon-cross {
+      position: absolute;
+      right: 22px;
+      top: 20px;
+      font-size: 15px;
+      color: #42526e;
+      cursor: pointer;
+    }
+
+    .icon-paragraph-left {
+      position: absolute;
+      left: 13px;
+      top: 106px;
+      font-size: 15px;
+      color: #42526e;
+    }
+
+    .icon-message {
+        position: absolute;
+        left: 12px;
+        top: 194px;
+        font-size: 19px;
+        color: #42526e;
+    }
+
+    .modal-txt{
+        color: #41516e;
+        font-weight: bold;
+        font-family: montserrat, sans-serif;
+        border-radius: 3px;
+
+        &:focus {
+            background: #fff;
+            box-shadow: inset 0 0 0 2px #0079bf;
+          }
+    }
+
+    .modal-header {
+      margin-bottom: 30px;
+      min-height: 32px;
+
+      .title {
+        font-size: 21px;
+        padding-left: 10px;
+      }
+
+      small {
+        color: #616c80c2;
+        font-size: 12px;
+        padding-left: 10px;
+
+        .bottom-line{
+            text-decoration-line: underline;
+        }
+      }
+    }
+
+    .modal-body {
+      .sub-title {
+        font-size: 17px;
+        color: #41516e;
+        font-weight: bold;
+        padding-left: 10px;
+        margin-bottom: 5px;
+      }
+      .description{
+        font-weight: initial;
+        padding: 2px 0 2px 10px;
+        font-size: 15px;
+        margin-bottom: 30px;
+      }
+    }
+  }
+}

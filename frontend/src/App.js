@@ -6,7 +6,7 @@ import history from './history';
 import {logout} from './actions/UserActions'
 import Header from '../src/cmps/header/Header.jsx';
 import HomePage from './pages/HomePage.jsx';
-import TrelloPage from './pages/TrelloPage';
+import TopicPage from './pages/TopicPage';
 import AuthPage from './pages/AuthPage';
 
 class App extends Component{

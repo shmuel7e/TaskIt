@@ -16,6 +16,7 @@ export default class AddTask extends Component {
     }
 
     onAddTask = () => {
+        if(this.state.txt === '') return;
         this.props.addTask(this.state.txt,this.props.topicId);
         this.onToggleForm();
     }

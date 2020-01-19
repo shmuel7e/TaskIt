@@ -1,15 +1,57 @@
 .topic-container {
-    background-color: #ebecf0;
-    border-radius: 3px;
-    max-height: 100%;
-    width: 272px;
-    margin: 0 4px;
+  background-color: #ebecf0;
+  border-radius: 3px;
+  max-height: 100%;
+  width: 272px;
+  margin: 0 4px;
+  position: relative;
 
-    .topic-header{
-        height: 40px;
-        padding: 9px;
-        font-weight: 600;
-        color: #41516e;
-        font-size: 14px;
+  .topic-header {
+    height: 42px;
+    font-weight: 600;
+    color: #41516e;
+    font-size: 14px;
+
+    .topic-title {
+      padding: 10px 0 0 7px;
     }
+
+    .dots-icon-container {
+      width: 32px;
+      height: 32px;
+      padding: 4px;
+      text-align: center;
+      border-radius: 4px;
+      margin: 5px 3px 0 0;
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgba(9, 30, 66, 0.08);
+      }
+    }
+
+    .icon-dots-three-horizontal {
+      font-size: 15px;
+    }
+  }
+
+  .topic-mini-menu{
+    z-index: 2;
+    position: absolute;
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 7px;
+    width: 80px;
+    height: 70px;
+    right: -50px;
+    top: 30px;
+
+    .delete-topic-btn{
+        font-size: 14px;
+
+        &:hover{
+            background-color: rgba(9, 30, 66, 0.08);
+        }
+    }
+  }
 }
