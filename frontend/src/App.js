@@ -23,7 +23,7 @@ class App extends Component{
            user={this.props.user}></Header>
           <Switch>
             <Route component={HomePage} path="/" exact></Route>
-            <Route component={TrelloPage} path="/trello" exact></Route>
+            <Route component={TopicPage} path="/topic" ></Route>
             <Route component={AuthPage} path="/auth" exact></Route>
           </Switch>
         </Router>
