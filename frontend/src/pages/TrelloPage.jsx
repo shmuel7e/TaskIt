@@ -58,8 +58,9 @@ class TrelloPage extends Component {
         this.setState({ style });
     }
 
-    render() {
-        const { board } = this.props      
+    render() {   
+        const { board } = this.props
+        
         if (!board) return 'Loading...'
         return (
             <div style={this.state.style} className="trello-page-container header-padding">
