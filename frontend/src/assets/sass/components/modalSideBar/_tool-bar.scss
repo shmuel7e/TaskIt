@@ -81,13 +81,17 @@
     width: 93%;
     margin-left: auto;
     margin-right: auto;
+    &:focus {
+      background: #fff;
+      border: none;
+      box-shadow: inset 0 0 0 2px #0079bf;
+    }
   }
 }
 
 .members-modal {
-  text-align: center;
+  text-align: left;
   position: fixed;
-  height: 10rem;
   width: 20rem;
   background: white;
   z-index: 9999;
@@ -96,6 +100,7 @@
 }
 
 .members-modal-input > h3 {
+  text-align: center;
   padding-bottom: 0.3rem;
   width: 93%;
   margin-left: auto;
@@ -109,4 +114,84 @@
   right: 14px;
   top: 3px;
   cursor: pointer;
+}
+
+// members on the tool-bar //
+
+.members-list-modal {
+  width: 93%;
+  margin-left: auto;
+  margin-right: auto;
+  & > h3 {
+    padding-bottom: 6px;
+  }
+}
+
+// single member on tool-bar//
+.side-modal-member {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue,
+    sans-serif;
+  cursor: pointer;
+  border-radius: 3px;
+  display: block;
+  height: 40px;
+  line-height: 40px;
+  overflow: hidden;
+  position: relative;
+  text-overflow: ellipsis;
+  text-decoration: none;
+  white-space: nowrap;
+  margin-bottom: 4px;
+  background-color: rgba(9, 30, 66, 0.04);
+  padding-left: 10px;
+  &:hover {
+    color: #091e42;
+    opacity: 0.9;
+  }
+}
+
+.members-on-task-title {
+  margin-top: -30px;
+  color: #172b4d;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 16px;
+  margin-top: 16px;
+  text-transform: uppercase;
+  display: block;
+  line-height: 20px;
+  margin: 0 8px 4px 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.members-on-task {
+  flex-wrap: wrap;
+}
+
+.member-name-initials {
+  background-color: #dfe1e6;
+  border-radius: 25em;
+  cursor: pointer;
+  display: block;
+  float: left;
+  height: 32px;
+  line-height: 33px;
+  margin: 4px 8px 4px 0;
+  overflow: visible;
+  position: relative;
+  width: 32px;
+  text-decoration: none;
+  -webkit-user-select: none;
+  user-select: none;
+  z-index: 0;
+  font-size: 12px;
+  font-weight: 700;
+  color: #172b4d;
+  text-align: center;
+  &:hover {
+    background-color: #c1c7d0;
+  }
 }

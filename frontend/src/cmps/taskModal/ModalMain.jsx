@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
+<<<<<<< HEAD
 import ModalComments from './ModalComments';
+=======
+import ModalActivity from './ModalActivity';
+>>>>>>> b014c00c4a56d94579c94e01f9745a3c1d3e1483
 
 export default class ModalMain extends Component {
 
@@ -19,6 +23,7 @@ export default class ModalMain extends Component {
         const { task } = this.props;
         return (
             <div className='modal-main-container'>
+                <div className="modal-activity">  <ModalActivity task={task} /> </div>
                 <div className="sub-title">Description
                 <span className="icon-paragraph-left"></span>
                 </div>

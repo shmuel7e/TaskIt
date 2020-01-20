@@ -1,7 +1,7 @@
 const utilsService = require('../../services/utils.service')
 function createBoard() {
     const board = {
-        members: [{ email: 'shmuel7e@gmail.com', username: 'shmuel' }, { email: 'puku@gmail.com', username: 'tal' }],
+        members: [{ _id: utilsService.makeRandomId(), email: 'shmuel7e@gmail.com', username: 'shmuel elkis', bgColor: '#FFDFD3' }, { _id: utilsService.makeRandomId(), email: 'puku@gmail.com', username: 'tal mashiah', bgColor: '#FEC8D8' }],
         cover: 'bg5.jpg',
         topics: [{
             id: utilsService.makeRandomId(),
@@ -14,7 +14,7 @@ function createBoard() {
                 createdAt: new Date,
                 comments: [],
                 details: [],
-                members: ['tal', 'shmuel', 'gilad'],
+                members: [{ _id: utilsService.makeRandomId(), email: 'chuchu@gmail.com', username: 'chuchi buchi', bgColor: '#D291BC' }],
                 labels: [],
                 checkList: [],
                 dueDate: '',
@@ -32,7 +32,7 @@ function createBoard() {
                     createdAt: new Date,
                     comments: [],
                     details: [],
-                    members: ['tal'],
+                    members: [{ _id: utilsService.makeRandomId(), email: 'tira@gmail.com', username: 'Tira malka', bgColor: '#957DAD' }],
                     labels: [],
                     checkList: [],
                     dueDate: '',
@@ -52,7 +52,7 @@ function createBoard() {
                     createdAt: new Date,
                     comments: [],
                     details: [],
-                    members: ['ahbal', 'tambal'],
+                    members: [{ _id: utilsService.makeRandomId(), email: 'dudu@gmail.com', username: 'dudu aatok', bgColor: '#E0BBE4' }],
                     labels: [],
                     checkList: [],
                     dueDate: '',
