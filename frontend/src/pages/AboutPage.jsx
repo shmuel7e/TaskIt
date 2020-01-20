@@ -3,7 +3,7 @@ import Footer from '../cmps/footer/Footer'
 
 export default class AboutPage extends Component {
     render() {
-        return ([
+        return (<React.Fragment>
 
             <div className="about-page-header">
                 <div>  SHOOT FOR THE STARS </div>
@@ -62,7 +62,7 @@ export default class AboutPage extends Component {
                 </div>
             </div>
 
-        ]
+        </React.Fragment>
         )
     }
 }
