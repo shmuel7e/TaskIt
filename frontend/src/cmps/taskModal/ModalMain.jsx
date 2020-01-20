@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ModalActivity from './ModalActivity';
 
 export default class ModalMain extends Component {
 
@@ -10,6 +11,7 @@ export default class ModalMain extends Component {
         const { task } = this.props;
         return (
             <div className='modal-main-container'>
+                <div className="modal-activity">  <ModalActivity task={task} /> </div>
                 <div className="sub-title">Description
                 <span className="icon-paragraph-left"></span>
                 </div>

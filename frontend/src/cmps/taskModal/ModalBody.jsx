@@ -4,6 +4,7 @@ import ModalSideBar from './ModalSideBar';
 
 export default class ModalBody extends Component {
 
+
     render() {
         const { task, board } = this.props;
         if (!board) return 'loading..';
@@ -11,7 +12,7 @@ export default class ModalBody extends Component {
         return (
             <div className="modal-body flex">
                 <ModalMain task={task} />
-                <ModalSideBar task={task} board={board} />
+                <ModalSideBar task={task} board={board} addMemberToTask={this.props.addMemberToTask} />
             </div>
         )
     }

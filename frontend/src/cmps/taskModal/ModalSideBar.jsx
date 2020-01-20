@@ -3,10 +3,12 @@ import ToolBar from './modalSideBar/ToolBar'
 import ActionBar from './modalSideBar/ActionBar'
 
 export default class ModalSideBar extends Component {
+
+
     render() {
         return (
             <div className='modal-sidebar-container flex  column justify-between'>
-                <ToolBar board={this.props.board} />
+                <ToolBar board={this.props.board} addMemberToTask={this.props.addMemberToTask} />
                 <ActionBar />
             </div>
         )
