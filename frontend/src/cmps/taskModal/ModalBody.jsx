@@ -5,12 +5,13 @@ import ModalSideBar from './ModalSideBar';
 export default class ModalBody extends Component {
 
     render() {
-        const { task } = this.props;
+        const { task, board } = this.props;
+        if (!board) return 'loading..';
         //const { topic } = this.props;
         return (
             <div className="modal-body flex">
-                <ModalMain task={task}/>
-                <ModalSideBar task={task}/>
+                <ModalMain task={task} />
+                <ModalSideBar task={task} board={board} />
             </div>
         )
     }

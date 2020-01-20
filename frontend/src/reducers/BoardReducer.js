@@ -34,7 +34,6 @@ export default function (state = initialState, action = {}) {
 
     case 'CURRENT_TASK_SET':
       const currTask = state.currTopic.tasks.find(task => task.id === action.taskId);
-      console.log(currTask)
       return { ...state, currTask: currTask };
 
 

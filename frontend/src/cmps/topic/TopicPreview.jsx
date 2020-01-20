@@ -5,7 +5,7 @@ export default class TopicPreview extends Component {
 
     state={isModalShown:false}
 
-    ToggleMiniModal = () => {
+    toggleMiniModal = () => {
         this.setState(prevState => ({
             isModalShown: !prevState.isModalShown
           }));
@@ -21,7 +21,7 @@ export default class TopicPreview extends Component {
             <div className='topic-container'>
                 <div className="topic-header flex justify-between">
                     <div className="topic-title">{topic.title}</div>
-                    <div onClick={this.ToggleMiniModal} className="dots-icon-container">
+                    <div onClick={this.toggleMiniModal} className="dots-icon-container">
                         <span className="icon-dots-three-horizontal"></span>
                         {this.state.isModalShown
                         ? <div className='topic-mini-menu block'>
