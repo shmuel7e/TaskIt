@@ -3,6 +3,7 @@
   height: 5vh;
   background-color: #232323;
   padding: 90px 0;
+  width: 100%;
 }
 
 .copy-rights {
@@ -32,7 +33,7 @@
 }
 
 .footer-section h2 {
-  padding-bottom:0.5rem;
+  padding-bottom: 0.5rem;
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
@@ -45,8 +46,8 @@
   font-size: 4rem;
 }
 
-.contact-us-desc{
-  font-size:1.9rem;
+.contact-us-desc {
+  font-size: 1.9rem;
 }
 
 .btn-about {
@@ -60,11 +61,10 @@
   margin-right: auto;
   display: block;
   background-color: black;
-  color:white;
-  border:none;
-  &:hover{
+  color: white;
+  border: none;
+  &:hover {
     opacity: 0.9;
-    background-color:rgb(27, 27, 27);
+    background-color: rgb(27, 27, 27);
   }
 }
-

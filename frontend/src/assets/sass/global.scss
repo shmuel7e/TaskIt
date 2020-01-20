@@ -23,13 +23,13 @@
 @import "components/footer.scss";
 
 // topic
-@import "components/topic/topicList";
-@import "components/topic/topicPreview";
+@import "components/topic/topicList.scss";
+@import "components/topic/topicPreview.scss";
 
 // task
-@import "components/task/taskList";
-@import "components/task/taskPreview";
-@import "components/task/addTask";
+@import "components/task/taskList.scss";
+@import "components/task/taskPreview.scss";
+@import "components/task/addTask.scss";
 
 // task modal 
 @import "components/taskModal/modal-header";
@@ -37,6 +37,7 @@
 
 // // Pages
 @import "views/home-page.scss";
-@import "views/TopicPage";
-@import "views/authPage";
-@import "views/taskDetails";
+@import "views/TopicPage.scss";
+@import "views/authPage.scss";
+@import "views/taskDetails.scss";
+@import "views/aboutPage.scss";

@@ -6,13 +6,13 @@ export default class NavBar extends Component {
     get shortcutUserName() {
         return this.props.user.username.charAt(0).toUpperCase()
     }
-    toggleUserNavBar=()=>{
-        let showUserNavBar=!this.state.showUserNavBar
-        this.setState({showUserNavBar})
+    toggleUserNavBar = () => {
+        let showUserNavBar = !this.state.showUserNavBar
+        this.setState({ showUserNavBar })
     }
-    onLogout=()=>{
+    onLogout = () => {
         this.props.onLogout()
-        this.setState({showUserNavBar: false })
+        this.setState({ showUserNavBar: false })
     }
     render() {
         return (
@@ -36,7 +36,7 @@ export default class NavBar extends Component {
                         </div>
                         {this.state.showUserNavBar &&
                             <ul className="user-navBar flex column align-center"
-                            onBlur={this.toggleUserNavBar}>
+                                onBlur={this.toggleUserNavBar}>
                                 <li>Profile</li>
                                 <li onClick={this.onLogout}>Logout</li>
                             </ul>
@@ -44,6 +44,12 @@ export default class NavBar extends Component {
 
                     </div>
                 }
+
+                <div className='link-container'>
+                    <NavLink activeClassName="active" to='/About'>
+                        About
+                    </NavLink>
+                </div>
 
             </nav>
         )
