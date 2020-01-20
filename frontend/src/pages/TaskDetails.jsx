@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { setCurrTask, setCurrTopic } from '../actions/BoardActions';
+import { setCurrTask, setCurrTopic , updateTask } from '../actions/BoardActions';
 import ModalHeader from '../cmps/taskModal/ModalHeader.jsx';
 import ModalBody from '../cmps/taskModal/ModalBody.jsx';
 
@@ -32,6 +32,11 @@ class TaskDetails extends Component {
         ev.stopPropagation();
     }
 
+    changeTaskTitle = (topic,task,newTxt) => {
+        task.title = newTxt;
+        this.props.updateTask(topic,task);
+    } 
+
     render() {
         const { board } = this.props;
         const { task, topic } = this.props;
@@ -57,7 +62,8 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = {
     setCurrTopic,
-    setCurrTask
+    setCurrTask,
+    updateTask
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskDetails);
