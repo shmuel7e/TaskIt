@@ -39,6 +39,10 @@
 @import "components/taskModal/modalComments.scss";
 @import "components/taskModal/modal-sidebar.scss";
 
+// Modal Side Bar //
+@import "components/modalSideBar/tool-bar.scss";
+@import "components/modalSideBar/labels/label-modal.scss";
+
 // // Pages
 @import "views/home-page.scss";
 @import "views/TopicPage.scss";

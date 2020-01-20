@@ -4,7 +4,7 @@ import MembersList from './MembersList';
 export default class MembersModal extends Component {
 
     onCloseModal = () => {
-        this.props.closeModal();
+        this.props.closeModal('members');
     }
 
     render() {

@@ -1,22 +1,33 @@
 import React, { Component } from 'react'
 import MembersModal from './members/MembersModal';
+import LabelModal from './labels/LabelModal';
 
 export default class ToolBar extends Component {
 
     state = {
-        type: '',
-        isModalShown: false
+        isMembersShown: false,
+        isLabelsShown: false
     }
 
 
-    toggleMiniModal = () => {
-        this.setState(prevState => ({
-            isModalShown: !prevState.isModalShown
-        }));
-    }
+    toggleMiniModal = (type) => {
+        switch (type) {
 
-    closeModal = () => {
-        this.setState({ isModalShown: false });
+            case 'members':
+                this.setState(prevState => ({
+                    isMembersShown: !prevState.isMembersShown
+                }));
+                break;
+
+            case 'labels':
+                this.setState(prevState => ({
+                    isLabelsShown: !prevState.isLabelsShown
+                }));
+                break;
+
+            default:
+                break;
+        }
     }
 
     render() {
@@ -25,15 +36,18 @@ export default class ToolBar extends Component {
                 <div>
                     <h3>ADD TO CARD</h3>
                     <div className="tool-bar flex column justify-between">
-                        <button onClick={this.toggleMiniModal}>Members</button>
-                        {this.state.isModalShown
+                        <button onClick={() => this.toggleMiniModal('members')}>Members</button>
+                        {this.state.isMembersShown
                             ? <div className='topic-mini-menu block'>
                                 <div className="members-modal">
-                                    <MembersModal closeModal={this.closeModal} board={this.props.board} addMemberToTask={this.props.addMemberToTask}
+                                    <MembersModal closeModal={this.toggleMiniModal} board={this.props.board} addMemberToTask={this.props.addMemberToTask}
                                         getInitials={this.props.getInitials} />
                                 </div>
                             </div> : ''}
-                        <button>Tags</button>
+                        <button onClick={() => this.toggleMiniModal('labels')}>Labels</button>
+                        <div className="label-modal-container">
+                            {this.state.isLabelsShown ? <LabelModal /> : ''}
+                        </div>
                         <button>Checklist</button>
                         <button>Due Date</button>
                         <button>Add Image</button>
