@@ -15,13 +15,17 @@ export default class TopicPreview extends Component {
         this.props.deleteTopic(this.props.topic.id)
     }
 
+    onTxtChange = (newTxt) => {
+        this.props.changeTopicTitle(this.props.topic,newTxt)
+    }
+
     render() {
         const { topic } = this.props
         return (
             <div className='topic-container'>
                 <div className="topic-header flex justify-between">
-                    <div className="topic-title">{topic.title}</div>
-                    <div onClick={this.toggleMiniModal} className="dots-icon-container">
+                <div className="topic-title" suppressContentEditableWarning={true} contentEditable="true" onBlur={(e) => this.onTxtChange(e.target.textContent)}>{topic.title}</div>
+                    <div onClick={this.ToggleMiniModal} className="dots-icon-container">
                         <span className="icon-dots-three-horizontal"></span>
                         {this.state.isModalShown
                         ? <div className='topic-mini-menu block'>
