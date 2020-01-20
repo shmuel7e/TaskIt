@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class ModalHeader extends Component {
 
     onTxtChange = (editedTxt) => {
-        console.log(editedTxt)
+        this.props.changeTaskTitle(this.props.topic,this.props.task,editedTxt)
     }
 
     onCloseModal = () => {

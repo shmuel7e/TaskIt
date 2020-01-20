@@ -45,8 +45,13 @@ class TaskDetails extends Component {
         return (
             <div className="widow-screen" onClick={this.closeModal}>
                 <div onClick={this.stayInModal} className='task-modal-container'>
+<<<<<<< HEAD
+                    <ModalHeader task={task} topic={topic} closeModal={this.closeModal} changeTaskTitle={this.changeTaskTitle}/>
+                    <ModalBody task={task} topic={topic}/>
+=======
                     <ModalHeader task={task} topic={topic} closeModal={this.closeModal} />
                     <ModalBody task={task} topic={topic} board={board} />
+>>>>>>> shmuel
                 </div>
             </div>
         )

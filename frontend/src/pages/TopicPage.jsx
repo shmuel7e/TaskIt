@@ -6,7 +6,7 @@ import TaskDetails from './TaskDetails.jsx';
 
 
 import { connect } from 'react-redux';
-import { loadBoard, setBgCover, addTask, deleteTopic,addTopic } from '../actions/BoardActions';
+import { loadBoard, setBgCover, addTask, deleteTopic,addTopic,updateTopic} from '../actions/BoardActions';
 import { Route, Router } from 'react-router';
 import history from '../history';
 
@@ -66,9 +66,14 @@ class TopicPage extends Component {
         this.props.setBgCover(colorName);
         this.setState({ style });
     }
+
+    changeTopicTitle = (topic,newTxt) => {
+        topic.title = newTxt;
+        this.props.updateTopic(topic);
+    } 
+
     onAddNewTopic = (topicName) => {
         this.props.addTopic(topicName)
-        //console.log(topicName)
     }
 
     render() {
@@ -78,6 +83,7 @@ class TopicPage extends Component {
             <div style={this.state.style} className="trello-page-container header-padding">
                 <TopicList
                     onAddNewTopic={this.onAddNewTopic}
+                    changeTopicTitle={this.changeTopicTitle}
                     addTask={this.addTask}
                     deleteTopic={this.deleteTopic}
                     board={board} />
@@ -104,7 +110,8 @@ const mapDispatchToProps = {
     setBgCover,
     addTask,
     deleteTopic,
-    addTopic
+    addTopic,
+    updateTopic
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TopicPage);

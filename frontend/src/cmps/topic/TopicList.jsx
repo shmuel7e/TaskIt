@@ -7,6 +7,7 @@ export default class TopicList extends Component {
         return <ul className='topics-container flex align-start'>
             {this.props.board.topics.map((topic, i) =>
                 <TopicPreview
+                    changeTopicTitle={this.props.changeTopicTitle}
                     deleteTopic={this.props.deleteTopic}
                     addTask={this.props.addTask}
                     key={i} topic={topic}

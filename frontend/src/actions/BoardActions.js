@@ -22,7 +22,7 @@ export function loadBoard() {
     };
 }
 
-// set current topic // 
+// set current topic //
 
 function _setCurrTopic(topicId) {
     return {
@@ -42,6 +42,50 @@ export function setCurrTopic(topicId) {
         }
     };
 }
+
+// updateTopic // 
+
+function _updateTopic(topic) {
+    return {
+        type: 'TOPIC_UPDATE',
+        topic
+    }
+}
+
+export function updateTopic(topic) {
+    return async dispatch => {
+        try {
+            //TODO
+            //const topic = await BoardService.updateTopic();
+            dispatch(_updateTopic(topic));
+        } catch (err) {
+            console.log('UserActions: err in updateTopic', err);
+        }
+    };
+}
+
+// updateTask // 
+
+function _updateTask(topic,task) {
+    return {
+        type: 'TASK_UPDATE',
+        topic,
+        task
+    }
+}
+
+export function updateTask(topic,task) {
+    return async dispatch => {
+        try {
+            //TODO
+            //const topic = await BoardService.updateTopic();
+            dispatch(_updateTask(topic,task));
+        } catch (err) {
+            console.log('UserActions: err in updateTask', err);
+        }
+    };
+}
+
 // add new topic
 function _addTopic(newTopic) {
     return {
