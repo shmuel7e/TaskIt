@@ -31,6 +31,10 @@
 @import "components/task/taskPreview";
 @import "components/task/addTask";
 
+// task modal 
+@import "components/taskModal/modal-header";
+@import "components/taskModal/modal-body";
+
 // // Pages
 @import "views/home-page.scss";
 @import "views/TopicPage";

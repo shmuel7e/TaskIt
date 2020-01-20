@@ -1,0 +1,19 @@
+.modal-header {
+    margin-bottom: 30px;
+    min-height: 32px;
+
+    .title {
+      font-size: 21px;
+      padding-left: 10px;
+    }
+
+    small {
+      color: #616c80c2;
+      font-size: 12px;
+      padding-left: 10px;
+
+      .bottom-line{
+          text-decoration-line: underline;
+      }
+    }
+  }

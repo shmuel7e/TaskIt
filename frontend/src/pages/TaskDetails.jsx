@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { setCurrTask, setCurrTopic } from '../actions/BoardActions';
+import ModalHeader from '../cmps/taskModal/ModalHeader.jsx';
+import ModalBody from '../cmps/taskModal/ModalBody.jsx';
 
 class TaskDetails extends Component {
 
@@ -22,7 +24,7 @@ class TaskDetails extends Component {
 
     }
 
-    onCloseModal = () => {
+    closeModal = () => {
         this.props.history.push('/topic')
     }
 
@@ -30,33 +32,15 @@ class TaskDetails extends Component {
         ev.stopPropagation();
     }
 
-    onTxtChange = (editedTxt) => {
-        console.log(editedTxt)
-    }
-
-
     render() {
         const { task } = this.props;
         const { topic } = this.props;
         if (!task) return 'Loading...'
         return (
-            <div className="widow-screen" onClick={this.onCloseModal}>
+            <div className="widow-screen" onClick={this.closeModal}>
                 <div onClick={this.stayInModal} className='task-modal-container'>
-
-                    <div className="modal-header">
-                        <span className='icon-cross' onClick={this.onCloseModal}></span>
-                        <span className="icon-window"></span>
-                        <div className="modal-txt title" suppressContentEditableWarning={true} contentEditable="true" onBlur={(e) => this.onTxtChange(e.target.textContent)}>{task.title}</div>
-                        <small>In list <span className="bottom-line">{topic.title}</span></small>
-                    </div>
-
-                    <div className="modal-body">
-                        <span className="icon-paragraph-left"></span>
-                        <span class="icon-message"></span>
-                        <div className="sub-title">Description</div>
-                        <div className="modal-txt description" suppressContentEditableWarning={true} contentEditable="true" onBlur={(e) => this.onTxtChange(e.target.textContent)}>{task.description}</div>
-                        <div className="sub-title">Activity</div>
-                    </div>
+                    <ModalHeader task={task} topic={topic} closeModal={this.closeModal}/>
+                    <ModalBody task={task} topic={topic}/>
                 </div>
             </div>
         )
