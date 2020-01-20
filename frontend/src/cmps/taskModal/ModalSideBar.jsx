@@ -8,7 +8,7 @@ export default class ModalSideBar extends Component {
     render() {
         return (
             <div className='modal-sidebar-container flex  column justify-between'>
-                <ToolBar board={this.props.board} addMemberToTask={this.props.addMemberToTask} />
+                <ToolBar board={this.props.board} addMemberToTask={this.props.addMemberToTask} getInitials={this.props.getInitials} />
                 <ActionBar />
             </div>
         )

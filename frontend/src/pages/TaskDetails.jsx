@@ -44,6 +44,12 @@ class TaskDetails extends Component {
         this.props.updateTask(this.props.topic, this.props.task);
     }
 
+    getInitials = (fullName) => {
+        var initials = fullName.match(/\b\w/g);
+        initials = ((initials.shift() || '') + (initials.pop() || '')).toUpperCase();
+        return initials;
+    }
+
     render() {
         const { board } = this.props;
         const { task, topic } = this.props;
@@ -53,7 +59,7 @@ class TaskDetails extends Component {
             <div className="widow-screen" onClick={this.closeModal}>
                 <div onClick={this.stayInModal} className='task-modal-container'>
                     <ModalHeader task={task} topic={topic} closeModal={this.closeModal} changeTaskTitle={this.changeTaskTitle} />
-                    <ModalBody task={task} topic={topic} board={board} addMemberToTask={this.addMemberToTask} />
+                    <ModalBody task={task} topic={topic} board={board} addMemberToTask={this.addMemberToTask} getInitials={this.getInitials} />
                 </div>
             </div>
         )

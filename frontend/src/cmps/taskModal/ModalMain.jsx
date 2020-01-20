@@ -20,7 +20,7 @@ export default class ModalMain extends Component {
         const { task } = this.props;
         return (
             <div className='modal-main-container'>
-                <div className="modal-activity">  <ModalActivity task={task} /> </div>
+                <div className="modal-activity">  <ModalActivity task={task} getInitials={this.props.getInitials} /> </div>
                 <div className="sub-title">Description
                 <span className="icon-paragraph-left"></span>
                 </div>
@@ -32,7 +32,7 @@ export default class ModalMain extends Component {
                 </div>
                 <div className="comment-box">
                     <div className='add-comment-title' onClick={this.toggleModalComments}>Write a comment...</div>
-                    {this.state.isModalShown ? <ModalComments/> : '' }
+                    {this.state.isModalShown ? <ModalComments /> : ''}
                 </div>
             </div>
         )

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Footer from '../cmps/footer/Footer'
 
 export default class AboutPage extends Component {
     render() {
@@ -31,7 +30,7 @@ export default class AboutPage extends Component {
                 <div className="creator-section3">
                     <img src={require('../assets/images/tal.jfif')} alt=""></img>
                     <h1>Tal Mashiah</h1>
-                    <p>Roses are red, violets are blue, there's an unexpected {'\'\{\''} on line 32. </p>
+                    <p>Roses are red, violets are blue, there's an unexpected {'\'{\''} on line 32. </p>
                     <div className="social-media flex justify-center justify-around">
                         <button>sss</button>
                         <button>sss</button>

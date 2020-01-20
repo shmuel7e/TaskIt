@@ -19,7 +19,7 @@ function _createTask(taskTitle) {
         title: taskTitle,
         cover: '',
         description: '',
-        createdAt: new Date,
+        createdAt: new Date(),
         comments: [],
         details: [],
         members: [],
