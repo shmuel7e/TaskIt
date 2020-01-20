@@ -24,13 +24,8 @@ export default class TopicPreview extends Component {
         return (
             <div className='topic-container'>
                 <div className="topic-header flex justify-between">
-<<<<<<< HEAD
                 <div className="topic-title" suppressContentEditableWarning={true} contentEditable="true" onBlur={(e) => this.onTxtChange(e.target.textContent)}>{topic.title}</div>
                     <div onClick={this.ToggleMiniModal} className="dots-icon-container">
-=======
-                    <div className="topic-title">{topic.title}</div>
-                    <div onClick={this.toggleMiniModal} className="dots-icon-container">
->>>>>>> shmuel
                         <span className="icon-dots-three-horizontal"></span>
                         {this.state.isModalShown
                         ? <div className='topic-mini-menu block'>
