@@ -38,14 +38,20 @@ class TaskDetails extends Component {
     } 
 
     render() {
-        const { task } = this.props;
-        const { topic } = this.props;
-        if (!task) return 'Loading...'
+        const { board } = this.props;
+        const { task, topic } = this.props;
+        if (!board) return 'Loading...';
+        if (!task) return 'Loading...';
         return (
             <div className="widow-screen" onClick={this.closeModal}>
                 <div onClick={this.stayInModal} className='task-modal-container'>
+<<<<<<< HEAD
                     <ModalHeader task={task} topic={topic} closeModal={this.closeModal} changeTaskTitle={this.changeTaskTitle}/>
                     <ModalBody task={task} topic={topic}/>
+=======
+                    <ModalHeader task={task} topic={topic} closeModal={this.closeModal} />
+                    <ModalBody task={task} topic={topic} board={board} />
+>>>>>>> shmuel
                 </div>
             </div>
         )
@@ -55,7 +61,8 @@ class TaskDetails extends Component {
 const mapStateToProps = state => {
     return {
         task: state.board.currTask,
-        topic: state.board.currTopic
+        topic: state.board.currTopic,
+        board: state.board.board
     };
 };
 const mapDispatchToProps = {

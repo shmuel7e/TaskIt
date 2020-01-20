@@ -1,7 +1,7 @@
 const utilsService = require('../../services/utils.service')
 function createBoard() {
     const board = {
-        user: { userName: 'Guest' },
+        members: [{ email: 'shmuel7e@gmail.com', username: 'shmuel' }, { email: 'puku@gmail.com', username: 'tal' }],
         cover: 'bg5.jpg',
         topics: [{
             id: utilsService.makeRandomId(),
@@ -14,16 +14,16 @@ function createBoard() {
                 createdAt: new Date,
                 comments: [],
                 details: [],
-                members: [],
+                members: ['tal', 'shmuel', 'gilad'],
                 labels: [],
                 checkList: [],
                 dueDate: '',
                 attachments: []
             }]
-        },{
+        }, {
             id: utilsService.makeRandomId(),
             title: 'things to do',
-            tasks:[
+            tasks: [
                 {
                     id: utilsService.makeRandomId(),
                     title: 'make homework',
@@ -32,18 +32,18 @@ function createBoard() {
                     createdAt: new Date,
                     comments: [],
                     details: [],
-                    members: [],
+                    members: ['tal'],
                     labels: [],
                     checkList: [],
                     dueDate: '',
                     attachments: []
                 }
-            ] 
+            ]
         },
         {
             id: utilsService.makeRandomId(),
             title: 'done',
-            tasks:[
+            tasks: [
                 {
                     id: utilsService.makeRandomId(),
                     title: 'go to shopping',
@@ -52,7 +52,7 @@ function createBoard() {
                     createdAt: new Date,
                     comments: [],
                     details: [],
-                    members: [],
+                    members: ['ahbal', 'tambal'],
                     labels: [],
                     checkList: [],
                     dueDate: '',
@@ -60,7 +60,8 @@ function createBoard() {
                 }
             ]
         }
-    ]}
+        ]
+    }
     return board
 }
 

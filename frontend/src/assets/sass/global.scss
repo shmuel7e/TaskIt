@@ -32,11 +32,11 @@
 @import "components/task/taskPreview.scss";
 @import "components/task/addTask.scss";
 
-// task modal 
-@import "components/taskModal/modal-header";
-@import "components/taskModal/modal-body";
-@import "components/taskModal/modal-main";
-@import "components/taskModal/modal-sidebar";
+// task modal
+@import "components/taskModal/modal-header.scss";
+@import "components/taskModal/modal-body.scss";
+@import "components/taskModal/modal-main.scss";
+@import "components/taskModal/modal-sidebar.scss";
 
 // // Pages
 @import "views/home-page.scss";
@@ -44,3 +44,6 @@
 @import "views/authPage.scss";
 @import "views/taskDetails.scss";
 @import "views/aboutPage.scss";
+
+// Modal Side Bar //
+@import "components/modalSideBar/tool-bar.scss";
