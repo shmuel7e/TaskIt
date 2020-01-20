@@ -3,6 +3,8 @@ import MembersList from './MembersList';
 
 export default class MembersModal extends Component {
 
+  
+
     onCloseModal = () => {
         this.props.closeModal();
     }
@@ -13,7 +15,7 @@ export default class MembersModal extends Component {
                 <span onClick={this.onCloseModal} className="close-member-modal">x</span>
                 <h3 className="members-title">Members</h3>
                 <input type="text" placeholder="Search Members"></input>
-                <MembersList members={this.props.board.members} />
+                <MembersList members={this.props.board.members}  addMemberToTask={this.props.addMemberToTask}/>
             </div>
         )
     }

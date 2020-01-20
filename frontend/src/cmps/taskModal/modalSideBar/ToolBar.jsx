@@ -8,6 +8,7 @@ export default class ToolBar extends Component {
         isModalShown: false
     }
 
+
     toggleMiniModal = () => {
         this.setState(prevState => ({
             isModalShown: !prevState.isModalShown
@@ -28,7 +29,7 @@ export default class ToolBar extends Component {
                         {this.state.isModalShown
                             ? <div className='topic-mini-menu block'>
                                 <div className="members-modal">
-                                    <MembersModal closeModal={this.closeModal} board={this.props.board} />
+                                    <MembersModal closeModal={this.closeModal} board={this.props.board} addMemberToTask={this.props.addMemberToTask} />
                                 </div>
                             </div> : ''}
                         <button>Tags</button>
