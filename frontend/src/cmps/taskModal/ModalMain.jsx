@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
-<<<<<<< HEAD
 import ModalComments from './ModalComments';
-=======
 import ModalActivity from './ModalActivity';
->>>>>>> b014c00c4a56d94579c94e01f9745a3c1d3e1483
 
 export default class ModalMain extends Component {
 
