@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class ModalMain extends Component {
 
     onTxtChange = (editedTxt) => {
-        console.log(editedTxt)
+        //console.log(editedTxt)
     }
 
     render() {

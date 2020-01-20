@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { setCurrTask, setCurrTopic } from '../actions/BoardActions';
+import { setCurrTask, setCurrTopic , updateTask } from '../actions/BoardActions';
 import ModalHeader from '../cmps/taskModal/ModalHeader.jsx';
 import ModalBody from '../cmps/taskModal/ModalBody.jsx';
 
@@ -32,6 +32,11 @@ class TaskDetails extends Component {
         ev.stopPropagation();
     }
 
+    changeTaskTitle = (topic,task,newTxt) => {
+        task.title = newTxt;
+        this.props.updateTask(topic,task);
+    } 
+
     render() {
         const { task } = this.props;
         const { topic } = this.props;
@@ -39,7 +44,7 @@ class TaskDetails extends Component {
         return (
             <div className="widow-screen" onClick={this.closeModal}>
                 <div onClick={this.stayInModal} className='task-modal-container'>
-                    <ModalHeader task={task} topic={topic} closeModal={this.closeModal}/>
+                    <ModalHeader task={task} topic={topic} closeModal={this.closeModal} changeTaskTitle={this.changeTaskTitle}/>
                     <ModalBody task={task} topic={topic}/>
                 </div>
             </div>
@@ -55,7 +60,8 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = {
     setCurrTopic,
-    setCurrTask
+    setCurrTask,
+    updateTask
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskDetails);
