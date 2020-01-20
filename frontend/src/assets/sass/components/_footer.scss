@@ -1,0 +1,70 @@
+.footer {
+  border-top: 1px solid black;
+  height: 5vh;
+  background-color: #232323;
+  padding: 90px 0;
+  width: 100%;
+}
+
+.copy-rights {
+  font-family: Yanone-Regular;
+  color: black;
+  font-size: 1.26rem;
+  text-align: center;
+}
+
+.main-logo-footer {
+  width: 10rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer-section {
+  font-family: Yanone-Regular;
+  background: linear-gradient(rgba(101, 166, 209, 0.534), rgba(101, 166, 209, 0.562)),
+    url("../../images/footer.jpg") fixed center no-repeat;
+  background-size: cover;
+  height: 30vh;
+  width: 100%;
+}
+
+.footer-section img {
+  object-fit: cover;
+}
+
+.footer-section h2 {
+  padding-bottom: 0.5rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-us {
+  font-family: Yanone-Regular;
+
+  padding-top: 1rem;
+  font-size: 4rem;
+}
+
+.contact-us-desc {
+  font-size: 1.9rem;
+}
+
+.btn-about {
+  outline: none;
+  font-weight: 600;
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+  padding: 0.8rem 2rem;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  background-color: black;
+  color: white;
+  border: none;
+  &:hover {
+    opacity: 0.9;
+    background-color: rgb(27, 27, 27);
+  }
+}

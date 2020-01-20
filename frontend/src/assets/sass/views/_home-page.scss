@@ -1,6 +1,102 @@
-.homepage-container {
-  width: 100vw;
-  height: 100vh;
-  background: url(https://hdwallpapers.imgix.net/wallpaper-36301569469674licrvzzia8.jpg?auto=compress&cs=tinysrgb&dpr=1) no-repeat center center fixed;
+.home-page-header {
+  position: relative;
+  overflow: hidden;
+  height: 80vh;
+  color: #eee;
+}
+
+.home-page-header:before {
+  content: "";
+  width: 100%;
+  height: 200%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  background: #1b2030 url("../../images/main.jpg") 50% 0 no-repeat;
+  background-size: 100%;
+  background-attachment: fixed;
+  animation: grow 190s linear 10ms infinite;
+  transition: all 0.4s ease-in-out;
+  z-index: -2;
+}
+
+.info {
+  text-align: left;
+  margin-top: 200px;
+  margin-left: 20rem;
+  color: white;
+  text-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes grow {
+  0% {
+    transform: scale(1) translateY(0px);
+  }
+  50% {
+    transform: scale(1.3) translateY(-200px);
+  }
+}
+
+.home-page-templates {
+  margin-left: 200px;
+  margin-right: 200px;
+}
+
+.home-template-title {
+  font-size:3rem;
+  font-family: DancingScript-Regular;
+  text-align: left;
+}
+
+.templates-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.single-template {
+  cursor: pointer;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  background-size: contain;
+  width: calc(100% / 3);
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.home-page-title {
+  font-size: 3rem;
+  max-width: 380px;
+  font-family: Yanone-Regular;
+}
+
+.home-page-desc {
+  text-align: left;
+  max-width: 440px;
+  font-family: Charlie "Text", sans-serif;
+  font-size: 1.5625rem;
+  font-weight: 300;
+}
+
+.home-page-section {
+  text-shadow: #02040c 1px 1px;
+  font-size: 4rem;
+  font-weight: 900;
+  font-family: Yanone-Regular;
+  color: white;
+  height: 40vh;
+  opacity: 0.8;
+  background: url("../../images/section.jpg") fixed center;
   background-size: cover;
+}
+
+.home-section-desc{
+  font-size:2.3rem;
+}
+.home-section-title{
+  margin-left:30px;
 }

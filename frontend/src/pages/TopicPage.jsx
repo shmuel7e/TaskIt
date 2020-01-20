@@ -6,7 +6,7 @@ import TaskDetails from './TaskDetails.jsx';
 
 
 import { connect } from 'react-redux';
-import { loadBoard, setBgCover, addTask, deleteTopic } from '../actions/BoardActions';
+import { loadBoard, setBgCover, addTask, deleteTopic,addTopic } from '../actions/BoardActions';
 import { Route, Router } from 'react-router';
 import history from '../history';
 
@@ -67,7 +67,8 @@ class TopicPage extends Component {
         this.setState({ style });
     }
     onAddNewTopic = (topicName) => {
-        console.log(topicName)
+        this.props.addTopic(topicName)
+        //console.log(topicName)
     }
 
     render() {
@@ -102,7 +103,8 @@ const mapDispatchToProps = {
     loadBoard,
     setBgCover,
     addTask,
-    deleteTopic
+    deleteTopic,
+    addTopic
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TopicPage);

@@ -1,14 +1,44 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
+import TemplateList from '../cmps/template/TemplateList.jsx';
+import TemplateService from '../services/TemplateService.js';
+import Footer from '../cmps/footer/Footer.jsx';
+
 
 export default class HomePage extends Component {
 
+    state = {
+        templates: [],
+    }
 
+    componentDidMount() {
+        this.getGalleryTemplates();
+    }
+
+    getGalleryTemplates = async () => {
+        const templates = await TemplateService.getGalleryTemplates();
+        await this.setState({ templates });
+    }
 
     render() {
         return (
-            <div className="homepage-container" >
+            <div>
 
+                <div class="home-page-header parallax">
+                    <div class="info">
+                        <h1 className="home-page-title">Trello lets you simplify your work collaboratively and get more of it done.</h1>
+                        <h2 className="home-page-desc">Trello’s boards, lists, and cards enable you to organize and prioritize your projects in a fun, flexible, and rewarding way.</h2>
+                    </div>
+                </div>
+                <div className="home-page-templates">
+                    <TemplateList type={'top'} templates={this.state.templates} />
+                </div>
+                <div className="home-page-section">
+                    <h1 className="home-section-title">Work together, and acheive more.</h1>
+                    <h2 className="home-section-desc">Use Trello the way your team works best. We’ve got the flexibility & features to fit any team’s style.</h2>
+                </div>
+
+
+                <Footer />
             </div>
         )
     }
