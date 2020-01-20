@@ -22,6 +22,11 @@ export default class NavBar extends Component {
                         My Taskit
                         </NavLink>
                 </div>
+                <div className='link-container'>
+                    <NavLink activeClassName="active" to='/About'>
+                        About
+                    </NavLink>
+                </div>
                 {!this.props.user &&
                     <div className='link-container'>
                         <NavLink activeClassName="active" to='/Auth'>
@@ -45,11 +50,7 @@ export default class NavBar extends Component {
                     </div>
                 }
 
-                <div className='link-container'>
-                    <NavLink activeClassName="active" to='/About'>
-                        About
-                    </NavLink>
-                </div>
+              
 
             </nav>
         )

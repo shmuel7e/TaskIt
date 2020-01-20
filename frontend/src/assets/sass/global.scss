@@ -23,8 +23,9 @@
 @import "components/footer.scss";
 
 // topic
-@import "components/topic/topicList.scss";
-@import "components/topic/topicPreview.scss";
+@import "components/topic/topicList";
+@import "components/topic/topicPreview";
+@import "components/topic/addTopic";
 
 // task
 @import "components/task/taskList.scss";
@@ -34,6 +35,8 @@
 // task modal 
 @import "components/taskModal/modal-header";
 @import "components/taskModal/modal-body";
+@import "components/taskModal/modal-main";
+@import "components/taskModal/modal-sidebar";
 
 // // Pages
 @import "views/home-page.scss";

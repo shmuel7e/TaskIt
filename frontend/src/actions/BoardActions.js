@@ -42,6 +42,23 @@ export function setCurrTopic(topicId) {
         }
     };
 }
+// add new topic
+function _addTopic(newTopic) {
+    return {
+        type: 'TOPIC_ADD',
+        newTopic
+    }
+}
+export function addTopic(topicName) {
+    return async dispatch => {
+        try {
+            const newTopic = await BoardService.addTopic(topicName);
+            dispatch(_addTopic(newTopic));
+        } catch (err) {
+            console.log('UserActions: err in addTopic', err);
+        }
+    };
+}
 
 // set current task // 
 
@@ -82,7 +99,7 @@ export function setBgCover(imgName) {
     };
 }
 
-// add task // deleteTopic
+// add task 
 function _addTask(newTask,topicId) {
     return {
         type: 'TASK_ADD',
@@ -94,13 +111,13 @@ export function addTask(taskTitle,topicId) {
     return async dispatch => {
         try {
             const newTask = await BoardService.addTask(taskTitle);
-            console.log(newTask)
             dispatch(_addTask(newTask,topicId));
         } catch (err) {
             console.log('UserActions: err in addTask', err);
         }
     };
 }
+
 
 // deleteTopic
 function _deleteTopic(topicId) {

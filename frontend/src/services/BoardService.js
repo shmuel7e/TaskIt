@@ -8,30 +8,45 @@ async function query() {
 async function setBgCover(imgName) {
     return Promise.resolve(imgName);
 }
-async function addTask(taskTitle){
-   const newTask= _createTask(taskTitle)
-    return Promise.resolve({...newTask})
+async function addTask(taskTitle) {
+    const newTask = _createTask(taskTitle)
+    return Promise.resolve({ ...newTask })
 }
 
-function _createTask(taskTitle){
- return{   id: UtilsService.makeRandomId(),
-    title: taskTitle,
-    cover: '',
-    description: '',
-    createdAt: new Date,
-    comments: [],
-    details: [],
-    members: [],
-    labels: [],
-    checkList: [],
-    dueDate: '',
-    attachments: []
- }
+function _createTask(taskTitle) {
+    return {
+        id: UtilsService.makeRandomId(),
+        title: taskTitle,
+        cover: '',
+        description: '',
+        createdAt: new Date,
+        comments: [],
+        details: [],
+        members: [],
+        labels: [],
+        checkList: [],
+        dueDate: '',
+        attachments: []
+    }
+}
+
+async function addTopic(topicTitle) {
+    const newTopic = _createTopic(topicTitle)
+    return Promise.resolve({ ...newTopic })
+}
+
+function _createTopic(topicTitle) {
+    return {
+        id: UtilsService.makeRandomId(),
+        title: topicTitle,
+        tasks:[]
+    }
 }
 
 
 export default {
     query,
     setBgCover,
-    addTask
+    addTask,
+    addTopic
 };
