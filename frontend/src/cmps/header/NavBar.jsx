@@ -19,7 +19,7 @@ export default class NavBar extends Component {
             <nav className='flex'>
                 <div className='link-container'>
                     <NavLink activeClassName="active" to='/topic'>
-                        My Trello
+                        My Taskit
                         </NavLink>
                 </div>
                 {!this.props.user &&
