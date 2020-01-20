@@ -7,7 +7,7 @@ export default class Footer extends Component {
             <div className="footer-section">
                 <h2 className="contact-us">Contact Us</h2>
                 <h2 className="contact-us-desc">Go from idea to action in seconds with Trello’s intuitively simple boards, lists, and cards.</h2>
-                <button className="btn-about">ABOUT US</button>
+                <NavLink activeClassName="active" to='/About'> <button className="btn-about">ABOUT US</button> </NavLink>
             </div>,
             <div className="footer">
                 <div className='main-logo-footer'><NavLink activeClassName="active" to='/' exact><img src={require('../../assets/images/logo.svg')} alt="logo" /></NavLink></div>
