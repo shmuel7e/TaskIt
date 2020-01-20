@@ -1,6 +1,15 @@
 import React, { Component } from 'react'
+import ModalComments from './ModalComments';
 
 export default class ModalMain extends Component {
+
+    state = { isModalShown: false }
+
+    toggleModalComments = () => {
+        this.setState(prevState => ({
+            isModalShown: !prevState.isModalShown
+        }));
+    }
 
     onTxtChange = (editedTxt) => {
         //console.log(editedTxt)
@@ -20,7 +29,8 @@ export default class ModalMain extends Component {
                 <span className="icon-message"></span>
                 </div>
                 <div className="comment-box">
-                    <textarea placeholder="Write a comment..."></textarea>
+                    <div className='add-comment-title' onClick={this.toggleModalComments}>Write a comment...</div>
+                    {this.state.isModalShown ? <ModalComments/> : '' }
                 </div>
             </div>
         )

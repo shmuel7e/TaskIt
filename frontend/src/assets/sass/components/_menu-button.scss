@@ -1,16 +1,13 @@
-.menu-button {
-  background: rgba(201, 204, 206, 0.24);
-  margin-right: 20px;
-  outline: none;
-  border-radius: 3px;
-  padding: 5px;
-  font-size: 16px;
+.main-button {
+  background-color: #8b7ca5;
+  box-shadow: none;
   border: none;
+  color: #fff;
+  width: 79px;
+  height: 29px;
+  font-size: 15px;
+  border-radius: 4px;
   cursor: pointer;
-  margin-top: 100px;
-  float: right;
-  transition: ease 0.2s all;
-  margin-top: 15px;
 }
 
 .menu-button:hover {
