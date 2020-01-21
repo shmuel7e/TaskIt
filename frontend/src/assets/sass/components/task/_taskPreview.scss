@@ -1,19 +1,31 @@
-.task-container{
-    background-color: #fff;
-    border-radius: 4px;
-    box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
-    cursor: pointer;
-    max-width: 255px;
-    min-height: 33px;
-    margin: 0 auto 8px;
+.task-container {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
+  cursor: pointer;
+  max-width: 255px;
+  min-height: 33px;
+  margin: 0 auto 8px;
 
-    .task-title {
-        font-size: 14px;
-        color: #41516e;
-        padding: 5px;
-    }
+  .task-title {
+    font-size: 14px;
+    color: #41516e;
+    padding: 5px;
+  }
 
-    &:hover{
-        background-color: #e1e2e6;
+  .members-container {
+    padding: 4px 7px 3px;
+
+    .member-name-initials {
+      float: initial;
+      height: 28px;
+      width: 28px;
+      line-height: 28px;
+      margin: 4px 4px 4px 0;
     }
+  }
+
+  &:hover {
+    background-color: #e1e2e6;
+  }
 }

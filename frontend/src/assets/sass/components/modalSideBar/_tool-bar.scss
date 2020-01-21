@@ -61,6 +61,8 @@
 }
 
 .members-modal-input {
+  padding-bottom: 9px;
+  margin-bottom: -2px;
   & > input {
     -webkit-appearance: none;
     outline: none;
@@ -73,7 +75,7 @@
     border-radius: 3px;
     display: block;
     line-height: 20px;
-    margin-bottom: 12px;
+    margin-bottom: -11px;
     padding: 8px 12px;
     transition-property: background-color, border-color, box-shadow;
     transition-duration: 85ms;
@@ -115,4 +117,3 @@
   top: 3px;
   cursor: pointer;
 }
-

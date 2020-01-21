@@ -46,7 +46,7 @@ export default class ToolBar extends Component {
                             </div> : ''}
                         <button onClick={() => this.toggleMiniModal('labels')}>Labels</button>
                         <div className="label-modal-container">
-                            {this.state.isLabelsShown ? <LabelModal /> : ''}
+                            {this.state.isLabelsShown ? <LabelModal closeModal={this.toggleMiniModal} /> : ''}
                         </div>
                         <button>Checklist</button>
                         <button>Due Date</button>

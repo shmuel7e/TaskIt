@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import MembersPreview from './MembersPreview'
-import MembersFilter from './MembersFilter';
+import Filter from '../../Filter';
 
 
 export default class MembersList extends Component {
@@ -31,7 +31,7 @@ export default class MembersList extends Component {
         if (!this.props.members) return 'loading...';
         return (
             <div className="members-list-modal">
-                <MembersFilter onSetFilter={this.onSetFilter} />
+                <Filter onSetFilter={this.onSetFilter} filterType={'members'} />
                 <h3>Board Members</h3>
                 {this.state.members.map((member, idx) => {
                     return <MembersPreview member={member} key={idx} addMemberToTask={this.props.addMemberToTask}

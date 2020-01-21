@@ -20,7 +20,7 @@
     }
 
     .labels-container {
-      padding: 0px 15px 12px 15px;
+      padding: 0px 15px 5px 15px;
 
       h3 {
         text-align: start;
@@ -43,4 +43,9 @@
       }
     }
   }
+}
+
+.labels-title {
+  margin-bottom: -9px !important;
+  margin-top: 15px !important;
 }
