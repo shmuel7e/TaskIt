@@ -1,16 +1,16 @@
 .add-topic {
-    float: right;
-    margin-left: 4px;
-    min-width: 272px;
-    background-color: #ebecf0b3;
-    border-radius: 4px;
-    height: auto;
-    min-height: 32px;
-    font-size: 14px;
-    padding-left: 10px;
-    color: #41516e;
-    padding: 6px 8px;
-    cursor: pointer;
+  float: right;
+  margin-left: 4px;
+  min-width: 272px;
+  background-color: #ebecf0b3;
+  border-radius: 4px;
+  height: auto;
+  min-height: 32px;
+  font-size: 14px;
+  padding-left: 10px;
+  color: #41516e;
+  padding: 6px 8px;
+  cursor: pointer;
 
   .icon-plus {
     font-size: 13px;
@@ -27,7 +27,7 @@
     width: 100%;
     padding-left: 12px;
   }
-  &:hover{
+  &:hover {
     background-color: #ebecf0;
   }
 }
@@ -45,6 +45,9 @@
     font-size: 15px;
     border-radius: 4px;
     cursor: pointer;
+    &:hover {
+      opacity: 0.9;
+    }
   }
   .close-form {
     margin-top: 1px;
@@ -52,5 +55,8 @@
     margin-left: 10px;
     color: $clr2;
     cursor: pointer;
+    &:hover {
+      opacity: 0.9;
+    }
   }
 }
