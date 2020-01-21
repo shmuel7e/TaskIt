@@ -18,6 +18,7 @@ export default class ModalBody extends Component {
                 <ModalSideBar
                     task={task}
                     board={board}
+                    addDueTimeToTask={this.props.addDueTimeToTask}
                     addMemberToTask={addMemberToTask}
                     addLabelToTask={addLabelToTask}
                     getInitials={this.props.getInitials}

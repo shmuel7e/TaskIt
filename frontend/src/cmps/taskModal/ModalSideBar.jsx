@@ -11,6 +11,7 @@ export default class ModalSideBar extends Component {
             <div className='modal-sidebar-container flex  column justify-between'>
                 <ToolBar
                     board={board}
+                    addDueTimeToTask={this.props.addDueTimeToTask}
                     addMemberToTask={addMemberToTask}
                     addLabelToTask={addLabelToTask}
                     getInitials={getInitials} />

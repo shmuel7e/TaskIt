@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import MembersModal from './members/MembersModal';
 import LabelModal from './labels/LabelModal';
+import DueTimeModal from './dueTime/DueTimeModal.jsx';
+
 
 export default class ToolBar extends Component {
 
     state = {
         isMembersShown: false,
-        isLabelsShown: false
+        isLabelsShown: false,
+        isDuesShown: false,
     }
 
 
@@ -25,10 +28,18 @@ export default class ToolBar extends Component {
                 }));
                 break;
 
+            case 'dues':
+                this.setState(prevState => ({
+                    isDuesShown: !prevState.isDuesShown
+                }));
+                break;
+
             default:
                 break;
         }
     }
+
+
 
     render() {
         return (
@@ -55,9 +66,12 @@ export default class ToolBar extends Component {
                         <button>Checklist
                             <span className="icon-input-checked"></span>
                         </button>
-                        <button>Due Date
+                        <button onClick={() => this.toggleMiniModal('dues')}>Due Date
                             <span className="icon-clock"></span>
                         </button>
+                        <div className="due-modal-container">
+                            {this.state.isDuesShown ? <DueTimeModal closeModal={this.toggleMiniModal} addDueTimeToTask={this.props.addDueTimeToTask} /> : ''}
+                        </div>
                         <button>Add Image
                             <span className="icon-image"></span>
                         </button>

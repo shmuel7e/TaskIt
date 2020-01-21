@@ -21,7 +21,7 @@ function createBoard() {
                 members: [],
                 labels: [],
                 checkList: [],
-                dueDate: '',
+                dueTime: '',
                 attachments: []
             }]
         }, {
@@ -39,7 +39,7 @@ function createBoard() {
                     members: [],
                     labels: [],
                     checkList: [],
-                    dueDate: '',
+                    dueTime: '',
                     attachments: []
                 }
             ]
@@ -59,7 +59,7 @@ function createBoard() {
                     members: [],
                     labels: [],
                     checkList: [],
-                    dueDate: '',
+                    dueTime: '',
                     attachments: []
                 }
             ]
