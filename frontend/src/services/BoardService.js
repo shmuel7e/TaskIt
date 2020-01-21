@@ -25,7 +25,7 @@ function _createTask(taskTitle) {
         members: [],
         labels: [],
         checkList: [],
-        dueDate: '',
+        dueTime: '',
         attachments: []
     }
 }
