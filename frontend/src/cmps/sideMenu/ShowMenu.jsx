@@ -28,7 +28,9 @@ export default class ShowMenu extends Component {
             <div>
                 <div className={`${this.state.isMenuOn ? ' menu menu-off' : 'menu menu-on'}`}><SideMenu imgs={this.props.imgs}
                     changeBgImg={this.changeBgImg} changeBgColor={this.changeBgColor} colors={this.props.colors} />
-                    <span className="exit-menu" onClick={this.onToggleMenu}>X</span>
+                    <span className="exit-menu" onClick={this.onToggleMenu}>
+                        <span className="icon-cross"></span>
+                    </span>
 
                 </div>
                 <button className="menu-button" onClick={this.onToggleMenu}>Show Menu</button>

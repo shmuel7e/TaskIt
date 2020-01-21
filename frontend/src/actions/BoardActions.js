@@ -163,11 +163,11 @@ export function addTask(taskTitle, topicId) {
 }
 
 // add task 
-function _cloneTask(topicId, task) {
+function _cloneTask(topicId,updatedTask) {
     return {
         type: 'TASK_CLONE',
         topicId,
-        task,
+        updatedTask,
 
     }
 }
@@ -175,8 +175,8 @@ export function cloneTask(topicId, task) {
     return async dispatch => {
         try {
             //TODO
-            //const newTask = await BoardService.cloneTask(topicId,task);
-            dispatch(_cloneTask(topicId, task));
+            const updatedTask = await BoardService.cloneTask(task);
+            dispatch(_cloneTask(topicId,updatedTask));
         } catch (err) {
             console.log('UserActions: err in cloneTask', err);
         }

@@ -1,0 +1,12 @@
+.task-color-preview{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin: 5px;
+    cursor: pointer;
+    transition: linear 0.2s;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}

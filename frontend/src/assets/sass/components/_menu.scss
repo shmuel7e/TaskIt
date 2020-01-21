@@ -26,6 +26,12 @@
   right: 6px;
   top: 4px;
   position: absolute;
+
+  .icon-cross{
+    font-size: 12px;
+    top: 5px;
+    right: 7px;
+  }
 }
 
 .menu-options {
@@ -61,6 +67,13 @@
   cursor: pointer;
   left: 5px;
   top: 1px;
+
+  .icon-arrow-left2 {
+    position: absolute;
+    font-size: 17px;
+    left: 5px;
+    top: -3px;
+  }
 }
 
 .menu-side-header {

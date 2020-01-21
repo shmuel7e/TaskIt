@@ -74,8 +74,6 @@ export default [
     '#90EE90',
     '#808000',
     '#556B2F',
-    '#E0FFAA',
-    '#00FFFF',
     '#7FFFD4',
     '#AFEEEE',
     '#00CED1',

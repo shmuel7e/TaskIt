@@ -4,13 +4,15 @@
   box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
   cursor: pointer;
   max-width: 255px;
-  min-height: 33px;
+  min-height: 32px;
   margin: 0 auto 8px;
 
   .task-title {
     font-size: 14px;
     color: #41516e;
-    padding: 5px;
+    padding: 0px 9px;
+    line-height: 31px;
+    height: 23px;
   }
 
   .members-container {
@@ -23,6 +25,10 @@
       line-height: 28px;
       margin: 4px 4px 4px 0;
     }
+  }
+
+  .labels-container {
+    padding: 0 8px;
   }
 
   &:hover {
