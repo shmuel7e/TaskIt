@@ -93,7 +93,6 @@ class TopicPage extends Component {
         if (!destination) {
             return
         }
-        console.log(result)
         this.props.sortTasks(
             source.droppableId,
             destination.droppableId,
