@@ -4,11 +4,12 @@ import { Draggable } from 'react-beautiful-dnd'
 
 export default class TaskPreview extends Component {
     render() {
+        console.log(this.props.task.id, this.props.index,'@@@@');
+        
         return (
             <Draggable
                 draggableId={this.props.task.id}
-                index={this.props.index}
-            >
+                index={this.props.index}>
                 {provided => (
                     <div 
                     ref={provided.innerRef} 
