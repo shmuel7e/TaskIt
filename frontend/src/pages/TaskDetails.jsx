@@ -71,6 +71,11 @@ class TaskDetails extends Component {
         this.props.history.push('/topic');
     }
 
+    changeTaskColor = (color) => {
+        const updateTask = this.props.task.bgColor = color;
+        this.props.updateTask(this.props.topic, updateTask);
+    }
+
     render() {
         const { board } = this.props;
         const { task, topic } = this.props;
@@ -93,6 +98,7 @@ class TaskDetails extends Component {
                         getInitials={this.getInitials}
                         addMemberToTask={this.addMemberToTask}
                         addLabelToTask={this.addLabelToTask}
+                        changeTaskColor={this.changeTaskColor}
                         deleteTask={this.deleteTask}
                         cloneTask={this.cloneTask} />
                 </div>

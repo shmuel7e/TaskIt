@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd'
+import styled from "styled-components"
+
 import TopicList from '../cmps/topic/TopicList.jsx';
 import ShowMenu from '../cmps/sideMenu/ShowMenu.jsx';
 import ImageService from '../services/ImageService.js';
@@ -7,9 +10,14 @@ import UtilsService from '../services/UtilsService.js';
 
 
 import { connect } from 'react-redux';
-import { loadBoard, setBgCover, addTask, deleteTopic, addTopic, updateTopic } from '../actions/BoardActions';
+import { loadBoard, setBgCover, addTask, deleteTopic, addTopic, updateTopic, sortTasks } from '../actions/BoardActions';
 import { Route, Router } from 'react-router';
 import history from '../history';
+
+const ListContainer = styled.div`
+display:flex;
+flex-direction:row;
+`;
 
 class TopicPage extends Component {
 
@@ -80,28 +88,49 @@ class TopicPage extends Component {
     onGetInitials = (fullName) => {
         return UtilsService.getInitials(fullName);
     }
+    onDragEnd = (result) => {
+        const { destination, source, draggableId, type } = result
+        if (!destination) {
+            return
+        }
+        this.props.sortTasks(
+            source.droppableId,
+            destination.droppableId,
+            source.index,
+            destination.index,
+            draggableId,
+            type)
+    }
 
     render() {
         const { board } = this.props
         if (!board) return 'Loading...'
         return (
-            <div style={this.state.style} className="trello-page-container header-padding">
-                <TopicList
-                    getInitials={this.onGetInitials}
-                    onAddNewTopic={this.onAddNewTopic}
-                    changeTopicTitle={this.changeTopicTitle}
-                    addTask={this.addTask}
-                    deleteTopic={this.deleteTopic}
-                    board={board} />
-                <ShowMenu imgs={this.state.imgs}
-                    changeBgImg={this.changeBgImg}
-                    colors={this.state.colors}
-                    changeBgColor={this.changeBgColor} />
-                <Router history={history}>
-                    <Route component={TaskDetails} path="/topic/:topicId/:taskId" exact></Route>
-                </Router>
-            </div>
+            <DragDropContext onDragEnd={this.onDragEnd}>
+                <div style={this.state.style} className="trello-page-container header-padding">
+                    <Droppable droppableId="all-lists" direction="horizontal" type="list">
+                        {provided => (
+                            <ListContainer {...provided.droppableProps} ref={provided.innerRef}>
+                                <TopicList
+                                    getInitials={this.onGetInitials}
+                                    onAddNewTopic={this.onAddNewTopic}
+                                    changeTopicTitle={this.changeTopicTitle}
+                                    addTask={this.addTask}
+                                    deleteTopic={this.deleteTopic}
+                                    board={board} />
+                            </ListContainer>
+                        )}
+                    </Droppable>
 
+                    <ShowMenu imgs={this.state.imgs}
+                        changeBgImg={this.changeBgImg}
+                        colors={this.state.colors}
+                        changeBgColor={this.changeBgColor} />
+                    <Router history={history}>
+                        <Route component={TaskDetails} path="/topic/:topicId/:taskId" exact></Route>
+                    </Router>
+                </div>
+            </DragDropContext>
         )
     }
 }
@@ -117,7 +146,8 @@ const mapDispatchToProps = {
     addTask,
     deleteTopic,
     addTopic,
-    updateTopic
+    updateTopic,
+    sortTasks
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TopicPage);

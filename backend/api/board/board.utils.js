@@ -22,7 +22,8 @@ function createBoard() {
                 labels: [],
                 checkList: [],
                 dueTime: '',
-                attachments: []
+                attachments: [],
+                bgColor:''
             }]
         }, {
             id: utilsService.makeRandomId(),
@@ -40,7 +41,8 @@ function createBoard() {
                     labels: [],
                     checkList: [],
                     dueTime: '',
-                    attachments: []
+                    attachments: [],
+                    bgColor:''
                 }
             ]
         },
@@ -60,7 +62,8 @@ function createBoard() {
                     labels: [],
                     checkList: [],
                     dueTime: '',
-                    attachments: []
+                    attachments: [],
+                    bgColor:''
                 }
             ]
         }

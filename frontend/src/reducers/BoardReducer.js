@@ -56,7 +56,7 @@ export default function (state = initialState, action = {}) {
     case 'TASK_CLONE':
       state.board.topics = state.board.topics.map(topic => {
         if (topic.id === action.topicId) {
-          topic.tasks.push({ ...action.task })
+          topic.tasks.push({ ...action.updatedTask })
         }
         return topic
       })
@@ -65,6 +65,34 @@ export default function (state = initialState, action = {}) {
     case 'CURRENT_TASK_SET':
       const currTask = state.currTopic.tasks.find(task => task.id === action.taskId);
       return { ...state, currTask: currTask };
+
+    case 'TASK_HAPPEND':
+      const { droppableIdStart,
+        droppableIdEnd,
+        droppableIndexStart,
+        droppableIndexEnd,
+        draggableId,
+        typeToDrop
+      } = action
+      const newState = { ...state }
+      if(typeToDrop=== "list"){
+        const topics=newState.board.topics.splice(droppableIndexStart,1)
+        newState.board.topics.splice(droppableIndexEnd,0,...topics)
+        return {...newState}
+      }
+
+      if (droppableIdStart === droppableIdEnd) {
+        const topic = state.board.topics.find(topic => droppableIdStart === topic.id)
+        const task = topic.tasks.splice(droppableIndexStart, 1)
+        topic.tasks.splice(droppableIndexEnd, 0, ...task)
+      }
+      if (droppableIdStart !== droppableIdEnd) {
+        const topic = state.board.topics.find(topic => droppableIdStart === topic.id)
+        const task = topic.tasks.splice(droppableIndexStart, 1)
+        const topicEnd = state.board.topics.find(topic => droppableIdEnd === topic.id)
+        topicEnd.tasks.splice(droppableIndexEnd, 0, ...task)
+      }
+      return { ...newState };
 
     default:
       return state;

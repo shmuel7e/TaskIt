@@ -6,7 +6,7 @@ export default class ModalSideBar extends Component {
 
 
     render() {
-        const { board, addMemberToTask, addLabelToTask, deleteTask, cloneTask, getInitials } = this.props;
+        const { board, addMemberToTask, addLabelToTask, deleteTask, cloneTask, getInitials, changeTaskColor } = this.props;
         return (
             <div className='modal-sidebar-container flex  column justify-between'>
                 <ToolBar
@@ -17,6 +17,7 @@ export default class ModalSideBar extends Component {
                     getInitials={getInitials} />
 
                 <ActionBar
+                    changeTaskColor={changeTaskColor}
                     deleteTask={deleteTask}
                     cloneTask={cloneTask}
                 />

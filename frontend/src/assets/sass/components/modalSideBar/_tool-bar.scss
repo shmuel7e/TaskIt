@@ -31,10 +31,17 @@
   .icon-label,
   .icon-input-checked,
   .icon-clock,
-  .icon-image {
+  .icon-image,
+  .icon-color_lens {
     position: absolute;
     top: 8px;
     left: 10px;
+  }
+
+  .icon-color_lens {
+    font-size: 16px;
+    left: 9px;
+    top: 7px;
   }
 
   .icon-input-checked {
