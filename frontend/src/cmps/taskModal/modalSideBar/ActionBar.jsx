@@ -16,10 +16,10 @@ export default class ActionBar extends Component {
                 <div className="action-bar flex column">
                     <h3>ACTIONS</h3>
                     <button onClick={this.onCloneTask}>Clone
-                    <span class="icon-clone"></span>
+                    <span className="icon-clone"></span>
                     </button>
                     <button onClick={this.onDeleteTask}>Delete
-                    <span class="icon-trash"></span>
+                    <span className="icon-trash"></span>
                     </button>
                 </div>
             </div>

@@ -20,7 +20,10 @@ export default class ModalMain extends Component {
         const { task } = this.props;
         return (
             <div className='modal-main-container'>
-                <div className="modal-activity">  <ModalActivity task={task} getInitials={this.props.getInitials} /> </div>
+                <div className="modal-activity flex">
+                    <ModalActivity task={task} getInitials={this.props.getInitials} />
+
+                </div>
                 <div className="sub-title">Description
                 <span className="icon-paragraph-left"></span>
                 </div>

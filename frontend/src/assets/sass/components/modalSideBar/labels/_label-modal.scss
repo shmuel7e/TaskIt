@@ -49,3 +49,35 @@
   margin-bottom: -9px !important;
   margin-top: 15px !important;
 }
+
+.label-name-initials {
+  cursor: pointer;
+  border-radius: 3px;
+  box-sizing: border-box;
+  display: block;
+  float: left;
+  font-weight: 600;
+  height: 32px;
+  line-height: 32px;
+  margin: 0 4px 4px 0;
+  min-width: 40px;
+  padding: 0 12px;
+  width: auto;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.smaller {
+  float: left;
+  font-size: 12px;
+  font-weight: 700;
+  height: 8px;
+  line-height: 100px;
+  margin: 0 4px 4px 0;
+  max-width: 40px;
+  min-width: 40px;
+  padding: 0;
+  text-shadow: none;
+  width: auto;
+}

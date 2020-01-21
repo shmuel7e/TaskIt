@@ -19,7 +19,7 @@ export default class LabelModal extends Component {
             <div className='labal-modal'>
                 <span onClick={this.onCloseModal} className="close-member-modal">x</span>
                 <h3>Labels</h3>
-                <LabelsList labels={this.state.labels} />
+                <LabelsList labels={this.state.labels} addLabelToTask={this.props.addLabelToTask} />
             </div>
         )
     }

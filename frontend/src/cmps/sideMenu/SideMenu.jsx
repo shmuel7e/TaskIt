@@ -27,6 +27,7 @@ export default class SideMenu extends Component {
         return (
             <div>
                 <div className="menu-header">
+                    <div className="menu-side-header">Choose Your background</div>
                     <div className="menu">
                         {this.state.bgGallery !== '' && <BgGalleryList bgGallery={this.state.bgGallery}
                             imgs={this.props.imgs} colors={this.props.colors} changeBgImg={this.changeBgImg} changeBgColor={this.changeBgColor}
@@ -34,15 +35,17 @@ export default class SideMenu extends Component {
 
                         {this.state.bgGallery === '' &&
                             <section>
-                                <div className="choose-options">Choose Your background</div>
                                 <div className="menu-options flex">
                                     <img src={require(`../../assets/images/colors.jpg`)} alt="" onClick={this.setGallery.bind(null, 'colors')}></img>
                                     <img src={require(`../../assets/images/images.jpg`)} alt="" onClick={this.setGallery.bind(null, 'imgs')}></img>
+                                    <div>
+                                    </div>
                                 </div>
                                 <span className="menu-description flex justify-around">
                                     <span>Colors</span>
                                     <span> Photos</span>
                                 </span>
+                                <div className="activity-section">Activity</div>
                             </section>}
 
                     </div>

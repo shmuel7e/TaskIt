@@ -34,7 +34,7 @@ export default class LabelsList extends Component {
                 <Filter onSetFilter={this.onSetFilter} filterType={'labels'} />
                 <h3 className="labels-title">Labels</h3>
                 {this.state.labels.map((label, idx) => {
-                    return <LabelsPreview label={label} key={idx} className="label" style={{ background: label.color }} />
+                    return <LabelsPreview label={label} key={idx} addLabelToTask={this.props.addLabelToTask} className="label" style={{ background: label.color }} />
                 })}
             </div>
         )

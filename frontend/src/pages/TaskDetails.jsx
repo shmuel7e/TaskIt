@@ -40,15 +40,22 @@ class TaskDetails extends Component {
 
     addMemberToTask = (member) => {
         const { members } = this.props.task;
-        const result = members.find(({ _id }) => _id === member._id);
-        (!result) ? members.push(member) : members.pop(member);
+        const addedMember = members.find(({ _id }) => _id === member._id);
+        (!addedMember) ? members.push(member) : members.pop(member);
+        this.props.updateTask(this.props.topic, this.props.task);
+    }
+
+    addLabelToTask = (label) => {
+        const { labels } = this.props.task;
+        const addedLabel = labels.find(({ name }) => name === label.name);
+        (!addedLabel) ? labels.push(label) : labels.pop(label);
         this.props.updateTask(this.props.topic, this.props.task);
     }
 
     getInitials = (fullName) => {
         return UtilsService.getInitials(fullName);
     }
-    
+
     deleteTask = () => {
         this.props.deleteTask(this.props.task.id)
         this.props.history.push('/topic');
@@ -67,20 +74,21 @@ class TaskDetails extends Component {
         return (
             <div className="widow-screen" onClick={this.closeModal}>
                 <div onClick={this.stayInModal} className='task-modal-container'>
-                    <ModalHeader 
-                    task={task} 
-                    topic={topic} 
-                    closeModal={this.closeModal} 
-                    changeTaskTitle={this.changeTaskTitle} />
+                    <ModalHeader
+                        task={task}
+                        topic={topic}
+                        closeModal={this.closeModal}
+                        changeTaskTitle={this.changeTaskTitle} />
 
-                    <ModalBody 
-                    task={task} 
-                    topic={topic} 
-                    board={board} 
-                    getInitials={this.getInitials}
-                    addMemberToTask={this.addMemberToTask} 
-                    deleteTask = {this.deleteTask}
-                    cloneTask= {this.cloneTask}/>
+                    <ModalBody
+                        task={task}
+                        topic={topic}
+                        board={board}
+                        getInitials={this.getInitials}
+                        addMemberToTask={this.addMemberToTask}
+                        addLabelToTask={this.addLabelToTask}
+                        deleteTask={this.deleteTask}
+                        cloneTask={this.cloneTask} />
                 </div>
             </div>
         )

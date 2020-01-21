@@ -9,7 +9,7 @@ function createBoard() {
         cover: 'bg5.jpg',
         topics: [{
             id: utilsService.makeRandomId(),
-            title: 'todo',
+            title: 'Todo',
             tasks: [{
                 id: utilsService.makeRandomId(),
                 title: 'going to supermarket',
@@ -26,7 +26,7 @@ function createBoard() {
             }]
         }, {
             id: utilsService.makeRandomId(),
-            title: 'things to do',
+            title: 'Things To Do',
             tasks: [
                 {
                     id: utilsService.makeRandomId(),
@@ -46,7 +46,7 @@ function createBoard() {
         },
         {
             id: utilsService.makeRandomId(),
-            title: 'done',
+            title: 'Done',
             tasks: [
                 {
                     id: utilsService.makeRandomId(),

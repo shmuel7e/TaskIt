@@ -37,7 +37,7 @@ export default class ToolBar extends Component {
                     <h3>ADD TO CARD</h3>
                     <div className="tool-bar flex column justify-between">
                         <button onClick={() => this.toggleMiniModal('members')}>Members
-                            <span class="icon-people_alt"></span>
+                            <span className="icon-people_alt"></span>
                         </button>
                         {this.state.isMembersShown
                             ? <div className='topic-mini-menu block'>
@@ -47,19 +47,19 @@ export default class ToolBar extends Component {
                                 </div>
                             </div> : ''}
                         <button onClick={() => this.toggleMiniModal('labels')}>Labels
-                            <span class="icon-label"></span>
+                            <span className="icon-label"></span>
                         </button>
                         <div className="label-modal-container">
-                            {this.state.isLabelsShown ? <LabelModal closeModal={this.toggleMiniModal} /> : ''}
+                            {this.state.isLabelsShown ? <LabelModal closeModal={this.toggleMiniModal} addLabelToTask={this.props.addLabelToTask} /> : ''}
                         </div>
                         <button>Checklist
-                            <span class="icon-input-checked"></span>
+                            <span className="icon-input-checked"></span>
                         </button>
                         <button>Due Date
-                            <span class="icon-clock"></span>
+                            <span className="icon-clock"></span>
                         </button>
                         <button>Add Image
-                            <span class="icon-image"></span>
+                            <span className="icon-image"></span>
                         </button>
                     </div>
                 </div>
