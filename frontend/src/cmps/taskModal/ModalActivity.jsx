@@ -14,7 +14,7 @@ export default class ModalActivity extends Component {
                 <h3 className="members-on-task-title">Members</h3>
                 <div className="members-on-task flex">
                     {this.props.task.members.map((member, idx) => {
-                        return <div style={{ background: member.bgColor }} className="member-name-initials" key={idx}>  {this.onGetInitials(member.username)} </div>
+                        return <div style={{ background: member.bgColor }} data-toggle="tooltip" title={member.username} className="member-name-initials" key={idx}>  {this.onGetInitials(member.username)} </div>
                     })}
                 </div>
             </div>

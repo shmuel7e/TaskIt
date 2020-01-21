@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { setCurrTask, setCurrTopic, updateTask, deleteTask, cloneTask } from '../actions/BoardActions';
 import ModalHeader from '../cmps/taskModal/ModalHeader.jsx';
 import ModalBody from '../cmps/taskModal/ModalBody.jsx';
+import UtilsService from '../services/UtilsService';
 
 class TaskDetails extends Component {
 
@@ -45,9 +46,7 @@ class TaskDetails extends Component {
     }
 
     getInitials = (fullName) => {
-        var initials = fullName.match(/\b\w/g);
-        initials = ((initials.shift() || '') + (initials.pop() || '')).toUpperCase();
-        return initials;
+        return UtilsService.getInitials(fullName);
     }
     
     deleteTask = () => {

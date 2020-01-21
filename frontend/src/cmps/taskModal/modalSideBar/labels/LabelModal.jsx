@@ -1,21 +1,25 @@
 import React, { Component } from 'react'
+import LabelsList from './LabelsList'
 
 export default class LabelModal extends Component {
 
     state = {
-        labels: ['#ff0984', '#fedf17', '#66d313', '#04adff', '#f16623']
+        labels: [{ color: '#ff0984', name: 'pink' },
+        { color: '#fedf17', name: 'yellow' },
+        { color: '#66d313', name: 'green' },
+        { color: '#04adff', name: 'blue' },
+        { color: '#f16623', name: 'orange' }]
+    }
+    onCloseModal = () => {
+        this.props.closeModal('labels');
     }
 
     render() {
         return (
             <div className='labal-modal'>
+                <span onClick={this.onCloseModal} className="close-member-modal">x</span>
                 <h3>Labels</h3>
-                <div className="labels-container">
-                    <h3>Labels</h3>
-                    {this.state.labels.map((label, idx) => {
-                        return <div key={idx} className="label" style={{ background: label }}></div>
-                    })}
-                </div>
+                <LabelsList labels={this.state.labels} />
             </div>
         )
     }

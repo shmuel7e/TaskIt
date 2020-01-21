@@ -14,7 +14,7 @@ export default class MembersPreview extends Component {
         if (!this.props.member) return 'loading..';
         return (
             <div className="side-modal-member" onClick={this.onAddMemberToTask}>
-                <span style={{ background: this.props.member.bgColor }} className="member-name-initials">{this.onGetInitials()} </span> {this.props.member.username}
+                <span style={{ background: this.props.member.bgColor }} data-toggle="tooltip" title={this.props.member.username} className="member-name-initials">{this.onGetInitials()} </span> {this.props.member.username}
             </div>
         )
     }

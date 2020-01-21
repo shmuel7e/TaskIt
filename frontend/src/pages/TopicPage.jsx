@@ -3,10 +3,11 @@ import TopicList from '../cmps/topic/TopicList.jsx';
 import ShowMenu from '../cmps/sideMenu/ShowMenu.jsx';
 import ImageService from '../services/ImageService.js';
 import TaskDetails from './TaskDetails.jsx';
+import UtilsService from '../services/UtilsService.js';
 
 
 import { connect } from 'react-redux';
-import { loadBoard, setBgCover, addTask, deleteTopic,addTopic,updateTopic} from '../actions/BoardActions';
+import { loadBoard, setBgCover, addTask, deleteTopic, addTopic, updateTopic } from '../actions/BoardActions';
 import { Route, Router } from 'react-router';
 import history from '../history';
 
@@ -67,13 +68,17 @@ class TopicPage extends Component {
         this.setState({ style });
     }
 
-    changeTopicTitle = (topic,newTxt) => {
+    changeTopicTitle = (topic, newTxt) => {
         topic.title = newTxt;
         this.props.updateTopic(topic);
-    } 
+    }
 
     onAddNewTopic = (topicName) => {
         this.props.addTopic(topicName)
+    }
+
+    onGetInitials = (fullName) => {
+        return UtilsService.getInitials(fullName);
     }
 
     render() {
@@ -82,6 +87,7 @@ class TopicPage extends Component {
         return (
             <div style={this.state.style} className="trello-page-container header-padding">
                 <TopicList
+                    getInitials={this.onGetInitials}
                     onAddNewTopic={this.onAddNewTopic}
                     changeTopicTitle={this.changeTopicTitle}
                     addTask={this.addTask}

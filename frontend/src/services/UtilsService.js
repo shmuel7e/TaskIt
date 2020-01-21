@@ -1,6 +1,6 @@
 
 
-function makeRandomId(length=10) {
+function makeRandomId(length = 10) {
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
@@ -11,6 +11,16 @@ function makeRandomId(length=10) {
     return text;
 }
 
+
+
+function getInitials(fullName) {
+    var initials = fullName.match(/\b\w/g);
+    initials = ((initials.shift() || '') + (initials.pop() || '')).toUpperCase();
+    return initials;
+}
+
+
 export default {
-    makeRandomId
+    makeRandomId,
+    getInitials,
 };

@@ -50,7 +50,7 @@ export default class ToolBar extends Component {
                             <span class="icon-label"></span>
                         </button>
                         <div className="label-modal-container">
-                            {this.state.isLabelsShown ? <LabelModal /> : ''}
+                            {this.state.isLabelsShown ? <LabelModal closeModal={this.toggleMiniModal} /> : ''}
                         </div>
                         <button>Checklist
                             <span class="icon-input-checked"></span>
