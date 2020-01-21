@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import {DragDropContext} from 'react-beautiful-dnd'
+
 import TopicList from '../cmps/topic/TopicList.jsx';
 import ShowMenu from '../cmps/sideMenu/ShowMenu.jsx';
 import ImageService from '../services/ImageService.js';
 import TaskDetails from './TaskDetails.jsx';
 import UtilsService from '../services/UtilsService.js';
+
 
 
 import { connect } from 'react-redux';
@@ -80,11 +83,15 @@ class TopicPage extends Component {
     onGetInitials = (fullName) => {
         return UtilsService.getInitials(fullName);
     }
+    onDragEnd=()=>{
+
+    }
 
     render() {
         const { board } = this.props
         if (!board) return 'Loading...'
         return (
+            <DragDropContext onDragEnd={this.onDragEnd}>
             <div style={this.state.style} className="trello-page-container header-padding">
                 <TopicList
                     getInitials={this.onGetInitials}
@@ -101,7 +108,7 @@ class TopicPage extends Component {
                     <Route component={TaskDetails} path="/topic/:topicId/:taskId" exact></Route>
                 </Router>
             </div>
-
+            </DragDropContext>
         )
     }
 }

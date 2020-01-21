@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { Droppable } from 'react-beautiful-dnd'
+
+import AddTask from '../task/AddTask.jsx'
 import TaskList from '../task/TaskList.jsx';
 
 export default class TopicPreview extends Component {
@@ -21,21 +24,26 @@ export default class TopicPreview extends Component {
 
     render() {
         const { topic } = this.props
-        return (
-            <div className='topic-container'>
-                <div className="topic-header flex justify-between">
-                    <div className="topic-title" suppressContentEditableWarning={true} contentEditable="true" onBlur={(e) => this.onTxtChange(e.target.textContent)}>{topic.title}</div>
-                    <div onClick={this.toggleMiniModal} className="dots-icon-container">
-                        <span className="icon-dots-three-horizontal"></span>
-                        {this.state.isModalShown
-                            ? <div className='topic-mini-menu block'>
-                                <div onClick={this.onDeleteTopic} className="delete-topic-btn">Delete</div>
-                            </div> : ''}
+        return (<Droppable droppableId={topic.id}>
+            {provided => (
+                <div {...provided.droppableProps} ref={provided.innerRef} className='topic-container'>
+                    <div className="topic-header flex justify-between">
+                        <div className="topic-title" suppressContentEditableWarning={true} contentEditable="true" onBlur={(e) => this.onTxtChange(e.target.textContent)}>{topic.title}</div>
+                        <div onClick={this.toggleMiniModal} className="dots-icon-container">
+                            <span className="icon-dots-three-horizontal"></span>
+                            {this.state.isModalShown
+                                ? <div className='topic-mini-menu block'>
+                                    <div onClick={this.onDeleteTopic} className="delete-topic-btn">Delete</div>
+                                </div> : ''}
+                        </div>
                     </div>
+                    <TaskList addTask={this.props.addTask} topic={topic} getInitials={this.props.getInitials} />
+                    <AddTask addTask={this.props.addTask} topicId={this.props.topic.id} />
+                    {provided.placeholder}
                 </div>
-                <TaskList addTask={this.props.addTask} topic={topic} getInitials={this.props.getInitials} />
-            </div>
-        )
+            )}
+
+        </Droppable>)
     }
 }
 
