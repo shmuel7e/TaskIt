@@ -30,6 +30,13 @@ export default function (state = initialState, action = {}) {
     case 'TOPIC_ADD':
       return { ...state, board: { ...state.board, topics: [...state.board.topics, action.newTopic] } }
 
+    case 'TASK_REMOVE':
+      const filteredTasks = state.currTopic.tasks.filter(task => task.id !== action.taskId);
+      state.currTopic = { ...state.currTopic, tasks: filteredTasks };
+      state.board.topics = state.board.topics.map(topic =>
+        topic.id === state.currTopic.id ? state.currTopic : topic)
+      return { ...state, board: { ...state.board, topics: state.board.topics } };
+
     case 'TASK_UPDATE':
       const updatedTopic = action.topic.tasks.map(task =>
         task.id === action.task.id ? action.task : task);
@@ -45,6 +52,15 @@ export default function (state = initialState, action = {}) {
         return topic
       })
       return { ...state, board: { ...state.board, topics: topics } };
+
+    case 'TASK_CLONE':
+      state.board.topics = state.board.topics.map(topic => {
+        if (topic.id === action.topicId) {
+          topic.tasks.push({ ...action.task })
+        }
+        return topic
+      })
+      return { ...state, board: { ...state.board, topics: state.board.topics } };
 
     case 'CURRENT_TASK_SET':
       const currTask = state.currTopic.tasks.find(task => task.id === action.taskId);

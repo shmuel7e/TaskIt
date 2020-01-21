@@ -162,6 +162,27 @@ export function addTask(taskTitle,topicId) {
     };
 }
 
+// add task 
+function _cloneTask(topicId,task) {
+    return {
+        type: 'TASK_CLONE',
+        topicId,
+        task,
+
+    }
+}
+export function cloneTask(topicId,task) {
+    return async dispatch => {
+        try {
+            //TODO
+            //const newTask = await BoardService.cloneTask(topicId,task);
+            dispatch(_cloneTask(topicId,task));
+        } catch (err) {
+            console.log('UserActions: err in cloneTask', err);
+        }
+    };
+}
+
 
 // deleteTopic
 function _deleteTopic(topicId) {
@@ -178,6 +199,25 @@ export function deleteTopic(topicId) {
             dispatch(_deleteTopic(topicId));
         } catch (err) {
             console.log('UserActions: err in deleteTopic', err);
+        }
+    };
+}
+
+// deleteTask
+function _deleteTask(taskId) {
+    return {
+        type: 'TASK_REMOVE',
+        taskId
+    }
+}
+export function deleteTask(taskId) {
+    return async dispatch => {
+        try {
+        // TODO handle service and backend
+        //const deleteTask = await BoardService.deleteTask(taskId);
+            dispatch(_deleteTask(taskId));
+        } catch (err) {
+            console.log('UserActions: err in deleteTask', err);
         }
     };
 }

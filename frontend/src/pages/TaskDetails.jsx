@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { setCurrTask, setCurrTopic, updateTask } from '../actions/BoardActions';
+import { setCurrTask, setCurrTopic, updateTask, deleteTask, cloneTask } from '../actions/BoardActions';
 import ModalHeader from '../cmps/taskModal/ModalHeader.jsx';
 import ModalBody from '../cmps/taskModal/ModalBody.jsx';
 
@@ -44,6 +44,16 @@ class TaskDetails extends Component {
         this.props.updateTask(this.props.topic, this.props.task);
     }
 
+    deleteTask = () => {
+        this.props.deleteTask(this.props.task.id)
+        this.props.history.push('/topic');
+    }
+
+    cloneTask = () => {
+        this.props.cloneTask(this.props.topic.id, this.props.task)
+        this.props.history.push('/topic');
+    }
+
     render() {
         const { board } = this.props;
         const { task, topic } = this.props;
@@ -52,8 +62,19 @@ class TaskDetails extends Component {
         return (
             <div className="widow-screen" onClick={this.closeModal}>
                 <div onClick={this.stayInModal} className='task-modal-container'>
-                    <ModalHeader task={task} topic={topic} closeModal={this.closeModal} changeTaskTitle={this.changeTaskTitle} />
-                    <ModalBody task={task} topic={topic} board={board} addMemberToTask={this.addMemberToTask} />
+                    <ModalHeader 
+                    task={task} 
+                    topic={topic} 
+                    closeModal={this.closeModal} 
+                    changeTaskTitle={this.changeTaskTitle} />
+
+                    <ModalBody 
+                    task={task} 
+                    topic={topic} 
+                    board={board} 
+                    addMemberToTask={this.addMemberToTask} 
+                    deleteTask = {this.deleteTask}
+                    cloneTask= {this.cloneTask}/>
                 </div>
             </div>
         )
@@ -70,7 +91,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
     setCurrTopic,
     setCurrTask,
-    updateTask
+    updateTask,
+    deleteTask,
+    cloneTask
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskDetails);
