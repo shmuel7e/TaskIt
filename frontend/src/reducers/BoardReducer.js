@@ -50,6 +50,27 @@ export default function (state = initialState, action = {}) {
       const currTask = state.currTopic.tasks.find(task => task.id === action.taskId);
       return { ...state, currTask: currTask };
 
+    case 'DRAG_HAPPEND':{
+      const {
+        droppableIdStart,
+        droppableIdEnd,
+        droppableIndexStart,
+        droppableIndexEnd,
+        draggableId
+      } =action
+      const newState={...state}
+      if(droppableIdStart === droppableIdEnd){
+        const topic =state.board.topics.find(topic=>droppableIdStart===topic.id)
+        console.log(topic)
+        const task = topic.tasks.splice(droppableIndexStart,1)
+        console.log(task)
+        topic.tasks.splice(droppableIndexEnd,0,...task)
+      }
+      console.log(newState)
+      return{...newState}
+    }
+      
+
     default:
       return state;
   }

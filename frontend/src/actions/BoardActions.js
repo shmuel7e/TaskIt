@@ -182,11 +182,32 @@ export function deleteTopic(topicId) {
     };
 }
 
-// id: "12jYwUb4Wv"
-// title: "make homework"
-// cover: ""
-// description: "learn math"
-// createdAt: "2020-01-18T19:00:10.208Z"
+// sort tasks
+function _sortTasks(droppableIdStart,droppableIdEnd,droppableIndexStart,droppableIndexEnd,draggableId) {
+    return {
+        type: 'DRAG_HAPPEND',
+        droppableIdStart,
+        droppableIdEnd,
+        droppableIndexStart,
+        droppableIndexEnd,
+        draggableId
+
+    }
+}
+export function sortTasks(droppableIdStart,droppableIdEnd,droppableIndexStart,droppableIndexEnd,draggableId) {
+    return async dispatch => {
+        try {
+            console.log(droppableIdStart,droppableIdEnd,droppableIndexStart,droppableIndexEnd,draggableId)
+        // TODO handle service and backend
+        //const deleteTopic = await BoardService.deleteTopic(topicId);
+            dispatch(_sortTasks(droppableIdStart,droppableIdEnd,droppableIndexStart,droppableIndexEnd,draggableId));
+        } catch (err) {
+            console.log('UserActions: err in sort tasks', err);
+        }
+    };
+}
+
+
 
 
 

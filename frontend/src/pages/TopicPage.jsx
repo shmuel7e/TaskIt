@@ -6,7 +6,7 @@ import TaskDetails from './TaskDetails.jsx';
 
 
 import { connect } from 'react-redux';
-import { loadBoard, setBgCover, addTask, deleteTopic,addTopic,updateTopic} from '../actions/BoardActions';
+import { loadBoard, setBgCover, addTask, deleteTopic, addTopic, updateTopic,sortTasks } from '../actions/BoardActions';
 import { Route, Router } from 'react-router';
 import history from '../history';
 
@@ -67,21 +67,29 @@ class TopicPage extends Component {
         this.setState({ style });
     }
 
-    changeTopicTitle = (topic,newTxt) => {
+    changeTopicTitle = (topic, newTxt) => {
         topic.title = newTxt;
         this.props.updateTopic(topic);
-    } 
+    }
 
     onAddNewTopic = (topicName) => {
         this.props.addTopic(topicName)
     }
+    sortTasks = async(sourceDroppableId, destDroppableId, sourceIndex, destIndex, DragId) => {
+        console.log(sourceDroppableId, destDroppableId, sourceIndex, destIndex, DragId)
+       await this.props.sortTasks(sourceDroppableId,destDroppableId,sourceIndex,destIndex,DragId)
+       this.forceUpdate()
+    }
 
     render() {
         const { board } = this.props
+        console.log(board)
         if (!board) return 'Loading...'
         return (
+
             <div style={this.state.style} className="trello-page-container header-padding">
                 <TopicList
+                    sortTasks={this.sortTasks}
                     onAddNewTopic={this.onAddNewTopic}
                     changeTopicTitle={this.changeTopicTitle}
                     addTask={this.addTask}
@@ -111,7 +119,8 @@ const mapDispatchToProps = {
     addTask,
     deleteTopic,
     addTopic,
-    updateTopic
+    updateTopic,
+    sortTasks
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TopicPage);
