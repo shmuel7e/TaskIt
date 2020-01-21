@@ -4,6 +4,7 @@
   position: relative;
   z-index: 10;
   text-align: left;
+  margin-top: -45px;
   & h3 {
     color: #5e6c84;
     font-size: 12px;
@@ -24,6 +25,29 @@
   height: 200px;
   padding-top: 4px;
 
+  .icon-trash,
+  .icon-clone,
+  .icon-people_alt,
+  .icon-label,
+  .icon-input-checked,
+  .icon-clock,
+  .icon-image {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+  }
+
+  .icon-input-checked {
+    font-size: 20px;
+    top: 5px;
+    left: 6px;
+  }
+
+  .icon-label {
+    font-size: 14px;
+    left: 9px;
+  }
+
   & > button {
     text-align: left;
     color: #172b4d;
@@ -38,7 +62,7 @@
     margin-top: 8px;
     max-width: 300px;
     overflow: hidden;
-    padding: 6px 12px;
+    padding: 6px 0 6px 33px;
     position: relative;
     text-decoration: none;
     text-overflow: ellipsis;
