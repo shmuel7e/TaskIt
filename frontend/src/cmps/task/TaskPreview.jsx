@@ -10,7 +10,11 @@ export default class TaskPreview extends Component {
     render() {
         return (<Draggable draggableId={this.props.id} index={this.props.index}>
             {provided => (
-                <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} >
+                <div
+                    ref={provided.innerRef}
+                    {...provided.draggableProps}
+                    {...provided.dragHandleProps}
+                >
                     <li className='task-container'>
                         <Link to={`topic/${this.props.topicId}/${this.props.task.id}`}>
                             <div className="task-title">{this.props.task.title}
