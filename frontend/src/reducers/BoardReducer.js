@@ -56,7 +56,7 @@ export default function (state = initialState, action = {}) {
     case 'TASK_CLONE':
       state.board.topics = state.board.topics.map(topic => {
         if (topic.id === action.topicId) {
-          topic.tasks.push({ ...action.task })
+          topic.tasks.push({ ...action.updatedTask })
         }
         return topic
       })

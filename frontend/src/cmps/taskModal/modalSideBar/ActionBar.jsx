@@ -1,6 +1,17 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import TaskColorModal from './changeTaskColor/TaskColorModal.jsx';
 
 export default class ActionBar extends Component {
+
+    state = {
+        isModalShown: false
+    }
+
+    toggleMiniModal = () => {
+        this.setState(prevState => ({
+            isModalShown: !prevState.isModalShown
+        }));
+    }
 
     onDeleteTask = () => {
         this.props.deleteTask();
@@ -15,6 +26,12 @@ export default class ActionBar extends Component {
             <div>
                 <div className="action-bar flex column">
                     <h3>ACTIONS</h3>
+                    <div className='task-color-container'>
+                        <button onClick={this.toggleMiniModal}>Change color
+                            <span className="icon-color_lens"></span>
+                        </button>
+                        {this.state.isModalShown ? <TaskColorModal closeModal={this.toggleMiniModal} changeTaskColor={this.props.changeTaskColor}/> : ''}
+                    </div>
                     <button onClick={this.onCloneTask}>Clone
                     <span className="icon-clone"></span>
                     </button>

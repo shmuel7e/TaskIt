@@ -6,7 +6,7 @@ export default class ModalBody extends Component {
 
 
     render() {
-        const { task, board, addMemberToTask, addLabelToTask, deleteTask, cloneTask } = this.props;
+        const { task, board, addMemberToTask, addLabelToTask, deleteTask, cloneTask, changeTaskColor } = this.props;
         if (!board) return 'loading..';
         //const { topic } = this.props;
         return (
@@ -21,6 +21,7 @@ export default class ModalBody extends Component {
                     addMemberToTask={addMemberToTask}
                     addLabelToTask={addLabelToTask}
                     getInitials={this.props.getInitials}
+                    changeTaskColor={changeTaskColor}
                     deleteTask={deleteTask}
                     cloneTask={cloneTask} />
             </div>

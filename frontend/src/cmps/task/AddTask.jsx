@@ -16,9 +16,13 @@ export default class AddTask extends Component {
     }
 
     onAddTask = () => {
-        if(this.state.txt === '') return;
+        if(!this.state.txt) return;
         this.props.addTask(this.state.txt,this.props.topicId);
         this.onToggleForm();
+    }
+
+    onkeyup = (ev) => {
+        if (ev.keyCode === 13) this.onAddTask();
     }
 
     render() {
@@ -26,7 +30,7 @@ export default class AddTask extends Component {
             <div className='add-task-container'>
                 {this.state.isFormOpen
                     ? <div className="add-task-form">
-                        <textarea rows="4" cols="50" placeholder='Enter a title for this task..'
+                        <textarea onKeyUp={this.onkeyup} rows="4" cols="50" placeholder='Enter a title for this task..'
                         onChange={this.inputChange}></textarea>
                         <button onClick={this.onAddTask}>Add Task</button>
                         <span onClick={this.onToggleForm} className="icon-cross"></span>

@@ -8,6 +8,13 @@ async function query() {
 async function setBgCover(imgName) {
     return Promise.resolve(imgName);
 }
+
+async function cloneTask (task) {
+    let clonedTask = JSON.parse(JSON.stringify(task));
+    clonedTask.id = UtilsService.makeRandomId();
+    return Promise.resolve(clonedTask);
+}
+
 async function addTask(taskTitle) {
     const newTask = _createTask(taskTitle)
     return Promise.resolve({ ...newTask })
@@ -48,5 +55,6 @@ export default {
     query,
     setBgCover,
     addTask,
-    addTopic
+    addTopic,
+    cloneTask
 };

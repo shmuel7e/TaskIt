@@ -10,7 +10,7 @@ export default class TaskPreview extends Component {
     render() {
         return (
             <Link to={`topic/${this.props.topicId}/${this.props.task.id}`}>
-                <li className='task-container'>
+                <li className='task-container' style={{ background: this.props.task.bgColor}}>
                     <div className="task-title">{this.props.task.title}
                     </div>
                     <div className='members-container flex'> {this.props.task.members.map((member, idx) => {

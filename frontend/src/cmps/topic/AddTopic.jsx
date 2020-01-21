@@ -14,6 +14,11 @@ export default class AddTopic extends Component {
         if(this.state.topic === '') return;
         this.props.onAddNewTopic(this.state.topic)
     }
+
+    onkeyup = (ev) => {
+        if (ev.keyCode === 13) this.onAddList();
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -23,6 +28,7 @@ export default class AddTopic extends Component {
             </div> :
                     <div className="add-topic flex column">
                         <input
+                        onKeyUp={this.onkeyup}
                         onChange={this.inputChange}
                         name="topic"
                          type="text" 

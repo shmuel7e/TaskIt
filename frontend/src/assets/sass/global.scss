@@ -43,6 +43,11 @@
 @import "components/modalSideBar/tool-bar.scss";
 @import "components/modalSideBar/action-bar.scss";
 @import "components/modalSideBar/labels/label-modal.scss";
+@import "components/modalSideBar/taskColor/task-color-modal.scss";
+@import "components/modalSideBar/taskColor/task-color-list.scss";
+@import "components/modalSideBar/taskColor/task-color-preview.scss";
+@import "components/modalSideBar/tool-bar.scss";
+@import "components/modalSideBar/members.scss";
 
 
 // // Pages
@@ -51,7 +56,3 @@
 @import "views/authPage.scss";
 @import "views/taskDetails.scss";
 @import "views/aboutPage.scss";
-
-// Modal Side Bar //
-@import "components/modalSideBar/tool-bar.scss";
-@import "components/modalSideBar/members.scss";
