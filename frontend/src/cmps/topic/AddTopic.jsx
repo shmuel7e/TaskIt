@@ -11,6 +11,7 @@ export default class AddTopic extends Component {
         this.setState({ topic:value })
     }
     onAddList=()=>{
+        if(this.state.topic === '') return;
         this.props.onAddNewTopic(this.state.topic)
     }
     render() {
