@@ -1,6 +1,6 @@
 import React from 'react';
 import TaskPreview from "../task/TaskPreview.jsx";
-import AddTask from "../task/AddTask.jsx";
+
 
 export default function taskList(props) {
 
@@ -15,6 +15,6 @@ export default function taskList(props) {
                 getInitials={props.getInitials}
             >
             </TaskPreview>)}
-        {/* <AddTask addTask={props.addTask} topicId={props.topic.id} /> */}
+       
     </ul>
 }

@@ -1,21 +1,25 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import { Draggable } from 'react-beautiful-dnd'
-export default class TaskPreview extends Component {
+import styled from "styled-components"
 
+const ListContainer = styled.div`
+
+`;
+export default class TaskPreview extends Component {
     onGetInitials = (fullName) => {
         return this.props.getInitials(fullName);
     }
 
     render() {
         return (<Draggable draggableId={this.props.id} index={this.props.index}>
-            {provided => (
-                <div
+            {(provided) => {
+                return <div
                     ref={provided.innerRef}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
                 >
-                    <li className='task-container' style={{ background: this.props.task.bgColor}}>
+                    <li className='task-container' style={{ background: this.props.task.bgColor }}>
                         <Link to={`topic/${this.props.topicId}/${this.props.task.id}`}>
                             <div className="task-title">{this.props.task.title}
                             </div>
@@ -32,7 +36,9 @@ export default class TaskPreview extends Component {
                         </Link>
                     </li>
                 </div>
-            )}
+            }
+
+            }
 
         </Draggable>)
     }
