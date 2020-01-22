@@ -83,9 +83,6 @@ class TopicPage extends Component {
     getGalleryImgs = async () => {
         const imgs = await ImageService.getGalleryImages();
         await this.setState({ imgs });
-        
-        
-
     }
 
     changeBgImg = async(imgName) => {
