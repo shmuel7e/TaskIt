@@ -1,6 +1,6 @@
 import React from 'react';
 import TaskPreview from "../task/TaskPreview.jsx";
-import AddTask from "../task/AddTask.jsx";
+// import AddTask from "../task/AddTask.jsx";
 
 export default function taskList(props) {
 
