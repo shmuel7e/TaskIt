@@ -1,8 +1,18 @@
 import UtilsService from './UtilsService.js'
 import HttpService from './HttpService';
 
-async function query() {
+async function getBoard() {
     return await HttpService.get('board')
+}
+async function getBoards(userId) {
+    return await HttpService.get(`board/all?id=${userId}`)
+}
+
+async function addBoard(user){
+    return await HttpService.post('board',user)
+}
+async function updateBoard(board){
+    return await HttpService.put('board',board)
 }
 
 async function setBgCover(imgName) {
@@ -45,8 +55,11 @@ function _createTopic(topicTitle) {
 
 
 export default {
-    query,
+    getBoard,
     setBgCover,
     addTask,
-    addTopic
+    addTopic,
+    addBoard,
+    getBoards,
+    updateBoard
 };

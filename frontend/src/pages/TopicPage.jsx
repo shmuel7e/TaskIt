@@ -7,6 +7,7 @@ import ShowMenu from '../cmps/sideMenu/ShowMenu.jsx';
 import ImageService from '../services/ImageService.js';
 import TaskDetails from './TaskDetails.jsx';
 import UtilsService from '../services/UtilsService.js';
+import BoardService from '../services/BoardService.js'
 
 
 import { connect } from 'react-redux';
@@ -28,7 +29,9 @@ class TopicPage extends Component {
     }
 
     componentDidMount() {
-        this.props.loadBoard()
+        if(!this.props.user){
+            this.props.loadBoard()
+        }
         this.getGalleryImgs();
         this.getGalleryColors();
     }
@@ -42,22 +45,27 @@ class TopicPage extends Component {
     getGalleryColors = async () => {
         const colors = await ImageService.getGalleryColors();
         await this.setState({ colors });
+        
     }
 
     getGalleryImgs = async () => {
         const imgs = await ImageService.getGalleryImages();
         await this.setState({ imgs });
+        
+        
+
     }
 
-    changeBgImg = (imgName) => {
+    changeBgImg = async(imgName) => {
         const style = {
             backgroundImage: `url(${require(`../assets/images/${imgName}`)})`,
             position: 'fixed',
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat'
         }
-        this.props.setBgCover(imgName);
+       await this.props.setBgCover(imgName);
         this.setState({ style })
+        console.log(this.props.board)
     }
 
     addTask = (taskTitle, topicId) => {
@@ -68,12 +76,14 @@ class TopicPage extends Component {
         this.props.deleteTopic(topicId)
     }
 
-    changeBgColor = (colorName) => {
+    changeBgColor = async(colorName) => {
         const style = {
             background: colorName,
         }
-        this.props.setBgCover(colorName);
+     await   this.props.setBgCover(colorName);
         this.setState({ style });
+        console.log('bg',this.props.board)
+        BoardService.updateBoard(this.props.board)
     }
 
     changeTopicTitle = (topic, newTxt) => {
@@ -137,7 +147,8 @@ class TopicPage extends Component {
 
 const mapStateToProps = state => {
     return {
-        board: state.board.board
+        board: state.board.board,
+        user: state.user.loggedInUser
     };
 };
 const mapDispatchToProps = {
