@@ -37,7 +37,7 @@ export default class BgGalleryList extends Component {
     render() {
         if (!this.props.imgs) return 'loading..'
         return <div> <span className="goback-menu" onClick={this.onGoBack}>
-            <span class="icon-arrow-left2"></span>
+            <span className="icon-arrow-left2"></span>
         </span> {this.DynamicCmp()}
         </div>
 

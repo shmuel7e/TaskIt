@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { DragDropContext, Droppable } from 'react-beautiful-dnd'
-import styled from "styled-components"
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import styled from "styled-components";
 
+import BoardHeader from '../cmps/topic/BoardHeader.jsx';
 import TopicList from '../cmps/topic/TopicList.jsx';
-import ShowMenu from '../cmps/sideMenu/ShowMenu.jsx';
 import ImageService from '../services/ImageService.js';
 import TaskDetails from './TaskDetails.jsx';
 import UtilsService from '../services/UtilsService.js';
@@ -108,6 +108,12 @@ class TopicPage extends Component {
         return (
             <DragDropContext onDragEnd={this.onDragEnd}>
                 <div style={this.state.style} className="trello-page-container header-padding">
+                    <BoardHeader
+                        imgs={this.state.imgs}
+                        changeBgImg={this.changeBgImg}
+                        colors={this.state.colors}
+                        changeBgColor={this.changeBgColor}/>
+
                     <Droppable droppableId="all-lists" direction="horizontal" type="list">
                         {provided => (
                             <ListContainer {...provided.droppableProps} ref={provided.innerRef}>
@@ -121,11 +127,6 @@ class TopicPage extends Component {
                             </ListContainer>
                         )}
                     </Droppable>
-
-                    <ShowMenu imgs={this.state.imgs}
-                        changeBgImg={this.changeBgImg}
-                        colors={this.state.colors}
-                        changeBgColor={this.changeBgColor} />
                     <Router history={history}>
                         <Route component={TaskDetails} path="/topic/:topicId/:taskId" exact></Route>
                     </Router>

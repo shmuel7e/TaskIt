@@ -1,12 +1,13 @@
 .link-container {
   width: 75px;
-  height: 47px;
-  line-height: 48px;
+  height: 32px;
+  line-height: 35px;
   text-align: center;
 
   a {
-    font-size: 19px;
+    font-size: 20px;
     color: #090909bd;
+    padding: 7px;
   }
 
   &:hover {
