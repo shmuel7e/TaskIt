@@ -1,0 +1,46 @@
+.due-modal-container {
+  position: relative;
+}
+
+.due-time-modal {
+  position: fixed;
+  z-index: 999;
+  background-color: #fff;
+  width: 18rem;
+  border-radius: 5px;
+  margin-top: 8px;
+  height: 112px;
+  & > h3 {
+    box-sizing: border-box;
+    color: #5e6c84;
+    display: block;
+    line-height: 40px;
+    border-bottom: 1px solid rgba(9, 30, 66, 0.13);
+    margin: 0 12px;
+    overflow: hidden;
+    padding: 0 32px;
+    position: relative;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    z-index: 1;
+    text-align: center;
+    border-bottom: 1px solid rgba(9, 30, 66, 0.13);
+  }
+}
+
+.close-member-modal {
+  z-index: 9999;
+}
+
+.react-datepicker-wrapper {
+  margin-top: 1rem;
+  display: block;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.react-datepicker-wrapper input {
+  text-align: center;
+}

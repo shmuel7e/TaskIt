@@ -52,6 +52,11 @@ class TaskDetails extends Component {
         this.props.updateTask(this.props.topic, this.props.task);
     }
 
+    addDueTimeToTask = (dueTime) => {
+        this.props.task.dueTime = dueTime;
+        this.props.updateTask(this.props.topic, this.props.task);
+    }
+
     getInitials = (fullName) => {
         return UtilsService.getInitials(fullName);
     }
@@ -89,6 +94,7 @@ class TaskDetails extends Component {
                         task={task}
                         topic={topic}
                         board={board}
+                        addDueTimeToTask={this.addDueTimeToTask}
                         getInitials={this.getInitials}
                         addMemberToTask={this.addMemberToTask}
                         addLabelToTask={this.addLabelToTask}

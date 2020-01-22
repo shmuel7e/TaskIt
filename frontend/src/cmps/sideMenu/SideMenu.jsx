@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import BgGalleryList from './BgGalleryList.jsx';
+import ActivityList from './ActivityList.jsx';
 
 export default class SideMenu extends Component {
 
@@ -38,14 +39,13 @@ export default class SideMenu extends Component {
                                 <div className="menu-options flex">
                                     <img src={require(`../../assets/images/colors.jpg`)} alt="" onClick={this.setGallery.bind(null, 'colors')}></img>
                                     <img src={require(`../../assets/images/images.jpg`)} alt="" onClick={this.setGallery.bind(null, 'imgs')}></img>
-                                    <div>
-                                    </div>
                                 </div>
                                 <span className="menu-description flex justify-around">
                                     <span>Colors</span>
                                     <span> Photos</span>
                                 </span>
                                 <div className="activity-section">Activity</div>
+                                <ActivityList board={this.props.board} />
                             </section>}
 
                     </div>

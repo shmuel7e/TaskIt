@@ -16,8 +16,8 @@ export default class AddTask extends Component {
     }
 
     onAddTask = () => {
-        if(!this.state.txt) return;
-        this.props.addTask(this.state.txt,this.props.topicId);
+        if (!this.state.txt) return;
+        this.props.addTask(this.state.txt, this.props.topicId);
         this.onToggleForm();
     }
 
@@ -29,11 +29,13 @@ export default class AddTask extends Component {
         return (
             <div className='add-task-container'>
                 {this.state.isFormOpen
-                    ? <div className="add-task-form">
-                        <textarea onKeyUp={this.onkeyup} rows="4" cols="50" placeholder='Enter a title for this task..'
-                        onChange={this.inputChange}></textarea>
-                        <button onClick={this.onAddTask}>Add Task</button>
-                        <span onClick={this.onToggleForm} className="icon-cross"></span>
+                    ? <div className="add-task-form-container">
+                        <div className="add-task-form">
+                            <textarea onKeyUp={this.onkeyup} rows="4" cols="50" placeholder='Enter a title for this task..'
+                                onChange={this.inputChange}></textarea>
+                            <button onClick={this.onAddTask}>Add Task</button>
+                            <span onClick={this.onToggleForm} className="icon-cross"></span>
+                        </div>
                     </div>
                     : <div onClick={this.onToggleForm} className='add-task-title'>
                         <span className="icon-plus"> </span> Add another task

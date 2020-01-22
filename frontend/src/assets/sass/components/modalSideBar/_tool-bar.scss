@@ -75,6 +75,7 @@
     text-overflow: ellipsis;
     transition: ease all 0.2s;
     outline: none;
+    position: relative;
 
     &:hover {
       outline: none;

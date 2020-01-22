@@ -1,81 +1,98 @@
 .add-task-container {
-    max-width: 255px;
-    min-height: 31px;
-    margin: 0px auto 8px;
-    line-height: 33px;
-    border-radius: 4px;
+  max-width: 255px;
+  min-height: 31px;
+  margin: 0px auto 8px;
+  line-height: 33px;
+  border-radius: 4px;
+  position: absolute;
+  padding: 0 8px;
+  left: 10px;
+  bottom: -2px;
 
-    .add-task-title {
-        font-size: 14px;
-        padding-left: 10px;
-        color: #6b778c;
-        cursor: pointer;
+  .add-task-title {
+    font-size: 14px;
+    color: #6b778c;
+    cursor: pointer;
 
-        .icon-plus{
-            font-size: 10px;
-            margin-right: 2px;
-        }
+    .icon-plus {
+      font-size: 10px;
+      margin-right: 2px;
+    }
+  }
+
+  .add-task-form {
+    // position: absolute;
+    // left: 1px;
+    // top: -4px;
+    position: absolute;
+    left: 11px;
+    top: -4px;
+    ::placeholder {
+      font-size: 14px;
+      color: #41516e;
+      font-family: montserrat, sans-serif;
+      padding: 2px 0 0 2px;
     }
 
-    .add-task-form{
+    textarea {
+      overflow: hidden;
+      width: 255px;
+      resize: none;
+      max-height: 162px;
+      min-height: 54px;
+      border-radius: 4px;
+      border: none;
+      outline: none;
+      box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
+      background-color: white;
+      font-size: 14px;
+      color: #41516e;
+      font-family: montserrat, sans-serif;
+      padding: 5px;
+    }
 
-        ::placeholder {
-            font-size: 14px;
-            color: #41516e;
-            font-family: montserrat, sans-serif;
-            padding: 2px 0 0 2px;
-        }
+    button {
+      background-color: #8b7ca5;
+      box-shadow: none;
+      border: none;
+      color: #fff;
+      width: 79px;
+      height: 29px;
+      font-size: 15px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
 
-        textarea{
-            overflow: hidden;
-            width: 255px;
-            resize: none;
-            max-height: 162px;
-            min-height: 54px;
-            border-radius: 4px;
-            border: none;
-            outline: none;
-            box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
-            background-color: white;
-            font-size: 14px;
-            color: #41516e;
-            font-family: montserrat, sans-serif;
-            padding: 5px;
-        }
+    .icon-cross {
+      padding-left: 10px;
+      font-weight: inherit;
+      font-size: 13px;
+      color: #7a89a3;
+      cursor: pointer;
 
-        button{
-            background-color: #8b7ca5;
-            box-shadow: none;
-            border: none;
-            color: #fff;
-            width: 79px;
-            height: 29px;
-            font-size: 15px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .icon-cross {
-            padding-left: 10px;
-            font-weight: inherit;
-            font-size: 13px;
-            color: #7a89a3;
-            cursor: pointer;
-
-            &:hover {
-                color: #41516e;
-            }
-        }
-
-        &:hover {
-            background-color: #ebecf0;
-        }
-
+      &:hover {
+        color: #41516e;
+      }
     }
 
     &:hover {
-        background-color: rgba(9,30,66,.08);
-        color: #455879;
+      background-color: #ebecf0;
     }
+  }
 
+  &:hover {
+    background-color: rgba(9, 30, 66, 0.08);
+    color: #455879;
+  }
+}
+
+.add-task-form-container {
+    background-color: #ebecf0;
+    border-radius: 3px;
+    /* max-height: 100%; */
+    min-width: 276px;
+    height: 126px;
+    position: absolute;
+    top: 0;
+    left: -10px;
 }
