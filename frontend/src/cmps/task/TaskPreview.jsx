@@ -13,13 +13,8 @@ export default class TaskPreview extends Component {
 
     render() {
         return (<Draggable draggableId={this.props.id} index={this.props.index}>
-<<<<<<< HEAD
             {(provided) => {
-                return <div
-=======
-            {provided => (
-                <div className='drag-task'
->>>>>>> 13259b36eccfc70c17903a5e0b4a3581bb1f4a1f
+                return <div className='drag-task'
                     ref={provided.innerRef}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}

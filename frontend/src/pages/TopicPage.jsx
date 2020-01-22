@@ -98,16 +98,9 @@ class TopicPage extends Component {
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat'
         }
-<<<<<<< HEAD
        await this.props.setBgCover(imgName);
         this.setState({ style })
         console.log(this.props.board)
-    }
-=======
-        this.props.setBgCover(imgName);
-        this.setState({ style });
->>>>>>> 13259b36eccfc70c17903a5e0b4a3581bb1f4a1f
-
         if (!this.props.user) return;
         SocketService.emit('user changed cover', this.props.user.username + ' has changed board cover');
     }
@@ -116,12 +109,10 @@ class TopicPage extends Component {
         const style = {
             background: colorName,
         }
-     await   this.props.setBgCover(colorName);
+     await this.props.setBgCover(colorName);
         this.setState({ style });
-<<<<<<< HEAD
         console.log('bg',this.props.board)
         BoardService.updateBoard(this.props.board)
-=======
         if (!this.props.user) return;
         SocketService.emit('user changed bgColor', this.props.user.username + ' has changed board color');
     }
@@ -142,7 +133,6 @@ class TopicPage extends Component {
     onAddActivity = (activity) => {
         this.props.board.activities.push(activity);
         this.props.updateBoard(this.props.board);
->>>>>>> 13259b36eccfc70c17903a5e0b4a3581bb1f4a1f
     }
 
     changeTopicTitle = (topic, newTxt) => {
