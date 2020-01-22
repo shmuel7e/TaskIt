@@ -42,7 +42,7 @@ class TopicPage extends Component {
         SocketService.emit('user joined the board', { text: `${this.props.user.username} has joined the board` });
         SocketService.on('when added task', () => {
             this.onAddActivity('task was added');
-            // this.props.loadBoard();
+            // this.props.loadBoard();ds
         });
         SocketService.on('when deleted topic', () => {
             console.log('deleting topic');
