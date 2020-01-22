@@ -1,12 +1,30 @@
 .main-btn{
-    background-color: rgba(17, 109, 255, 1);
+    background-color: #8b7ca5;
+    box-shadow: none;
     border: none;
-    cursor: pointer;
-    padding: 15px;
-    width: 180px;
-    border-radius: 20px;
-    font-size: 23px;
     color: #fff;
+    width: 79px;
+    height: 29px;
+    font-size: 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+}
+
+.borad-header-btn {
+    border: none;
+    background-color: rgba(0,0,0,.08);
+    border-radius: 4px;
+    min-height: 32px;
+    color: #090909bd;
+    padding: 6px 8px;
+    cursor: pointer;
+    outline: none;
+    margin: 0 3px;
+
+    &:hover{
+        background-color: rgba(0,0,0,.16);
+    }
 }
 
 .dash-btn {

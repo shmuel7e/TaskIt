@@ -1,0 +1,57 @@
+.check-list-modal {
+  .check-list-container {
+    position: fixed;
+    z-index: 999;
+    background-color: #fff;
+    width: 18rem;
+    border-radius: 5px;
+    margin-top: 8px;
+
+    h3 {
+      text-align: center;
+      padding-bottom: 0.3rem;
+      margin-bottom: 10px;
+      border-bottom: 1px solid rgba(9, 30, 66, 0.13);
+
+      &.checklist-sub-title {
+        font-size: 11px;
+        border: none;
+        text-align: start;
+        margin: 0;
+        padding-left: 10px;
+      }
+    }
+
+    .checklist-txt {
+      background-color: #fafbfc;
+      border: none;
+      box-shadow: inset 0 0 0 2px #dfe1e6;
+      margin: 0;
+      margin: 0px 8px;
+      padding: 6px 8px;
+      font-size: 13px;
+      color: #172b4d;
+
+      &:focus {
+        background-color: #fff;
+        box-shadow: inset 0 0 0 2px #0079bf;
+      }
+
+      &:hover{
+        background-color: #ebecf0;
+        box-shadow: inset 0 0 0 2px #dfe1e6;
+      }
+      }
+    }
+
+    .icon-cross {
+      font-size: 11px;
+      top: 6px;
+      right: 11px;
+    }
+
+    .main-btn {
+      width: 57px;
+      margin: 11px 0 11px 9px;
+    }
+  }

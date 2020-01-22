@@ -4,7 +4,8 @@ import AddTask from "../task/AddTask.jsx";
 
 export default function taskList(props) {
 
-    return <ul>
+
+    return <ul className="tasks-container">
         {props.topic.tasks.map((task, i) =>
             <TaskPreview
                 id={task.id}

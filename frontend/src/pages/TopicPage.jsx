@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import styled from "styled-components";
 
-import BoardHeader from '../cmps/topic/BoardHeader.jsx';
+import BoardHeader from '../cmps/boardHeader/BoardHeader.jsx';
 import TopicList from '../cmps/topic/TopicList.jsx';
 import ImageService from '../services/ImageService.js';
 import TaskDetails from './TaskDetails.jsx';
@@ -110,6 +110,7 @@ class TopicPage extends Component {
                 <div style={this.state.style} className="trello-page-container header-padding">
                     <BoardHeader
                         imgs={this.state.imgs}
+                        board={board}
                         changeBgImg={this.changeBgImg}
                         colors={this.state.colors}
                         changeBgColor={this.changeBgColor}/>

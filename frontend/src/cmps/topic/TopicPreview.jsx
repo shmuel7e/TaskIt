@@ -11,7 +11,7 @@ const ListContainer = styled.div`
 
 export default class TopicPreview extends Component {
 
-    state = { isModalShown: false }
+    state = { isModalShown: false, isEditable:false }
 
     toggleMiniModal = () => {
         this.setState(prevState => ({
@@ -25,6 +25,13 @@ export default class TopicPreview extends Component {
 
     onTxtChange = (newTxt) => {
         this.props.changeTopicTitle(this.props.topic, newTxt)
+        this.onKeyPressed();
+    }
+
+    onKeyPressed = () => {
+        this.setState(prevState => ({
+            isEditable: !prevState.isEditable
+          }));
     }
 
     render() {
@@ -40,7 +47,7 @@ export default class TopicPreview extends Component {
                         {provided => (
                             <div {...provided.droppableProps} ref={provided.innerRef} {...provided.draggableProps}>
                                 <div className="topic-header flex justify-between">
-                                    <div className="topic-title" suppressContentEditableWarning={true} contentEditable="true" onBlur={(e) => this.onTxtChange(e.target.textContent)}>{topic.title}</div>
+                                    <div className="topic-title" suppressContentEditableWarning={true} contentEditable={this.state.isEditable} tabIndex="0" onMouseUp={this.onKeyPressed} onBlur={(e) => this.onTxtChange(e.target.textContent)}>{topic.title}</div>
                                     <div onClick={this.toggleMiniModal} className="dots-icon-container">
                                         <span className="icon-dots-three-horizontal"></span>
                                         {this.state.isModalShown

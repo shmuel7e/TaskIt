@@ -16,14 +16,13 @@
 // Components
 @import "components/nav-bar.scss";
 @import "components/header.scss";
-@import "components/menu-button.scss";
-@import "components/main-header.scss";
 @import "components/menu.scss";
 @import "components/bg-gallery.scss";
 @import "components/footer.scss";
 
 // board header
 @import "components/boardHeader/board-header";
+@import "components/boardHeader/board-member-list";
 
 // topic
 @import "components/topic/topicList";
@@ -45,15 +44,27 @@
 // Modal Side Bar //
 @import "components/modalSideBar/tool-bar.scss";
 @import "components/modalSideBar/action-bar.scss";
+
+// check list //
+
+@import "components/modalSideBar/checkList/check-list-modal";
+
+// labels // 
+
 @import "components/modalSideBar/labels/label-modal.scss";
+
+// colors //
+
 @import "components/modalSideBar/taskColor/task-color-modal.scss";
 @import "components/modalSideBar/taskColor/task-color-list.scss";
 @import "components/modalSideBar/taskColor/task-color-preview.scss";
-@import "components/modalSideBar/tool-bar.scss";
-@import "components/modalSideBar/members.scss";
+
+// members // 
+
+@import "components/modalSideBar/members/members";
 
 // Due Time //
-@import "components/dueTime/due-time.scss";
+@import "components/modalSideBar/dueTime/due-time";
 
 // // Pages
 @import "views/home-page.scss";

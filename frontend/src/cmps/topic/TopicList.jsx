@@ -3,7 +3,6 @@ import TopicPreview from "../topic/TopicPreview.jsx";
 import AddTopic from './AddTopic.jsx'
 export default class TopicList extends Component {
 
-
     render() {
         return <ul className='topics-container flex align-start'>
             {this.props.board.topics.map((topic, i) =>
