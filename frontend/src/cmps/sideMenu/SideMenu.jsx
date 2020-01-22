@@ -45,7 +45,7 @@ export default class SideMenu extends Component {
                                     <span> Photos</span>
                                 </span>
                                 <div className="activity-section">Activity</div>
-                                <ActivityList/>
+                                <ActivityList board={this.props.board} />
                             </section>}
 
                     </div>

@@ -22,6 +22,19 @@ export function loadBoard() {
     };
 }
 
+export function updateBoard(board) {
+    return async dispatch => {
+        try {
+            // // example for loading
+            // dispatch(loading());
+            // const board = await BoardService.query();
+            dispatch(_setBoard(board));
+        } catch (err) {
+            console.log('UserActions: err in loadUsers', err);
+        }
+    };
+}
+
 // set current topic //
 
 function _setCurrTopic(topicId) {
@@ -163,7 +176,7 @@ export function addTask(taskTitle, topicId) {
 }
 
 // add task 
-function _cloneTask(topicId,updatedTask) {
+function _cloneTask(topicId, updatedTask) {
     return {
         type: 'TASK_CLONE',
         topicId,
@@ -176,7 +189,7 @@ export function cloneTask(topicId, task) {
         try {
             //TODO
             const updatedTask = await BoardService.cloneTask(task);
-            dispatch(_cloneTask(topicId,updatedTask));
+            dispatch(_cloneTask(topicId, updatedTask));
         } catch (err) {
             console.log('UserActions: err in cloneTask', err);
         }
@@ -247,7 +260,7 @@ export function sortTasks(
     droppableIndexEnd,
     draggableId,
     type) {
-         const typeToDrop=type
+    const typeToDrop = type
     return async dispatch => {
         try {
             // TODO handle service and backend

@@ -11,7 +11,7 @@ import SocketService from '../services/SocketService.js'
 
 
 import { connect } from 'react-redux';
-import { loadBoard, setBgCover, addTask, deleteTopic, addTopic, updateTopic, sortTasks } from '../actions/BoardActions';
+import { loadBoard, setBgCover, addTask, deleteTopic, addTopic, updateTopic, sortTasks, updateBoard } from '../actions/BoardActions';
 import { Route, Router } from 'react-router';
 import history from '../history';
 
@@ -37,6 +37,7 @@ class TopicPage extends Component {
         // SocketService.emit('chat topic', this.props.match.params);
         SocketService.emit('user joined the board', { text: `${this.props.user.username} has joined the board` });
         SocketService.on('when added task', () => {
+            this.onAddActivity('task was added');
             console.log('task was added');
             // this.props.loadBoard();
         });
@@ -119,6 +120,11 @@ class TopicPage extends Component {
         SocketService.emit('user deleted topic', this.props.user.username + ' has deleted a topic');
     }
 
+    onAddActivity = (activity) => {
+        this.props.board.activities.push(activity);
+        this.props.updateBoard(this.props.board);
+    }
+
     changeTopicTitle = (topic, newTxt) => {
         topic.title = newTxt;
         this.props.updateTopic(topic);
@@ -198,7 +204,8 @@ const mapDispatchToProps = {
     deleteTopic,
     addTopic,
     updateTopic,
-    sortTasks
+    sortTasks,
+    updateBoard
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TopicPage);

@@ -7,6 +7,9 @@ function createBoard() {
         { _id: utilsService.makeRandomId(), email: 'chuchu@gmail.com', username: 'chuchi buchi', bgColor: '#D291BC' },
         { _id: utilsService.makeRandomId(), email: 'dudu@gmail.com', username: 'dudu aatok', bgColor: '#E0BBE4' }],
         cover: 'bg5.jpg',
+        activities: [{ activityName: 'shmuel deleted task' },
+        { activityName: 'shmuel added a task' },
+        { activityName: 'shmuel removed tal from the board' }],
         topics: [{
             id: utilsService.makeRandomId(),
             title: 'Todo',
@@ -23,7 +26,7 @@ function createBoard() {
                 checkList: [],
                 dueTime: '',
                 attachments: [],
-                bgColor:''
+                bgColor: '',
             }]
         }, {
             id: utilsService.makeRandomId(),
@@ -42,7 +45,7 @@ function createBoard() {
                     checkList: [],
                     dueTime: '',
                     attachments: [],
-                    bgColor:''
+                    bgColor: '',
                 }
             ]
         },
@@ -63,7 +66,7 @@ function createBoard() {
                     checkList: [],
                     dueTime: '',
                     attachments: [],
-                    bgColor:''
+                    bgColor: '',
                 }
             ]
         }

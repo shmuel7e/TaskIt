@@ -25,13 +25,15 @@ export default class BoardHeader extends Component {
                 <div className="first-header-section flex justify-between">
                     <button className='borad-header-btn' >Boards</button>
                     <span className="board-header-divider"></span>
-                    <BoardMemberList board={board}/>
+                    <BoardMemberList board={board} />
                     <span className="board-header-divider"></span>
                     <button className='borad-header-btn' >Invite</button>
                 </div>
                 <button className='borad-header-btn' onClick={this.onToggleMenu}>Show Menu</button>
                 <div className={`${this.state.isMenuOn ? ' menu menu-off' : 'menu menu-on'}`}>
-                    <SideMenu imgs={imgs}
+                    <SideMenu
+                        board={board}
+                        imgs={imgs}
                         changeBgImg={this.changeBgImg}
                         changeBgColor={this.changeBgColor}
                         colors={colors} />
