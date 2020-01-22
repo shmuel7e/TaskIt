@@ -7,6 +7,7 @@ import TopicList from '../cmps/topic/TopicList.jsx';
 import ImageService from '../services/ImageService.js';
 import TaskDetails from './TaskDetails.jsx';
 import UtilsService from '../services/UtilsService.js';
+import SocketService from '../services/SocketService.js'
 
 
 import { connect } from 'react-redux';
@@ -28,9 +29,41 @@ class TopicPage extends Component {
     }
 
     componentDidMount() {
-        this.props.loadBoard()
+        this.props.loadBoard();
         this.getGalleryImgs();
         this.getGalleryColors();
+        if (!this.props.user) return;
+        SocketService.setup();
+        // SocketService.emit('chat topic', this.props.match.params);
+        SocketService.emit('user joined the board', { text: `${this.props.user.username} has joined the board` });
+        SocketService.on('when added task', () => {
+            console.log('task was added');
+            // this.props.loadBoard();
+        });
+        SocketService.on('when deleted topic', () => {
+            console.log('deleting topic');
+            // this.props.loadBoard();
+        })
+        SocketService.on('when title changed', () => {
+            console.log('title was changed');
+            // this.props.loadBoard();
+        })
+        SocketService.on('when topic added', () => {
+            console.log('topic was added');
+            // this.props.loadBoard();
+        })
+        SocketService.on('when cover changed', () => {
+            console.log('cover was changed');
+            // this.props.loadBoard();
+        })
+        SocketService.on('when bgColor changed', () => {
+            console.log('bg color was changed');
+        })
+    }
+
+    componentWillUnmount = () => {
+        SocketService.terminate();
+        // SocketService.off('user joined the board');
     }
 
     componentDidUpdate() {
@@ -57,15 +90,10 @@ class TopicPage extends Component {
             backgroundRepeat: 'no-repeat'
         }
         this.props.setBgCover(imgName);
-        this.setState({ style })
-    }
+        this.setState({ style });
 
-    addTask = (taskTitle, topicId) => {
-        this.props.addTask(taskTitle, topicId)
-    }
-
-    deleteTopic = (topicId) => {
-        this.props.deleteTopic(topicId)
+        if (!this.props.user) return;
+        SocketService.emit('user changed cover', this.props.user.username + ' has changed board cover');
     }
 
     changeBgColor = (colorName) => {
@@ -74,15 +102,35 @@ class TopicPage extends Component {
         }
         this.props.setBgCover(colorName);
         this.setState({ style });
+        if (!this.props.user) return;
+        SocketService.emit('user changed bgColor', this.props.user.username + ' has changed board color');
+    }
+
+    addTask = (taskTitle, topicId) => {
+        this.props.addTask(taskTitle, topicId);
+        if (!this.props.user) return;
+        SocketService.emit('user added task', this.props.user.username + ' has added a new task');
+
+    }
+
+    deleteTopic = (topicId) => {
+        this.props.deleteTopic(topicId);
+        if (!this.props.user) return;
+        SocketService.emit('user deleted topic', this.props.user.username + ' has deleted a topic');
     }
 
     changeTopicTitle = (topic, newTxt) => {
         topic.title = newTxt;
         this.props.updateTopic(topic);
+        if (!this.props.user) return;
+        SocketService.emit('user changed topic title', this.props.user.username + ' has changed topic title');
+
     }
 
     onAddNewTopic = (topicName) => {
-        this.props.addTopic(topicName)
+        this.props.addTopic(topicName);
+        if (!this.props.user) return;
+        SocketService.emit('user added new topic', this.props.user.username + ' has added new topic');
     }
 
     onGetInitials = (fullName) => {
@@ -113,7 +161,7 @@ class TopicPage extends Component {
                         board={board}
                         changeBgImg={this.changeBgImg}
                         colors={this.state.colors}
-                        changeBgColor={this.changeBgColor}/>
+                        changeBgColor={this.changeBgColor} />
 
                     <Droppable droppableId="all-lists" direction="horizontal" type="list">
                         {provided => (
@@ -139,7 +187,8 @@ class TopicPage extends Component {
 
 const mapStateToProps = state => {
     return {
-        board: state.board.board
+        board: state.board.board,
+        user: state.user.loggedInUser
     };
 };
 const mapDispatchToProps = {
