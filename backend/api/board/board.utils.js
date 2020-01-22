@@ -16,6 +16,7 @@ function createBoard() {
                 cover: '',
                 description: 'buy fruits and wines',
                 createdAt: new Date,
+                checkLists:[{title:'Check List yoyo',todos:[{title:'buy soya milk',isDone:false},{title:'go to the gym',isDone:true}]}],
                 comments: [],
                 details: [],
                 members: [],

@@ -2,12 +2,19 @@ import React, { Component } from 'react'
 
 export default class CheckListModal extends Component {
 
+    state = { checkListTitle: null }
+
     onCloseModal = () => {
         this.props.closeModal('checklist')
     }
 
     onTxtChange = (txt) => {
-        console.log(txt)
+        this.setState({checkListTitle:txt})
+    }
+
+    onAddCheckList = () => {
+        console.log(this.state.checkListTitle)
+        this.onCloseModal();
     }
 
     render() {
@@ -17,7 +24,7 @@ export default class CheckListModal extends Component {
                 <h3>Check list</h3>
                 <h3 className="checklist-sub-title">Title</h3>
                 <div className="checklist-txt" suppressContentEditableWarning={true} contentEditable="true" onBlur={(e) => this.onTxtChange(e.target.textContent)}>Check list</div>
-                <button className='main-btn'>Add</button>
+                <button className='main-btn' onClick={this.onAddCheckList}>Add</button>
             </div>
         )
     }
