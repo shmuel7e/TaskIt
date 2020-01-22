@@ -5,7 +5,7 @@ export default class ActivityPreview extends Component {
         return (
             <div>
                 {this.props.activity.activityName}
-                {/* {new Date().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })} */}
+                {'' + this.props.activity.createdAt}
             </div>
         )
     }

@@ -120,8 +120,11 @@ class TopicPage extends Component {
         SocketService.emit('user deleted topic', this.props.user.username + ' has deleted a topic');
     }
 
-    onAddActivity = (activity) => {
-        this.props.board.activities.push(activity);
+    onAddActivity = (activityName) => {
+        let date = new Date;
+        date = date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
+        let addedActivity = { activityName: activityName, createdAt: date };
+        this.props.board.activities.push(addedActivity);
         this.props.updateBoard(this.props.board);
     }
 

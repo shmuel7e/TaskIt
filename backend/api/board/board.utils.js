@@ -7,9 +7,9 @@ function createBoard() {
         { _id: utilsService.makeRandomId(), email: 'chuchu@gmail.com', username: 'chuchi buchi', bgColor: '#D291BC' },
         { _id: utilsService.makeRandomId(), email: 'dudu@gmail.com', username: 'dudu aatok', bgColor: '#E0BBE4' }],
         cover: 'bg5.jpg',
-        activities: [{ activityName: 'shmuel deleted task' },
-        { activityName: 'shmuel added a task' },
-        { activityName: 'shmuel removed tal from the board' }],
+        activities: [{ activityName: 'shmuel deleted task', createdAt: '12:58 PM' },
+        { activityName: 'shmuel added a task', createdAt: '17:40 PM' },
+        { activityName: 'shmuel removed tal from the board', createdAt: '19:00 PM' }],
         topics: [{
             id: utilsService.makeRandomId(),
             title: 'Todo',
