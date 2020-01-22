@@ -1,20 +1,59 @@
 import BoardService from '../services/BoardService.js';
 
-// set board // 
+// set boards // 
 
+function _setBoards(boards) {
+    return {
+        type: 'BOARDS_SET',
+        boards
+    }
+}
+// set boards
+export function loadBoards(userId) {
+    return async dispatch => {
+        try {
+            const boards = await BoardService.getBoards(userId);
+            dispatch(_setBoards(boards));
+        } catch (err) {
+            console.log('Boards Actions: err in load boards', err);
+        }
+    };
+}
+// set board
 function _setBoard(board) {
     return {
         type: 'BOARD_SET',
         board
     }
 }
+export function setCurrBoard(board) {
+    console.log(board)
+    return  dispatch => {
+        try {
+            dispatch(_setBoard(board));
+        } catch (err) {
+            console.log('UserActions: err in set board', err);
+        }
+    };
+}
 
 export function loadBoard() {
     return async dispatch => {
         try {
+            const board = await BoardService.getBoard();
+            dispatch(_setBoard(board));
+        } catch (err) {
+            console.log('UserActions: err in getBoard', err);
+        }
+    };
+}
+
+export function updateBoard(board) {
+    return async dispatch => {
+        try {
             // // example for loading
             // dispatch(loading());
-            const board = await BoardService.query();
+            // const board = await BoardService.query();
             dispatch(_setBoard(board));
         } catch (err) {
             console.log('UserActions: err in loadUsers', err);
@@ -163,7 +202,7 @@ export function addTask(taskTitle, topicId) {
 }
 
 // add task 
-function _cloneTask(topicId,updatedTask) {
+function _cloneTask(topicId, updatedTask) {
     return {
         type: 'TASK_CLONE',
         topicId,
@@ -176,7 +215,7 @@ export function cloneTask(topicId, task) {
         try {
             //TODO
             const updatedTask = await BoardService.cloneTask(task);
-            dispatch(_cloneTask(topicId,updatedTask));
+            dispatch(_cloneTask(topicId, updatedTask));
         } catch (err) {
             console.log('UserActions: err in cloneTask', err);
         }
@@ -247,7 +286,7 @@ export function sortTasks(
     droppableIndexEnd,
     draggableId,
     type) {
-         const typeToDrop=type
+    const typeToDrop = type
     return async dispatch => {
         try {
             // TODO handle service and backend

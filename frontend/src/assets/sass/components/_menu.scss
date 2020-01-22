@@ -27,7 +27,7 @@
   top: 4px;
   position: absolute;
 
-  .icon-cross{
+  .icon-cross {
     font-size: 12px;
     top: 5px;
     right: 7px;
@@ -99,4 +99,10 @@
   font-family: cursive;
   border-bottom: 1px solid rgba(9, 30, 66, 0.13);
   padding-bottom: 10px;
+}
+
+.activity-list {
+  width: 100%;
+  height: 100%;
+  background: blue;
 }

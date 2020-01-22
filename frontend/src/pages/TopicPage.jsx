@@ -7,10 +7,12 @@ import TopicList from '../cmps/topic/TopicList.jsx';
 import ImageService from '../services/ImageService.js';
 import TaskDetails from './TaskDetails.jsx';
 import UtilsService from '../services/UtilsService.js';
+import BoardService from '../services/BoardService.js'
+import SocketService from '../services/SocketService.js'
 
 
 import { connect } from 'react-redux';
-import { loadBoard, setBgCover, addTask, deleteTopic, addTopic, updateTopic, sortTasks } from '../actions/BoardActions';
+import { loadBoard, setBgCover, addTask, deleteTopic, addTopic, updateTopic, sortTasks, updateBoard } from '../actions/BoardActions';
 import { Route, Router } from 'react-router';
 import history from '../history';
 
@@ -28,9 +30,45 @@ class TopicPage extends Component {
     }
 
     componentDidMount() {
-        this.props.loadBoard()
-        this.getGalleryImgs();
+        if(!this.props.user){
+            this.props.loadBoard()
+        }
+        this.props.loadBoard();
+      //  this.getGalleryImgs();
         this.getGalleryColors();
+        if (!this.props.user) return;
+        SocketService.setup();
+        // SocketService.emit('chat topic', this.props.match.params);
+        SocketService.emit('user joined the board', { text: `${this.props.user.username} has joined the board` });
+        SocketService.on('when added task', () => {
+            this.onAddActivity('task was added');
+            console.log('task was added');
+            // this.props.loadBoard();
+        });
+        SocketService.on('when deleted topic', () => {
+            console.log('deleting topic');
+            // this.props.loadBoard();
+        })
+        SocketService.on('when title changed', () => {
+            console.log('title was changed');
+            // this.props.loadBoard();
+        })
+        SocketService.on('when topic added', () => {
+            console.log('topic was added');
+            // this.props.loadBoard();
+        })
+        SocketService.on('when cover changed', () => {
+            console.log('cover was changed');
+            // this.props.loadBoard();
+        })
+        SocketService.on('when bgColor changed', () => {
+            console.log('bg color was changed');
+        })
+    }
+
+    componentWillUnmount = () => {
+        SocketService.terminate();
+        // SocketService.off('user joined the board');
     }
 
     componentDidUpdate() {
@@ -42,47 +80,83 @@ class TopicPage extends Component {
     getGalleryColors = async () => {
         const colors = await ImageService.getGalleryColors();
         await this.setState({ colors });
+        
     }
 
     getGalleryImgs = async () => {
         const imgs = await ImageService.getGalleryImages();
         await this.setState({ imgs });
+        
+        
+
     }
 
-    changeBgImg = (imgName) => {
+    changeBgImg = async(imgName) => {
         const style = {
             backgroundImage: `url(${require(`../assets/images/${imgName}`)})`,
             position: 'fixed',
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat'
         }
-        this.props.setBgCover(imgName);
+<<<<<<< HEAD
+       await this.props.setBgCover(imgName);
         this.setState({ style })
+        console.log(this.props.board)
+    }
+=======
+        this.props.setBgCover(imgName);
+        this.setState({ style });
+>>>>>>> 13259b36eccfc70c17903a5e0b4a3581bb1f4a1f
+
+        if (!this.props.user) return;
+        SocketService.emit('user changed cover', this.props.user.username + ' has changed board cover');
     }
 
-    addTask = (taskTitle, topicId) => {
-        this.props.addTask(taskTitle, topicId)
-    }
-
-    deleteTopic = (topicId) => {
-        this.props.deleteTopic(topicId)
-    }
-
-    changeBgColor = (colorName) => {
+    changeBgColor = async(colorName) => {
         const style = {
             background: colorName,
         }
-        this.props.setBgCover(colorName);
+     await   this.props.setBgCover(colorName);
         this.setState({ style });
+<<<<<<< HEAD
+        console.log('bg',this.props.board)
+        BoardService.updateBoard(this.props.board)
+=======
+        if (!this.props.user) return;
+        SocketService.emit('user changed bgColor', this.props.user.username + ' has changed board color');
+    }
+
+    addTask = (taskTitle, topicId) => {
+        this.props.addTask(taskTitle, topicId);
+        if (!this.props.user) return;
+        SocketService.emit('user added task', this.props.user.username + ' has added a new task');
+
+    }
+
+    deleteTopic = (topicId) => {
+        this.props.deleteTopic(topicId);
+        if (!this.props.user) return;
+        SocketService.emit('user deleted topic', this.props.user.username + ' has deleted a topic');
+    }
+
+    onAddActivity = (activity) => {
+        this.props.board.activities.push(activity);
+        this.props.updateBoard(this.props.board);
+>>>>>>> 13259b36eccfc70c17903a5e0b4a3581bb1f4a1f
     }
 
     changeTopicTitle = (topic, newTxt) => {
         topic.title = newTxt;
         this.props.updateTopic(topic);
+        if (!this.props.user) return;
+        SocketService.emit('user changed topic title', this.props.user.username + ' has changed topic title');
+
     }
 
     onAddNewTopic = (topicName) => {
-        this.props.addTopic(topicName)
+        this.props.addTopic(topicName);
+        if (!this.props.user) return;
+        SocketService.emit('user added new topic', this.props.user.username + ' has added new topic');
     }
 
     onGetInitials = (fullName) => {
@@ -113,7 +187,7 @@ class TopicPage extends Component {
                         board={board}
                         changeBgImg={this.changeBgImg}
                         colors={this.state.colors}
-                        changeBgColor={this.changeBgColor}/>
+                        changeBgColor={this.changeBgColor} />
 
                     <Droppable droppableId="all-lists" direction="horizontal" type="list">
                         {provided => (
@@ -139,7 +213,8 @@ class TopicPage extends Component {
 
 const mapStateToProps = state => {
     return {
-        board: state.board.board
+        board: state.board.board,
+        user: state.user.loggedInUser
     };
 };
 const mapDispatchToProps = {
@@ -149,7 +224,8 @@ const mapDispatchToProps = {
     deleteTopic,
     addTopic,
     updateTopic,
-    sortTasks
+    sortTasks,
+    updateBoard
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TopicPage);
