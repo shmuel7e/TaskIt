@@ -30,11 +30,11 @@ class TopicPage extends Component {
     }
 
     componentDidMount() {
-        if(!this.props.user){
+        if (!this.props.user) {
             this.props.loadBoard()
         }
         this.props.loadBoard();
-      //  this.getGalleryImgs();
+        this.getGalleryImgs();
         this.getGalleryColors();
         if (!this.props.user) return;
         SocketService.setup();
@@ -42,7 +42,6 @@ class TopicPage extends Component {
         SocketService.emit('user joined the board', { text: `${this.props.user.username} has joined the board` });
         SocketService.on('when added task', () => {
             this.onAddActivity('task was added');
-            console.log('task was added');
             // this.props.loadBoard();
         });
         SocketService.on('when deleted topic', () => {
@@ -80,38 +79,35 @@ class TopicPage extends Component {
     getGalleryColors = async () => {
         const colors = await ImageService.getGalleryColors();
         await this.setState({ colors });
-        
+
     }
 
     getGalleryImgs = async () => {
         const imgs = await ImageService.getGalleryImages();
         await this.setState({ imgs });
-        
-        
-
     }
 
-    changeBgImg = async(imgName) => {
+    changeBgImg = async (imgName) => {
         const style = {
             backgroundImage: `url(${require(`../assets/images/${imgName}`)})`,
             position: 'fixed',
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat'
         }
-       await this.props.setBgCover(imgName);
+        await this.props.setBgCover(imgName);
         this.setState({ style })
         console.log(this.props.board)
         if (!this.props.user) return;
         SocketService.emit('user changed cover', this.props.user.username + ' has changed board cover');
     }
 
-    changeBgColor = async(colorName) => {
+    changeBgColor = async (colorName) => {
         const style = {
             background: colorName,
         }
-     await this.props.setBgCover(colorName);
+        await this.props.setBgCover(colorName);
         this.setState({ style });
-        console.log('bg',this.props.board)
+        console.log('bg', this.props.board)
         BoardService.updateBoard(this.props.board)
         if (!this.props.user) return;
         SocketService.emit('user changed bgColor', this.props.user.username + ' has changed board color');

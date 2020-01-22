@@ -11,7 +11,6 @@ export default function (state = initialState, action = {}) {
     case 'BOARDS_SET':
       return { ...state, boards: [...action.boards]   }
     case 'BOARD_SET':
-      console.log(action.board)
       return { ...state, board: { ...action.board } };
 
     case 'BOARD_COVER_SET':
