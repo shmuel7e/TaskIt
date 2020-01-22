@@ -8,6 +8,7 @@
   font-size: 15px;
   border-radius: 4px;
   cursor: pointer;
+  outline: none;
 }
 
 .menu-button:hover {
@@ -16,21 +17,11 @@
 
 .menu-button {
   border: none;
-  position: absolute;
-  right: 0;
-  top: 0;
-  margin-left: 4px;
   background-color: #ebecf0b3;
   border-radius: 4px;
-  height: auto;
   min-height: 32px;
-  font-size: 14px;
-  padding-left: 10px;
   color: #41516e;
   padding: 6px 8px;
   cursor: pointer;
-  margin-top: 63px;
+  outline: none;
 }
-
-// .menu-button::before {
-// }
