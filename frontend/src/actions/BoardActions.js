@@ -1,26 +1,53 @@
 import BoardService from '../services/BoardService.js';
 
-// set board // 
+// set boards // 
 
+function _setBoards(boards) {
+    return {
+        type: 'BOARDS_SET',
+        boards
+    }
+}
+// set boards
+export function loadBoards(userId) {
+    return async dispatch => {
+        try {
+            const boards = await BoardService.getBoards(userId);
+            dispatch(_setBoards(boards));
+        } catch (err) {
+            console.log('Boards Actions: err in load boards', err);
+        }
+    };
+}
+// set board
 function _setBoard(board) {
     return {
         type: 'BOARD_SET',
         board
     }
 }
+export function setCurrBoard(board) {
+    console.log(board)
+    return  dispatch => {
+        try {
+            dispatch(_setBoard(board));
+        } catch (err) {
+            console.log('UserActions: err in set board', err);
+        }
+    };
+}
 
 export function loadBoard() {
     return async dispatch => {
         try {
-            // // example for loading
-            // dispatch(loading());
-            const board = await BoardService.query();
+            const board = await BoardService.getBoard();
             dispatch(_setBoard(board));
         } catch (err) {
-            console.log('UserActions: err in loadUsers', err);
+            console.log('UserActions: err in getBoard', err);
         }
     };
 }
+
 
 // set current topic //
 

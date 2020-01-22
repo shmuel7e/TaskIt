@@ -1,0 +1,22 @@
+
+
+.board-page-container{
+ 
+    margin-top: 100px;
+    padding: 0 100px;
+
+    h1{
+        font-size: rem(30px);
+        text-align: center;
+    }
+}
+
+.board-container{
+   max-width:250px;
+   cursor: pointer;
+   margin:10px;
+
+   h4{
+       text-align: center;
+   }
+}
