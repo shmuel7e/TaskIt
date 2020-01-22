@@ -38,7 +38,7 @@ export default class HomePage extends Component {
                 </div>
 
 
-                <Footer />
+                 <Footer /> 
             </div>
         )
     }
