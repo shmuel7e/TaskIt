@@ -5,6 +5,7 @@ function createBoard(user) {
     const board = {
         title:"new board",
         members: [user],
+        activities:[],
         cover: 'bg5.jpg',
         topics: [{
             id: utilsService.makeRandomId(),
