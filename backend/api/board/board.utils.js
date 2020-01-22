@@ -1,5 +1,30 @@
 const utilsService = require('../../services/utils.service')
-function createBoard() {
+
+
+function createBoard(user) {
+    const board = {
+        title:"new board",
+        members: [user],
+        cover: 'bg5.jpg',
+        topics: [{
+            id: utilsService.makeRandomId(),
+            title: 'Todo',
+            tasks: []
+        }, {
+            id: utilsService.makeRandomId(),
+            title: 'Things To Do',
+            tasks: []
+        },
+        {
+            id: utilsService.makeRandomId(),
+            title: 'Done',
+            tasks: []
+        }
+        ]
+    }
+    return board
+}
+function createBoardWithDemyData() {
     const board = {
         members: [{ _id: utilsService.makeRandomId(), email: 'shmuel7e@gmail.com', username: 'shmuel elkis', bgColor: '#FFDFD3' },
         { _id: utilsService.makeRandomId(), email: 'puku@gmail.com', username: 'tal mashiah', bgColor: '#FEC8D8' },
@@ -76,5 +101,6 @@ function createBoard() {
 }
 
 module.exports = {
+    createBoardWithDemyData,
     createBoard
 }

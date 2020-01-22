@@ -5,6 +5,7 @@ import {login} from '../actions/UserActions'
 import {signup} from '../actions/UserActions'
 import SignIn from '../cmps/auth/SignIn'
 import SignUp from '../cmps/auth/SignUp'
+import BoardService from '../services/BoardService'
 class AuthPage extends Component {
     state = { signupMode: false }
     toggleMode = () => {
@@ -28,6 +29,7 @@ class AuthPage extends Component {
           // Todo apropiate msg
       }else{
           //Todo appropiate msg
+          await BoardService.addBoard(this.props.user)
           this.props.history.push('/topic')
       }
     }

@@ -8,6 +8,7 @@ import ImageService from '../services/ImageService.js';
 import TaskDetails from './TaskDetails.jsx';
 import UtilsService from '../services/UtilsService.js';
 import SocketService from '../services/SocketService.js'
+import BoardService from '../services/BoardService.js'
 
 
 import { connect } from 'react-redux';
@@ -76,14 +77,18 @@ class TopicPage extends Component {
     getGalleryColors = async () => {
         const colors = await ImageService.getGalleryColors();
         await this.setState({ colors });
+        
     }
 
     getGalleryImgs = async () => {
         const imgs = await ImageService.getGalleryImages();
         await this.setState({ imgs });
+        
+        
+
     }
 
-    changeBgImg = (imgName) => {
+    changeBgImg = async(imgName) => {
         const style = {
             backgroundImage: `url(${require(`../assets/images/${imgName}`)})`,
             position: 'fixed',
@@ -97,11 +102,11 @@ class TopicPage extends Component {
         SocketService.emit('user changed cover', this.props.user.username + ' has changed board cover');
     }
 
-    changeBgColor = (colorName) => {
+    changeBgColor = async(colorName) => {
         const style = {
             background: colorName,
         }
-        this.props.setBgCover(colorName);
+     await   this.props.setBgCover(colorName);
         this.setState({ style });
         if (!this.props.user) return;
         SocketService.emit('user changed bgColor', this.props.user.username + ' has changed board color');

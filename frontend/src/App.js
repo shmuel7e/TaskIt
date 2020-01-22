@@ -9,6 +9,7 @@ import HomePage from './pages/HomePage.jsx';
 import TopicPage from './pages/TopicPage.jsx';
 import AuthPage from './pages/AuthPage.jsx';
 import AboutPage from './pages/AboutPage.jsx';
+import BoardPage from './pages/BoardPage.jsx'
 
 class App extends Component {
 
@@ -27,6 +28,7 @@ class App extends Component {
             <Route component={TopicPage} path="/topic" ></Route>
             <Route component={AuthPage} path="/auth" exact></Route>
             <Route component={AboutPage} path="/about" exact></Route>
+            <Route component={BoardPage} path="/board" exact></Route>
           </Switch>
         </Router>
       </main>
