@@ -34,7 +34,7 @@ class TopicPage extends Component {
             this.props.loadBoard()
         }
         this.props.loadBoard();
-      //  this.getGalleryImgs();
+       this.getGalleryImgs();
         this.getGalleryColors();
         if (!this.props.user) return;
         SocketService.setup();

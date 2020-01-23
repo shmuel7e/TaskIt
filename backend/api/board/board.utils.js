@@ -3,9 +3,10 @@ const utilsService = require('../../services/utils.service')
 
 function createBoard(user) {
     const board = {
-        title:"new board",
+        title: "new board",
         members: [user],
         cover: 'bg5.jpg',
+        activities: [],
         topics: [{
             id: utilsService.makeRandomId(),
             title: 'Todo',
@@ -44,7 +45,7 @@ function createBoardWithDemyData() {
                 cover: '',
                 description: 'buy fruits and wines',
                 createdAt: new Date,
-                checkLists:[{title:'Check List yoyo',todos:[{title:'buy soya milk',isDone:false},{title:'go to the gym',isDone:true}]}],
+                checkLists: [{ title: 'Check List yoyo', todos: [{ title: 'buy soya milk', isDone: false }, { title: 'go to the gym', isDone: true }] }],
                 comments: [],
                 details: [],
                 members: [],
