@@ -6,6 +6,7 @@ function createBoard(user) {
         title:"new board",
         activities:[],
         members: [user],
+        activities:[],
         cover: 'bg5.jpg',
         topics: [{
             id: utilsService.makeRandomId(),
