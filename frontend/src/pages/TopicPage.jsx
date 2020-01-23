@@ -43,6 +43,7 @@ class TopicPage extends Component {
         SocketService.on('when added task', () => {
             this.onAddActivity('task was added');
             console.log('task was added');
+
             // this.props.loadBoard();
         });
         SocketService.on('when deleted topic', () => {
