@@ -33,7 +33,6 @@ class TopicPage extends Component {
         if(!this.props.user){
             this.props.loadBoard()
         }
-        this.props.loadBoard();
        this.getGalleryImgs();
         this.getGalleryColors();
         if (!this.props.user) return;
@@ -101,7 +100,6 @@ class TopicPage extends Component {
         }
        await this.props.setBgCover(imgName);
         this.setState({ style })
-        console.log(this.props.board)
         if (!this.props.user) return;
         SocketService.emit('user changed cover', this.props.user.username + ' has changed board cover');
     }
@@ -112,7 +110,6 @@ class TopicPage extends Component {
         }
      await this.props.setBgCover(colorName);
         this.setState({ style });
-        console.log('bg',this.props.board)
         BoardService.updateBoard(this.props.board)
         if (!this.props.user) return;
         SocketService.emit('user changed bgColor', this.props.user.username + ' has changed board color');
