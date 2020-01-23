@@ -66,6 +66,38 @@ function _createTopic(topicTitle) {
 }
 
 
+async function addNewTodo(checkList,task, todoTitle) {
+    const newTodo = _createTodo(todoTitle)
+    checkList.todos.push(newTodo);
+    let updatedCheckLists = task.checkLists.map(currCheckList =>
+        currCheckList.id === checkList.id ? checkList : currCheckList)
+    task.checkLists = updatedCheckLists  
+    return Promise.resolve({ ...task })
+}
+
+function _createTodo(todoTitle) {
+    return {
+        id: UtilsService.makeRandomId(),
+        title: todoTitle,
+        isDone:false
+    }
+}
+
+async function addNewChecklist(task, checkListTitle) {
+    const newCheckList = _createCheckList(checkListTitle)
+    task.checkLists.push(newCheckList);
+    return Promise.resolve({ ...task })
+}
+
+function _createCheckList(checkListTitle) {
+    return {
+        id: UtilsService.makeRandomId(),
+        title: checkListTitle,
+        todos:[]
+    }
+}
+
+
 export default {
     getBoard,
     setBgCover,
@@ -75,5 +107,7 @@ export default {
     addBoard,
     getBoards,
     updateBoard,
-    updateActivity
+    updateActivity,
+    addNewTodo,
+    addNewChecklist
 };

@@ -13,7 +13,7 @@ export default class CheckListModal extends Component {
     }
 
     onAddCheckList = () => {
-        console.log(this.state.checkListTitle)
+        this.props.addChecklist(this.state.checkListTitle);
         this.onCloseModal();
     }
 

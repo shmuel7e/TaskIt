@@ -78,7 +78,7 @@ export default class ToolBar extends Component {
                             <span className="icon-input-checked"></span>
                         </button>
                         <div className="check-list-modal">
-                            {this.state.isCheckListShown ? <CheckListModal closeModal={this.toggleMiniModal} /> : ''}
+                            {this.state.isCheckListShown ? <CheckListModal addChecklist = {this.props.addChecklist} closeModal={this.toggleMiniModal} /> : ''}
                         </div>
 
                         <button onClick={() => this.toggleMiniModal('dues')}>Due Date

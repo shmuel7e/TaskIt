@@ -279,6 +279,48 @@ export function deleteTask(taskId) {
     };
 }
 
+// add new checklist
+
+function _addChecklist(topic, task) {
+    return {
+        type: 'TASK_UPDATE',
+        topic,
+        task
+    }
+}
+
+export function addChecklist(topic, task, checkListTitle) {
+    return async dispatch => {
+        try {
+            const updatedTask = await BoardService.addNewChecklist(task, checkListTitle);
+            dispatch(_addChecklist(topic,updatedTask));
+        } catch (err) {
+            console.log('UserActions: err in addTodo', err);
+        }
+    };
+}
+
+// add new todo
+
+function _addTodo(topic, task) {
+    return {
+        type: 'TASK_UPDATE',
+        topic,
+        task
+    }
+}
+
+export function addTodo(topic, task, checkList, todoTitle) {
+    return async dispatch => {
+        try {
+            const updatedTask = await BoardService.addNewTodo(checkList,task, todoTitle);
+            dispatch(_addTodo(topic,updatedTask));
+        } catch (err) {
+            console.log('UserActions: err in addTodo', err);
+        }
+    };
+}
+
 
 // sort  Task
 function _sortTasks(droppableIdStart,
@@ -320,6 +362,8 @@ export function sortTasks(
         }
     };
 }
+
+
 
 
 
