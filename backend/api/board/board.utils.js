@@ -4,6 +4,7 @@ const utilsService = require('../../services/utils.service')
 function createBoard(user) {
     const board = {
         title:"new board",
+        activities:[],
         members: [user],
         cover: 'bg5.jpg',
         topics: [{
@@ -24,6 +25,7 @@ function createBoard(user) {
     }
     return board
 }
+
 function createBoardWithDemyData() {
     const board = {
         members: [{ _id: utilsService.makeRandomId(), email: 'shmuel7e@gmail.com', username: 'shmuel elkis', bgColor: '#FFDFD3' },

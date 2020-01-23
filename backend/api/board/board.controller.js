@@ -34,6 +34,7 @@ async function getBoards(req, res) {
 }
 async function updateBoard(req, res) {
     let board=req.body
+    console.log('controller',board)
     try {
          board = await boardService.updateBoard(board)
         res.send(board)
@@ -42,6 +43,7 @@ async function updateBoard(req, res) {
         res.status(500).send({ error: 'cannot update Board' })
     }
 }
+
 
 
 
