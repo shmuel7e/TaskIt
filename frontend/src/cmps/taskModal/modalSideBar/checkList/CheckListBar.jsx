@@ -3,12 +3,12 @@ import React, { Component } from 'react'
 export default class CheckListBar extends Component {
 
     doneTodosPercentage = () => {
-        let doneTodosNum = 0;
+        let doneCounter = 0;
         const { todos } = this.props.checkList
         for (const todo of todos) {
-            if (todo.isDone) doneTodosNum++;
+            if (todo.isDone) doneCounter++;
         }
-        return (doneTodosNum / todos.length) * 100 + '%';
+        return (doneCounter / todos.length) * 100 + '%';
     }
 
     render() {
