@@ -1,3 +1,24 @@
 .checklist-container {
     width: 445px;
+    margin-bottom: 13px;
+
+    .add-todo-btn {
+    color: #172b4d;
+    background-color: #eaecf0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 32px;
+    margin-top: 8px;
+    padding: 6px 13px;
+    position: relative;
+    transition: ease all 0.2s;
+    outline: none;
+
+    &:hover {
+        opacity: 0.9;
+        color: #091e42;
+        background: #e2e4e9;
+    }
+    }
 }

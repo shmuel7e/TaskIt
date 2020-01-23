@@ -84,6 +84,12 @@ class TaskDetails extends Component {
             this.props.updateTask(this.props.topic, updatedtask);
     }
 
+    addTodo = (checkList) => {
+        // checkList.todos.push()
+
+        // this.props.updateTask(this.props.topic, updatedtask);
+    }
+
 
     render() {
         const { board } = this.props;
@@ -103,6 +109,7 @@ class TaskDetails extends Component {
                         task={task}
                         topic={topic}
                         board={board}
+                        addTodo={this.addTodo}
                         changeTodo={this.changeTodo}
                         addDueTimeToTask={this.addDueTimeToTask}
                         getInitials={this.getInitials}

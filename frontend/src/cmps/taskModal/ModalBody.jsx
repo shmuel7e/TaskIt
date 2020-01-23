@@ -6,12 +6,13 @@ export default class ModalBody extends Component {
 
 
     render() {
-        const { task, board, addMemberToTask, addLabelToTask, deleteTask, cloneTask, changeTaskColor, changeTodo,getInitials ,addDueTimeToTask} = this.props;
+        const { task, board, addMemberToTask, addLabelToTask, deleteTask, cloneTask, changeTaskColor,addTodo, changeTodo,getInitials ,addDueTimeToTask} = this.props;
         if (!board) return 'loading..';
         return (
             <div className="modal-body flex">
                 <ModalMain
                     task={task}
+                    addTodo = {addTodo}
                     changeTodo = {changeTodo}
                     getInitials={getInitials} />
 
