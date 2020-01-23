@@ -4,11 +4,8 @@ const boardUtils = require('./board.utils')
 const ObjectId = require('mongodb').ObjectId
 
 async function getBoard(boardId) {
+    console.log(boardId);
     let board
-    if (!boardId) {
-        board = boardUtils.createBoardWithDemyData()
-        return Promise.resolve(board)
-    }
     try {
         const collection = await dbService.getCollection('board')
         board = await collection.findOne({ _id: ObjectId(boardId) })
@@ -46,11 +43,10 @@ async function addBoard(user) {
 
 async function updateBoard(board) {
     const collection = await dbService.getCollection('board')
-    console.log('service',board)
     let id = board._id
     delete board._id
     try {
-        await collection.updateOne({ "_id": ObjectId(id) }, { $set: { ...board } })
+        await collection.replaceOne({ "_id": ObjectId(id) }, { $set: { ...board } })
         board._id = id
         return board
     } catch (err) {
