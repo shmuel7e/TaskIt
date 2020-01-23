@@ -52,6 +52,7 @@ async function updateBoard(board) {
     try {
         await collection.updateOne({ "_id": ObjectId(id) }, { $set: { ...board } })
         board._id = id
+        console.log(board)
         return board
     } catch (err) {
         console.log(`ERROR: cannot update board`)

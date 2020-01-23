@@ -30,7 +30,9 @@ class TopicPage extends Component {
     }
 
     componentDidMount() {
-        this.props.loadBoard();
+        if(!this.props.user){
+            this.props.loadBoard();
+        }
         this.getGalleryImgs();
         this.getGalleryColors();
         if (!this.props.user) return;
@@ -138,8 +140,11 @@ class TopicPage extends Component {
 
     }
 
-    onAddNewTopic = (topicName) => {
-        this.props.addTopic(topicName);
+    onAddNewTopic = async(topicName) => {
+        await this.props.addTopic(topicName);
+        console.log(this.props.board)
+        const board =this.props.board
+        BoardService.updateBoard({...board})
         if (!this.props.user) return;
         SocketService.emit('user added new topic', this.props.user.username + ' has added new topic');
     }

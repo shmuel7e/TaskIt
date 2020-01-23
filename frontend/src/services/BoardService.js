@@ -12,7 +12,8 @@ async function addBoard(user){
     return await HttpService.post('board',user)
 }
 async function updateBoard(board){
-    return await HttpService.put('board',board)
+    return await HttpService.put('board',{...board})
+    
 }
 
 async function setBgCover(imgName) {
