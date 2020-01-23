@@ -27,7 +27,7 @@ export default class BoardHeader extends Component {
                     <span className="board-header-divider"></span>
                     <BoardMemberList board={board} />
                     <span className="board-header-divider"></span>
-                    <button className='borad-header-btn' >Invite</button>
+                    <button onClick={this.props.addMember} className='borad-header-btn' >Invite</button>
                 </div>
                 <button className='borad-header-btn' onClick={this.onToggleMenu}>Show Menu</button>
                 <div className={`${this.state.isMenuOn ? ' menu menu-off' : 'menu menu-on'}`}>

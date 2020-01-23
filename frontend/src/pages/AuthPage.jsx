@@ -19,7 +19,7 @@ class AuthPage extends Component {
           // Todo apropiate msg
       }else{
           //Todo appropiate msg
-          this.props.history.push('/topic')
+          this.props.history.push('/board')
       }
     }
     onSignUp=async(credentials)=>{
@@ -29,8 +29,8 @@ class AuthPage extends Component {
           // Todo apropiate msg
       }else{
           //Todo appropiate msg
-          await BoardService.addBoard(this.props.user)
-          this.props.history.push('/topic')
+         // await BoardService.addBoard(this.props.user)
+          this.props.history.push('/board')
       }
     }
     render() {

@@ -12,7 +12,7 @@ import SocketService from '../services/SocketService.js'
 
 
 import { connect } from 'react-redux';
-import { loadBoard, setBgCover, addTask, deleteTopic, addTopic, updateTopic, sortTasks, updateBoard } from '../actions/BoardActions';
+import { loadBoard, setBgCover, addTask, deleteTopic, addTopic, updateTopic, sortTasks, updateBoard, setCurrBoard } from '../actions/BoardActions';
 import { Route, Router } from 'react-router';
 import history from '../history';
 
@@ -26,19 +26,19 @@ class TopicPage extends Component {
     state = {
         imgs: [],
         colors: [],
-        style: {}
+        style: {},
+        refresh: ''
     }
 
     componentDidMount() {
         if (!this.props.user) {
             this.props.loadBoard()
         }
-        this.props.loadBoard();
         this.getGalleryImgs();
         this.getGalleryColors();
         if (!this.props.user) return;
         SocketService.setup();
-        // SocketService.emit('chat topic', this.props.match.params);
+        SocketService.emit('chat topic', 'room');
         SocketService.emit('user joined the board', { text: `${this.props.user.username} has joined the board` });
         SocketService.on('when added task', () => {
             this.onAddActivity('task was added');
@@ -54,7 +54,8 @@ class TopicPage extends Component {
         })
         SocketService.on('when topic added', () => {
             console.log('topic was added');
-            // this.props.loadBoard();
+          
+            this.props.loadBoard();
         })
         SocketService.on('when cover changed', () => {
             console.log('cover was changed');
@@ -101,6 +102,20 @@ class TopicPage extends Component {
         SocketService.emit('user changed cover', this.props.user.username + ' has changed board cover');
     }
 
+    addMember = () => {
+
+        console.log('we are here');
+        const user = {
+            _id: "5e28fc55b0c5b02698ff712f",
+            email: "zibra@gmail.com",
+            username: "Tal Mashiah"
+        }
+        const board = { ...this.props.board };
+        console.log(board);
+        board.members.push(user);
+        BoardService.updateBoard(board);
+    }
+
     changeBgColor = async (colorName) => {
         const style = {
             background: colorName,
@@ -142,8 +157,13 @@ class TopicPage extends Component {
 
     }
 
-    onAddNewTopic = (topicName) => {
-        this.props.addTopic(topicName);
+    onAddNewTopic = async (topicName) => {
+        await this.props.addTopic(topicName);
+        console.log(this.props.board)
+        const board = await BoardService.updateBoard(this.props.board)
+        this.props.setCurrBoard(board)
+        console.log(board)
+
         if (!this.props.user) return;
         SocketService.emit('user added new topic', this.props.user.username + ' has added new topic');
     }
@@ -172,6 +192,7 @@ class TopicPage extends Component {
             <DragDropContext onDragEnd={this.onDragEnd}>
                 <div style={this.state.style} className="trello-page-container header-padding">
                     <BoardHeader
+                        addMember={this.addMember}
                         imgs={this.state.imgs}
                         board={board}
                         changeBgImg={this.changeBgImg}
@@ -214,7 +235,8 @@ const mapDispatchToProps = {
     addTopic,
     updateTopic,
     sortTasks,
-    updateBoard
+    updateBoard,
+    setCurrBoard
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TopicPage);
