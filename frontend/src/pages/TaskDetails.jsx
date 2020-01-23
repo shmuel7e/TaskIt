@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { setCurrTask, setCurrTopic, updateTask, deleteTask, cloneTask } from '../actions/BoardActions';
+import { setCurrTask, setCurrTopic, updateTask, deleteTask, cloneTask,addChecklist, addTodo } from '../actions/BoardActions';
 import ModalHeader from '../cmps/taskModal/ModalHeader.jsx';
 import ModalBody from '../cmps/taskModal/ModalBody.jsx';
 import UtilsService from '../services/UtilsService';
@@ -22,7 +22,6 @@ class TaskDetails extends Component {
         const { topicId, taskId } = this.props.match.params;
         this.props.setCurrTopic(topicId);
         this.props.setCurrTask(taskId);
-
     }
 
     closeModal = () => {
@@ -81,13 +80,18 @@ class TaskDetails extends Component {
             todo.id === updatedTodo.id ? updatedTodo : todo)
         let updatedtask = this.props.task.checkLists.map(checkList =>
             checkList.id === updatedCheckList.id ? updatedCheckList : checkList)
-            this.props.updateTask(this.props.topic, updatedtask);
+        this.props.updateTask(this.props.topic, updatedtask);
     }
 
-    addTodo = (checkList) => {
-        // checkList.todos.push()
+    addTodo = (checkList, todoTitle) => {
+        const { topic, task } = this.props;
+        this.props.addTodo(topic, task, checkList, todoTitle);
+    }
 
-        // this.props.updateTask(this.props.topic, updatedtask);
+    addChecklist = (checkListTitle) => {
+        console.log(checkListTitle);
+        const { topic, task } = this.props;
+        this.props.addChecklist(topic, task, checkListTitle);
     }
 
 
@@ -110,14 +114,15 @@ class TaskDetails extends Component {
                         topic={topic}
                         board={board}
                         addTodo={this.addTodo}
+                        cloneTask={this.cloneTask}
                         changeTodo={this.changeTodo}
-                        addDueTimeToTask={this.addDueTimeToTask}
-                        getInitials={this.getInitials}
-                        addMemberToTask={this.addMemberToTask}
-                        addLabelToTask={this.addLabelToTask}
-                        changeTaskColor={this.changeTaskColor}
                         deleteTask={this.deleteTask}
-                        cloneTask={this.cloneTask} />
+                        getInitials={this.getInitials}
+                        addChecklist = {this.addChecklist}
+                        addLabelToTask={this.addLabelToTask}
+                        addMemberToTask={this.addMemberToTask}
+                        addDueTimeToTask={this.addDueTimeToTask}
+                        changeTaskColor={this.changeTaskColor} />
                 </div>
             </div>
         )
@@ -132,11 +137,13 @@ const mapStateToProps = state => {
     };
 };
 const mapDispatchToProps = {
+    addChecklist,
     setCurrTopic,
     setCurrTask,
     updateTask,
     deleteTask,
-    cloneTask
+    cloneTask,
+    addTodo
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskDetails);

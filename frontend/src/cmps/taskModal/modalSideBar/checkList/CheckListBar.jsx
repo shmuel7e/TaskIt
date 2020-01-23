@@ -5,10 +5,11 @@ export default class CheckListBar extends Component {
     doneTodosPercentage = () => {
         let doneCounter = 0;
         const { todos } = this.props.checkList
+        if(!todos.length) return;
         for (const todo of todos) {
             if (todo.isDone) doneCounter++;
         }
-        return (doneCounter / todos.length) * 100 + '%';
+        return ((doneCounter / todos.length) * 100).toFixed(2) + '%';
     }
 
     render() {
