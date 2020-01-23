@@ -1,8 +1,8 @@
 import UtilsService from './UtilsService.js'
 import HttpService from './HttpService';
 
-async function getBoard() {
-    return await HttpService.get('board')
+async function getBoard(boardId) {
+    return await HttpService.get('board/'+boardId)
 }
 async function getBoards(userId) {
     return await HttpService.get(`board/all?id=${userId}`)

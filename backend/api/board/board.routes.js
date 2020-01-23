@@ -5,7 +5,7 @@ const router = express.Router()
 
 
 
-router.get('/', getBoard)
+router.get('/:id', getBoard)
 router.get('/all', getBoards)
 router.post('/', addBoard)
 router.put('/', updateBoard)

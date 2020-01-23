@@ -3,7 +3,7 @@ const boardService = require('./board.service')
 const utilsService = require('../../services/utils.service')
 
 async function getBoard(req, res) {
-    const boardId = req.query.id
+    const boardId = req.params.id
     try {
         const board = await boardService.getBoard(boardId)
         res.send(board)
