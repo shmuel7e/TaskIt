@@ -76,6 +76,15 @@ class TaskDetails extends Component {
         this.props.updateTask(this.props.topic, updateTask);
     }
 
+    changeTodo = (checkList, updatedTodo) => {
+        let updatedCheckList = checkList.todos.map(todo =>
+            todo.id === updatedTodo.id ? updatedTodo : todo)
+        let updatedtask = this.props.task.checkLists.map(checkList =>
+            checkList.id === updatedCheckList.id ? updatedCheckList : checkList)
+            this.props.updateTask(this.props.topic, updatedtask);
+    }
+
+
     render() {
         const { board } = this.props;
         const { task, topic } = this.props;
@@ -94,6 +103,7 @@ class TaskDetails extends Component {
                         task={task}
                         topic={topic}
                         board={board}
+                        changeTodo={this.changeTodo}
                         addDueTimeToTask={this.addDueTimeToTask}
                         getInitials={this.getInitials}
                         addMemberToTask={this.addMemberToTask}

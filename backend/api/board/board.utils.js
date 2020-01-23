@@ -44,7 +44,7 @@ function createBoardWithDemyData() {
                 cover: '',
                 description: 'buy fruits and wines',
                 createdAt: new Date,
-                checkLists:[{title:'Check List yoyo',todos:[{title:'buy soya milk',isDone:false},{title:'go to the gym',isDone:true}]}],
+                checkLists:[{id: utilsService.makeRandomId(), title:'Check List yoyo',todos:[{id: utilsService.makeRandomId(), title:'buy soya milk',isDone:false},{id: utilsService.makeRandomId(),title:'go to the gym',isDone:true}]}],
                 comments: [],
                 details: [],
                 members: [],
