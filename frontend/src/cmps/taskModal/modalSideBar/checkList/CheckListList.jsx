@@ -3,10 +3,11 @@ import CheckListPreview from './CheckListPreview.jsx';
 
 export default class CheckListList extends Component {
     render() {
+        const {changeTodo, checkLists} = this.props;
         return (
             <div>
-                {this.props.checkLists.map((checkList, idx) => {
-                    return <CheckListPreview checkList={checkList} key={idx}/>
+                {checkLists.map((checkList, idx) => {
+                    return <CheckListPreview changeTodo={changeTodo} checkList={checkList} key={idx}/>
                 })}
             </div>
         )

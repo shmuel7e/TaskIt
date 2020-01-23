@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import CheckListList from '../taskModal/modalSideBar/checkList/CheckListList.jsx';
 
 export default class ModalActivity extends Component {
@@ -14,10 +14,10 @@ export default class ModalActivity extends Component {
     }
 
     render() {
-        const {task} = this.props;
+        const {task, changeTodo} = this.props;
         return (
             <div>
-            {task.checkLists ? <CheckListList checkLists={task.checkLists}/> : ''} 
+            {task.checkLists ? <CheckListList changeTodo={changeTodo} checkLists={task.checkLists}/> : ''} 
 
 
                 {task.members.length ? <h3 className="members-on-task-title">Members</h3> : ''}
