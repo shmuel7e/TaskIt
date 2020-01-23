@@ -31,9 +31,8 @@ class TopicPage extends Component {
     }
 
     componentDidMount() {
-        if (!this.props.user) {
-            this.props.loadBoard()
-        }
+       
+     
         this.getGalleryImgs();
         this.getGalleryColors();
         if (!this.props.user) return;
