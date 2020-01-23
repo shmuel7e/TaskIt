@@ -1,0 +1,27 @@
+.checklist-bar {
+    width: 100%;
+    background-color: #ddd;
+    height: 14px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  
+  .progress-bar {
+    position: relative;
+    transition: all 1s;
+    width: 0%;
+    height: 30px;
+    background-color: #4CAF50;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    height: 13px;
+    border-right: none;
+    border-radius: 4px;
+
+    span {
+        font-size: 10px;
+        position: absolute;
+        top: -7px;
+    }
+  }

@@ -1,0 +1,49 @@
+.todo-container {
+  font-size: 14px;
+  color: #5e6c84;
+  padding: 6px 0;
+
+  .todo-txt {
+    padding: 2px 8px;
+    &:focus {
+      background-color: #fff;
+      box-shadow: inset 0 0 0 2px #0079bf;
+    }
+  }
+
+  .todo-done {
+    text-decoration-line: line-through;
+  }
+
+  .todo-checkbox {
+    -webkit-appearance: none;
+    border: 3px solid #f4f5f7;
+    background-color: #fafbfc;
+    box-shadow: inset 0 0 0 2px #dfe1e6;
+    padding: 9px;
+    border-radius: 3px;
+    display: inline-block;
+    position: relative;
+    outline: none;
+
+    &:active,
+    &:checked:active {
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
+
+    &:checked {
+      background-color: rgb(0, 121, 191);
+      border: 3px solid #f4f5f7;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      color: #99a1a7;
+    }
+    &:checked:after {
+      content: "\2714";
+      font-size: 14px;
+      position: absolute;
+      top: 0px;
+      left: 3px;
+      color: #fff;
+    }
+  }
+}

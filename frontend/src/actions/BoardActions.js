@@ -27,8 +27,7 @@ function _setBoard(board) {
     }
 }
 export function setCurrBoard(board) {
-    console.log(board)
-    return  dispatch => {
+    return dispatch => {
         try {
             dispatch(_setBoard(board));
         } catch (err) {
@@ -103,6 +102,21 @@ export function updateTopic(topic) {
     };
 }
 
+// updateActivities // 
+
+export function updateActivity(activity, currBoard) {
+    return async dispatch => {
+        try {
+            //TODO
+            const board = await BoardService.updateActivity(activity, currBoard);
+            dispatch({ type: 'BOARD_SET', board });
+        } catch (err) {
+            console.log('UserActions: err in updateActivity', err);
+        }
+    };
+}
+
+
 // updateTask // 
 
 function _updateTask(topic, task) {
@@ -125,20 +139,41 @@ export function updateTask(topic, task) {
     };
 }
 
-// add new topic
-function _addTopic(newTopic) {
-    return {
-        type: 'TOPIC_ADD',
-        newTopic
-    }
-}
-export function addTopic(topicName) {
+// // add new topic
+// function _addTopic(newTopic) {
+//     return {
+//         type: 'TOPIC_ADD',
+//         newTopic
+//     }
+// }
+export function addTopic(topicName, boardId) {
     return async dispatch => {
         try {
-            const newTopic = await BoardService.addTopic(topicName);
-            dispatch(_addTopic(newTopic));
+            const board = await BoardService.addTopic(topicName, boardId);
+            dispatch(_setBoard(board));
         } catch (err) {
             console.log('UserActions: err in addTopic', err);
+        }
+    };
+}
+
+// // add task 
+// function _addTask(newTask, topicId) {
+//     return {
+//         type: 'TASK_ADD',
+//         newTask,
+//         topicId
+//     }
+// }
+
+export function addTask(taskTitle, topicId, boardId) {
+    return async dispatch => {
+        try {
+            const board = await BoardService.addTask(taskTitle, topicId, boardId);
+            console.log('BoardAction board:',board)
+            dispatch(_setBoard(board));
+        } catch (err) {
+            console.log('UserActions: err in addTask', err);
         }
     };
 }
@@ -182,24 +217,7 @@ export function setBgCover(imgName) {
     };
 }
 
-// add task 
-function _addTask(newTask, topicId) {
-    return {
-        type: 'TASK_ADD',
-        newTask,
-        topicId
-    }
-}
-export function addTask(taskTitle, topicId) {
-    return async dispatch => {
-        try {
-            const newTask = await BoardService.addTask(taskTitle);
-            dispatch(_addTask(newTask, topicId));
-        } catch (err) {
-            console.log('UserActions: err in addTask', err);
-        }
-    };
-}
+
 
 // add task 
 function _cloneTask(topicId, updatedTask) {
@@ -261,6 +279,48 @@ export function deleteTask(taskId) {
     };
 }
 
+// add new checklist
+
+function _addChecklist(topic, task) {
+    return {
+        type: 'TASK_UPDATE',
+        topic,
+        task
+    }
+}
+
+export function addChecklist(topic, task, checkListTitle) {
+    return async dispatch => {
+        try {
+            const updatedTask = await BoardService.addNewChecklist(task, checkListTitle);
+            dispatch(_addChecklist(topic,updatedTask));
+        } catch (err) {
+            console.log('UserActions: err in addTodo', err);
+        }
+    };
+}
+
+// add new todo
+
+function _addTodo(topic, task) {
+    return {
+        type: 'TASK_UPDATE',
+        topic,
+        task
+    }
+}
+
+export function addTodo(topic, task, checkList, todoTitle) {
+    return async dispatch => {
+        try {
+            const updatedTask = await BoardService.addNewTodo(checkList,task, todoTitle);
+            dispatch(_addTodo(topic,updatedTask));
+        } catch (err) {
+            console.log('UserActions: err in addTodo', err);
+        }
+    };
+}
+
 
 // sort  Task
 function _sortTasks(droppableIdStart,
@@ -302,6 +362,8 @@ export function sortTasks(
         }
     };
 }
+
+
 
 
 
