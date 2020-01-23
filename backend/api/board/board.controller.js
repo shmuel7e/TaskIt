@@ -13,7 +13,7 @@ async function getBoard(req, res) {
     }
 }
 async function getBoards(req, res) {
-    const userId = req.query.id
+    const userId = req.params.id
     try {
         const board = await boardService.getBoards(userId)
         res.send(board)

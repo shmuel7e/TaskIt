@@ -1,5 +1,5 @@
 import BoardService from '../services/BoardService.js';
-
+import StorageService from '../services/StorageService.js'
 // set boards // 
 
 function _setBoards(boards) {
@@ -13,6 +13,7 @@ export function loadBoards(userId) {
     return async dispatch => {
         try {
             const boards = await BoardService.getBoards(userId);
+
             dispatch(_setBoards(boards));
         } catch (err) {
             console.log('Boards Actions: err in load boards', err);
@@ -30,6 +31,7 @@ export function setCurrBoard(board) {
     return dispatch => {
         try {
             dispatch(_setBoard(board));
+            StorageService.saveToStorage('board',board)
         } catch (err) {
             console.log('UserActions: err in set board', err);
         }
@@ -39,7 +41,10 @@ export function setCurrBoard(board) {
 export function loadBoard() {
     return async dispatch => {
         try {
-            const board = await BoardService.getBoard();
+           // const board = await BoardService.getBoard();
+           console.log('sa')
+           const board =StorageService.loadFromStorage('board',null)
+           console.log(board)
             dispatch(_setBoard(board));
         } catch (err) {
             console.log('UserActions: err in getBoard', err);
@@ -170,7 +175,6 @@ export function addTask(taskTitle, topicId, boardId) {
     return async dispatch => {
         try {
             const board = await BoardService.addTask(taskTitle, topicId, boardId);
-            console.log('BoardAction board:',board)
             dispatch(_setBoard(board));
         } catch (err) {
             console.log('UserActions: err in addTask', err);

@@ -5,14 +5,13 @@ async function getBoard(boardId) {
     return await HttpService.get('board/'+boardId)
 }
 async function getBoards(userId) {
-    return await HttpService.get(`board/all?id=${userId}`)
+    return await HttpService.get(`board/all/${userId}`)
 }
 
 async function addBoard(user) {
     return await HttpService.post('board', user)
 }
 async function updateBoard(board) {
-    console.log('im the board', board)
     return await HttpService.put('board', board)
 }
 
