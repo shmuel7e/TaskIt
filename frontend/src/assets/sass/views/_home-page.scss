@@ -46,9 +46,11 @@
 }
 
 .home-template-title {
-  font-size: 3rem;
-  font-family: DancingScript-Regular;
+  font-size: 20px;
   text-align: left;
+  padding: 15px 0;
+  color: $clr1;
+  font-weight: 600;
 }
 
 .templates-container {
