@@ -84,6 +84,31 @@ async function addNewTask(req, res) {
         res.status(500).send({ error: 'cannot update Board' })
     }
 }
+async function updateTask(req, res) {
+    let boardToUpdate = await boardService.getBoard(req.params.boardId);
+    const topicToUpdate = boardToUpdate.topics.find(topic => topic.id === req.params.topicId)
+    const taskToUpdate = req.body;
+  
+    // boardToUpdate=boardToUpdate.topics.map(topic=>{
+
+    //     return topic
+    // }) 
+    
+    topicToUpdate.tasks.map(task=>{
+        if(task.id===taskToUpdate.id)return taskToUpdate
+        return task
+    })
+    
+    
+    try {
+        const updatedBoard = await boardService.updateBoard({...boardToUpdate})
+        res.send(updatedBoard)
+    } catch (err) {
+        logger.error('Cannot update board', err);
+        res.status(500).send({ error: 'cannot update Board' })
+    }
+}
+
 
 
 module.exports = {
@@ -93,5 +118,6 @@ module.exports = {
     updateBoard,
     updateActivity,
     addNewTopic,
-    addNewTask
+    addNewTask,
+    updateTask
 }

@@ -56,6 +56,9 @@ async function addTask(taskTitle, topicId, currBoardId) {
     const newTask = _createTask(taskTitle)
     return await HttpService.put(`board/task/${topicId}/${currBoardId}`, newTask)
 }
+async function updateTask(taskToUpdate,boardId, topicId) {
+   return await HttpService.put(`board/updatetask/${boardId}/${topicId}/${taskToUpdate.id}`, taskToUpdate)
+}
 
 function _createTopic(topicTitle) {
     return {
@@ -108,5 +111,6 @@ export default {
     updateBoard,
     updateActivity,
     addNewTodo,
-    addNewChecklist
+    addNewChecklist,
+    updateTask
 };

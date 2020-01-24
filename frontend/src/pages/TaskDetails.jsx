@@ -14,12 +14,13 @@ import {
 import ModalHeader from '../cmps/taskModal/ModalHeader.jsx';
 import ModalBody from '../cmps/taskModal/ModalBody.jsx';
 import UtilsService from '../services/UtilsService';
-
+import BoardService from '../services/BoardService.js'
 class TaskDetails extends Component {
-
+ 
     componentDidMount() {
         this.loadTask();
     }
+
 
     async componentDidUpdate(prevProps) {
         if (prevProps.match.params.id
@@ -27,7 +28,7 @@ class TaskDetails extends Component {
             this.loadTask();
         }
     }
-
+  
     loadTask() {
         const { topicId, taskId } = this.props.match.params;
         this.props.setCurrTopic(topicId);
@@ -42,9 +43,10 @@ class TaskDetails extends Component {
         ev.stopPropagation();
     }
 
-    changeTaskTitle = (topic, task, newTxt) => {
+    changeTaskTitle = async(topic, task, newTxt) => {
         task.title = newTxt;
-        this.props.updateTask(topic, task);
+       await  this.props.updateTask(topic, task);
+       BoardService.updateTask(this.props.task,this.props.board._id,this.props.topic.id)
     }
 
     addMemberToTask = (member) => {
@@ -64,6 +66,7 @@ class TaskDetails extends Component {
     addDueTimeToTask = (dueTime) => {
         this.props.task.dueTime = dueTime;
         this.props.updateTask(this.props.topic, this.props.task);
+       
     }
 
     getInitials = (fullName) => {
@@ -72,12 +75,12 @@ class TaskDetails extends Component {
 
     deleteTask = () => {
         this.props.deleteTask(this.props.task.id)
-        this.props.history.push('/topic');
+        this.props.history.push('/topic/'+this.props.match.params.id);
     }
 
     cloneTask = () => {
         this.props.cloneTask(this.props.topic.id, this.props.task)
-        this.props.history.push('/topic');
+        this.props.history.push('/topic/'+this.props.match.params.id);
     }
 
     changeTaskColor = (color) => {
