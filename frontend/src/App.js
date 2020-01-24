@@ -15,6 +15,8 @@ class App extends Component {
 
   onLogout = () => {
     this.props.logout()
+    history.push('/')
+
   }
   render() {
     return (

@@ -1,6 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import {loadBoard, setCurrTask, setCurrTopic, updateTask, deleteTask, cloneTask,addChecklist, addTodo } from '../actions/BoardActions';
+import {
+    loadBoard,
+    setCurrTask,
+    setCurrTopic,
+    updateTask,
+    deleteTask,
+    cloneTask,
+    addChecklist,
+    addTodo,
+    addActivityComment
+} from '../actions/BoardActions';
 import ModalHeader from '../cmps/taskModal/ModalHeader.jsx';
 import ModalBody from '../cmps/taskModal/ModalBody.jsx';
 import UtilsService from '../services/UtilsService';
@@ -11,7 +21,7 @@ class TaskDetails extends Component {
         this.loadTask();
     }
 
- async componentDidUpdate(prevProps) {
+    async componentDidUpdate(prevProps) {
         if (prevProps.match.params.id
             !== this.props.match.params.id || !this.props.board) {
             this.loadTask();
@@ -25,7 +35,7 @@ class TaskDetails extends Component {
     }
 
     closeModal = () => {
-        this.props.history.push('/topic/'+this.props.board._id)
+        this.props.history.push('/topic/' + this.props.board._id)
     }
 
     stayInModal = (ev) => {
@@ -92,6 +102,15 @@ class TaskDetails extends Component {
         const { topic, task } = this.props;
         this.props.addChecklist(topic, task, checkListTitle);
     }
+    addActivityComment = (activityTxt) => {
+        const { topic, task } = this.props;
+        const activityCommen={
+            user:this.props.user,
+            txt:activityTxt,
+            date:new Date
+        }
+        this.props.addActivityComment(topic,task,activityCommen)
+    }
 
 
     render() {
@@ -117,11 +136,13 @@ class TaskDetails extends Component {
                         changeTodo={this.changeTodo}
                         deleteTask={this.deleteTask}
                         getInitials={this.getInitials}
-                        addChecklist = {this.addChecklist}
+                        addChecklist={this.addChecklist}
                         addLabelToTask={this.addLabelToTask}
                         addMemberToTask={this.addMemberToTask}
                         addDueTimeToTask={this.addDueTimeToTask}
-                        changeTaskColor={this.changeTaskColor} />
+                        changeTaskColor={this.changeTaskColor}
+                        addActivityComment={this.addActivityComment}
+                    />
                 </div>
             </div>
         )
@@ -132,7 +153,8 @@ const mapStateToProps = state => {
     return {
         task: state.board.currTask,
         topic: state.board.currTopic,
-        board: state.board.board
+        board: state.board.board,
+        user: state.user.loggedInUser
     };
 };
 const mapDispatchToProps = {
@@ -143,7 +165,8 @@ const mapDispatchToProps = {
     updateTask,
     deleteTask,
     cloneTask,
-    addTodo
+    addTodo,
+    addActivityComment
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskDetails);

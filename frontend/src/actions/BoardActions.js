@@ -304,6 +304,28 @@ export function addChecklist(topic, task, checkListTitle) {
     };
 }
 
+
+// add new activity comment
+
+function _addActivityComment(topic, task,activityComment) {
+    return {
+        type: 'TASK_ACTIVITY_ADD',
+        topic,
+        task,
+        activityComment
+    }
+}
+
+export function addActivityComment(topic, task, activityComment) {
+    return async dispatch => {
+        try {
+            dispatch(_addActivityComment(topic,task,activityComment));
+        } catch (err) {
+            console.log('UserActions: err in addTodo', err);
+        }
+    };
+}
+
 // add new todo
 
 function _addTodo(topic, task) {
