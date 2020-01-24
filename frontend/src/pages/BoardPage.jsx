@@ -9,7 +9,6 @@ class BoardPage extends Component {
         this.props.loadBoards(this.props.user._id)
     }
     selectBoard = (boardId) => {
-        console.log(boardId)
       //  this.props.setCurrBoard(board)
         this.props.history.push('/topic/'+boardId)
     }

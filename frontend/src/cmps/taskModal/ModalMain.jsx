@@ -42,7 +42,7 @@ export default class ModalMain extends Component {
                     <div className='add-comment-title' onClick={this.toggleModalComments}>Write a comment...</div>
                     {this.state.isModalShown ? <ModalComments addActivityComment={addActivityComment} toggleModalComments={this.toggleModalComments} /> : ''}
                 </div>
-                <ModalCommentList task={task}/>
+                <ModalCommentList task={task}  getInitials={getInitials}/>
                 
             </div>
         )

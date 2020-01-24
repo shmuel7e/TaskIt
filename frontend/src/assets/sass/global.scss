@@ -45,6 +45,11 @@
 @import "components/modalSideBar/tool-bar.scss";
 @import "components/modalSideBar/action-bar.scss";
 
+// modalComment // 
+@import "components/modalComment/modalCommentList";
+@import "components/modalComment/modalCommentPreview";
+
+
 // check list //
 
 @import "components/modalSideBar/checkList/check-list-modal";
