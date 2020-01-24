@@ -7,9 +7,10 @@ import BoardService from '../services/BoardService'
 class BoardPage extends Component {
     componentDidMount() {
         this.props.loadBoards(this.props.user._id)
+       
     }
     selectBoard = (boardId) => {
-      //  this.props.setCurrBoard(board)
+    //  await this.props.setCurrBoard(null)
         this.props.history.push('/topic/'+boardId)
     }
 

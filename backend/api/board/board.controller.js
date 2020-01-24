@@ -86,20 +86,18 @@ async function addNewTask(req, res) {
 }
 async function updateTask(req, res) {
     let boardToUpdate = await boardService.getBoard(req.params.boardId);
-    const topicToUpdate = boardToUpdate.topics.find(topic => topic.id === req.params.topicId)
     const taskToUpdate = req.body;
-  
-    // boardToUpdate=boardToUpdate.topics.map(topic=>{
-
-    //     return topic
-    // }) 
-    
-    topicToUpdate.tasks.map(task=>{
-        if(task.id===taskToUpdate.id)return taskToUpdate
-        return task
-    })
-    
-    
+     boardToUpdate.topics=boardToUpdate.topics.map(topic=>{
+        if(topic.id===req.params.topicId){
+            topic.tasks= topic.tasks.map(task=>{
+                if(task.id===taskToUpdate.id){
+                    return taskToUpdate
+                }
+                return task
+            })
+        }
+         return topic
+     }) 
     try {
         const updatedBoard = await boardService.updateBoard({...boardToUpdate})
         res.send(updatedBoard)

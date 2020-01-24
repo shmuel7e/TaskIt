@@ -30,10 +30,10 @@ class TopicPage extends Component {
     }
 
     componentDidMount = async () => {
-        if(this.props.match.params.id){
+    
             const board = await BoardService.getBoard(this.props.match.params.id)
-            this.props.setCurrBoard(board)
-        }
+            await this.props.setCurrBoard(board)
+        
         this.getGalleryImgs();
         this.getGalleryColors();
         SocketService.setup();
@@ -43,25 +43,25 @@ class TopicPage extends Component {
             this.onAddActivity('task was added');
             console.log('task was added');
 
-            this.props.setCurrBoard(this.props.board);
+          //  this.props.setCurrBoard(this.props.board);
         });
         SocketService.on('when deleted topic', () => {
             console.log('deleting topic');
-            this.props.setCurrBoard(this.props.board);
+           // this.props.setCurrBoard(this.props.board);
         })
         SocketService.on('when title changed', () => {
             console.log('title was changed');
-            this.props.setCurrBoard(this.props.board);
+          //  this.props.setCurrBoard(this.props.board);
         })
         SocketService.on('when topic added', () => {
             console.log('topic was added');
-            this.props.setCurrBoard(this.props.board);
+         //   this.props.setCurrBoard(this.props.board);
         })
         SocketService.on('when cover changed', () => {
-            this.props.setCurrBoard(this.props.board);
+         //   this.props.setCurrBoard(this.props.board);
         })
         SocketService.on('when bgColor changed', () => {
-            this.props.setCurrBoard(this.props.board);
+         //   this.props.setCurrBoard(this.props.board);
         })
     }
   async  componentDidUpdate(prevProps) {
@@ -70,6 +70,10 @@ class TopicPage extends Component {
             const board = await BoardService.getBoard(this.props.match.params.id)
             this.props.setCurrBoard(board)
         }
+        if (this.props.board && Object.entries(this.state.style).length === 0) {
+            if(this.props.board.cover.includes('bg'))this.changeBgImg(this.props.board.cover)
+            else this.changeBgColor(this.props.board.cover)
+        }
     }
 
     componentWillUnmount = () => {
@@ -77,12 +81,6 @@ class TopicPage extends Component {
         // SocketService.off('user joined the board');
     }
 
-    componentDidUpdate() {
-        if (this.props.board && Object.entries(this.state.style).length === 0) {
-            if(this.props.board.cover.includes('bg'))this.changeBgImg(this.props.board.cover)
-            else this.changeBgColor(this.props.board.cover)
-        }
-    }
 
     getGalleryColors = async () => {
         const colors = await ImageService.getGalleryColors();
@@ -175,6 +173,7 @@ class TopicPage extends Component {
 
     render() {
         const { board } = this.props
+       // console.log(board)
         if (!board) return 'Loading...'
         return (
             <DragDropContext onDragEnd={this.onDragEnd}>
