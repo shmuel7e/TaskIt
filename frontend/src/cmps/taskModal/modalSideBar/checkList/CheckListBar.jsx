@@ -9,7 +9,7 @@ export default class CheckListBar extends Component {
         for (const todo of todos) {
             if (todo.isDone) doneCounter++;
         }
-        return ((doneCounter / todos.length) * 100).toFixed(2) + '%';
+        return ((doneCounter / todos.length) * 100).toFixed(0) + '%';
     }
 
     render() {
