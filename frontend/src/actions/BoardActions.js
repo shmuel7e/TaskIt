@@ -1,5 +1,5 @@
 import BoardService from '../services/BoardService.js';
-
+import StorageService from '../services/StorageService.js'
 // set boards // 
 
 function _setBoards(boards) {
@@ -13,6 +13,7 @@ export function loadBoards(userId) {
     return async dispatch => {
         try {
             const boards = await BoardService.getBoards(userId);
+
             dispatch(_setBoards(boards));
         } catch (err) {
             console.log('Boards Actions: err in load boards', err);
@@ -27,10 +28,10 @@ function _setBoard(board) {
     }
 }
 export function setCurrBoard(board) {
-    console.log(board)
-    return  dispatch => {
+    return dispatch => {
         try {
             dispatch(_setBoard(board));
+            StorageService.saveToStorage('board',board)
         } catch (err) {
             console.log('UserActions: err in set board', err);
         }
@@ -40,7 +41,10 @@ export function setCurrBoard(board) {
 export function loadBoard() {
     return async dispatch => {
         try {
-            const board = await BoardService.getBoard();
+           // const board = await BoardService.getBoard();
+           console.log('sa')
+           const board =StorageService.loadFromStorage('board',null)
+           console.log(board)
             dispatch(_setBoard(board));
         } catch (err) {
             console.log('UserActions: err in getBoard', err);
@@ -103,6 +107,21 @@ export function updateTopic(topic) {
     };
 }
 
+// updateActivities // 
+
+export function updateActivity(activity, currBoard) {
+    return async dispatch => {
+        try {
+            //TODO
+            const board = await BoardService.updateActivity(activity, currBoard);
+            dispatch({ type: 'BOARD_SET', board });
+        } catch (err) {
+            console.log('UserActions: err in updateActivity', err);
+        }
+    };
+}
+
+
 // updateTask // 
 
 function _updateTask(topic, task) {
@@ -125,20 +144,40 @@ export function updateTask(topic, task) {
     };
 }
 
-// add new topic
-function _addTopic(newTopic) {
-    return {
-        type: 'TOPIC_ADD',
-        newTopic
-    }
-}
-export function addTopic(topicName) {
+// // add new topic
+// function _addTopic(newTopic) {
+//     return {
+//         type: 'TOPIC_ADD',
+//         newTopic
+//     }
+// }
+export function addTopic(topicName, boardId) {
     return async dispatch => {
         try {
-            const newTopic = await BoardService.addTopic(topicName);
-            dispatch(_addTopic(newTopic));
+            const board = await BoardService.addTopic(topicName, boardId);
+            dispatch(_setBoard(board));
         } catch (err) {
             console.log('UserActions: err in addTopic', err);
+        }
+    };
+}
+
+// // add task 
+// function _addTask(newTask, topicId) {
+//     return {
+//         type: 'TASK_ADD',
+//         newTask,
+//         topicId
+//     }
+// }
+
+export function addTask(taskTitle, topicId, boardId) {
+    return async dispatch => {
+        try {
+            const board = await BoardService.addTask(taskTitle, topicId, boardId);
+            dispatch(_setBoard(board));
+        } catch (err) {
+            console.log('UserActions: err in addTask', err);
         }
     };
 }
@@ -182,24 +221,7 @@ export function setBgCover(imgName) {
     };
 }
 
-// add task 
-function _addTask(newTask, topicId) {
-    return {
-        type: 'TASK_ADD',
-        newTask,
-        topicId
-    }
-}
-export function addTask(taskTitle, topicId) {
-    return async dispatch => {
-        try {
-            const newTask = await BoardService.addTask(taskTitle);
-            dispatch(_addTask(newTask, topicId));
-        } catch (err) {
-            console.log('UserActions: err in addTask', err);
-        }
-    };
-}
+
 
 // add task 
 function _cloneTask(topicId, updatedTask) {
@@ -276,6 +298,28 @@ export function addChecklist(topic, task, checkListTitle) {
         try {
             const updatedTask = await BoardService.addNewChecklist(task, checkListTitle);
             dispatch(_addChecklist(topic,updatedTask));
+        } catch (err) {
+            console.log('UserActions: err in addTodo', err);
+        }
+    };
+}
+
+
+// add new activity comment
+
+function _addActivityComment(topic, task,activityComment) {
+    return {
+        type: 'TASK_ACTIVITY_ADD',
+        topic,
+        task,
+        activityComment
+    }
+}
+
+export function addActivityComment(topic, task, activityComment) {
+    return async dispatch => {
+        try {
+            dispatch(_addActivityComment(topic,task,activityComment));
         } catch (err) {
             console.log('UserActions: err in addTodo', err);
         }

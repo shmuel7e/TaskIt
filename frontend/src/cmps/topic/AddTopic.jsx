@@ -13,6 +13,8 @@ export default class AddTopic extends Component {
     onAddList=()=>{
         if(this.state.topic === '') return;
         this.props.onAddNewTopic(this.state.topic)
+        this.setState({ topic:''})
+        this.onToggleForm()
     }
 
     onkeyup = (ev) => {

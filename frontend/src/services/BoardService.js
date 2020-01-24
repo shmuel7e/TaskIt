@@ -1,38 +1,38 @@
 import UtilsService from './UtilsService.js'
 import HttpService from './HttpService';
 
-async function getBoard() {
-    return await HttpService.get('board')
+async function getBoard(boardId) {
+    return await HttpService.get('board/'+boardId)
 }
 async function getBoards(userId) {
-    return await HttpService.get(`board/all?id=${userId}`)
+    return await HttpService.get(`board/all/${userId}`)
 }
 
-async function addBoard(user){
-    return await HttpService.post('board',user)
+async function addBoard(user) {
+    return await HttpService.post('board', user)
 }
-async function updateBoard(board){
-    return await HttpService.put('board',board)
+async function updateBoard(board) {
+    return await HttpService.put('board', board)
 }
 
 async function setBgCover(imgName) {
     return Promise.resolve(imgName);
 }
 
-async function cloneTask (task) {
+async function updateActivity(activity, currBoard) {
+    return await HttpService.put(`board/activity/${currBoard._id}`, activity)
+}
+
+async function cloneTask(task) {
     let clonedTask = JSON.parse(JSON.stringify(task));
     clonedTask.id = UtilsService.makeRandomId();
     return Promise.resolve(clonedTask);
 }
 
-async function addTask(taskTitle) {
-    const newTask = _createTask(taskTitle)
-    return Promise.resolve({ ...newTask })
-}
 
 function _createTask(taskTitle) {
     return {
-        id: UtilsService.makeRandomId(),
+        // id: UtilsService.makeRandomId(),
         title: taskTitle,
         cover: '',
         description: '',
@@ -47,16 +47,20 @@ function _createTask(taskTitle) {
     }
 }
 
-async function addTopic(topicTitle) {
+async function addTopic(topicTitle, currBoardId) {
     const newTopic = _createTopic(topicTitle)
-    return Promise.resolve({ ...newTopic })
+    return await HttpService.put(`board/topic/${currBoardId}`, newTopic)
+}
+
+async function addTask(taskTitle, topicId, currBoardId) {
+    const newTask = _createTask(taskTitle)
+    return await HttpService.put(`board/task/${topicId}/${currBoardId}`, newTask)
 }
 
 function _createTopic(topicTitle) {
     return {
-        id: UtilsService.makeRandomId(),
         title: topicTitle,
-        tasks:[]
+        tasks: []
     }
 }
 
@@ -102,6 +106,7 @@ export default {
     addBoard,
     getBoards,
     updateBoard,
+    updateActivity,
     addNewTodo,
     addNewChecklist
 };

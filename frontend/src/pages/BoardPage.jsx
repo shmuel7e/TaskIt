@@ -1,41 +1,45 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { loadBoards,setCurrBoard } from '../actions/BoardActions'
+import { loadBoards, setCurrBoard } from '../actions/BoardActions'
 import BoardService from '../services/BoardService'
 
 class BoardPage extends Component {
     componentDidMount() {
         this.props.loadBoards(this.props.user._id)
     }
-    selectBoard=(board)=>{
-        console.log(board)
-        this.props.setCurrBoard(board)
-        this.props.history.push('/topic')
+    selectBoard = (boardId) => {
+        console.log(boardId)
+      //  this.props.setCurrBoard(board)
+        this.props.history.push('/topic/'+boardId)
     }
 
-    onAddNewBoard= async()=>{
-      await  BoardService.addBoard(this.props.user)
-      this.props.loadBoards(this.props.user._id)
+    onAddNewBoard = async () => {
+        await BoardService.addBoard(this.props.user)
+        this.props.loadBoards(this.props.user._id)
     }
     render() {
-        if (!this.props.boards) return 'loading...'
         return (
             <div className="board-page-container">
                 <h1>Personal Boards</h1>
                 <button onClick={this.onAddNewBoard}>Add new board</button>
-                <div className="flex">
-                {this.props.boards.map(board => {
-                    return <div 
-                    className="board-container flex column"
-                    onClick={this.selectBoard.bind(null,board)}
-                    key={board._id}
-                    >
-                        <h4>{board.title}</h4>
-                        <img src={require('../assets/images/'+board.cover)} alt=""/>
-                    </div>
-                })}
-                </div>
+                {this.props.boards && <div className="flex">
+                    {this.props.boards.map(board => {
+                        const style={background:board.cover,width:'250px',height:'160px'}
+                        return <div
+                            className="board-container flex column"
+                            onClick={this.selectBoard.bind(null, board._id)}
+                            key={board._id}
+                        >
+                            <h4>{board.title}</h4>
+                            {board.cover.includes('bg')  && 
+                            <img src={require('../assets/images/' + board.cover)} alt="" />
+                            }
+                            {!board.cover.includes('bg')  && <div style={style}></div>}
+                        </div>
+                    })}
+                </div>}
+
             </div>
         )
     }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ModalComments from './ModalComments';
 import ModalActivity from './ModalActivity';
+import ModalCommentList from './modalComment/ModalCommentList.jsx'
 
 export default class ModalMain extends Component {
 
@@ -17,7 +18,7 @@ export default class ModalMain extends Component {
     }
 
     render() {
-        const { task, changeTodo, getInitials ,addTodo} = this.props;
+        const { task, changeTodo, getInitials ,addTodo,addActivityComment} = this.props;
         return (
             <div className='modal-main-container'>
                 <div className="modal-activity flex">
@@ -39,8 +40,10 @@ export default class ModalMain extends Component {
                 </div>
                 <div className="comment-box">
                     <div className='add-comment-title' onClick={this.toggleModalComments}>Write a comment...</div>
-                    {this.state.isModalShown ? <ModalComments /> : ''}
+                    {this.state.isModalShown ? <ModalComments addActivityComment={addActivityComment} toggleModalComments={this.toggleModalComments} /> : ''}
                 </div>
+                <ModalCommentList task={task}/>
+                
             </div>
         )
     }
