@@ -1,30 +1,32 @@
 .link-container {
-  width: 75px;
+  width: 101px;
   height: 32px;
   line-height: 35px;
   text-align: center;
+  font-family: sans-serif;
 
   a {
-    font-size: 20px;
+    font-size: 14px;
     color: #090909bd;
-    padding: 7px;
+    padding: 7px 14px;
+    font-weight: bold;
   }
 
   &:hover {
-    background-color: #8f8f8f1f;
+    background-color: #8f8f8f9e;
   }
+  
   &:last-child {
-    width: 59px;
+    width: 75px;
     position: relative;
   }
 
   .userIcon-container {
     cursor: pointer;
     color: #f5ebeb;
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     background-color: $clr2;
-    border: 1px solid #ff000036;
     border-radius: 50%;
   }
 

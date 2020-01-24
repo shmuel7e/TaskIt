@@ -88,7 +88,7 @@ class TaskDetails extends Component {
     changeTodo = (checkList, updatedTodo) => {
         let updatedCheckList = checkList.todos.map(todo =>
             todo.id === updatedTodo.id ? updatedTodo : todo)
-        let updatedtask = this.props.task.checkLists.map(checkList =>
+        let updatedtask = this.props.task.checkList.map(checkList =>
             checkList.id === updatedCheckList.id ? updatedCheckList : checkList)
         this.props.updateTask(this.props.topic, updatedtask);
     }

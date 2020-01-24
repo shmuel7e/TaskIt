@@ -8,13 +8,13 @@
 .home-page-header:before {
   content: "";
   width: 100%;
-  height: 200%;
+  height: 125%;
   position: absolute;
   top: 0;
   left: 0;
   backface-visibility: hidden;
   transform: translateZ(0);
-  background: #1b2030 url("../../images/main.jpg") 50% 0 no-repeat;
+  background: #1b2030 url("https://images.pexels.com/photos/3183151/pexels-photo-3183151.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260") 50% 0 no-repeat;
   background-size: 100%;
   background-attachment: fixed;
   animation: grow 190s linear 10ms infinite;
@@ -23,10 +23,8 @@
 }
 
 .info {
-  text-align: left;
-  margin-top: 99px;
-  margin-left: 20rem;
-  color: white;
+  margin: 155px 0 155px 300px;
+  color: #f1f3ff;
   text-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
 }
 
@@ -69,9 +67,8 @@
 }
 
 .home-page-title {
-  font-size: 3rem;
-  max-width: 380px;
-  font-family: Yanone-Regular;
+  font-size: 2.7rem;
+  max-width: 485px;
 }
 
 .home-page-desc {

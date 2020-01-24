@@ -68,9 +68,9 @@ function _createTopic(topicTitle) {
 async function addNewTodo(checkList,task, todoTitle) {
     const newTodo = _createTodo(todoTitle)
     checkList.todos.push(newTodo);
-    let updatedCheckLists = task.checkLists.map(currCheckList =>
+    let updatedCheckLists = task.checkList.map(currCheckList =>
         currCheckList.id === checkList.id ? checkList : currCheckList)
-    task.checkLists = updatedCheckLists  
+    task.checkList = updatedCheckLists  
     return Promise.resolve({ ...task })
 }
 
@@ -84,7 +84,7 @@ function _createTodo(todoTitle) {
 
 async function addNewChecklist(task, checkListTitle) {
     const newCheckList = _createCheckList(checkListTitle)
-    task.checkLists.push(newCheckList);
+    task.checkList.push(newCheckList);
     return Promise.resolve({ ...task })
 }
 

@@ -46,7 +46,7 @@ function createBoardWithDemyData() {
                 cover: '',
                 description: 'buy fruits and wines',
                 createdAt: new Date,
-                checkLists: [{ id: utilsService.makeRandomId(), title: 'Check List yoyo', todos: [{ id: utilsService.makeRandomId(), title: 'buy soya milk', isDone: false }, { id: utilsService.makeRandomId(), title: 'go to the gym', isDone: true }] }],
+                checkList: [{ id: utilsService.makeRandomId(), title: 'Check List yoyo', todos: [{ id: utilsService.makeRandomId(), title: 'buy soya milk', isDone: false }, { id: utilsService.makeRandomId(), title: 'go to the gym', isDone: true }] }],
                 comments: [],
                 details: [],
                 members: [],
@@ -71,7 +71,7 @@ function createBoardWithDemyData() {
                     labels: [],
                     dueTime: '',
                     attachments: [],
-                    checkLists:[],
+                    checkList:[],
                     bgColor: '',
                 }
             ]
@@ -91,7 +91,7 @@ function createBoardWithDemyData() {
                     members: [],
                     labels: [],
                     dueTime: '',
-                    checkLists:[],
+                    checkList:[],
                     attachments: [],
                     bgColor: '',
                 }
