@@ -39,7 +39,7 @@ export default class ModalMain extends Component {
                 <span className="icon-message"></span>
                 </div>
                 <div className="comment-box">
-                    <div className='add-comment-title' onClick={this.toggleModalComments}>Write a comment...</div>
+                    <div className={this.state.isModalShown?'add-comment-title add-comment-margin':'add-comment-title'} onClick={this.toggleModalComments}>Write a comment...</div>
                     {this.state.isModalShown ? <ModalComments addActivityComment={addActivityComment} toggleModalComments={this.toggleModalComments} /> : ''}
                 </div>
                 <ModalCommentList task={task}  getInitials={getInitials}/>

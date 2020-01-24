@@ -5,7 +5,7 @@ export default class ModalCommentList extends Component {
         return (
             <ul className="modal-comment-container flex column">
                 {this.props.task.comments.map((comment) => {
-                    const id = comment.date.getTime()
+                    const id = comment.date;
                     return <li key={id}>
                         <ModalCommentPreview comment={comment} getInitials={this.props.getInitials} />
                     </li>
