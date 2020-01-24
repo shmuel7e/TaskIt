@@ -1,3 +1,19 @@
-.user-info{
+.user-info {
+  color: #41516e;
+
+  .user-name {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+  .user-time {
+    font-size: 12px;
+  }
+}
+
+.user-comment {
+    margin-left: 51px;
+    font-size: 14px;
     color: #41516e;
+    line-height: 10px;
 }
