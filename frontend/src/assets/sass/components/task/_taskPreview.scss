@@ -6,13 +6,13 @@
   max-width: 255px;
   min-height: 32px;
   margin: 0 auto 8px;
+  word-break: break-all;
 
   .task-title {
     font-size: 14px;
     color: #41516e;
     padding: 0px 9px;
     line-height: 31px;
-    height: 23px;
   }
 
   .members-container {
@@ -35,7 +35,7 @@
     background-color: #e1e2e6;
   }
 }
-.drag-task{
+.drag-task {
   margin: 8px auto;
   //transition: linear all 0.2s;
   //transform: rotate(45deg);
