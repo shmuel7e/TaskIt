@@ -22,6 +22,7 @@ class TaskDetails extends Component {
 
     componentDidMount() {
         this.loadTask();
+        SocketService.setup();
         SocketService.on('user changes', async (msg) => {
             this.onAddActivity(msg);
             const board = await BoardService.getBoard(this.props.board._id)
@@ -175,7 +176,6 @@ class TaskDetails extends Component {
         checkList.todos = filteredTodos;
         let updatedtask = this.props.task.checkList.map(currCheckList =>
             currCheckList.id === checkList.id ? checkList : currCheckList)
-            console.log(updatedtask);
         await this.props.updateTask(this.props.topic, updatedtask);
         BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id);
         SocketService.emit('user changes', this.props.user.username + 'has deleted todo');
