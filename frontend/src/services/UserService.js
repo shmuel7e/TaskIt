@@ -7,7 +7,8 @@ export default {
     update,
     login,
     signup,
-    logout
+    logout,
+    searchUsersToInvite
 }
 
 function getUsers() {
@@ -19,6 +20,13 @@ function getById(userId) {
 }
 function remove(userId) {
     return HttpService.delete(`user/${userId}`)
+}
+function searchUsersToInvite(input,members) {
+    const emails=members.map(member=>{
+        return member.email
+    })
+    const criteria={input,emails}
+    return HttpService.post(`user/invite`, criteria)
 }
 
 function update(user) {
