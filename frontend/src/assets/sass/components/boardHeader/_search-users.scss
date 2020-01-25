@@ -1,0 +1,70 @@
+.search-user-modal {
+  position: relative;
+  .search-users-modal {
+    position: absolute;
+    background-color: #fff;
+    color: #5e6c84;
+    top: 40px;
+    left: -51px;
+    z-index: 10;
+    width: 18rem;
+    border-radius: 5px;
+
+    .icon-cross {
+        cursor: pointer;
+        position: absolute;
+        font-size: 11px;
+        right: 8px;
+        top: 4px;
+    }
+
+    h3 {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      margin-top: 16px;
+      text-transform: uppercase;
+      margin-bottom: -4px;
+      font-weight: 600;
+      text-align: center;
+      padding-bottom: 0.3rem;
+      margin-bottom: 10px;
+      border-bottom: 1px solid rgba(9, 30, 66, 0.13);
+    }
+
+    input {
+      background-color: #fafbfc;
+      border: none;
+      box-shadow: inset 0 0 0 2px #dfe1e6;
+      color: #172b4d;
+      border-radius: 3px;
+      margin-bottom: 12px;
+      padding: 8px 12px;
+      width: 240px;
+
+      &:focus {
+        background: #fff;
+        border: none;
+        box-shadow: inset 0 0 0 2px #0079bf;
+      }
+    }
+  }
+}
+
+.search-users-content {
+  text-align: center;
+
+  .user-container {
+    text-align: start;
+    margin-left: 23px;
+    margin-bottom: 8px;
+    margin: 0 23px 8px 23px;
+    border-radius: 3px;
+    padding-left: 8px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #03030317;
+    }
+  }
+}
