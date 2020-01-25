@@ -145,8 +145,7 @@ function _updateTask(topic, task) {
 export function updateTask(topic, task) {
     return async dispatch => {
         try {
-            //TODO
-            //const topic = await BoardService.updateTopic();
+            console.log('task: ' ,task,'topic: ', topic)
             dispatch(_updateTask(topic, task));
         } catch (err) {
             console.log('UserActions: err in updateTask', err);
