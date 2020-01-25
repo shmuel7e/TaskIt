@@ -9,16 +9,28 @@ import {
     cloneTask,
     addChecklist,
     addTodo,
-    addActivityComment
+    addActivityComment,
+    updateActivity,
+    setCurrBoard
 } from '../actions/BoardActions';
 import ModalHeader from '../cmps/taskModal/ModalHeader.jsx';
 import ModalBody from '../cmps/taskModal/ModalBody.jsx';
 import UtilsService from '../services/UtilsService';
 import BoardService from '../services/BoardService.js'
+import SocketService from '../services/SocketService.js'
 class TaskDetails extends Component {
 
     componentDidMount() {
         this.loadTask();
+        SocketService.setup();
+        SocketService.emit('chat topic', this.props.board._id);
+        SocketService.emit('user joined the board', { text: `${this.props.user.username} has joined the board` });
+        SocketService.on('user changes', async (msg) => {
+            this.onAddActivity(msg);
+            const board = await BoardService.getBoard(this.props.board._id)
+            await this.props.setCurrBoard(board)
+            this.loadTask();
+        });
     }
 
 
@@ -27,6 +39,12 @@ class TaskDetails extends Component {
             !== this.props.match.params.id || !this.props.board) {
             this.loadTask();
         }
+    }
+    onAddActivity = (activityName) => {
+        let date = new Date;
+        date = date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
+        let addedActivity = { activityName: activityName, createdAt: date };
+        if (this.props.board) this.props.updateActivity(addedActivity, { ...this.props.board });
     }
 
     loadTask() {
@@ -47,6 +65,7 @@ class TaskDetails extends Component {
         task.title = newTxt;
         await this.props.updateTask(topic, task);
         BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id)
+        SocketService.emit('user changes', this.props.user.username + ' has changed task title');
     }
 
     addMemberToTask = async (member) => {
@@ -55,6 +74,7 @@ class TaskDetails extends Component {
         (!addedMember) ? members.push(member) : members.pop(member);
         await this.props.updateTask(this.props.topic, this.props.task);
         BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id)
+        SocketService.emit('user changes', this.props.user.username + ' has added member to task');
     }
 
     addLabelToTask = async (label) => {
@@ -63,12 +83,14 @@ class TaskDetails extends Component {
         (!addedLabel) ? labels.push(label) : labels.pop(label);
         await this.props.updateTask(this.props.topic, this.props.task);
         BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id)
+        SocketService.emit('user changes', this.props.user.username + ' has added label to task');
     }
 
     addDueTimeToTask = async (dueTime) => {
         this.props.task.dueTime = dueTime;
         await this.props.updateTask(this.props.topic, this.props.task);
         BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id)
+        SocketService.emit('user changes', this.props.user.username + 'has added due time to task');
 
     }
 
@@ -79,12 +101,14 @@ class TaskDetails extends Component {
     deleteTask = async () => {
         await this.props.deleteTask(this.props.task.id)
         BoardService.updateBoard(this.props.board)
+        SocketService.emit('user changes', this.props.user.username + 'has deleted task');
         this.props.history.push('/topic/' + this.props.board._id);
     }
 
     cloneTask = async () => {
         await this.props.cloneTask(this.props.topic.id, this.props.task)
         BoardService.updateBoard(this.props.board)
+        SocketService.emit('user changes', this.props.user.username + 'has clone task');
         this.props.history.push('/topic/' + this.props.board._id);
     }
 
@@ -92,6 +116,7 @@ class TaskDetails extends Component {
         const updateTask = this.props.task.bgColor = color;
         await this.props.updateTask(this.props.topic, updateTask);
         BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id)
+        SocketService.emit('user changes', this.props.user.username + 'has changed color to task');
     }
 
     changeTodo = async (checkList, updatedTodo) => {
@@ -107,12 +132,14 @@ class TaskDetails extends Component {
         const { topic, task } = this.props;
         await this.props.addTodo(topic, task, checkList, todoTitle);
         BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id)
+        SocketService.emit('user changes', this.props.user.username + 'has changed check list to task');
     }
 
     addChecklist = async (checkListTitle) => {
         const { topic, task } = this.props;
         await this.props.addChecklist(topic, task, checkListTitle);
         BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id)
+        SocketService.emit('user changes', this.props.user.username + 'has added check list to task');
     }
     addActivityComment = async (activityTxt) => {
         const { topic, task } = this.props;
@@ -123,13 +150,14 @@ class TaskDetails extends Component {
         }
         await this.props.addActivityComment(topic, task, activityCommen)
         BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id)
+        SocketService.emit('user changes', this.props.user.username + 'has added activity comment to task');
     }
 
     changeTaskDesc = async (newTxt) => {
         this.props.task.description = newTxt;
         await this.props.updateTask(this.props.topic, this.props.task);
-        console.log(this.props.task);
         BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id)
+        SocketService.emit('user changes', this.props.user.username + 'has changed description to task');
     }
 
 
@@ -187,7 +215,9 @@ const mapDispatchToProps = {
     deleteTask,
     cloneTask,
     addTodo,
-    addActivityComment
+    addActivityComment,
+    updateActivity,
+    setCurrBoard
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskDetails);

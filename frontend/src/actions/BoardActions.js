@@ -89,8 +89,6 @@ function _setCurrTopic(topicId) {
 export function setCurrTopic(topicId) {
     return async dispatch => {
         try {
-            //TODO
-            //const topic = await BoardService.getTopicById();
             dispatch(_setCurrTopic(topicId));
         } catch (err) {
             console.log('UserActions: err in setCurrTopic', err);
@@ -145,7 +143,6 @@ function _updateTask(topic, task) {
 export function updateTask(topic, task) {
     return async dispatch => {
         try {
-            console.log('task: ' ,task,'topic: ', topic)
             dispatch(_updateTask(topic, task));
         } catch (err) {
             console.log('UserActions: err in updateTask', err);

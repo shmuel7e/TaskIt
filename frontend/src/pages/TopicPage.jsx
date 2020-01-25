@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import { connect } from 'react-redux';
 import styled from "styled-components";
 
 import BoardHeader from '../cmps/boardHeader/BoardHeader.jsx';
@@ -12,7 +13,6 @@ import SocketService from '../services/SocketService.js'
 import UserService from '../services/UserService.js'
 
 
-import { connect } from 'react-redux';
 import {
     addMemberToBoard,
     setBgCover,
@@ -43,45 +43,21 @@ class TopicPage extends Component {
     }
 
     componentDidMount = async () => {
-
         const board = await BoardService.getBoard(this.props.match.params.id)
         await this.props.setCurrBoard(board)
-
         this.getGalleryImgs();
         this.getGalleryColors();
         SocketService.setup();
-        // SocketService.emit('chat topic', this.props.match.params);
+        SocketService.emit('chat topic', this.props.match.params.id);
         SocketService.emit('user joined the board', { text: `${this.props.user.username} has joined the board` });
-        SocketService.on('when added task',async () => {
-            this.onAddActivity('task was added');
-            console.log('task was added');
+        SocketService.on('user changes', async (msg) => {
+            console.log(msg)
+            this.onAddActivity(msg);
             const board = await BoardService.getBoard(this.props.match.params.id)
             await this.props.setCurrBoard(board)
+              if (msg.includes('cover')) this.initialBgImg()
+              else if(msg.includes('color')) this.initialColorBg()
         });
-        SocketService.on('when deleted topic',async () => {
-            console.log('deleting topic');
-            const board = await BoardService.getBoard(this.props.match.params.id)
-            await this.props.setCurrBoard(board)
-        })
-        SocketService.on('when title changed',async  () => {
-            console.log('title was changed');
-            const board = await BoardService.getBoard(this.props.match.params.id)
-            await this.props.setCurrBoard(board)
-        })
-        SocketService.on('when topic added', async() => {
-            console.log('topic was added');
-            const board = await BoardService.getBoard(this.props.match.params.id)
-            await this.props.setCurrBoard(board)
-        })
-        SocketService.on('when cover changed', async() => {
-            const board = await BoardService.getBoard(this.props.match.params.id)
-            await this.props.setCurrBoard(board)
-        })
-        SocketService.on('when bgColor changed',async () => {
-            console.log('when bgColor changed');
-            const board = await BoardService.getBoard(this.props.match.params.id)
-            await this.props.setCurrBoard(board)
-        })
     }
     async  componentDidUpdate(prevProps) {
         if (prevProps.match.params.id
@@ -90,8 +66,8 @@ class TopicPage extends Component {
             this.props.setCurrBoard(board)
         }
         if (this.props.board && Object.entries(this.state.style).length === 0) {
-            if (this.props.board.cover.includes('bg')) this.changeBgImg(this.props.board.cover)
-            else this.changeBgColor(this.props.board.cover)
+            if (this.props.board.cover.includes('bg'))this.initialBgImg()
+             else if(this.props.board.cover.includes('board color')) this.initialColorBg()
         }
     }
 
@@ -111,6 +87,22 @@ class TopicPage extends Component {
         const imgs = await ImageService.getGalleryImages();
         await this.setState({ imgs });
     }
+    initialBgImg=()=>{
+      const  style = {
+            backgroundImage: `url(${require(`../assets/images/${this.props.board.cover}`)})`,
+            position: 'fixed',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat'
+        }
+        this.setState({ style })
+    }
+
+    initialColorBg=()=>{
+       const style = {
+            background: this.props.board.cover
+        }
+        this.setState({ style })
+    }
 
     changeBgImg = async (imgName) => {
         const style = {
@@ -122,7 +114,7 @@ class TopicPage extends Component {
         await this.props.setBgCover(imgName);
         this.setState({ style })
         BoardService.updateBoard(this.props.board)
-        SocketService.emit('user changed cover', this.props.user.username + ' has changed board cover');
+        SocketService.emit('user changes', this.props.user.username + ' has changed board cover');
     }
 
     changeBgColor = async (colorName) => {
@@ -132,7 +124,7 @@ class TopicPage extends Component {
         await this.props.setBgCover(colorName);
         this.setState({ style });
         BoardService.updateBoard(this.props.board)
-        SocketService.emit('user changed bgColor', this.props.user.username + ' has changed board color');
+        SocketService.emit('user changes', this.props.user.username + ' has changed board color');
     }
 
 
@@ -140,7 +132,7 @@ class TopicPage extends Component {
     deleteTopic = async (topicId) => {
         await this.props.deleteTopic(topicId);
         BoardService.updateBoard(this.props.board)
-        SocketService.emit('user deleted topic', this.props.user.username + ' has deleted a topic');
+        SocketService.emit('user changes', this.props.user.username + ' has deleted a topic');
     }
 
     onAddActivity = (activityName) => {
@@ -154,20 +146,20 @@ class TopicPage extends Component {
         topic.title = newTxt;
         await this.props.updateTopic(topic);
         BoardService.updateBoard(this.props.board)
-        SocketService.emit('user changed topic title', this.props.user.username + ' has changed topic title');
+        SocketService.emit('user changes', this.props.user.username + ' has changed topic title');
 
     }
 
     onAddNewTopic = (topicName) => {// todo create topic func 
         const { board } = this.props;
         this.props.addTopic(topicName, board._id);
-        SocketService.emit('user added new topic', this.props.user.username + ' has added new topic');
+        SocketService.emit('user changes', this.props.user.username + ' has added new topic');
     }
 
     addTask = (taskTitle, topicId) => {
         const { board } = this.props;
         this.props.addTask(taskTitle, topicId, board._id);
-        SocketService.emit('user added task', this.props.user.username + ' has added a new task');
+        SocketService.emit('user changes', this.props.user.username + ' has added a new task');
 
     }
 
@@ -187,6 +179,7 @@ class TopicPage extends Component {
             draggableId,
             type)
         BoardService.updateBoard(this.props.board)
+        SocketService.emit('user changes', this.props.user.username + ' has drag something');
     }
     onSearchUsers = async (input) => {
         if (!input) {
