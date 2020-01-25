@@ -22,9 +22,6 @@ class TaskDetails extends Component {
 
     componentDidMount() {
         this.loadTask();
-        SocketService.setup();
-        SocketService.emit('chat topic', this.props.board._id);
-        SocketService.emit('user joined the board', { text: `${this.props.user.username} has joined the board` });
         SocketService.on('user changes', async (msg) => {
             this.onAddActivity(msg);
             const board = await BoardService.getBoard(this.props.board._id)
@@ -42,7 +39,7 @@ class TaskDetails extends Component {
     }
 
     componentWillUnmount = () => {
-        SocketService.terminate();
+        //SocketService.terminate();
         // SocketService.off('user joined the board');
     }
     onAddActivity = (activityName) => {
@@ -155,7 +152,7 @@ class TaskDetails extends Component {
         }
         await this.props.addActivityComment(topic, task, activityCommen)
         BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id)
-        SocketService.emit('user changes', this.props.user.username + ' has added activity comment to task');
+       SocketService.emit('user changes', this.props.user.username + ' has added activity comment to task');
     }
 
     changeTaskDesc = async (newTxt) => {
