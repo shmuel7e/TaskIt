@@ -55,28 +55,32 @@ class TopicPage extends Component {
         SocketService.on('when added task',async () => {
             this.onAddActivity('task was added');
             console.log('task was added');
-        //     const board = await BoardService.getBoard(this.props.match.params.id)
-        //    console.log(board)
-        //     this.props.setCurrBoard(board)
-              this.props.setCurrBoard(this.props.board);
+            const board = await BoardService.getBoard(this.props.match.params.id)
+            await this.props.setCurrBoard(board)
         });
-        SocketService.on('when deleted topic', () => {
+        SocketService.on('when deleted topic',async () => {
             console.log('deleting topic');
-            // this.props.setCurrBoard(this.props.board);
+            const board = await BoardService.getBoard(this.props.match.params.id)
+            await this.props.setCurrBoard(board)
         })
-        SocketService.on('when title changed', () => {
+        SocketService.on('when title changed',async  () => {
             console.log('title was changed');
-            //  this.props.setCurrBoard(this.props.board);
+            const board = await BoardService.getBoard(this.props.match.params.id)
+            await this.props.setCurrBoard(board)
         })
-        SocketService.on('when topic added', () => {
+        SocketService.on('when topic added', async() => {
             console.log('topic was added');
-            //   this.props.setCurrBoard(this.props.board);
+            const board = await BoardService.getBoard(this.props.match.params.id)
+            await this.props.setCurrBoard(board)
         })
-        SocketService.on('when cover changed', () => {
-            //   this.props.setCurrBoard(this.props.board);
+        SocketService.on('when cover changed', async() => {
+            const board = await BoardService.getBoard(this.props.match.params.id)
+            await this.props.setCurrBoard(board)
         })
-        SocketService.on('when bgColor changed', () => {
-            //   this.props.setCurrBoard(this.props.board);
+        SocketService.on('when bgColor changed',async () => {
+            console.log('when bgColor changed');
+            const board = await BoardService.getBoard(this.props.match.params.id)
+            await this.props.setCurrBoard(board)
         })
     }
     async  componentDidUpdate(prevProps) {
@@ -128,7 +132,6 @@ class TopicPage extends Component {
         await this.props.setBgCover(colorName);
         this.setState({ style });
         BoardService.updateBoard(this.props.board)
-        if (!this.props.user) return;
         SocketService.emit('user changed bgColor', this.props.user.username + ' has changed board color');
     }
 
