@@ -1,18 +1,17 @@
 import UtilsService from './UtilsService.js'
 import HttpService from './HttpService';
 
-async function getBoard() {
-    return await HttpService.get('board')
+async function getBoard(boardId) {
+    return await HttpService.get('board/'+boardId)
 }
 async function getBoards(userId) {
-    return await HttpService.get(`board/all?id=${userId}`)
+    return await HttpService.get(`board/all/${userId}`)
 }
 
 async function addBoard(user) {
     return await HttpService.post('board', user)
 }
 async function updateBoard(board) {
-    console.log('im the board', board)
     return await HttpService.put('board', board)
 }
 
@@ -57,6 +56,10 @@ async function addTask(taskTitle, topicId, currBoardId) {
     const newTask = _createTask(taskTitle)
     return await HttpService.put(`board/task/${topicId}/${currBoardId}`, newTask)
 }
+async function updateTask(taskToUpdate,boardId, topicId) {
+    console.log(taskToUpdate,boardId, topicId)
+   return await HttpService.put(`board/updatetask/${boardId}/${topicId}/${taskToUpdate.id}`, taskToUpdate)
+}
 
 function _createTopic(topicTitle) {
     return {
@@ -69,9 +72,9 @@ function _createTopic(topicTitle) {
 async function addNewTodo(checkList,task, todoTitle) {
     const newTodo = _createTodo(todoTitle)
     checkList.todos.push(newTodo);
-    let updatedCheckLists = task.checkLists.map(currCheckList =>
+    let updatedCheckLists = task.checkList.map(currCheckList =>
         currCheckList.id === checkList.id ? checkList : currCheckList)
-    task.checkLists = updatedCheckLists  
+    task.checkList = updatedCheckLists  
     return Promise.resolve({ ...task })
 }
 
@@ -85,7 +88,7 @@ function _createTodo(todoTitle) {
 
 async function addNewChecklist(task, checkListTitle) {
     const newCheckList = _createCheckList(checkListTitle)
-    task.checkLists.push(newCheckList);
+    task.checkList.push(newCheckList);
     return Promise.resolve({ ...task })
 }
 
@@ -109,5 +112,6 @@ export default {
     updateBoard,
     updateActivity,
     addNewTodo,
-    addNewChecklist
+    addNewChecklist,
+    updateTask
 };

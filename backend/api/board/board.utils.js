@@ -5,6 +5,7 @@ function createBoard(user) {
     const board = {
         title: "new board",
         members: [user],
+        activities:[],
         cover: 'bg5.jpg',
         activities: [],
         topics: [{
@@ -45,12 +46,11 @@ function createBoardWithDemyData() {
                 cover: '',
                 description: 'buy fruits and wines',
                 createdAt: new Date,
-                checkLists:[{id: utilsService.makeRandomId(), title:'Check List yoyo',todos:[{id: utilsService.makeRandomId(), title:'buy soya milk',isDone:false},{id: utilsService.makeRandomId(),title:'go to the gym',isDone:true}]}],
+                checkList: [{ id: utilsService.makeRandomId(), title: 'Check List yoyo', todos: [{ id: utilsService.makeRandomId(), title: 'buy soya milk', isDone: false }, { id: utilsService.makeRandomId(), title: 'go to the gym', isDone: true }] }],
                 comments: [],
                 details: [],
                 members: [],
                 labels: [],
-                checkList: [],
                 dueTime: '',
                 attachments: [],
                 bgColor: '',
@@ -69,9 +69,9 @@ function createBoardWithDemyData() {
                     details: [],
                     members: [],
                     labels: [],
-                    checkList: [],
                     dueTime: '',
                     attachments: [],
+                    checkList:[],
                     bgColor: '',
                 }
             ]
@@ -90,8 +90,8 @@ function createBoardWithDemyData() {
                     details: [],
                     members: [],
                     labels: [],
-                    checkList: [],
                     dueTime: '',
+                    checkList:[],
                     attachments: [],
                     bgColor: '',
                 }

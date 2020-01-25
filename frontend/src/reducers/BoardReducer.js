@@ -13,6 +13,9 @@ export default function (state = initialState, action = {}) {
     case 'BOARD_SET':
       return { ...state, board: { ...action.board } };
 
+    case 'BOARD_MEMBER_ADD':
+      return {...state,board:{...state.board,members:[...state.board.members,action.member]}}
+
     case 'BOARD_COVER_SET':
       return { ...state, board: { ...state.board, cover: action.imgName } }
 
@@ -54,6 +57,20 @@ export default function (state = initialState, action = {}) {
         return topic
       })
       return { ...state, board: { ...state.board, topics: topics } };
+
+      case 'TASK_ACTIVITY_ADD':
+       const updateTopics=state.board.topics.map(topic=>{
+          if(topic.id === action.topic.id){
+            topic.tasks.map(task=>{
+              if(task.id===action.task.id){
+                task.comments.push(action.activityComment)
+              }
+              return task
+            })
+          }
+          return topic
+        })
+        return { ...state, board: { ...state.board, topics: updateTopics } };  
 
     case 'TASK_CLONE':
       state.board.topics = state.board.topics.map(topic => {

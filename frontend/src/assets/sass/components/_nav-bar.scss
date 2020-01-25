@@ -1,31 +1,38 @@
 .link-container {
-  width: 75px;
+  position: relative;
+  width: 80px;
   height: 32px;
   line-height: 35px;
   text-align: center;
+  font-family: sans-serif;
 
   a {
-    font-size: 20px;
+    position: absolute;
+    font-size: 14px;
     color: #090909bd;
-    padding: 7px;
+    font-weight: bold;
+    top: 0;
+    width: 80px;
+    left: 0;
   }
 
   &:hover {
-    background-color: #8f8f8f1f;
+    background-color: #8f8f8f9e;
   }
-  &:last-child {
-    width: 59px;
-    position: relative;
+
+  &:has( .userIcon-container) {
+    width: 50px;
   }
 
   .userIcon-container {
+      
     cursor: pointer;
     color: #f5ebeb;
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     background-color: $clr2;
-    border: 1px solid #ff000036;
     border-radius: 50%;
+    padding: 13px;
   }
 
   .user-navBar {
@@ -39,7 +46,6 @@
     box-shadow: 0 8px 16px -4px rgba(9, 30, 66, 0.25), 0 0 0 1px rgba(9, 30, 66, 0.08);
     -webkit-animation: slide-left 0.6s 0.1s both;
     animation: slide-left 0.6s 0.1s both;
-    
   }
   .user-navBar > * {
     cursor: pointer;

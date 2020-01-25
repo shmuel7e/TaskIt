@@ -24,11 +24,11 @@ export default class NavBar extends Component {
                     </NavLink>
                     </div>
                 }
-                <div className='link-container'>
+                {/* <div className='link-container'>
                     <NavLink activeClassName="active" to='/topic'>
                         My Taskit
                         </NavLink>
-                </div>
+                </div> */}
                 <div className='link-container'>
                     <NavLink activeClassName="active" to='/About'>
                         About

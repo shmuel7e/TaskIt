@@ -1,13 +1,20 @@
 import React, { Component } from 'react'
+
+
 import SideMenu from '../sideMenu/SideMenu.jsx';
 import BoardMemberList from './BoardMemberList.jsx';
+import SearchUsers from './SearchUsers.jsx'
 
 export default class BoardHeader extends Component {
 
-    state = { isMenuOn: false }
+    state = { isMenuOn: false, isSearchUserOn: false }
 
-    onToggleMenu = async () => {
+    onToggleMenu = () => {
         this.setState({ isMenuOn: !this.state.isMenuOn });
+    }
+
+    onToggleUsersModal = () => {
+        this.setState({ isSearchUserOn: !this.state.isSearchUserOn });
     }
 
     changeBgColor = (color) => {
@@ -27,7 +34,15 @@ export default class BoardHeader extends Component {
                     <span className="board-header-divider"></span>
                     <BoardMemberList board={board} />
                     <span className="board-header-divider"></span>
-                    <button className='borad-header-btn' >Invite</button>
+                    <button onClick={this.onToggleUsersModal} className='borad-header-btn' >Invite</button>
+                    <div className="search-user-modal">
+                        {this.state.isSearchUserOn ? <SearchUsers
+                            toggleUsersModal={this.onToggleUsersModal}
+                            onAddMember={this.props.onAddMember}
+                            membersToInvite={this.props.membersToInvite}
+                            onSearchUsers={this.props.onSearchUsers}
+                        /> : ''}
+                    </div>
                 </div>
                 <button className='borad-header-btn' onClick={this.onToggleMenu}>Show Menu</button>
                 <div className={`${this.state.isMenuOn ? ' menu menu-off' : 'menu menu-on'}`}>

@@ -11,7 +11,7 @@ const ListContainer = styled.div`
 
 export default class TopicPreview extends Component {
 
-    state = { isModalShown: false, isEditable:false }
+    state = { isModalShown: false, isEditable: false }
 
     toggleMiniModal = () => {
         this.setState(prevState => ({
@@ -31,18 +31,18 @@ export default class TopicPreview extends Component {
     onKeyPressed = () => {
         this.setState(prevState => ({
             isEditable: !prevState.isEditable
-          }));
+        }));
     }
 
     render() {
         const { topic } = this.props
         return (<Draggable draggableId={topic.id} index={this.props.index}>
             {provided => (
-                <ListContainer 
-                {...provided.draggableProps} 
-                ref={provided.innerRef}
-                {...provided.dragHandleProps}
-                 className='topic-container'>
+                <ListContainer
+                    {...provided.draggableProps}
+                    ref={provided.innerRef}
+                    {...provided.dragHandleProps}
+                    className='topic-container'>
                     <Droppable droppableId={topic.id}>
                         {provided => (
                             <div {...provided.droppableProps} ref={provided.innerRef} {...provided.draggableProps}>
@@ -56,7 +56,12 @@ export default class TopicPreview extends Component {
                                             </div> : ''}
                                     </div>
                                 </div>
-                                <TaskList addTask={this.props.addTask} topic={topic} getInitials={this.props.getInitials} />
+                                <TaskList
+                                    boardId={this.props.boardId}
+                                    addTask={this.props.addTask}
+                                    topic={topic}
+                                    getInitials={this.props.getInitials}
+                                />
                                 <AddTask addTask={this.props.addTask} topicId={this.props.topic.id} />
                                 {provided.placeholder}
                             </div>

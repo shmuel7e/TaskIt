@@ -1,19 +1,30 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { setCurrTask, setCurrTopic, updateTask, deleteTask, cloneTask,addChecklist, addTodo } from '../actions/BoardActions';
+import {
+    loadBoard,
+    setCurrTask,
+    setCurrTopic,
+    updateTask,
+    deleteTask,
+    cloneTask,
+    addChecklist,
+    addTodo,
+    addActivityComment
+} from '../actions/BoardActions';
 import ModalHeader from '../cmps/taskModal/ModalHeader.jsx';
 import ModalBody from '../cmps/taskModal/ModalBody.jsx';
 import UtilsService from '../services/UtilsService';
-
+import BoardService from '../services/BoardService.js'
 class TaskDetails extends Component {
 
     componentDidMount() {
         this.loadTask();
     }
 
-    componentDidUpdate(prevProps) {
+
+    async componentDidUpdate(prevProps) {
         if (prevProps.match.params.id
-            !== this.props.match.params.id) {
+            !== this.props.match.params.id || !this.props.board) {
             this.loadTask();
         }
     }
@@ -25,73 +36,100 @@ class TaskDetails extends Component {
     }
 
     closeModal = () => {
-        this.props.history.push('/topic')
+        this.props.history.push('/topic/' + this.props.board._id)
     }
 
     stayInModal = (ev) => {
         ev.stopPropagation();
     }
 
-    changeTaskTitle = (topic, task, newTxt) => {
+    changeTaskTitle = async (topic, task, newTxt) => {
         task.title = newTxt;
-        this.props.updateTask(topic, task);
+        await this.props.updateTask(topic, task);
+        BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id)
     }
 
-    addMemberToTask = (member) => {
+    addMemberToTask = async (member) => {
         const { members } = this.props.task;
         const addedMember = members.find(({ _id }) => _id === member._id);
         (!addedMember) ? members.push(member) : members.pop(member);
-        this.props.updateTask(this.props.topic, this.props.task);
+        await this.props.updateTask(this.props.topic, this.props.task);
+        BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id)
     }
 
-    addLabelToTask = (label) => {
+    addLabelToTask = async (label) => {
         const { labels } = this.props.task;
         const addedLabel = labels.find(({ name }) => name === label.name);
         (!addedLabel) ? labels.push(label) : labels.pop(label);
-        this.props.updateTask(this.props.topic, this.props.task);
+        await this.props.updateTask(this.props.topic, this.props.task);
+        BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id)
     }
 
-    addDueTimeToTask = (dueTime) => {
+    addDueTimeToTask = async (dueTime) => {
         this.props.task.dueTime = dueTime;
-        this.props.updateTask(this.props.topic, this.props.task);
+        await this.props.updateTask(this.props.topic, this.props.task);
+        BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id)
+
     }
 
     getInitials = (fullName) => {
         return UtilsService.getInitials(fullName);
     }
 
-    deleteTask = () => {
-        this.props.deleteTask(this.props.task.id)
-        this.props.history.push('/topic');
+    deleteTask = async () => {
+        await this.props.deleteTask(this.props.task.id)
+        BoardService.updateBoard(this.props.board)
+        this.props.history.push('/topic/' + this.props.board._id);
     }
 
-    cloneTask = () => {
-        this.props.cloneTask(this.props.topic.id, this.props.task)
-        this.props.history.push('/topic');
+    cloneTask = async () => {
+        await this.props.cloneTask(this.props.topic.id, this.props.task)
+        BoardService.updateBoard(this.props.board)
+        this.props.history.push('/topic/' + this.props.board._id);
     }
 
-    changeTaskColor = (color) => {
+    changeTaskColor = async (color) => {
         const updateTask = this.props.task.bgColor = color;
-        this.props.updateTask(this.props.topic, updateTask);
+        await this.props.updateTask(this.props.topic, updateTask);
+        BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id)
     }
 
-    changeTodo = (checkList, updatedTodo) => {
+    changeTodo = async (checkList, updatedTodo) => {
         let updatedCheckList = checkList.todos.map(todo =>
             todo.id === updatedTodo.id ? updatedTodo : todo)
-        let updatedtask = this.props.task.checkLists.map(checkList =>
+        let updatedtask = this.props.task.checkList.map(checkList =>
             checkList.id === updatedCheckList.id ? updatedCheckList : checkList)
-        this.props.updateTask(this.props.topic, updatedtask);
+        await this.props.updateTask(this.props.topic, updatedtask);
+        BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id)
     }
 
-    addTodo = (checkList, todoTitle) => {
+    addTodo = async (checkList, todoTitle) => {
         const { topic, task } = this.props;
-        this.props.addTodo(topic, task, checkList, todoTitle);
+        await this.props.addTodo(topic, task, checkList, todoTitle);
+        BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id)
     }
 
-    addChecklist = (checkListTitle) => {
-        console.log(checkListTitle);
+    addChecklist = async (checkListTitle) => {
         const { topic, task } = this.props;
-        this.props.addChecklist(topic, task, checkListTitle);
+        await this.props.addChecklist(topic, task, checkListTitle);
+        BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id)
+    }
+    addActivityComment = async (activityTxt) => {
+        const { topic, task } = this.props;
+        const activityCommen = {
+            user: this.props.user,
+            txt: activityTxt,
+            date: new Date
+        }
+        await this.props.addActivityComment(topic, task, activityCommen)
+        BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id)
+    }
+
+    changeTaskDesc = async (newTxt) => {
+        this.props.task.description = newTxt;
+        await this.props.updateTask(this.props.topic, this.props.task);
+        console.log(this.props.task);
+        BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id)
     }
 
 
@@ -118,11 +156,14 @@ class TaskDetails extends Component {
                         changeTodo={this.changeTodo}
                         deleteTask={this.deleteTask}
                         getInitials={this.getInitials}
-                        addChecklist = {this.addChecklist}
+                        addChecklist={this.addChecklist}
                         addLabelToTask={this.addLabelToTask}
+                        changeTaskDesc={this.changeTaskDesc}
                         addMemberToTask={this.addMemberToTask}
+                        changeTaskColor={this.changeTaskColor}
                         addDueTimeToTask={this.addDueTimeToTask}
-                        changeTaskColor={this.changeTaskColor} />
+                        addActivityComment={this.addActivityComment}
+                    />
                 </div>
             </div>
         )
@@ -133,17 +174,20 @@ const mapStateToProps = state => {
     return {
         task: state.board.currTask,
         topic: state.board.currTopic,
-        board: state.board.board
+        board: state.board.board,
+        user: state.user.loggedInUser
     };
 };
 const mapDispatchToProps = {
+    loadBoard,
     addChecklist,
     setCurrTopic,
     setCurrTask,
     updateTask,
     deleteTask,
     cloneTask,
-    addTodo
+    addTodo,
+    addActivityComment
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskDetails);

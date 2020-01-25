@@ -20,7 +20,7 @@ export default class TaskPreview extends Component {
                     {...provided.dragHandleProps}
                 >
                     <li className='task-container' style={{ background: this.props.task.bgColor }}>
-                        <Link to={`topic/${this.props.topicId}/${this.props.task.id}`}>
+                        <Link to={`${this.props.boardId}/${this.props.topicId}/${this.props.task.id}`}>
                             <div className="task-title">{this.props.task.title}
                             </div>
                             <div className='members-container flex'> {this.props.task.members.map((member, idx) => {
