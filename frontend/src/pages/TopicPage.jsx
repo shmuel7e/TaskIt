@@ -30,7 +30,7 @@ class TopicPage extends Component {
     }
 
     componentDidMount = async () => {
-        console.log(this.props.board);
+      
         if (!this.props.user) {
             await this.props.setCurrBoard(this.props.board)
         }
