@@ -1,15 +1,19 @@
 .link-container {
-  width: 101px;
+  position: relative;
+  width: 80px;
   height: 32px;
   line-height: 35px;
   text-align: center;
   font-family: sans-serif;
 
   a {
+    position: absolute;
     font-size: 14px;
     color: #090909bd;
-    padding: 7px 14px;
     font-weight: bold;
+    top: 0;
+    width: 80px;
+    left: 0;
   }
 
   &:hover {
@@ -17,8 +21,7 @@
   }
   
   &:last-child {
-    width: 75px;
-    position: relative;
+    width: 50px;
   }
 
   .userIcon-container {
@@ -28,6 +31,7 @@
     height: 25px;
     background-color: $clr2;
     border-radius: 50%;
+    padding: 13px;
   }
 
   .user-navBar {
