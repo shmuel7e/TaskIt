@@ -7,19 +7,21 @@ export default class ModalBody extends Component {
 
     render() {
         const { task,
-            board,
-            addMemberToTask,
-            addLabelToTask,
-            addChecklist,
-            deleteTask,
-            cloneTask,
-            changeTaskColor,
-            addTodo,
-            changeTodo,
-            getInitials,
-            addDueTimeToTask,
-            addActivityComment
-         } = this.props;
+                board,
+                addMemberToTask,
+                addLabelToTask,
+                addChecklist,
+                deleteTask,
+                cloneTask,
+                changeTaskColor,
+                addTodo,
+                changeTodo,
+                getInitials,
+                addDueTimeToTask,
+                addActivityComment,
+                changeTaskDesc
+               } = this.props;
+
         if (!board) return 'loading..';
         return (
             <div className="modal-body flex">
@@ -28,8 +30,9 @@ export default class ModalBody extends Component {
                     addTodo={addTodo}
                     changeTodo={changeTodo}
                     getInitials={getInitials}
+                    changeTaskDesc={changeTaskDesc}
                     addActivityComment={addActivityComment}
-                     />
+                />
 
                 <ModalSideBar
                     task={task}

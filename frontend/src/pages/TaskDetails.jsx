@@ -82,47 +82,54 @@ class TaskDetails extends Component {
         this.props.history.push('/topic/' + this.props.board._id);
     }
 
-    cloneTask =async () => {
-      await  this.props.cloneTask(this.props.topic.id, this.props.task)
+    cloneTask = async () => {
+        await this.props.cloneTask(this.props.topic.id, this.props.task)
         BoardService.updateBoard(this.props.board)
         this.props.history.push('/topic/' + this.props.board._id);
     }
 
-    changeTaskColor =async (color) => {
+    changeTaskColor = async (color) => {
         const updateTask = this.props.task.bgColor = color;
-       await this.props.updateTask(this.props.topic, updateTask);
-       BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id)
+        await this.props.updateTask(this.props.topic, updateTask);
+        BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id)
     }
 
-    changeTodo =async (checkList, updatedTodo) => {
+    changeTodo = async (checkList, updatedTodo) => {
         let updatedCheckList = checkList.todos.map(todo =>
             todo.id === updatedTodo.id ? updatedTodo : todo)
         let updatedtask = this.props.task.checkList.map(checkList =>
             checkList.id === updatedCheckList.id ? updatedCheckList : checkList)
-      await  this.props.updateTask(this.props.topic, updatedtask);
-      BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id)
+        await this.props.updateTask(this.props.topic, updatedtask);
+        BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id)
     }
 
-    addTodo =async (checkList, todoTitle) => {
+    addTodo = async (checkList, todoTitle) => {
         const { topic, task } = this.props;
-       await this.props.addTodo(topic, task, checkList, todoTitle);
-       BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id)
+        await this.props.addTodo(topic, task, checkList, todoTitle);
+        BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id)
     }
 
-    addChecklist =async (checkListTitle) => {
+    addChecklist = async (checkListTitle) => {
         const { topic, task } = this.props;
-      await  this.props.addChecklist(topic, task, checkListTitle);
-      BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id)
+        await this.props.addChecklist(topic, task, checkListTitle);
+        BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id)
     }
-    addActivityComment =async (activityTxt) => {
+    addActivityComment = async (activityTxt) => {
         const { topic, task } = this.props;
         const activityCommen = {
             user: this.props.user,
             txt: activityTxt,
             date: new Date
         }
-      await  this.props.addActivityComment(topic, task, activityCommen)
-      BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id)
+        await this.props.addActivityComment(topic, task, activityCommen)
+        BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id)
+    }
+
+    changeTaskDesc = async (newTxt) => {
+        this.props.task.description = newTxt;
+        await this.props.updateTask(this.props.topic, this.props.task);
+        console.log(this.props.task);
+        BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id)
     }
 
 
@@ -151,9 +158,10 @@ class TaskDetails extends Component {
                         getInitials={this.getInitials}
                         addChecklist={this.addChecklist}
                         addLabelToTask={this.addLabelToTask}
+                        changeTaskDesc={this.changeTaskDesc}
                         addMemberToTask={this.addMemberToTask}
-                        addDueTimeToTask={this.addDueTimeToTask}
                         changeTaskColor={this.changeTaskColor}
+                        addDueTimeToTask={this.addDueTimeToTask}
                         addActivityComment={this.addActivityComment}
                     />
                 </div>

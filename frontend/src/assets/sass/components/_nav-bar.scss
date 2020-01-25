@@ -19,12 +19,13 @@
   &:hover {
     background-color: #8f8f8f9e;
   }
-  
-  &:last-child {
+
+  &:has( .userIcon-container) {
     width: 50px;
   }
 
   .userIcon-container {
+      
     cursor: pointer;
     color: #f5ebeb;
     width: 25px;
@@ -45,7 +46,6 @@
     box-shadow: 0 8px 16px -4px rgba(9, 30, 66, 0.25), 0 0 0 1px rgba(9, 30, 66, 0.08);
     -webkit-animation: slide-left 0.6s 0.1s both;
     animation: slide-left 0.6s 0.1s both;
-    
   }
   .user-navBar > * {
     cursor: pointer;
