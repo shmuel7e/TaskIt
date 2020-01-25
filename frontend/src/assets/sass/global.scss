@@ -23,6 +23,7 @@
 // board header
 @import "components/boardHeader/board-header";
 @import "components/boardHeader/board-member-list";
+@import "components/boardHeader/search-users";
 
 // topic
 @import "components/topic/topicList";
@@ -49,28 +50,21 @@
 @import "components/modalComment/modalCommentList";
 @import "components/modalComment/modalCommentPreview";
 
-
 // check list //
-
 @import "components/modalSideBar/checkList/check-list-modal";
 @import "components/modalSideBar/checkList/todo-preview";
 @import "components/modalSideBar/checkList/check-list-bar";
 @import "components/modalSideBar/checkList/check-list-preview";
 
-
-
 // labels // 
-
 @import "components/modalSideBar/labels/label-modal.scss";
 
 // colors //
-
 @import "components/modalSideBar/taskColor/task-color-modal.scss";
 @import "components/modalSideBar/taskColor/task-color-list.scss";
 @import "components/modalSideBar/taskColor/task-color-preview.scss";
 
 // members // 
-
 @import "components/modalSideBar/members/members";
 
 // Due Time //

@@ -8,8 +8,9 @@ export default class UserList extends Component {
                 {this.props.membersToInvite.map(member => {
                     return <li key={member._id}>
                         <UserPreview
-                            onAddMember={this.props.onAddMember}
                             member={member}
+                            onAddMember={this.props.onAddMember}
+                            toggleUsersModal={this.props.toggleUsersModal}
                         />
                     </li>
                 })}
