@@ -49,7 +49,6 @@ export default class SignIn extends Component {
                 </label>
                 <p className="forgot-pass">Forgot password?</p>
                 <button onClick={this.checkCredentials} type="button" className="submit form-button">Sign In</button>
-                <button type="button" className="fb-btn form-button">Connect with <span className='form-span'>facebook</span></button>
             </div>
         )
     }

@@ -3,11 +3,11 @@ import TodoPreview from './TodoPreview.jsx';
 
 export default class TodoList extends Component {
     render() {
-        const { checkList, todos, changeTodo } = this.props;
+        const { checkList, todos, changeTodo ,deleteTodo} = this.props;
         return (
             <div>
                 {todos.map((todo, idx) => {
-                    return <TodoPreview changeTodo={changeTodo} checkList={checkList} todo={todo} key={idx} />
+                    return <TodoPreview deleteTodo={deleteTodo} changeTodo={changeTodo} checkList={checkList} todo={todo} key={idx} />
                 })}
             </div>
         )
