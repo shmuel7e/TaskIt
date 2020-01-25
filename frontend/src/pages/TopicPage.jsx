@@ -9,6 +9,7 @@ import TaskDetails from './TaskDetails.jsx';
 import UtilsService from '../services/UtilsService.js';
 import BoardService from '../services/BoardService.js'
 import SocketService from '../services/SocketService.js'
+import UserService from '../services/UserService.js'
 
 
 import { connect } from 'react-redux';
@@ -170,6 +171,10 @@ class TopicPage extends Component {
             type)
             BoardService.updateBoard(this.props.board)
     }
+    onSearchUsers=async(input)=>{
+     const members= await UserService.searchUsersToInvite(input,this.props.board.members)
+     console.log(members)
+    }
 
     render() {
         const { board } = this.props
@@ -179,6 +184,7 @@ class TopicPage extends Component {
             <DragDropContext onDragEnd={this.onDragEnd}>
                 <div style={this.state.style} className="trello-page-container header-padding">
                     <BoardHeader
+                        onSearchUsers={this.onSearchUsers}
                         imgs={this.state.imgs}
                         board={board}
                         changeBgImg={this.changeBgImg}

@@ -9,7 +9,8 @@ module.exports = {
     getByEmail,
     remove,
     update,
-    add
+    add,
+    getUsersByEmail
 }
 
 async function query(filterBy = {}) {
@@ -54,6 +55,23 @@ async function getByEmail(email) {
         console.log(`ERROR: while finding user ${email}`)
         throw err;
     }
+}
+//   const users = await collection.find({$and:[criteria,{"_id":{ $nin:[ObjectId("5e29d6d35cb677824c26c931"),ObjectId("5e2b5a25e180460e309fad36")] }}] }).toArray();
+//,{$nin:[emails]}
+//db.getCollection('user').find({ _id: { $nin: [ObjectId("5e29d6d35cb677824c26c931"),ObjectId("5e2b5a25e180460e309fad36")] }  }) 
+async function getUsersByEmail(emails,input){
+    const criteria = {};
+    criteria.email = {$regex:`${input}` }
+    console.log(emails,input)
+    const collection = await dbService.getCollection('user')
+    try {
+        const users = await collection.find({$and:[criteria,{"email":{ $nin:emails }}] }).toArray();
+        return users
+    } catch (err) {
+        console.log('ERROR: cannot find users')
+        throw err;
+    }
+
 }
 
 async function remove(userId) {

@@ -1,4 +1,4 @@
-//db.getCollection('user').find({ _id: { $nin: [ObjectId("5e29d6d35cb677824c26c931"),ObjectId("5e2b5a25e180460e309fad36")] }  }) 
+
 const dbService = require('../../services/db.service')
 const boardUtils = require('./board.utils')
 const ObjectId = require('mongodb').ObjectId

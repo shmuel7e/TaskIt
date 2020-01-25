@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
+
+
 import SideMenu from '../sideMenu/SideMenu.jsx';
 import BoardMemberList from './BoardMemberList.jsx';
+import SearchUsers from './SearchUsers.jsx'
 
 export default class BoardHeader extends Component {
 
@@ -28,6 +31,7 @@ export default class BoardHeader extends Component {
                     <BoardMemberList board={board} />
                     <span className="board-header-divider"></span>
                     <button className='borad-header-btn' >Invite</button>
+                    <SearchUsers onSearchUsers={this.props.onSearchUsers}/>
                 </div>
                 <button className='borad-header-btn' onClick={this.onToggleMenu}>Show Menu</button>
                 <div className={`${this.state.isMenuOn ? ' menu menu-off' : 'menu menu-on'}`}>
