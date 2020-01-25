@@ -1,7 +1,6 @@
 .about-page-container {
   flex-wrap: wrap;
   text-align: center;
-  margin-top: 4rem;
   height: 100vh;
   width: 100%;
 }
@@ -21,15 +20,18 @@
 .creator-section6 {
   text-align: left;
   width: 50%;
-  min-height: 600px;
-  max-height: 600px;
-  height: 100%;
   margin-left: auto;
   margin-right: auto;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  & > p {
-    font-family: ShadowsIntoLight-Regular;
-    font-size: 2rem;
+  position: relative;
+  & > * > h1 {
+    font-size: 2.5rem;
+    font-family: cursive;
+  }
+  & > * > p {
+    font-family: cursive;
+    padding-left: 10px;
+    font-size: 1.5rem;
+    text-align: left;
   }
 }
 
@@ -85,5 +87,12 @@
 }
 
 .social-media {
-  margin-top: 35%;
+  bottom: 0;
+  position: absolute;
+  left: 0;
+  & > button {
+    cursor: pointer;
+    margin-left: 6rem;
+    margin-bottom: 20px;
+  }
 }

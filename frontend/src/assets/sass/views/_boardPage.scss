@@ -1,27 +1,59 @@
-
-
-.board-page-container{
- 
-    margin-top: 100px;
-    padding: 0 100px;
-
-    h1{
-        font-size: rem(30px);
-        text-align: center;
-    }
+.board-page-container {
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+overflow:hidden !important;
+  background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmNBRGm6_hAnQ-Eereq8XsOBiLyGWSWhuNI1--WZYU2D1P4D7zmQ&s)
+    fixed center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  h1 {
+    font-size: rem(30px);
+    text-align: center;
+  }
 }
 
-.board-container{
-   max-width:250px;
-   cursor: pointer;
-   margin:10px;
+.board-container {
+  max-width: 250px;
+  cursor: pointer;
+  margin: 10px;
 
-   h4{
-       text-align: center;
-   }
-   img{
-       width:250px;
-       height: 160px;
-       
-   }
+  h4 {
+    text-align: center;
+  }
+  img {
+    width: 250px;
+    height: 160px;
+    transition: all ease 0.4s;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+.add-board-btn {
+  outline: none;
+  font-weight: 600;
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  background-color: black;
+  color: white;
+  border: none;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.781);
+  }
+  margin-bottom: 30px;
+}
+
+.boards-container {
+  overflow-y: scroll;
+  width: 100%;
+  flex-wrap: wrap;
+  margin-left: 7rem;
+  margin-right: 7rem;
 }
