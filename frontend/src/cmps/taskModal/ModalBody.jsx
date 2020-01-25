@@ -8,18 +8,20 @@ export default class ModalBody extends Component {
     render() {
         const { task,
                 board,
-                addMemberToTask,
-                addLabelToTask,
-                addChecklist,
-                deleteTask,
-                cloneTask,
-                changeTaskColor,
                 addTodo,
+                cloneTask,
                 changeTodo,
+                deleteTodo,
+                deleteTask,
                 getInitials,
+                addChecklist,
+                changeTaskDesc,
+                addLabelToTask,
+                addMemberToTask,
+                deleteChecklist,
+                changeTaskColor,
                 addDueTimeToTask,
                 addActivityComment,
-                changeTaskDesc
                } = this.props;
 
         if (!board) return 'loading..';
@@ -29,8 +31,10 @@ export default class ModalBody extends Component {
                     task={task}
                     addTodo={addTodo}
                     changeTodo={changeTodo}
+                    deleteTodo={deleteTodo}
                     getInitials={getInitials}
                     changeTaskDesc={changeTaskDesc}
+                    deleteChecklist={deleteChecklist}
                     addActivityComment={addActivityComment}
                 />
 

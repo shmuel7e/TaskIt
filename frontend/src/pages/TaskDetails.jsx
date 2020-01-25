@@ -160,6 +160,27 @@ class TaskDetails extends Component {
         SocketService.emit('user changes', this.props.user.username + 'has changed description to task');
     }
 
+    deleteChecklist = async (checklist) => {
+    const filteredChecklists = this.props.task.checkList.filter(currCheckList => currCheckList.id !== checklist.id);
+    this.props.task.checkList = filteredChecklists;
+    await this.props.updateTask(this.props.topic, this.props.task);
+    BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id);
+    SocketService.emit('user changes', this.props.user.username + 'has deleted checklist');
+    }
+
+    deleteTodo = async (checkList,todo) => {
+        const filteredTodos = checkList.todos.filter(currTodo => currTodo.id !== todo.id);
+        checkList.todos = filteredTodos;
+        let updatedtask = this.props.task.checkList.map(currCheckList =>
+            currCheckList.id === checkList.id ? checkList : currCheckList)
+            console.log(updatedtask);
+        await this.props.updateTask(this.props.topic, updatedtask);
+        BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id);
+        SocketService.emit('user changes', this.props.user.username + 'has deleted todo');
+
+        
+
+    }
 
     render() {
         const { board } = this.props;
@@ -183,12 +204,14 @@ class TaskDetails extends Component {
                         cloneTask={this.cloneTask}
                         changeTodo={this.changeTodo}
                         deleteTask={this.deleteTask}
+                        deleteTodo={this.deleteTodo}
                         getInitials={this.getInitials}
                         addChecklist={this.addChecklist}
                         addLabelToTask={this.addLabelToTask}
                         changeTaskDesc={this.changeTaskDesc}
                         addMemberToTask={this.addMemberToTask}
                         changeTaskColor={this.changeTaskColor}
+                        deleteChecklist={this.deleteChecklist}
                         addDueTimeToTask={this.addDueTimeToTask}
                         addActivityComment={this.addActivityComment}
                     />

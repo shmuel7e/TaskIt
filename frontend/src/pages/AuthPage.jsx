@@ -42,7 +42,7 @@ class AuthPage extends Component {
                         <div className="img">
                             <div className="img__text m--up">
                                 <h2>New here?</h2>
-                                <p>Sign up and discover great amount of new opportunities!</p>
+                                <p>Sign up and discover a new world of project management!</p>
                             </div>
                             <div className="img__text m--in">
                                 <h2>One of us?</h2>

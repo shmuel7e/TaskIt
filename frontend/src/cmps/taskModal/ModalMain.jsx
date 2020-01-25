@@ -18,15 +18,18 @@ export default class ModalMain extends Component {
     }
 
     render() {
-        const { task, changeTodo, getInitials ,addTodo,addActivityComment} = this.props;
+        const { task, changeTodo,deleteChecklist,deleteTodo, getInitials ,addTodo,addActivityComment} = this.props;
         return (
             <div className='modal-main-container'>
                 <div className="modal-activity flex">
                     <ModalActivity
                         task={task}
                         addTodo = {addTodo}
+                        changeTodo={changeTodo}
+                        deleteTodo={deleteTodo}
                         getInitials={getInitials}
-                        changeTodo={changeTodo} />
+                        deleteChecklist={deleteChecklist}
+                         />
 
                 </div>
                 <div className="sub-title">Description
