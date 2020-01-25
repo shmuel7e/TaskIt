@@ -36,7 +36,6 @@ async function cloneTask(task) {
 
 function _createTask(taskTitle) {
     return {
-        // id: UtilsService.makeRandomId(),
         title: taskTitle,
         cover: '',
         description: '',
@@ -60,9 +59,14 @@ async function addTask(taskTitle, topicId, currBoardId) {
     const newTask = _createTask(taskTitle)
     return await HttpService.put(`board/task/${topicId}/${currBoardId}`, newTask)
 }
+<<<<<<< HEAD
 async function updateTask(taskToUpdate, boardId, topicId) {
     console.log(taskToUpdate, boardId, topicId)
     return await HttpService.put(`board/updatetask/${boardId}/${topicId}/${taskToUpdate.id}`, taskToUpdate)
+=======
+async function updateTask(taskToUpdate,boardId, topicId) {
+   return await HttpService.put(`board/updatetask/${boardId}/${topicId}/${taskToUpdate.id}`, taskToUpdate)
+>>>>>>> 2cac4f991127a7d79ecab6b4a8f2b3b4a73dafa7
 }
 
 function _createTopic(topicTitle) {
