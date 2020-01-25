@@ -31,9 +31,27 @@ export function setCurrBoard(board) {
     return dispatch => {
         try {
             dispatch(_setBoard(board));
-            StorageService.saveToStorage('board',board)
+           // StorageService.saveToStorage('board',board)
         } catch (err) {
             console.log('UserActions: err in set board', err);
+        }
+    };
+}
+
+
+// add member
+function _addMember(member) {
+    return {
+        type: 'BOARD_MEMBER_ADD',
+        member
+    }
+}
+export function addMemberToBoard(member) {
+    return dispatch => {
+        try {
+            dispatch(_addMember(member));
+        } catch (err) {
+            console.log('BoardActions: err in add member', err);
         }
     };
 }
@@ -41,10 +59,7 @@ export function setCurrBoard(board) {
 export function loadBoard() {
     return async dispatch => {
         try {
-           // const board = await BoardService.getBoard();
-           console.log('sa')
            const board =StorageService.loadFromStorage('board',null)
-           console.log(board)
             dispatch(_setBoard(board));
         } catch (err) {
             console.log('UserActions: err in getBoard', err);
@@ -55,9 +70,6 @@ export function loadBoard() {
 export function updateBoard(board) {
     return async dispatch => {
         try {
-            // // example for loading
-            // dispatch(loading());
-            // const board = await BoardService.query();
             dispatch(_setBoard(board));
         } catch (err) {
             console.log('UserActions: err in loadUsers', err);
@@ -98,8 +110,6 @@ function _updateTopic(topic) {
 export function updateTopic(topic) {
     return async dispatch => {
         try {
-            //TODO
-            //const topic = await BoardService.updateTopic();
             dispatch(_updateTopic(topic));
         } catch (err) {
             console.log('UserActions: err in updateTopic', err);
@@ -144,13 +154,6 @@ export function updateTask(topic, task) {
     };
 }
 
-// // add new topic
-// function _addTopic(newTopic) {
-//     return {
-//         type: 'TOPIC_ADD',
-//         newTopic
-//     }
-// }
 export function addTopic(topicName, boardId) {
     return async dispatch => {
         try {
@@ -162,14 +165,6 @@ export function addTopic(topicName, boardId) {
     };
 }
 
-// // add task 
-// function _addTask(newTask, topicId) {
-//     return {
-//         type: 'TASK_ADD',
-//         newTask,
-//         topicId
-//     }
-// }
 
 export function addTask(taskTitle, topicId, boardId) {
     return async dispatch => {
@@ -255,8 +250,6 @@ function _deleteTopic(topicId) {
 export function deleteTopic(topicId) {
     return async dispatch => {
         try {
-            // TODO handle service and backend
-            //const deleteTopic = await BoardService.deleteTopic(topicId);
             dispatch(_deleteTopic(topicId));
         } catch (err) {
             console.log('UserActions: err in deleteTopic', err);
@@ -274,8 +267,6 @@ function _deleteTask(taskId) {
 export function deleteTask(taskId) {
     return async dispatch => {
         try {
-            // TODO handle service and backend
-            //const deleteTask = await BoardService.deleteTask(taskId);
             dispatch(_deleteTask(taskId));
         } catch (err) {
             console.log('UserActions: err in deleteTask', err);
@@ -375,8 +366,6 @@ export function sortTasks(
     const typeToDrop = type
     return async dispatch => {
         try {
-            // TODO handle service and backend
-            //const deleteTask = await BoardService.deleteTask(taskId);
             dispatch(_sortTasks(droppableIdStart,
                 droppableIdEnd,
                 droppableIndexStart,

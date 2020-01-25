@@ -13,6 +13,9 @@ export default function (state = initialState, action = {}) {
     case 'BOARD_SET':
       return { ...state, board: { ...action.board } };
 
+    case 'BOARD_MEMBER_ADD':
+      return {...state,board:{...state.board,members:[...state.board.members,action.member]}}
+
     case 'BOARD_COVER_SET':
       return { ...state, board: { ...state.board, cover: action.imgName } }
 

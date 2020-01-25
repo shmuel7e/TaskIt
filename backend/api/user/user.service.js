@@ -56,9 +56,7 @@ async function getByEmail(email) {
         throw err;
     }
 }
-//   const users = await collection.find({$and:[criteria,{"_id":{ $nin:[ObjectId("5e29d6d35cb677824c26c931"),ObjectId("5e2b5a25e180460e309fad36")] }}] }).toArray();
-//,{$nin:[emails]}
-//db.getCollection('user').find({ _id: { $nin: [ObjectId("5e29d6d35cb677824c26c931"),ObjectId("5e2b5a25e180460e309fad36")] }  }) 
+
 async function getUsersByEmail(emails,input){
     const criteria = {};
     criteria.email = {$regex:`${input}` }
@@ -66,7 +64,10 @@ async function getUsersByEmail(emails,input){
     const collection = await dbService.getCollection('user')
     try {
         const users = await collection.find({$and:[criteria,{"email":{ $nin:emails }}] }).toArray();
-        return users
+        return users.map(user=>{
+            delete user.password
+            return user
+        })
     } catch (err) {
         console.log('ERROR: cannot find users')
         throw err;

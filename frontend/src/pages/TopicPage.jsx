@@ -13,7 +13,18 @@ import UserService from '../services/UserService.js'
 
 
 import { connect } from 'react-redux';
-import {setBgCover, addTask, deleteTopic, addTopic, updateTopic, sortTasks, updateBoard, updateActivity, setCurrBoard } from '../actions/BoardActions';
+import {
+    addMemberToBoard,
+    setBgCover,
+    addTask,
+    deleteTopic,
+    addTopic,
+    updateTopic,
+    sortTasks,
+    updateBoard,
+    updateActivity,
+    setCurrBoard
+} from '../actions/BoardActions';
 import { Route, Router } from 'react-router';
 import history from '../history';
 
@@ -27,52 +38,55 @@ class TopicPage extends Component {
     state = {
         imgs: [],
         colors: [],
-        style: {}
+        style: {},
+        membersToInvite: []
     }
 
     componentDidMount = async () => {
-    
-            const board = await BoardService.getBoard(this.props.match.params.id)
-            await this.props.setCurrBoard(board)
-        
+
+        const board = await BoardService.getBoard(this.props.match.params.id)
+        await this.props.setCurrBoard(board)
+
         this.getGalleryImgs();
         this.getGalleryColors();
         SocketService.setup();
         // SocketService.emit('chat topic', this.props.match.params);
         SocketService.emit('user joined the board', { text: `${this.props.user.username} has joined the board` });
-        SocketService.on('when added task', () => {
+        SocketService.on('when added task',async () => {
             this.onAddActivity('task was added');
             console.log('task was added');
-
-          //  this.props.setCurrBoard(this.props.board);
+        //     const board = await BoardService.getBoard(this.props.match.params.id)
+        //    console.log(board)
+        //     this.props.setCurrBoard(board)
+              this.props.setCurrBoard(this.props.board);
         });
         SocketService.on('when deleted topic', () => {
             console.log('deleting topic');
-           // this.props.setCurrBoard(this.props.board);
+            // this.props.setCurrBoard(this.props.board);
         })
         SocketService.on('when title changed', () => {
             console.log('title was changed');
-          //  this.props.setCurrBoard(this.props.board);
+            //  this.props.setCurrBoard(this.props.board);
         })
         SocketService.on('when topic added', () => {
             console.log('topic was added');
-         //   this.props.setCurrBoard(this.props.board);
+            //   this.props.setCurrBoard(this.props.board);
         })
         SocketService.on('when cover changed', () => {
-         //   this.props.setCurrBoard(this.props.board);
+            //   this.props.setCurrBoard(this.props.board);
         })
         SocketService.on('when bgColor changed', () => {
-         //   this.props.setCurrBoard(this.props.board);
+            //   this.props.setCurrBoard(this.props.board);
         })
     }
-  async  componentDidUpdate(prevProps) {
+    async  componentDidUpdate(prevProps) {
         if (prevProps.match.params.id
             !== this.props.match.params.id) {
             const board = await BoardService.getBoard(this.props.match.params.id)
             this.props.setCurrBoard(board)
         }
         if (this.props.board && Object.entries(this.state.style).length === 0) {
-            if(this.props.board.cover.includes('bg'))this.changeBgImg(this.props.board.cover)
+            if (this.props.board.cover.includes('bg')) this.changeBgImg(this.props.board.cover)
             else this.changeBgColor(this.props.board.cover)
         }
     }
@@ -120,9 +134,9 @@ class TopicPage extends Component {
 
 
 
-    deleteTopic =async (topicId) => {
-       await this.props.deleteTopic(topicId);
-       BoardService.updateBoard(this.props.board)
+    deleteTopic = async (topicId) => {
+        await this.props.deleteTopic(topicId);
+        BoardService.updateBoard(this.props.board)
         SocketService.emit('user deleted topic', this.props.user.username + ' has deleted a topic');
     }
 
@@ -133,10 +147,10 @@ class TopicPage extends Component {
         if (this.props.board) this.props.updateActivity(addedActivity, { ...this.props.board });
     }
 
-    changeTopicTitle =async (topic, newTxt) => {
+    changeTopicTitle = async (topic, newTxt) => {
         topic.title = newTxt;
-       await this.props.updateTopic(topic);
-       BoardService.updateBoard(this.props.board)
+        await this.props.updateTopic(topic);
+        BoardService.updateBoard(this.props.board)
         SocketService.emit('user changed topic title', this.props.user.username + ' has changed topic title');
 
     }
@@ -157,33 +171,42 @@ class TopicPage extends Component {
     onGetInitials = (fullName) => {
         return UtilsService.getInitials(fullName);
     }
-    onDragEnd =async (result) => {
+    onDragEnd = async (result) => {
         const { destination, source, draggableId, type } = result
         if (!destination) {
             return
         }
-    await    this.props.sortTasks(
+        await this.props.sortTasks(
             source.droppableId,
             destination.droppableId,
             source.index,
             destination.index,
             draggableId,
             type)
-            BoardService.updateBoard(this.props.board)
+        BoardService.updateBoard(this.props.board)
     }
-    onSearchUsers=async(input)=>{
-     const members= await UserService.searchUsersToInvite(input,this.props.board.members)
-     console.log(members)
+    onSearchUsers = async (input) => {
+        if (!input) {
+            this.setState({ membersToInvite: [] })
+        } else {
+            const members = await UserService.searchUsersToInvite(input, this.props.board.members)
+            this.setState({ membersToInvite: members })
+        }
+    }
+    onAddMember = async (member) => {
+        await this.props.addMemberToBoard(member)
+        BoardService.updateBoard(this.props.board)
     }
 
     render() {
         const { board } = this.props
-       // console.log(board)
         if (!board) return 'Loading...'
         return (
             <DragDropContext onDragEnd={this.onDragEnd}>
                 <div style={this.state.style} className="trello-page-container header-padding">
                     <BoardHeader
+                        onAddMember={this.onAddMember}
+                        membersToInvite={this.state.membersToInvite}
                         onSearchUsers={this.onSearchUsers}
                         imgs={this.state.imgs}
                         board={board}
@@ -228,7 +251,8 @@ const mapDispatchToProps = {
     sortTasks,
     updateBoard,
     updateActivity,
-    setCurrBoard
+    setCurrBoard,
+    addMemberToBoard
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TopicPage);

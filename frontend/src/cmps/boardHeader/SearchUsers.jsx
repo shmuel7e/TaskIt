@@ -7,8 +7,11 @@ export default class SearchUsers extends Component {
     render() {
         return (
             <div className="flex column justify-center">
-                <Filter onSearchUsers={this.props.onSearchUsers}/>
-                <UserList/>
+                <Filter onSearchUsers={this.props.onSearchUsers} />
+                <UserList
+                    onAddMember={this.props.onAddMember}
+                    membersToInvite={this.props.membersToInvite}
+                />
             </div>
         )
     }
