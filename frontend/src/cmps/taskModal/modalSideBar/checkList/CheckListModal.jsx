@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 export default class CheckListModal extends Component {
 
-    state = { checkListTitle: null }
+    state = { checkListTitle: 'Check list' }
 
     onCloseModal = () => {
         this.props.closeModal('checklist')

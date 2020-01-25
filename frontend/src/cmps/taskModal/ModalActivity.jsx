@@ -14,10 +14,17 @@ export default class ModalActivity extends Component {
     }
 
     render() {
-        const {task, changeTodo, addTodo} = this.props;
+        const { task, changeTodo, addTodo,deleteTodo, deleteChecklist } = this.props;
         return (
             <div>
-            {task.checkList ? <CheckListList addTodo = {addTodo} changeTodo={changeTodo} checkLists={task.checkList}/> : ''} 
+                {task.checkList ?
+                    <CheckListList
+                        addTodo={addTodo}
+                        changeTodo={changeTodo}
+                        deleteTodo={deleteTodo}
+                        checkLists={task.checkList}
+                        deleteChecklist={deleteChecklist}
+                    /> : ''}
 
 
                 {task.members.length ? <h3 className="members-on-task-title">Members</h3> : ''}

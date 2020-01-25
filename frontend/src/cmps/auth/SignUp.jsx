@@ -58,7 +58,6 @@ export default class SignUp extends Component {
                 onClick={this.checkCredentials}
                  type="button"
                   className="submit form-button">Sign Up</button>
-                <button type="button" className="fb-btn form-button">Join with <span className='form-span'>facebook</span></button>
             </div>
         )
     }
