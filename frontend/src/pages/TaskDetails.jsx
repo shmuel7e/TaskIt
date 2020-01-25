@@ -39,7 +39,7 @@ class TaskDetails extends Component {
     }
 
     componentWillUnmount = () => {
-        //SocketService.terminate();
+        SocketService.terminate();
         // SocketService.off('user joined the board');
     }
     onAddActivity = (activityName) => {
