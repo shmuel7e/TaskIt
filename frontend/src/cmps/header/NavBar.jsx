@@ -20,7 +20,7 @@ export default class NavBar extends Component {
                  {this.props.user &&
                     <div className='link-container'>
                         <NavLink activeClassName="active" to='/board'>
-                           My Boards
+                           Boards
                     </NavLink>
                     </div>
                 }
