@@ -56,7 +56,7 @@ class TopicPage extends Component {
             const board = await BoardService.getBoard(this.props.match.params.id)
             await this.props.setCurrBoard(board)
               if (msg.includes('cover')) this.initialBgImg()
-              else if(msg.includes('color')) this.initialColorBg()
+              else if(msg.includes('color') && !msg.includes('task')) this.initialColorBg()
         });
     }
     async  componentDidUpdate(prevProps) {
@@ -67,7 +67,7 @@ class TopicPage extends Component {
         }
         if (this.props.board && Object.entries(this.state.style).length === 0) {
             if (this.props.board.cover.includes('bg'))this.initialBgImg()
-             else if(this.props.board.cover.includes('color')) this.initialColorBg()
+             else if(this.props.board.cover.includes('linear-gradient')) this.initialColorBg()
         }
     }
 
@@ -98,7 +98,6 @@ class TopicPage extends Component {
     }
 
     initialColorBg=()=>{
-        console.log('aa')
        const style = {
             background: this.props.board.cover
         }
@@ -114,7 +113,7 @@ class TopicPage extends Component {
         }
         await this.props.setBgCover(imgName);
         this.setState({ style })
-        BoardService.updateBoard(this.props.board)
+      await  BoardService.updateBoard(this.props.board)
         SocketService.emit('user changes', this.props.user.username + ' has changed board cover');
     }
 
@@ -124,7 +123,7 @@ class TopicPage extends Component {
         }
         await this.props.setBgCover(colorName);
         this.setState({ style });
-        BoardService.updateBoard(this.props.board)
+      await  BoardService.updateBoard(this.props.board)
         SocketService.emit('user changes', this.props.user.username + ' has changed board color');
     }
 
@@ -151,7 +150,7 @@ class TopicPage extends Component {
 
     }
 
-    onAddNewTopic = (topicName) => {// todo create topic func 
+    onAddNewTopic = (topicName) => {
         const { board } = this.props;
         this.props.addTopic(topicName, board._id);
         SocketService.emit('user changes', this.props.user.username + ' has added new topic');
