@@ -40,6 +40,11 @@ class TaskDetails extends Component {
             this.loadTask();
         }
     }
+
+    componentWillUnmount = () => {
+        SocketService.terminate();
+        // SocketService.off('user joined the board');
+    }
     onAddActivity = (activityName) => {
         let date = new Date;
         date = date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
@@ -90,7 +95,7 @@ class TaskDetails extends Component {
         this.props.task.dueTime = dueTime;
         await this.props.updateTask(this.props.topic, this.props.task);
         BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id)
-        SocketService.emit('user changes', this.props.user.username + 'has added due time to task');
+        SocketService.emit('user changes', this.props.user.username + ' has added due time to task');
 
     }
 
@@ -101,14 +106,14 @@ class TaskDetails extends Component {
     deleteTask = async () => {
         await this.props.deleteTask(this.props.task.id)
         BoardService.updateBoard(this.props.board)
-        SocketService.emit('user changes', this.props.user.username + 'has deleted task');
+        SocketService.emit('user changes', this.props.user.username + ' has deleted task');
         this.props.history.push('/topic/' + this.props.board._id);
     }
 
     cloneTask = async () => {
         await this.props.cloneTask(this.props.topic.id, this.props.task)
         BoardService.updateBoard(this.props.board)
-        SocketService.emit('user changes', this.props.user.username + 'has clone task');
+        SocketService.emit('user changes', this.props.user.username + ' has clone task');
         this.props.history.push('/topic/' + this.props.board._id);
     }
 
@@ -116,7 +121,7 @@ class TaskDetails extends Component {
         const updateTask = this.props.task.bgColor = color;
         await this.props.updateTask(this.props.topic, updateTask);
         BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id)
-        SocketService.emit('user changes', this.props.user.username + 'has changed color to task');
+        SocketService.emit('user changes', this.props.user.username + ' has changed color to task');
     }
 
     changeTodo = async (checkList, updatedTodo) => {
@@ -139,7 +144,7 @@ class TaskDetails extends Component {
         const { topic, task } = this.props;
         await this.props.addChecklist(topic, task, checkListTitle);
         BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id)
-        SocketService.emit('user changes', this.props.user.username + 'has added check list to task');
+        SocketService.emit('user changes', this.props.user.username + ' has added check list to task');
     }
     addActivityComment = async (activityTxt) => {
         const { topic, task } = this.props;
@@ -150,14 +155,14 @@ class TaskDetails extends Component {
         }
         await this.props.addActivityComment(topic, task, activityCommen)
         BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id)
-        SocketService.emit('user changes', this.props.user.username + 'has added activity comment to task');
+        SocketService.emit('user changes', this.props.user.username + ' has added activity comment to task');
     }
 
     changeTaskDesc = async (newTxt) => {
         this.props.task.description = newTxt;
         await this.props.updateTask(this.props.topic, this.props.task);
         BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id)
-        SocketService.emit('user changes', this.props.user.username + 'has changed description to task');
+        SocketService.emit('user changes', this.props.user.username + ' has changed description to task');
     }
 
 

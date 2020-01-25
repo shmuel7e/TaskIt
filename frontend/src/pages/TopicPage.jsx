@@ -67,7 +67,7 @@ class TopicPage extends Component {
         }
         if (this.props.board && Object.entries(this.state.style).length === 0) {
             if (this.props.board.cover.includes('bg'))this.initialBgImg()
-             else if(this.props.board.cover.includes('board color')) this.initialColorBg()
+             else if(this.props.board.cover.includes('color')) this.initialColorBg()
         }
     }
 
@@ -98,6 +98,7 @@ class TopicPage extends Component {
     }
 
     initialColorBg=()=>{
+        console.log('aa')
        const style = {
             background: this.props.board.cover
         }
