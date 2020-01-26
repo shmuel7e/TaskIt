@@ -6,7 +6,7 @@
     "scripts": {
         "server:dev": "NODE_ENV=development nodemon server.js",
         "server:prod": "node server.js",
-        "start":"node server.js"
+        "start": "node server.js"
     },
     "author": "moshe pinhasi",
     "license": "ISC",
