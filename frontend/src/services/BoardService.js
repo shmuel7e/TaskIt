@@ -2,7 +2,7 @@ import UtilsService from './UtilsService.js'
 import HttpService from './HttpService';
 
 async function getBoard(boardId) {
-    return await HttpService.get('board/'+boardId)
+    return await HttpService.get('board/' + boardId)
 }
 async function getBoards(userId) {
     return await HttpService.get(`board/all/${userId}`)
@@ -14,6 +14,10 @@ async function addBoard(user) {
 async function updateBoard(board) {
     return await HttpService.put('board', board)
 }
+
+// TODO //
+// ADD DELETE BOARD BUTTON //
+
 
 async function setBgCover(imgName) {
     return Promise.resolve(imgName);
@@ -55,6 +59,9 @@ async function addTask(taskTitle, topicId, currBoardId) {
     const newTask = _createTask(taskTitle)
     return await HttpService.put(`board/task/${topicId}/${currBoardId}`, newTask)
 }
+// async function updateTask(taskToUpdate, boardId, topicId) {
+//     console.log(taskToUpdate, boardId, topicId)
+//     return await HttpService.put(`board/updatetask/${boardId}/${topicId}/${taskToUpdate.id}`, taskToUpdate)
 async function updateTask(taskToUpdate,boardId, topicId) {
    return await HttpService.put(`board/updatetask/${boardId}/${topicId}/${taskToUpdate.id}`, taskToUpdate)
 }
@@ -67,12 +74,12 @@ function _createTopic(topicTitle) {
 }
 
 
-async function addNewTodo(checkList,task, todoTitle) {
+async function addNewTodo(checkList, task, todoTitle) {
     const newTodo = _createTodo(todoTitle)
     checkList.todos.push(newTodo);
     let updatedCheckLists = task.checkList.map(currCheckList =>
         currCheckList.id === checkList.id ? checkList : currCheckList)
-    task.checkList = updatedCheckLists  
+    task.checkList = updatedCheckLists
     return Promise.resolve({ ...task })
 }
 
@@ -80,7 +87,7 @@ function _createTodo(todoTitle) {
     return {
         id: UtilsService.makeRandomId(),
         title: todoTitle,
-        isDone:false
+        isDone: false
     }
 }
 
@@ -94,7 +101,7 @@ function _createCheckList(checkListTitle) {
     return {
         id: UtilsService.makeRandomId(),
         title: checkListTitle,
-        todos:[]
+        todos: []
     }
 }
 

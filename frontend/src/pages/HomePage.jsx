@@ -43,13 +43,3 @@ export default class HomePage extends Component {
     }
 }
 
-// const mapStateToProps = state => {
-//     return {
-//       loggedInUser: state.user.loggedInUser,
-//       websites: state.website.selectedWebsite
-//     };
-//   };
-//   const mapDispatchToProps = {
-//   };
-
-//   export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
