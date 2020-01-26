@@ -22,6 +22,7 @@ class TaskDetails extends Component {
 
     componentDidMount() {
         this.loadTask();
+        SocketService.setup();
         SocketService.on('user changes', async (msg) => {
             this.onAddActivity(msg);
             const board = await BoardService.getBoard(this.props.board._id)
