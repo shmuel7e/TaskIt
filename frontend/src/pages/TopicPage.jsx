@@ -223,9 +223,9 @@ class TopicPage extends Component {
                             </ListContainer>
                         )}
                     </Droppable>
-                    <Router history={history}>
+                    {/* <Router history={history}> */}
                         <Route component={TaskDetails} path="/topic/:boardId/:topicId/:taskId" exact></Route>
-                    </Router>
+                    {/* </Router> */}
                 </div>
             </DragDropContext>
         )

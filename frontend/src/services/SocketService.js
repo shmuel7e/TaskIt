@@ -14,7 +14,10 @@ export default {
 };
 
 function setup() {
-  socket = io(BASE_URL);
+  if(!socket){
+
+    socket = io(BASE_URL);
+  }
 }
 
 function terminate() {

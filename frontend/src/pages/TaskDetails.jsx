@@ -22,7 +22,7 @@ class TaskDetails extends Component {
 
     componentDidMount() {
         this.loadTask();
-        // SocketService.setup();
+         SocketService.setup();
         // SocketService.emit('chat topic', this.props.match.params.id);
         SocketService.on('user changes', async (msg) => {
             console.log('task page', msg)
