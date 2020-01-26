@@ -18,7 +18,7 @@ export default class ModalComments extends Component {
     closeModal=()=>{
         setTimeout(()=>{
             this.props.toggleModalComments()
-        }, 200)
+        }, 400)
     }
 
     render() {

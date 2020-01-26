@@ -40,7 +40,7 @@ class TaskDetails extends Component {
     }
 
     componentWillUnmount = () => {
-        //SocketService.terminate();
+        SocketService.terminate();
         // SocketService.off('user joined the board');
     }
     onAddActivity = (activityName) => {
@@ -176,7 +176,6 @@ class TaskDetails extends Component {
         checkList.todos = filteredTodos;
         let updatedtask = this.props.task.checkList.map(currCheckList =>
             currCheckList.id === checkList.id ? checkList : currCheckList)
-            console.log(updatedtask);
         await this.props.updateTask(this.props.topic, updatedtask);
         BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id);
         SocketService.emit('user changes', this.props.user.username + 'has deleted todo');
