@@ -30,7 +30,12 @@ export default class ActionBar extends Component {
                         <button onClick={this.toggleMiniModal}>Change color
                             <span className="icon-color_lens"></span>
                         </button>
-                        {this.state.isModalShown ? <TaskColorModal closeModal={this.toggleMiniModal} changeTaskColor={this.props.changeTaskColor}/> : ''}
+                        {this.state.isModalShown ?
+                        <React.Fragment>
+                            <div className="screen-container" onClick={this.toggleMiniModal} />
+                            <TaskColorModal closeModal={this.toggleMiniModal} changeTaskColor={this.props.changeTaskColor}/>
+                        </React.Fragment>
+                          : ''}
                     </div>
                     <button onClick={this.onCloneTask}>Clone
                     <span className="icon-clone"></span>
