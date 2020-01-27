@@ -1,30 +1,40 @@
 .board-page-container {
-  margin-top: 50px;
-  margin-left: auto;
-  margin-right: auto;
-overflow:hidden !important;
-  background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmNBRGm6_hAnQ-Eereq8XsOBiLyGWSWhuNI1--WZYU2D1P4D7zmQ&s)
-    fixed center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  h1 {
-    font-size: rem(30px);
-    text-align: center;
+  h3 {
+    font-size: 16px;
+    font-weight: 700;
+    text-align: start;
   }
 }
 
 .board-container {
-  max-width: 250px;
+  position: relative;
+  background-color: #000;
+  max-width: 230px;
   cursor: pointer;
   margin: 10px;
+  border-radius: 3px;
 
   h4 {
-    text-align: center;
+    position: absolute;
+    font-size: 14px;
+    font-weight: 700;
+    z-index: 20;
+    color: #fff;
+    top: 7px;
+    left: 9px;
   }
   img {
-    width: 250px;
-    height: 160px;
+    width: 230px;
+    height: 100px;
     transition: all ease 0.4s;
+    border-radius: 3px;
+    opacity: 0.9;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+  div {
+    opacity: 0.9;
     &:hover {
       opacity: 0.8;
     }
@@ -32,28 +42,20 @@ overflow:hidden !important;
 }
 
 .add-board-btn {
-  outline: none;
-  font-weight: 600;
-  letter-spacing: 2px;
-  transition: all 0.3s ease;
-  padding: 0.4rem 1rem;
-  cursor: pointer;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  background-color: black;
-  color: white;
+  background-color: rgba(9, 30, 66, 0.06);
   border: none;
+  color: #172b4d;
+  height: 100px;
+  width: 230px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+
   &:hover {
-    background-color: rgba(0, 0, 0, 0.781);
+    background-color: rgba(9, 30, 66, 0.15);
   }
-  margin-bottom: 30px;
 }
 
 .boards-container {
-  overflow-y: scroll;
-  width: 100%;
   flex-wrap: wrap;
-  margin-left: 7rem;
-  margin-right: 7rem;
 }
