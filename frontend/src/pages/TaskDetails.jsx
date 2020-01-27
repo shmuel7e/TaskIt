@@ -183,7 +183,7 @@ class TaskDetails extends Component {
     }
 
     onUploadImg=(event)=>{
-       BoardService.uploadImg(event)
+       BoardService.uploadImg(this.props.task,event,this.props.board._id, this.props.topic.id)
     }
 
     render() {
