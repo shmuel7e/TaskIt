@@ -26,3 +26,7 @@
 .about-page-header {
     background: url("../../images/about.jpg") fixed center no-repeat;
 }
+
+.board-page-container {
+  background-image: url(http://504.co.kr/wp-content/uploads/2015/02/creative-fresh-work-desk.jpg);
+}
