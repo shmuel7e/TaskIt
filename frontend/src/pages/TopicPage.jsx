@@ -51,7 +51,6 @@ class TopicPage extends Component {
         SocketService.emit('chat topic', this.props.match.params.id);
         SocketService.emit('user joined the board', { text: `${this.props.user.username} has joined the board` });
         SocketService.on('user changes', async (msg) => {
-            console.log('topic page', msg)
             this.onAddActivity(msg);
             const board = await BoardService.getBoard(this.props.match.params.id)
             await this.props.setCurrBoard(board)
@@ -73,7 +72,6 @@ class TopicPage extends Component {
 
     componentWillUnmount = () => {
         SocketService.terminate();
-        // SocketService.off('user joined the board');
     }
 
 
@@ -223,9 +221,7 @@ class TopicPage extends Component {
                             </ListContainer>
                         )}
                     </Droppable>
-                    {/* <Router history={history}> */}
                         <Route component={TaskDetails} path="/topic/:boardId/:topicId/:taskId" exact></Route>
-                    {/* </Router> */}
                 </div>
             </DragDropContext>
         )

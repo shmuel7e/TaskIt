@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import { Router, Switch, Route } from 'react-router';
 import { connect } from 'react-redux';
 import history from './history';
-
 import { logout } from './actions/UserActions'
+
 import Header from '../src/cmps/header/Header.jsx';
 import HomePage from './pages/HomePage.jsx';
 import TopicPage from './pages/TopicPage.jsx';
 import AuthPage from './pages/AuthPage.jsx';
 import AboutPage from './pages/AboutPage.jsx';
 import BoardPage from './pages/BoardPage.jsx';
+import MsgModal from './cmps/MsgModal.jsx'
 
 class App extends Component {
 
@@ -22,6 +23,7 @@ class App extends Component {
     return (
       <main>
         <Router history={history}>
+          <MsgModal/>
           <Header
             onLogout={this.onLogout}
             user={this.props.user}></Header>

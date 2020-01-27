@@ -33,5 +33,6 @@ function off(eventName, cb) {
 }
 
 function emit(eventName, data) {
+  setup()
   socket.emit(eventName, data);
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import EventBusService from '../../services/EventBusService.js'
 export default class SignUp extends Component {
     state = { credentials: {username:'', email: '', password: '' } }
 
@@ -17,8 +17,9 @@ export default class SignUp extends Component {
         if (isValidEmail && password.length > 5 && username) {
            this.props.onSignUp(this.state.credentials)
         } else {
-            // email or password or username not validated
-            // Todo show propiate msg eventbus
+            if(password.length <6) EventBusService.emit('toggleModal',{msg:'Password must be longer then 5 character',style:'danger'});
+            if(!username)EventBusService.emit('toggleModal',{msg:'Full name is require',style:'danger'});
+            if(!email)EventBusService.emit('toggleModal',{msg:'Email is require',style:'danger'});
         }
     }
     validateEmail = (email) => {
