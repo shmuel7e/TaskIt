@@ -6,7 +6,7 @@ export default class ModalSideBar extends Component {
 
 
     render() {
-        const { board, addMemberToTask,addChecklist, addLabelToTask, deleteTask, cloneTask, getInitials, changeTaskColor } = this.props;
+        const { board, addMemberToTask,addChecklist, addLabelToTask, deleteTask, cloneTask, getInitials, changeTaskColor,onUploadImg } = this.props;
         return (
             <div className='modal-sidebar-container flex column'>
                 <ToolBar
@@ -15,7 +15,9 @@ export default class ModalSideBar extends Component {
                     addMemberToTask={addMemberToTask}
                     addLabelToTask={addLabelToTask}
                     getInitials={getInitials}
-                    addChecklist = {addChecklist} />
+                    addChecklist = {addChecklist}
+                    onUploadImg={onUploadImg}
+                     />
 
                 <ActionBar
                     changeTaskColor={changeTaskColor}

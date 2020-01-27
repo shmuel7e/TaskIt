@@ -14,6 +14,10 @@ export default class ToolBar extends Component {
         isCheckListShown: false
     }
 
+    onUploadImg=(event)=>{
+        this.props.onUploadImg(event)
+    }
+
 
     toggleMiniModal = (type) => {
         switch (type) {
@@ -87,13 +91,15 @@ export default class ToolBar extends Component {
                         <div className="due-modal-container">
                             {this.state.isDuesShown ? <DueTimeModal closeModal={this.toggleMiniModal} addDueTimeToTask={this.props.addDueTimeToTask} /> : ''}
                         </div>
-
-                        <button>Add Image
-                            <span className="icon-image"></span>
-                        </button>
+                         <label className="label-img"  htmlFor="add-img" name="add-img">  
+                            <span className="icon-image img-button"><span className="img-button-text">Add Image</span> </span>
+                        </label> 
+                        <input id="add-img" name="add-img"  onChange={this.onUploadImg} type="file"/>
                     </div>
                 </div>
             </div>
+
         )
     }
 }
+

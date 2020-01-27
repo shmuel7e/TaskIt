@@ -56,7 +56,7 @@
     left: 9px;
   }
 
-  & > button {
+  & > button, .label-img {
     text-align: left;
     color: #172b4d;
     background-color: #eaecf0;
@@ -149,4 +149,14 @@
   right: 14px;
   top: 3px;
   cursor: pointer;
+}
+#add-img{
+  display: none;
+}
+.img-button{
+  font-size: rem(13px);
+}
+.img-button-text{
+  margin-left:11px;
+  display: inline-block;
 }

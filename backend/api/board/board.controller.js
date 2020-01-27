@@ -106,6 +106,17 @@ async function updateTask(req, res) {
         res.status(500).send({ error: 'cannot update Board' })
     }
 }
+async function uploadImgToTask(req, res) {
+    let boardToUpdate = await boardService.getBoard(req.params.boardId);
+    
+    try {
+        const updatedBoard = await boardService.updateBoard({...boardToUpdate})
+        res.send(updatedBoard)
+    } catch (err) {
+        logger.error('Cannot update board', err);
+        res.status(500).send({ error: 'cannot update Board' })
+    }
+}
 
 
 
@@ -117,5 +128,6 @@ module.exports = {
     updateActivity,
     addNewTopic,
     addNewTask,
-    updateTask
+    updateTask,
+    uploadImgToTask
 }

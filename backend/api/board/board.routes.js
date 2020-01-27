@@ -1,6 +1,6 @@
 const express = require('express')
 const { requireAuth } = require('../../middlewares/requireAuth.middleware')
-const { getBoard, getBoards, addBoard, updateBoard, updateActivity, addNewTopic, addNewTask,updateTask } = require('./board.controller')
+const { getBoard, getBoards, addBoard, updateBoard, updateActivity, addNewTopic, addNewTask,updateTask,uploadImgToTask } = require('./board.controller')
 const router = express.Router()
 
 
@@ -12,6 +12,7 @@ router.put('/', updateBoard)
 router.put('/topic/:id', addNewTopic)
 router.put('/task/:topicId/:boardId', addNewTask)
 router.put('/updatetask/:boardId/:topicId/:taskId', updateTask)
+router.put('/uploadTaskImg/:boardId/:topicId/:taskId',uploadImgToTask)
 router.put('/activity/:id', updateActivity)
 
 

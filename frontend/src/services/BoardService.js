@@ -15,9 +15,6 @@ async function updateBoard(board) {
     return await HttpService.put('board', board)
 }
 
-// TODO //
-// ADD DELETE BOARD BUTTON //
-
 
 async function setBgCover(imgName) {
     return Promise.resolve(imgName);
@@ -31,6 +28,11 @@ async function cloneTask(task) {
     let clonedTask = JSON.parse(JSON.stringify(task));
     clonedTask.id = UtilsService.makeRandomId();
     return Promise.resolve(clonedTask);
+}
+
+async function uploadImg(event){
+    console.log(event)
+    return Promise.resolve(event)
 }
 
 
@@ -59,9 +61,7 @@ async function addTask(taskTitle, topicId, currBoardId) {
     const newTask = _createTask(taskTitle)
     return await HttpService.put(`board/task/${topicId}/${currBoardId}`, newTask)
 }
-// async function updateTask(taskToUpdate, boardId, topicId) {
-//     console.log(taskToUpdate, boardId, topicId)
-//     return await HttpService.put(`board/updatetask/${boardId}/${topicId}/${taskToUpdate.id}`, taskToUpdate)
+
 async function updateTask(taskToUpdate,boardId, topicId) {
    return await HttpService.put(`board/updatetask/${boardId}/${topicId}/${taskToUpdate.id}`, taskToUpdate)
 }
@@ -118,5 +118,6 @@ export default {
     updateActivity,
     addNewTodo,
     addNewChecklist,
-    updateTask
+    updateTask,
+    uploadImg
 };
