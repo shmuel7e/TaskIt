@@ -25,20 +25,15 @@ class BoardPage extends Component {
                 </div>
                 {this.props.boards && <div className="boards-container justify-center flex">
                     {this.props.boards.map(board => {
-                        const style = { background: board.cover, width: '250px', height: '160px' }
-                        return <div
-                        className="board-container flex column"
-                        onClick={this.selectBoard.bind(null, board._id)}
-                        key={board._id}
-                        >
+                        const style = { background: board.cover, width: '230px', height: '100px' }
+                        return <div className="board-container flex column"
+                            onClick={this.selectBoard.bind(null, board._id)}
+                            key={board._id}>
                             <h4>{board.title}</h4>
-                            {board.cover.includes('bg') &&
-                                <img src={require('../assets/images/' + board.cover)} alt="" />
-                            }
+                            {board.cover.includes('bg') && <img src={require('../assets/images/' + board.cover)} alt="" />}
                             {!board.cover.includes('bg') && <div style={style}></div>}
-                        </div>
-                    })}
-                    <button className="add-board-btn" onClick={this.onAddNewBoard}>Add new board</button>
+                        </div>})}
+                    <button className="board-container add-board-btn" onClick={this.onAddNewBoard}>Create new board</button>
                 </div>}
             </div>
         )

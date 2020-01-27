@@ -1,0 +1,28 @@
+.img:before {
+  background-image: url("../../images/login-bg.jpg");
+}
+
+.home-page-section {
+  background: url("../../images/section.jpg") fixed center;
+}
+
+.home-page-header:before {
+  background: url("https://images.pexels.com/photos/3183151/pexels-photo-3183151.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260")
+    50% 0 no-repeat;
+}
+
+.creator-section1 {
+  background: url("../../images/section.jpg") center no-repeat;
+}
+
+.creator-section4 {
+  background: url("../../images/section4.jfif") center no-repeat;
+}
+
+.creator-section5 {
+  background: url("../../images/section5.jpg") center no-repeat;
+}
+
+.about-page-header {
+    background: url("../../images/about.jpg") fixed center no-repeat;
+}

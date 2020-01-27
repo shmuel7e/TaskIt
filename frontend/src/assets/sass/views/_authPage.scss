@@ -1,10 +1,4 @@
 
-
-// body {
-//   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-//   background: #ededed;
-// }
-
 .form {
 
   input, button {
@@ -100,7 +94,7 @@ $diffRatio: ($contW - $imgW) / $contW;
     top: 0;
     width: $contW;
     height: 100%;
-    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/sections-3.jpg');
+    // background-image: url('../../images/login-bg.jpg');
     background-size: cover;
     transition: transform $switchAT ease-in-out;
   }

@@ -1,9 +1,10 @@
-// Setup
+
+// Setup //
 @import "setup/variables.scss";
 @import "setup/functions.scss";
 @import "setup/mixins.scss";
 
-// // Basics
+// Basics //
 @import "basics/helpers.scss";
 @import "basics/base.scss";
 @import "basics/links.scss";
@@ -13,63 +14,66 @@
 @import "basics/layout.scss";
 @import "basics/animations.scss";
 
-// // Components
+// Components //
 @import "components/nav-bar.scss";
 @import "components/header.scss";
 @import "components/menu.scss";
 @import "components/bg-gallery.scss";
 @import "components/footer.scss";
 
-// // board header
+// board header //
 @import "components/boardHeader/board-header";
 @import "components/boardHeader/board-member-list";
 @import "components/boardHeader/search-users";
 
-// // topic
+// topic //
 @import "components/topic/topicList";
 @import "components/topic/topicPreview";
 @import "components/topic/addTopic";
 
-// // task
+// task //
 @import "components/task/taskList.scss";
 @import "components/task/taskPreview.scss";
 @import "components/task/addTask.scss";
 
-// // task modal
+// task modal //
 @import "components/taskModal/modal-header.scss";
 @import "components/taskModal/modal-body.scss";
 @import "components/taskModal/modal-main.scss";
 @import "components/taskModal/modalComments.scss";
 
-// // Modal Side Bar //
+// Modal Side Bar //
 @import "components/modalSideBar/tool-bar.scss";
 @import "components/modalSideBar/action-bar.scss";
 
-// // modalComment // 
+// modalComment // 
 @import "components/modalComment/modalCommentList";
 @import "components/modalComment/modalCommentPreview";
 
-// // check list //
+// check list //
 @import "components/modalSideBar/checkList/check-list-modal";
 @import "components/modalSideBar/checkList/todo-preview";
 @import "components/modalSideBar/checkList/check-list-bar";
 @import "components/modalSideBar/checkList/check-list-preview";
 
-// // labels // 
+// labels // 
 @import "components/modalSideBar/labels/label-modal.scss";
 
-// // colors //
+// colors //
 @import "components/modalSideBar/taskColor/task-color-modal.scss";
 @import "components/modalSideBar/taskColor/task-color-list.scss";
 @import "components/modalSideBar/taskColor/task-color-preview.scss";
 
-// // members // 
+// members // 
 @import "components/modalSideBar/members/members";
 
-// // Due Time //
+// Due Time //
 @import "components/modalSideBar/dueTime/due-time";
 
-// // // Pages
+// Modal Side Bar //
+@import "components/modalSideBar/tool-bar.scss";
+
+// Pages //
 @import "views/home-page.scss";
 @import "views/TopicPage.scss";
 @import "views/authPage.scss";
@@ -77,6 +81,5 @@
 @import "views/aboutPage.scss";
 @import "views/boardPage.scss";
 
-// Modal Side Bar //
-@import "components/modalSideBar/tool-bar.scss";
-
+// fix heroku url build err //
+@import './views/url.css';
