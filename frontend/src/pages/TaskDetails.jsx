@@ -11,7 +11,8 @@ import {
     addTodo,
     addActivityComment,
     updateActivity,
-    setCurrBoard
+    setCurrBoard,
+    uploadImgToTask
 } from '../actions/BoardActions';
 import ModalHeader from '../cmps/taskModal/ModalHeader.jsx';
 import ModalBody from '../cmps/taskModal/ModalBody.jsx';
@@ -24,7 +25,6 @@ class TaskDetails extends Component {
         this.loadTask();
         SocketService.setup();
         SocketService.on('user changes', async (msg) => {
-            console.log('task page', msg)
             this.onAddActivity(msg);
             const board = await BoardService.getBoard(this.props.board._id)
             await this.props.setCurrBoard(board)
@@ -182,8 +182,10 @@ class TaskDetails extends Component {
         SocketService.emit('user changes', this.props.user.username + 'has deleted todo');
     }
 
-    onUploadImg=(event)=>{
-       BoardService.uploadImg(this.props.task,event,this.props.board._id, this.props.topic.id)
+    onUploadImg=async(event)=>{
+      await this.props.uploadImgToTask(event,this.props.topic,this.props.task)
+      await BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id);
+      SocketService.emit('user changes', this.props.user.username + 'has uploaded');
     }
 
     render() {
@@ -245,7 +247,8 @@ const mapDispatchToProps = {
     addTodo,
     addActivityComment,
     updateActivity,
-    setCurrBoard
+    setCurrBoard,
+    uploadImgToTask
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskDetails);

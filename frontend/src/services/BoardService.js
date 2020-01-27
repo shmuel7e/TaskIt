@@ -30,13 +30,6 @@ async function cloneTask(task) {
     return Promise.resolve(clonedTask);
 }
 
-async function uploadImg(taskToUpdate,event,boardId, topicId){
-    const img= await _uploadImg(event)
-    console.log(img.url)
-   // return await HttpService.put(`board/uploadTaskImg/${boardId}/${topicId}/${taskToUpdate.id}`, {taskToUpdate,event})
-}
-
-
 function _createTask(taskTitle) {
     return {
         title: taskTitle,
@@ -105,7 +98,7 @@ function _createCheckList(checkListTitle) {
         todos: []
     }
 }
-async function _uploadImg(ev) {
+ function uploadImg(ev) {
     const CLOUD_NAME = 'durhjyd6g'
     const PRESET_NAME = 'ujx7rqlu'
     const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`
@@ -120,7 +113,7 @@ async function _uploadImg(ev) {
     })
         .then(res => res.json())
         .then(res => {
-            console.log(res)
+          //  console.log(res)
             return res
         })
         .catch(err => console.error(err))

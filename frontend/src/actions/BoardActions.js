@@ -150,6 +150,18 @@ export function updateTask(topic, task) {
     };
 }
 
+export function uploadImgToTask(event, topic, task) {
+    return async dispatch => {
+        try {
+           const img=await BoardService.uploadImg(event)
+           task.cover=img.url
+           dispatch(_updateTask(topic, task));
+        } catch (err) {
+            console.log('UserActions: err in updateTask', err);
+        }
+    };
+}
+
 export function addTopic(topicName, boardId) {
     return async dispatch => {
         try {
