@@ -14,8 +14,8 @@ export default class ToolBar extends Component {
         isCheckListShown: false
     }
 
-    onUploadImg=(event)=>{
-        this.props.onUploadImg(event)
+    onUploadImg=(ev)=>{
+        this.props.onUploadImg(ev)
     }
 
 

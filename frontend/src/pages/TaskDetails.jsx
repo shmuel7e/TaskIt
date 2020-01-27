@@ -182,8 +182,8 @@ class TaskDetails extends Component {
         SocketService.emit('user changes', this.props.user.username + 'has deleted todo');
     }
 
-    onUploadImg=async(event)=>{
-      await this.props.uploadImgToTask(event,this.props.topic,this.props.task)
+    onUploadImg=async(ev)=>{
+      await this.props.uploadImgToTask(ev,this.props.topic,this.props.task)
       await BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id);
       SocketService.emit('user changes', this.props.user.username + 'has uploaded');
     }

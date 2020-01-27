@@ -9,7 +9,7 @@ import HomePage from './pages/HomePage.jsx';
 import TopicPage from './pages/TopicPage.jsx';
 import AuthPage from './pages/AuthPage.jsx';
 import AboutPage from './pages/AboutPage.jsx';
-import BoardPage from './pages/BoardPage.jsx'
+import BoardPage from './pages/BoardPage.jsx';
 
 class App extends Component {
 
