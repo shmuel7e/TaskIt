@@ -100,7 +100,7 @@ $diffRatio: ($contW - $imgW) / $contW;
     top: 0;
     width: $contW;
     height: 100%;
-    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/sections-3.jpg');
+    background-image: url('../../images/sections-3.jpg');
     background-size: cover;
     transition: transform $switchAT ease-in-out;
   }
