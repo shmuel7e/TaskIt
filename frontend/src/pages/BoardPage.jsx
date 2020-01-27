@@ -19,18 +19,17 @@ class BoardPage extends Component {
     }
     render() {
         return (
-            <div className="board-page-container flex column">
+            <div className="board-page-container flex header-padding column">
                 <div>
-                    <h1>Personal Boards</h1>
-                    <button className="add-board-btn" onClick={this.onAddNewBoard}>Add new board</button>
+                    <h3>Personal Boards</h3>
                 </div>
-                {this.props.boards && <div className="boards-container flex">
+                {this.props.boards && <div className="boards-container justify-center flex">
                     {this.props.boards.map(board => {
                         const style = { background: board.cover, width: '250px', height: '160px' }
                         return <div
-                            className="board-container flex column"
-                            onClick={this.selectBoard.bind(null, board._id)}
-                            key={board._id}
+                        className="board-container flex column"
+                        onClick={this.selectBoard.bind(null, board._id)}
+                        key={board._id}
                         >
                             <h4>{board.title}</h4>
                             {board.cover.includes('bg') &&
@@ -39,6 +38,7 @@ class BoardPage extends Component {
                             {!board.cover.includes('bg') && <div style={style}></div>}
                         </div>
                     })}
+                    <button className="add-board-btn" onClick={this.onAddNewBoard}>Add new board</button>
                 </div>}
             </div>
         )
