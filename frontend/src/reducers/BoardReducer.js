@@ -90,7 +90,6 @@ export default function (state = initialState, action = {}) {
         droppableIdEnd,
         droppableIndexStart,
         droppableIndexEnd,
-        draggableId,
         typeToDrop
       } = action
       const newState = { ...state }

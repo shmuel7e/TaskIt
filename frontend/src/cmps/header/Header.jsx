@@ -16,16 +16,30 @@ export default class Header extends Component {
 
     handleScroll = () => {
         this.setState({ isHeaderTrans: window.scrollY < 1 });
+
     }
+
+    onToggleMenu = () => {
+        document.querySelector('.main-navbar').classList.toggle('open');
+        document.querySelector('.main-nav').classList.toggle('menu-open');
+    }
+
     render() {
         const { state } = this
         return (
             <header className={state.isHeaderTrans ? '' : 'colorful'}>
-                <div className=' main-header flex justify-between align-center'>
+                <div className="main-nav">
                     <div className='main-logo'><NavLink activeClassName="active" to='/' exact><img src={require('../../assets/images/logo.png')} alt="logo" /></NavLink></div>
-                    <NavBar 
-                    onLogout={this.props.onLogout}
-                    user={this.props.user} />
+                    <button className="nav-hamburger" onClick={this.onToggleMenu}>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <div className='main-navbar flex justify-between align-center'>
+                        <NavBar
+                            onLogout={this.props.onLogout}
+                            user={this.props.user} />
+                    </div>
                 </div>
             </header>
         )

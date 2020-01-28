@@ -15,9 +15,8 @@
     width: 185px;
     height: 1.2em;
     white-space: nowrap;
-    
+
     small {
-      
       font-size: 12px;
       padding-left: 10px;
 
@@ -26,4 +25,8 @@
       }
     }
   }
+}
+
+.icon-cross {
+  z-index: 9999;
 }

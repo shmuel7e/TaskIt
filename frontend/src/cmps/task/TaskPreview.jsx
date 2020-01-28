@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import { Draggable } from 'react-beautiful-dnd'
-import styled from "styled-components"
 
-const ListContainer = styled.div`
 
-`;
 export default class TaskPreview extends Component {
     onGetInitials = (fullName) => {
         return this.props.getInitials(fullName);
@@ -22,7 +19,7 @@ export default class TaskPreview extends Component {
                 >
                     <li className='task-container' style={{ background: task.bgColor }}>
                         <Link to={`${boardId}/${topicId}/${task.id}`}>
-                            {task.cover ? <img src={task.cover} alt="task photo" /> : ''}
+                            {task.cover ? <img alt="" src={task.cover}/> : ''}
                             <div className="task-title">{task.title}</div>
                             <div className='members-container flex'> {task.members.map((member, idx) => {
                                 return <span style={{ background: member.bgColor }} data-toggle="tooltip" title={member.username}
