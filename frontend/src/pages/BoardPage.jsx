@@ -20,19 +20,24 @@ class BoardPage extends Component {
     render() {
         return (
             <div className="board-page-container flex header-padding column">
-                <div>
-                    <h3>Personal Boards</h3>
+                <div className="board-page-title">
+
+                    <h3>
+                        <span className="icon-user"></span>
+                        Personal Boards
+                    </h3>
                 </div>
-                {this.props.boards && <div className="boards-container justify-center flex">
+                {this.props.boards && <div className="boards-container flex">
                     {this.props.boards.map(board => {
-                        const style = { background: board.cover, width: '230px', height: '100px' }
+                        const style = { background: board.cover, width: '185px', height: '95px' }
                         return <div className="board-container flex column"
                             onClick={this.selectBoard.bind(null, board._id)}
                             key={board._id}>
                             <h4>{board.title}</h4>
                             {board.cover.includes('bg') && <img src={require('../assets/images/' + board.cover)} alt="" />}
                             {!board.cover.includes('bg') && <div style={style}></div>}
-                        </div>})}
+                        </div>
+                    })}
                     <button className="board-container add-board-btn" onClick={this.onAddNewBoard}>Create new board</button>
                 </div>}
             </div>
