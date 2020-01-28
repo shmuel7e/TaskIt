@@ -60,7 +60,6 @@ async function getByEmail(email) {
 async function getUsersByEmail(emails,input){
     const criteria = {};
     criteria.email = {$regex:`${input}` }
-    console.log(emails,input)
     const collection = await dbService.getCollection('user')
     try {
         const users = await collection.find({$and:[criteria,{"email":{ $nin:emails }}] }).toArray();
@@ -72,7 +71,6 @@ async function getUsersByEmail(emails,input){
         console.log('ERROR: cannot find users')
         throw err;
     }
-
 }
 
 async function remove(userId) {

@@ -55,8 +55,8 @@ class TopicPage extends Component {
             this.onAddActivity(msg);
             const board = await BoardService.getBoard(this.props.match.params.id)
             await this.props.setCurrBoard(board)
-              if (msg.includes('cover')) this.initialBgImg()
-              else if(msg.includes('color') && !msg.includes('task')) this.initialColorBg()
+            if (msg.includes('cover')) this.initialBgImg()
+            else if (msg.includes('color') && !msg.includes('task')) this.initialColorBg()
         });
     }
     async  componentDidUpdate(prevProps) {
@@ -66,8 +66,8 @@ class TopicPage extends Component {
             this.props.setCurrBoard(board)
         }
         if (this.props.board && Object.entries(this.state.style).length === 0) {
-            if (this.props.board.cover.includes('bg'))this.initialBgImg()
-             else if(this.props.board.cover.includes('linear-gradient')) this.initialColorBg()
+            if (this.props.board.cover.includes('bg')) this.initialBgImg()
+            else if (this.props.board.cover.includes('linear-gradient')) this.initialColorBg()
         }
     }
 
@@ -87,8 +87,8 @@ class TopicPage extends Component {
         const imgs = await ImageService.getGalleryImages();
         await this.setState({ imgs });
     }
-    initialBgImg=()=>{
-      const  style = {
+    initialBgImg = () => {
+        const style = {
             backgroundImage: `url(${require(`../assets/images/${this.props.board.cover}`)})`,
             position: 'fixed',
             backgroundSize: 'cover',
@@ -97,8 +97,8 @@ class TopicPage extends Component {
         this.setState({ style })
     }
 
-    initialColorBg=()=>{
-       const style = {
+    initialColorBg = () => {
+        const style = {
             background: this.props.board.cover
         }
         this.setState({ style })
@@ -113,7 +113,7 @@ class TopicPage extends Component {
         }
         await this.props.setBgCover(imgName);
         this.setState({ style })
-      await  BoardService.updateBoard(this.props.board)
+        await BoardService.updateBoard(this.props.board)
         SocketService.emit('user changes', this.props.user.username + ' has changed board cover');
     }
 
@@ -123,7 +123,7 @@ class TopicPage extends Component {
         }
         await this.props.setBgCover(colorName);
         this.setState({ style });
-      await  BoardService.updateBoard(this.props.board)
+        await BoardService.updateBoard(this.props.board)
         SocketService.emit('user changes', this.props.user.username + ' has changed board color');
     }
 
@@ -131,7 +131,7 @@ class TopicPage extends Component {
 
     deleteTopic = async (topicId) => {
         await this.props.deleteTopic(topicId);
-        BoardService.updateBoard(this.props.board)
+        await BoardService.updateBoard(this.props.board)
         SocketService.emit('user changes', this.props.user.username + ' has deleted a topic');
     }
 
@@ -145,20 +145,22 @@ class TopicPage extends Component {
     changeTopicTitle = async (topic, newTxt) => {
         topic.title = newTxt;
         await this.props.updateTopic(topic);
-        BoardService.updateBoard(this.props.board)
+        await BoardService.updateBoard(this.props.board)
         SocketService.emit('user changes', this.props.user.username + ' has changed topic title');
 
     }
 
-    onAddNewTopic = (topicName) => {
+    onAddNewTopic = async (topicName) => {
         const { board } = this.props;
-        this.props.addTopic(topicName, board._id);
+        await this.props.addTopic(topicName, board._id);
+        await BoardService.updateBoard(this.props.board)
         SocketService.emit('user changes', this.props.user.username + ' has added new topic');
     }
 
-    addTask = (taskTitle, topicId) => {
+    addTask = async (taskTitle, topicId) => {
         const { board } = this.props;
-        this.props.addTask(taskTitle, topicId, board._id);
+        await this.props.addTask(taskTitle, topicId, board._id);
+        await BoardService.updateBoard(this.props.board)
         SocketService.emit('user changes', this.props.user.username + ' has added a new task');
 
     }
@@ -178,7 +180,7 @@ class TopicPage extends Component {
             destination.index,
             draggableId,
             type)
-        BoardService.updateBoard(this.props.board)
+        await BoardService.updateBoard(this.props.board)
         SocketService.emit('user changes', this.props.user.username + ' has drag something');
     }
     onSearchUsers = async (input) => {
