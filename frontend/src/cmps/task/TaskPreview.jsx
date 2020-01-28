@@ -12,6 +12,7 @@ export default class TaskPreview extends Component {
     }
 
     render() {
+        const { task, topicId, boardId } = this.props;
         return (<Draggable draggableId={this.props.id} index={this.props.index}>
             {(provided) => {
                 return <div className='drag-task'
@@ -19,16 +20,16 @@ export default class TaskPreview extends Component {
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
                 >
-                    <li className='task-container' style={{ background: this.props.task.bgColor }}>
-                        <Link to={`${this.props.boardId}/${this.props.topicId}/${this.props.task.id}`}>
-                            <div className="task-title">{this.props.task.title}
-                            </div>
-                            <div className='members-container flex'> {this.props.task.members.map((member, idx) => {
+                    <li className='task-container' style={{ background: task.bgColor }}>
+                        <Link to={`${boardId}/${topicId}/${task.id}`}>
+                            {task.cover ? <img src={task.cover} alt="task photo" /> : ''}
+                            <div className="task-title">{task.title}</div>
+                            <div className='members-container flex'> {task.members.map((member, idx) => {
                                 return <span style={{ background: member.bgColor }} data-toggle="tooltip" title={member.username}
                                     className="member-name-initials" key={idx}>{this.onGetInitials(member.username)} </span>
                             })}
                             </div>
-                            <div className='labels-container flex'> {this.props.task.labels.map((label, idx) => {
+                            <div className='labels-container flex'> {task.labels.map((label, idx) => {
                                 return <span style={{ background: label.color }} data-toggle="tooltip" title={label.name}
                                     className="label-name-initials smaller" key={idx}> </span>
                             })}

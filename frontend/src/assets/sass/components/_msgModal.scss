@@ -1,0 +1,21 @@
+
+.msg-modal-container{
+    position: fixed;
+    top:10%;
+    left:40%;
+    z-index: 999;
+    width:350px;
+    height:40px;
+    border:.2px solid white;
+    border-radius: 5px;
+
+}
+
+.danger{
+    background-color: #B22222;
+    color:white;
+}
+.success{
+    background-color: #7FFF00;
+    color:white;
+}

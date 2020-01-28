@@ -14,7 +14,8 @@ export default {
 };
 
 function setup() {
-  if (!socket) {
+  if(!socket){
+
     socket = io(BASE_URL);
   }
 }
@@ -32,5 +33,6 @@ function off(eventName, cb) {
 }
 
 function emit(eventName, data) {
+  setup()
   socket.emit(eventName, data);
 }

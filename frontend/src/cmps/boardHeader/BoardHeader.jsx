@@ -24,11 +24,15 @@ export default class BoardHeader extends Component {
     changeBgImg = (img) => {
         this.props.changeBgImg(img);
     }
+    closeMenue = () => {
+      this.setState({isMenuOn: false})
+    }
 
     render() {
         const { imgs, colors, board } = this.props;
         return (
             <div className='board-header flex justify-between'>
+                {this.state.isMenuOn && <div className="screen-container" onClick={this.closeMenue} />}
                 <div className="first-header-section flex justify-between">
                     <button className='borad-header-btn' >Boards</button>
                     <span className="board-header-divider"></span>

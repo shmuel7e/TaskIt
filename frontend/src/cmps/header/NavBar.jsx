@@ -14,9 +14,13 @@ export default class NavBar extends Component {
         this.props.onLogout()
         this.setState({ showUserNavBar: false })
     }
+    closeMenue=()=>{
+        this.setState({ showUserNavBar: false })
+    }
     render() {
         return (
             <nav className='flex'>
+                {this.state.showUserNavBar &&  <div className="screen-container" onClick={this.closeMenue} />}
                  {this.props.user &&
                     <div className='link-container'>
                         <NavLink activeClassName="active" to='/board'>

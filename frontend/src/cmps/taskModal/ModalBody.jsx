@@ -22,6 +22,7 @@ export default class ModalBody extends Component {
                 changeTaskColor,
                 addDueTimeToTask,
                 addActivityComment,
+                onUploadImg
                } = this.props;
 
         if (!board) return 'loading..';
@@ -49,6 +50,7 @@ export default class ModalBody extends Component {
                     addMemberToTask={addMemberToTask}
                     addDueTimeToTask={addDueTimeToTask}
                     changeTaskColor={changeTaskColor}
+                    onUploadImg={onUploadImg}
                 />
             </div>
         )

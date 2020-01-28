@@ -11,7 +11,8 @@ import {
     addTodo,
     addActivityComment,
     updateActivity,
-    setCurrBoard
+    setCurrBoard,
+    uploadImgToTask
 } from '../actions/BoardActions';
 import ModalHeader from '../cmps/taskModal/ModalHeader.jsx';
 import ModalBody from '../cmps/taskModal/ModalBody.jsx';
@@ -40,8 +41,7 @@ class TaskDetails extends Component {
     }
 
     componentWillUnmount = () => {
-        //SocketService.terminate();
-        // SocketService.off('user joined the board');
+        SocketService.terminate();
     }
     onAddActivity = (activityName) => {
         let date = new Date;
@@ -177,11 +177,15 @@ class TaskDetails extends Component {
         checkList.todos = filteredTodos;
         let updatedtask = this.props.task.checkList.map(currCheckList =>
             currCheckList.id === checkList.id ? checkList : currCheckList)
-        console.log(updatedtask);
         await this.props.updateTask(this.props.topic, updatedtask);
         await BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id);
         SocketService.emit('user changes', this.props.user.username + 'has deleted todo');
+    }
 
+    onUploadImg=async(ev)=>{
+      await this.props.uploadImgToTask(ev,this.props.topic,this.props.task)
+      await BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id);
+      SocketService.emit('user changes', this.props.user.username + 'has uploaded');
     }
 
     render() {
@@ -216,6 +220,7 @@ class TaskDetails extends Component {
                         deleteChecklist={this.deleteChecklist}
                         addDueTimeToTask={this.addDueTimeToTask}
                         addActivityComment={this.addActivityComment}
+                        onUploadImg={this.onUploadImg}
                     />
                 </div>
             </div>
@@ -242,7 +247,8 @@ const mapDispatchToProps = {
     addTodo,
     addActivityComment,
     updateActivity,
-    setCurrBoard
+    setCurrBoard,
+    uploadImgToTask
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskDetails);

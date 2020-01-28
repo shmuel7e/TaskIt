@@ -23,13 +23,13 @@ export default class SideMenu extends Component {
     goBack = () => {
         this.setState({ bgGallery: '' });
     }
-
+  
     render() {
         return (
-            <div>
-                <div className="menu-header">
+            <div    >
+                <div className="menu-header" >
                     <div className="menu-side-header">Choose Your background</div>
-                    <div className="menu">
+                    <div className="menu"   >
                         {this.state.bgGallery !== '' && <BgGalleryList bgGallery={this.state.bgGallery}
                             imgs={this.props.imgs} colors={this.props.colors} changeBgImg={this.changeBgImg} changeBgColor={this.changeBgColor}
                             goBack={this.goBack} />}

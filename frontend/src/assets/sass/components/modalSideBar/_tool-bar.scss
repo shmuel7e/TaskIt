@@ -12,7 +12,6 @@
     font-size: 12px;
     font-weight: 500;
     letter-spacing: 0.04em;
-    line-height: 16px;
     margin-top: 16px;
     text-transform: uppercase;
     line-height: 20px;
@@ -57,7 +56,7 @@
     left: 9px;
   }
 
-  & > button {
+  & > button, .label-img {
     text-align: left;
     color: #172b4d;
     background-color: #eaecf0;
@@ -77,6 +76,7 @@
     text-overflow: ellipsis;
     transition: ease all 0.2s;
     outline: none;
+    line-height: 15px;
     position: relative;
 
     &:hover {
@@ -150,4 +150,14 @@
   right: 14px;
   top: 3px;
   cursor: pointer;
+}
+#add-img{
+  display: none;
+}
+.img-button{
+  font-size: rem(13px);
+}
+.img-button-text{
+  margin-left:11px;
+  display: inline-block;
 }

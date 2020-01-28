@@ -7,24 +7,55 @@ overflow:hidden !important;
     fixed center;
   background-size: cover;
   background-repeat: no-repeat;
-  h1 {
-    font-size: rem(30px);
-    text-align: center;
+
+  .board-page-title {
+    color: #f2f2f2;
+
+    h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 17px 35px;
+      text-align: start;
+
+      .icon-user {
+        font-size: 19px;
+        margin-right: 9px;
+        font-size: 22px;
+      }
+    }
   }
 }
 
 .board-container {
-  max-width: 250px;
+  position: relative;
+  background-color: #000;
+  max-width: 230px;
   cursor: pointer;
   margin: 10px;
+  border-radius: 4px;
 
   h4 {
-    text-align: center;
+    position: absolute;
+    font-size: 14px;
+    font-weight: 700;
+    z-index: 20;
+    color: #fff;
+    top: 7px;
+    left: 9px;
   }
   img {
-    width: 250px;
-    height: 160px;
+    width: 185px;
+    height: 95px;
     transition: all ease 0.4s;
+    border-radius: 4px;
+    opacity: 0.9;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+  div {
+    border-radius: 4px;
+    opacity: 0.9;
     &:hover {
       opacity: 0.8;
     }
@@ -32,28 +63,22 @@ overflow:hidden !important;
 }
 
 .add-board-btn {
-  outline: none;
-  font-weight: 600;
-  letter-spacing: 2px;
-  transition: all 0.3s ease;
-  padding: 0.4rem 1rem;
-  cursor: pointer;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  background-color: black;
-  color: white;
+  background-color: rgba(252, 252, 252, 0.71);
   border: none;
+  color: #172b4d;
+  height: 95px;
+  width: 185px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+
   &:hover {
-    background-color: rgba(0, 0, 0, 0.781);
+    background-color: rgba(255, 255, 255, 0.84);
   }
-  margin-bottom: 30px;
 }
 
 .boards-container {
-  overflow-y: scroll;
-  width: 100%;
   flex-wrap: wrap;
-  margin-left: 7rem;
-  margin-right: 7rem;
+    max-width: 980px;
+    margin: 0 55px;
 }

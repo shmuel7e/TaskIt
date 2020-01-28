@@ -15,9 +15,6 @@ async function updateBoard(board) {
     return await HttpService.put('board', board)
 }
 
-// TODO //
-// ADD DELETE BOARD BUTTON //
-
 
 async function setBgCover(imgName) {
     return Promise.resolve(imgName);
@@ -32,7 +29,6 @@ async function cloneTask(task) {
     clonedTask.id = UtilsService.makeRandomId();
     return Promise.resolve(clonedTask);
 }
-
 
 function _createTask(taskTitle) {
     return {
@@ -102,6 +98,24 @@ function _createCheckList(checkListTitle) {
         todos: []
     }
 }
+ function uploadImg(ev) {
+    const CLOUD_NAME = 'durhjyd6g'
+    const PRESET_NAME = 'ujx7rqlu'
+    const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`
+    const formData = new FormData();
+    formData.append('file', ev.target.files[0])
+    formData.append('upload_preset', PRESET_NAME);
+    return fetch(UPLOAD_URL, {
+        method: 'POST',
+        body: formData
+    })
+        .then(res => res.json())
+        .then(res => {
+          //  console.log(res)
+            return res
+        })
+        .catch(err => console.error(err))
+}
 
 
 export default {
@@ -116,5 +130,6 @@ export default {
     updateActivity,
     addNewTodo,
     addNewChecklist,
-    updateTask
+    updateTask,
+    uploadImg
 };

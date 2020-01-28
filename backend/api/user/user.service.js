@@ -57,12 +57,12 @@ async function getByEmail(email) {
     }
 }
 
-async function getUsersByEmail(emails,input){
+async function getUsersByEmail(emailsThatUsed,text){
     const criteria = {};
-    criteria.email = {$regex:`${input}` }
+    criteria.email = {$regex:`${text}` }
     const collection = await dbService.getCollection('user')
     try {
-        const users = await collection.find({$and:[criteria,{"email":{ $nin:emails }}] }).toArray();
+        const users = await collection.find({$and:[criteria,{"email":{ $nin:emailsThatUsed }}] }).toArray();
         return users.map(user=>{
             delete user.password
             return user

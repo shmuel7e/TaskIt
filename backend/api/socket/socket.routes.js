@@ -19,10 +19,10 @@ function connectSockets(io) {
            // console.log(data)
             io.to(socket.myTopic).emit('user changes',data);
         })
-        // socket.on('user changes', data => {
-        //     console.log(data)
-        //     io.in(socket.myTopic).emit('user changes',data);
-        // })
+        socket.on('user changes', data => {
+            console.log(data)
+            io.in(socket.myTopic).emit('user changes',data);
+        })
 
     })
 }
