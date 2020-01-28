@@ -25,8 +25,7 @@ import {
     updateActivity,
     setCurrBoard
 } from '../actions/BoardActions';
-import { Route, Router } from 'react-router';
-import history from '../history';
+import { Route} from 'react-router';
 
 const ListContainer = styled.div`
 display:flex;
@@ -134,7 +133,7 @@ class TopicPage extends Component {
     }
 
     onAddActivity = (activityName) => {
-        let date = new Date;
+        let date = new Date();
         date = date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
         let addedActivity = { activityName: activityName, createdAt: date };
         if (this.props.board) this.props.updateActivity(addedActivity, { ...this.props.board });

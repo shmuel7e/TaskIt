@@ -12,7 +12,7 @@ export default class DueTimeModal extends Component {
             <div className="due-time-modal">
                 <span onClick={this.onCloseModal} className="close-member-modal">x</span>
                 <h3>Change Due Date</h3>
-                <DatePick style={'border:none'} addDueTimeToTask={this.props.addDueTimeToTask} />
+                <DatePick style={{ border: 'none' }} addDueTimeToTask={this.props.addDueTimeToTask} />
             </div>
         )
     }

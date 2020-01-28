@@ -44,7 +44,7 @@ class TaskDetails extends Component {
         SocketService.terminate();
     }
     onAddActivity = (activityName) => {
-        let date = new Date;
+        let date = new Date();
         date = date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
         let addedActivity = { activityName: activityName, createdAt: date };
         if (this.props.board) this.props.updateActivity(addedActivity, { ...this.props.board });
@@ -150,7 +150,7 @@ class TaskDetails extends Component {
         const activityCommen = {
             user: this.props.user,
             txt: activityTxt,
-            date: new Date
+            date: new Date()
         }
         await this.props.addActivityComment(topic, task, activityCommen)
         await BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id)

@@ -25,7 +25,7 @@ export default class BoardHeader extends Component {
         this.props.changeBgImg(img);
     }
     closeMenue = () => {
-      this.setState({isMenuOn: false})
+        this.setState({ isMenuOn: false })
     }
 
     render() {

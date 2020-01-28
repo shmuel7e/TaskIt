@@ -1,4 +1,3 @@
-
 // Setup //
 @import "setup/variables.scss";
 @import "setup/functions.scss";
@@ -13,6 +12,7 @@
 @import "basics/icons.scss";
 @import "basics/layout.scss";
 @import "basics/animations.scss";
+@import "basics/burger.scss";
 
 // Components //
 @import "components/nav-bar.scss";
@@ -22,7 +22,6 @@
 @import "components/footer.scss";
 @import "components/msgModal.scss";
 @import "components/screen.scss";
-
 
 // board header //
 @import "components/boardHeader/board-header";
@@ -49,7 +48,7 @@
 @import "components/modalSideBar/tool-bar.scss";
 @import "components/modalSideBar/action-bar.scss";
 
-// modalComment // 
+// modalComment //
 @import "components/modalComment/modalCommentList";
 @import "components/modalComment/modalCommentPreview";
 
@@ -59,7 +58,7 @@
 @import "components/modalSideBar/checkList/check-list-bar";
 @import "components/modalSideBar/checkList/check-list-preview";
 
-// labels // 
+// labels //
 @import "components/modalSideBar/labels/label-modal.scss";
 
 // colors //
@@ -67,7 +66,7 @@
 @import "components/modalSideBar/taskColor/task-color-list.scss";
 @import "components/modalSideBar/taskColor/task-color-preview.scss";
 
-// members // 
+// members //
 @import "components/modalSideBar/members/members";
 
 // Due Time //
@@ -85,4 +84,4 @@
 @import "views/boardPage.scss";
 
 // fix heroku url build err //
-@import './views/url.css';
+@import "./views/url.css";
