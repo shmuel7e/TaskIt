@@ -1,6 +1,8 @@
 .board-header {
     padding: 4px 4px 4px 6px;
     background-color: rgba(255, 255, 255, 0.7);
+    width: 100%;
+    position: fixed;
 
     .board-header-divider {
         border-left: 1px solid rgba(0, 0, 0, 0.08);

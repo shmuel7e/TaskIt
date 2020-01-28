@@ -19,11 +19,13 @@
 
   .icon-cross {
     position: absolute;
-    right: 22px;
-    top: 20px;
+    right: 18px;
+    top: 13px;
     font-size: 15px;
     color: #42526e;
     cursor: pointer;
+    z-index: 15;
+    padding: 5px;
   }
 
   .modal-txt {

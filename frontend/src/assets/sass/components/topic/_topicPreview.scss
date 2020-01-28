@@ -45,23 +45,22 @@
     }
   }
 
-  .topic-mini-menu{
+  .topic-mini-menu {
     z-index: 2;
     position: absolute;
     background-color: #fff;
     border-radius: 4px;
     padding: 7px;
     width: 80px;
-    height: 70px;
     right: -50px;
     top: 30px;
+    box-shadow: -2px 4px 11px -6px rgba(0, 0, 0, 0.75);
 
-    .delete-topic-btn{
-        font-size: 14px;
-
-        &:hover{
-            background-color: rgba(9, 30, 66, 0.08);
-        }
+    .delete-topic-btn {
+      font-size: 14px;
+    }
+    &:hover {
+      background-color: rgb(211, 211, 211);
     }
   }
 }
