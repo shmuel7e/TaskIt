@@ -24,8 +24,11 @@ export default class HomePage extends Component {
             <div>
 
                 <div className="home-page-header parallax">
-                    <div className="info">
+                    <div className="info flex column">
                         <h1 className="home-page-title">Taskit lets you simplify your work collaboratively and get more of it done.</h1>
+                        <div class="text-box">
+                            <a href="#" class="btn btn-white btn-animate">Get Started</a>
+                        </div>
                     </div>
                 </div>
                 <div className="home-page-templates">
@@ -37,7 +40,7 @@ export default class HomePage extends Component {
                 </div>
 
 
-                 <Footer /> 
+                <Footer />
             </div>
         )
     }
