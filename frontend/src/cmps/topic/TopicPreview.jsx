@@ -46,6 +46,7 @@ export default class TopicPreview extends Component {
                     <Droppable droppableId={topic.id}>
                         {provided => (
                             <div {...provided.droppableProps} ref={provided.innerRef} {...provided.draggableProps}>
+                                {this.state.isModalShown && <div className="screen-container" onClick={this.toggleMiniModal} />}
                                 <div className="topic-header flex justify-between">
                                     <div className="topic-title" suppressContentEditableWarning={true} contentEditable={this.state.isEditable} tabIndex="0" onMouseUp={this.onKeyPressed} onBlur={(e) => this.onTxtChange(e.target.textContent)}>{topic.title}</div>
                                     <div onClick={this.toggleMiniModal} className="dots-icon-container">
