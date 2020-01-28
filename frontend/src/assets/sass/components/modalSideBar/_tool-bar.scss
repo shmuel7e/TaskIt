@@ -6,7 +6,7 @@
   text-align: left;
   margin-top: -45px;
   margin-left: 13px;
-  
+
   & h3 {
     color: #5e6c84;
     font-size: 12px;
@@ -18,10 +18,20 @@
     margin-bottom: -4px;
     font-weight: 600;
   }
+
+  @include for-mobile-layout {
+    position: absolute;
+    right: 2px;
+    width: 43px;
+    top: 39px;
+  }
 }
 
 .tool-bar,
 .action-bar {
+  @include for-mobile-layout {
+    margin-bottom: -40px;
+  }
   padding-bottom: 5px;
   height: 200px;
   padding-top: 4px;
@@ -56,7 +66,8 @@
     left: 9px;
   }
 
-  & > button, .label-img {
+  & > button,
+  .label-img {
     text-align: left;
     color: #172b4d;
     background-color: #eaecf0;
@@ -78,6 +89,9 @@
     outline: none;
     line-height: 15px;
     position: relative;
+    @include for-mobile-layout {
+      width: 10px !important;
+    }
 
     &:hover {
       outline: none;
@@ -151,13 +165,22 @@
   top: 3px;
   cursor: pointer;
 }
-#add-img{
+#add-img {
   display: none;
 }
-.img-button{
+.img-button {
   font-size: rem(13px);
 }
-.img-button-text{
-  margin-left:11px;
+.img-button-text {
+  margin-left: 11px;
   display: inline-block;
+  @include for-mobile-layout {
+    opacity: 0;
+  }
+}
+
+.modal-sidebar-container > * > * > h3 {
+  @include for-mobile-layout {
+    opacity: 0;
+  }
 }

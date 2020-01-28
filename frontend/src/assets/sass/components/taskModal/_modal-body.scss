@@ -16,11 +16,11 @@
     }
 
     .icon-message {
-        position: absolute;
-        left: -29px;
-        top: -1px;
-        font-size: 19px;
-        color: #42526e;
+      position: absolute;
+      left: -29px;
+      top: -1px;
+      font-size: 19px;
+      color: #42526e;
     }
   }
   .description {
@@ -32,6 +32,12 @@
 }
 
 .comment-box {
+  @include for-normal-layout {
+    width: 270px !important;
+  }
+  @include for-mobile-layout {
+    width: 170px !important;
+  }
   padding: 8px 12px;
   background-color: #fff;
   width: 375px;

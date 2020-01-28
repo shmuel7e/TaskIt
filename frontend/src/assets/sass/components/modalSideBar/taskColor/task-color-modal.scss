@@ -1,5 +1,6 @@
 .task-color-container {
   position: relative;
+  
   .color-modal {
     position: fixed;
     z-index: 999;
@@ -19,6 +20,11 @@
     padding: 6px 61px 6px 33px;
     position: relative;
     outline: none;
+    @include for-mobile-layout {
+    overflow: hidden;
+    padding: 6px 0 6px 33px;
+    width: 10px !important;
+    }
   }
 
   h3 {
