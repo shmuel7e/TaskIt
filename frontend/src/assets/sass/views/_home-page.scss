@@ -1,7 +1,7 @@
 .home-page-header {
   position: relative;
   overflow: hidden;
-  height: 80vh;
+  height: 100vh;
   color: #eee;
 }
 
@@ -39,15 +39,33 @@
   }
 }
 
+.home-section-info{
+  background-color: #fff;
+  height: 370px;
+  text-shadow: #02040c 1px 1px;
+  font-size: 4rem;
+  font-weight: 900;
+  font-family: Yanone-Regular;
+  color: #172b4d;
+  padding: 30px;
+}
+
 .home-page-title {
   font-size: 2.7rem;
   max-width: 485px;
 }
 
 
+.home-page-section {
+  height: 500px;
+  background-size: cover;
+}
 
 .home-section-desc {
-  font-size: 2.3rem;
+    font-size: 2.3rem;
+    width: 450px;
+    text-align: start;
+    margin-left: 30px;
 }
 
 // BUTTON GET STARTED //
