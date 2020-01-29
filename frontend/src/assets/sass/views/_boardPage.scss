@@ -1,13 +1,10 @@
 .board-page-container {
-  margin-top: 50px;
   margin-left: auto;
   margin-right: auto;
-overflow:hidden !important;
-  background: url(https://i.pinimg.com/originals/f1/47/2f/f1472f334b2df7c0002176ddf26ca638.jpg)
-    fixed center;
   background-size: cover;
   background-repeat: no-repeat;
   overflow: auto;
+  height: 100vh;
 
   .board-page-title {
     color: #f2f2f2;
@@ -80,6 +77,6 @@ overflow:hidden !important;
 
 .boards-container {
   flex-wrap: wrap;
-    max-width: 980px;
-    margin: 0 55px;
+  max-width: 980px;
+  margin: 0 55px;
 }
