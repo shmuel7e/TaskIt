@@ -27,6 +27,16 @@ async function getBoards(userId) {
     }
 }
 
+async function removeBoard(boardId) {
+    const collection = await dbService.getCollection('board')
+    try {
+        return await collection.deleteOne({"_id":ObjectId(boardId)})
+    } catch (err) {
+        console.log(`ERROR: cannot remove board ${boardId}`)
+        throw err;
+    }
+}
+
 async function addBoard(user) {
     try {
         const board = boardUtils.createBoard(user)
@@ -58,5 +68,6 @@ module.exports = {
     getBoard,
     addBoard,
     getBoards,
-    updateBoard
+    updateBoard,
+    removeBoard
 }
