@@ -6,6 +6,9 @@
     width: 18rem;
     border-radius: 5px;
     margin-top: 8px;
+    @include for-middle-layout {
+      right: 0;
+    }
 
     .icon-cross {
       font-size: 11px;

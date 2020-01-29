@@ -116,6 +116,9 @@
   z-index: 9999;
   border-radius: 5px;
   margin-top: 8px;
+  @include for-middle-layout {
+    right: 0;
+  }
 
   .members-modal-input {
     padding-bottom: 9px;
