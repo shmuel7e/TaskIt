@@ -58,6 +58,11 @@
       opacity: 0.8;
     }
   }
+  &:hover {
+    .board-tools-container {
+      display: block;
+    }
+  }
 }
 
 .add-board-btn {
@@ -79,4 +84,16 @@
   flex-wrap: wrap;
   max-width: 980px;
   margin: 0 55px;
+}
+
+.board-tools-container {
+  position: absolute;
+  bottom: 0;
+  right: 20px;
+  color: white;
+  display: none;
+
+  &>*{
+    margin-left:15px;
+  }
 }

@@ -22,6 +22,11 @@ async function getBoards(req, res) {
         res.status(500).send({ error: 'cannot get Board' })
     }
 }
+
+async function deleteBoard(req, res) {
+    await boardService.removeBoard(req.params.id)
+    res.end()
+}
 async function addBoard(req, res) {
     const user = req.body
     try {
@@ -118,6 +123,8 @@ module.exports = {
     updateActivity,
     addNewTopic,
     addNewTask,
-    updateTask
+    updateTask,
+    deleteBoard
+    
   
 }

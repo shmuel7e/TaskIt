@@ -7,6 +7,10 @@ async function getBoard(boardId) {
 async function getBoards(userId) {
     return await HttpService.get(`board/all/${userId}`)
 }
+async function deleteBoard(boardId){
+    return await HttpService.delete(`board/${boardId}`) 
+}
+
 
 async function addBoard(user) {
     return await HttpService.post('board', user)
@@ -111,7 +115,6 @@ function _createCheckList(checkListTitle) {
     })
         .then(res => res.json())
         .then(res => {
-          //  console.log(res)
             return res
         })
         .catch(err => console.error(err))
@@ -131,5 +134,6 @@ export default {
     addNewTodo,
     addNewChecklist,
     updateTask,
-    uploadImg
+    uploadImg,
+    deleteBoard
 };
