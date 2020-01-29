@@ -1,5 +1,6 @@
 .due-modal-container {
   position: relative;
+  
   .due-time-modal {
     position: fixed;
     z-index: 999;
@@ -8,6 +9,9 @@
     border-radius: 5px;
     margin-top: 8px;
     height: 112px;
+    @include for-middle-layout {
+      right: 0;
+    }
     & > h3 {
       box-sizing: border-box;
       color: #5e6c84;

@@ -20,7 +20,7 @@
   line-height: 40px;
   overflow: hidden;
   position: relative;
-  text-overflow: ellipsis;  
+  text-overflow: ellipsis;
   text-decoration: none;
   white-space: nowrap;
   margin-bottom: 4px;
@@ -33,7 +33,7 @@
 }
 
 .members-on-task-title {
-  margin-top: -30px; 
+  margin-top: -30px;
   color: #172b4d;
   font-size: 12px;
   font-weight: 600;
@@ -73,6 +73,5 @@
   &:hover {
     background-color: #a9abaf;
     opacity: 0.8;
-    
   }
 }
