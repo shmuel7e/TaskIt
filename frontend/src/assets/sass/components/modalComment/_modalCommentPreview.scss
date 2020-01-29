@@ -1,4 +1,8 @@
 .user-info {
+  @include for-normal-layout {
+  }
+  @include for-mobile-layout {
+  }
   color: #41516e;
 
   .user-name {
@@ -12,8 +16,11 @@
 }
 
 .user-comment {
-    margin-left: 51px;
-    font-size: 14px;
-    color: #41516e;
-    line-height: 10px;
+  margin-left: 51px;
+  font-size: 14px;
+  color: #41516e;
+  line-height: 10px;
+  max-width: 300px;
+  word-break: break-all;
+  padding-right: 10px;
 }

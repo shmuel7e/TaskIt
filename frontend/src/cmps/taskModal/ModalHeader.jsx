@@ -15,7 +15,7 @@ export default class ModalHeader extends Component {
         const { topic } = this.props
         return (
             <div className="modal-header">
-                <span className='icon-cross' onClick={this.onCloseModal}></span>
+                <div className="close-btn-container icon-cross" onClick={this.onCloseModal}></div>
                 <span className="icon-window"></span>
                 <div className="modal-txt title" style={{ background: task.bgColor }} suppressContentEditableWarning={true} contentEditable="true" onBlur={(e) => this.onTxtChange(e.target.textContent)}>{task.title}</div>
                 <div className="small-title">

@@ -17,7 +17,7 @@ export default class LabelModal extends Component {
     render() {
         return (
             <div className='labal-modal'>
-                <span onClick={this.onCloseModal} className="close-member-modal">x</span>
+                <span onClick={this.onCloseModal} className="icon-cross"></span>
                 <h3>Labels</h3>
                 <LabelsList labels={this.state.labels} addLabelToTask={this.props.addLabelToTask} />
             </div>

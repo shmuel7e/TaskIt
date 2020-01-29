@@ -1,8 +1,26 @@
 .board-page-container {
-  h3 {
-    font-size: 16px;
-    font-weight: 700;
-    text-align: start;
+  margin-left: auto;
+  margin-right: auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: auto;
+  height: 100vh;
+
+  .board-page-title {
+    color: #f2f2f2;
+
+    h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 17px 35px;
+      text-align: start;
+
+      .icon-user {
+        font-size: 19px;
+        margin-right: 9px;
+        font-size: 22px;
+      }
+    }
   }
 }
 
@@ -12,7 +30,7 @@
   max-width: 230px;
   cursor: pointer;
   margin: 10px;
-  border-radius: 3px;
+  border-radius: 4px;
 
   h4 {
     position: absolute;
@@ -24,16 +42,17 @@
     left: 9px;
   }
   img {
-    width: 230px;
-    height: 100px;
+    width: 185px;
+    height: 95px;
     transition: all ease 0.4s;
-    border-radius: 3px;
+    border-radius: 4px;
     opacity: 0.9;
     &:hover {
       opacity: 0.8;
     }
   }
   div {
+    border-radius: 4px;
     opacity: 0.9;
     &:hover {
       opacity: 0.8;
@@ -42,20 +61,22 @@
 }
 
 .add-board-btn {
-  background-color: rgba(9, 30, 66, 0.06);
+  background-color: rgba(252, 252, 252, 0.71);
   border: none;
   color: #172b4d;
-  height: 100px;
-  width: 230px;
+  height: 95px;
+  width: 185px;
   text-align: center;
   cursor: pointer;
   outline: none;
 
   &:hover {
-    background-color: rgba(9, 30, 66, 0.15);
+    background-color: rgba(255, 255, 255, 0.84);
   }
 }
 
 .boards-container {
   flex-wrap: wrap;
+  max-width: 980px;
+  margin: 0 55px;
 }

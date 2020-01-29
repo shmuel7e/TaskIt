@@ -10,7 +10,7 @@ export default class MembersModal extends Component {
     render() {
         return (
             <div className="members-modal-input">
-                <span onClick={this.onCloseModal} className="close-member-modal">x</span>
+                <span onClick={this.onCloseModal} className="icon-cross"></span>
                 <h3 className="members-title">Members</h3>
                 <MembersList members={this.props.board.members} addMemberToTask={this.props.addMemberToTask}
                     getInitials={this.props.getInitials} />

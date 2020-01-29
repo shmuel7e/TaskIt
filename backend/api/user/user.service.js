@@ -71,7 +71,6 @@ async function getUsersByEmail(emailsThatUsed,text){
         console.log('ERROR: cannot find users')
         throw err;
     }
-
 }
 
 async function remove(userId) {

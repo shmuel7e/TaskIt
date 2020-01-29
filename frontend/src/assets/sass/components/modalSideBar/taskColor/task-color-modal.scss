@@ -1,5 +1,6 @@
 .task-color-container {
   position: relative;
+
   .color-modal {
     position: fixed;
     z-index: 999;
@@ -7,6 +8,9 @@
     width: 18rem;
     border-radius: 5px;
     margin-top: 8px;
+    @include for-middle-layout {
+      right: 0;
+    }
   }
   button {
     color: #172b4d;
@@ -19,6 +23,12 @@
     padding: 6px 61px 6px 33px;
     position: relative;
     outline: none;
+    min-width: 174px;
+    @include for-mobile-layout {
+      overflow: hidden;
+      padding: 6px 0 6px 33px;
+      width: 10px !important;
+    }
   }
 
   h3 {

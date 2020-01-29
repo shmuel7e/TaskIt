@@ -25,8 +25,7 @@ import {
     updateActivity,
     setCurrBoard
 } from '../actions/BoardActions';
-import { Route, Router } from 'react-router';
-import history from '../history';
+import { Route} from 'react-router';
 
 const ListContainer = styled.div`
 display:flex;
@@ -43,6 +42,7 @@ class TopicPage extends Component {
     }
 
     componentDidMount = async () => {
+        //sd
         const board = await BoardService.getBoard(this.props.match.params.id)
         await this.props.setCurrBoard(board)
         this.getGalleryImgs();
@@ -134,7 +134,7 @@ class TopicPage extends Component {
     }
 
     onAddActivity = (activityName) => {
-        let date = new Date;
+        let date = new Date();
         date = date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
         let addedActivity = { activityName: activityName, createdAt: date };
         if (this.props.board) this.props.updateActivity(addedActivity, { ...this.props.board });
@@ -151,12 +151,14 @@ class TopicPage extends Component {
     onAddNewTopic = async (topicName) => {
         const { board } = this.props;
         await this.props.addTopic(topicName, board._id);
+        await BoardService.updateBoard(this.props.board)
         SocketService.emit('user changes', this.props.user.username + ' has added new topic');
     }
 
     addTask = async (taskTitle, topicId) => {
         const { board } = this.props;
         await this.props.addTask(taskTitle, topicId, board._id);
+        await BoardService.updateBoard(this.props.board)
         SocketService.emit('user changes', this.props.user.username + ' has added a new task');
 
     }

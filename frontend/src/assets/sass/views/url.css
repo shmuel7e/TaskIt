@@ -2,8 +2,12 @@
   background-image: url("../../images/login-bg.jpg");
 }
 
-.home-page-section {
-  background: url("../../images/section.jpg") fixed center;
+.home-page-section-1 {
+  background: url("https://kanbanize.com/wp-content/themes/kanbanize/img/workflows_background_medium_green.jpg") fixed center;
+}
+
+.home-page-section-2 {
+  background: url("https://kanbanize.com/wp-content/themes/kanbanize/img/main-section-1-bg.jpg") fixed center;
 }
 
 .home-page-header:before {
@@ -25,4 +29,8 @@
 
 .about-page-header {
     background: url("../../images/about.jpg") fixed center no-repeat;
+}
+
+.board-page-container {
+  background-image: url(http://504.co.kr/wp-content/uploads/2015/02/creative-fresh-work-desk.jpg);
 }
