@@ -150,12 +150,14 @@ class TopicPage extends Component {
     onAddNewTopic = async (topicName) => {
         const { board } = this.props;
         await this.props.addTopic(topicName, board._id);
+        await BoardService.updateBoard(this.props.board)
         SocketService.emit('user changes', this.props.user.username + ' has added new topic');
     }
 
     addTask = async (taskTitle, topicId) => {
         const { board } = this.props;
         await this.props.addTask(taskTitle, topicId, board._id);
+        await BoardService.updateBoard(this.props.board)
         SocketService.emit('user changes', this.props.user.username + ' has added a new task');
 
     }
