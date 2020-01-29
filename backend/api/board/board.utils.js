@@ -10,11 +10,11 @@ function createBoard(user) {
         activities: [],
         topics: [{
             id: utilsService.makeRandomId(),
-            title: 'Todo',
+            title: 'Things To Do',
             tasks: []
         }, {
             id: utilsService.makeRandomId(),
-            title: 'Things To Do',
+            title: 'Doing',
             tasks: []
         },
         {
