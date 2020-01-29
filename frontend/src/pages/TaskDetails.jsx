@@ -40,9 +40,7 @@ class TaskDetails extends Component {
         }
     }
 
-    componentWillUnmount = () => {
-        SocketService.terminate();
-    }
+    
     onAddActivity = (activityName) => {
         let date = new Date();
         date = date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
