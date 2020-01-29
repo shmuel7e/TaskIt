@@ -134,7 +134,6 @@ class TopicPage extends Component {
 
     onAddActivity = (activityName) => {
         let date = new Date();
-        date = date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
         let addedActivity = { activityName: activityName, createdAt: date };
         if (this.props.board) this.props.updateActivity(addedActivity, { ...this.props.board });
     }
