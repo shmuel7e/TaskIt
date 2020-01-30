@@ -21,7 +21,7 @@ import BoardService from '../services/BoardService.js'
 import SocketService from '../services/SocketService.js'
 class TaskDetails extends Component {
 
-    componentDidMount() {
+    componentDidMount=()=> {
         this.loadTask();
         SocketService.setup();
         SocketService.on('user changes', async (msg) => {
@@ -48,10 +48,10 @@ class TaskDetails extends Component {
         if (this.props.board) this.props.updateActivity(addedActivity, { ...this.props.board });
     }
 
-    loadTask() {
+    loadTask=async()=> {
         const { topicId, taskId } = this.props.match.params;
-        this.props.setCurrTopic(topicId);
-        this.props.setCurrTask(taskId);
+       await this.props.setCurrTopic(topicId);
+      await  this.props.setCurrTask(taskId);
     }
 
     closeModal = () => {

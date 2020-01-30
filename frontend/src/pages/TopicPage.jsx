@@ -42,7 +42,6 @@ class TopicPage extends Component {
     }
 
     componentDidMount = async () => {
-        //sd
         const board = await BoardService.getBoard(this.props.match.params.id)
         await this.props.setCurrBoard(board)
         this.getGalleryImgs();
