@@ -51,6 +51,7 @@ class TopicPage extends Component {
         SocketService.emit('user joined the board', { text: `${this.props.user.username} has joined the board` });
         SocketService.on('user changes', async (msg) => {
             this.onAddActivity(msg);
+            if(msg.includes(this.props.user.username ))return
             const board = await BoardService.getBoard(this.props.match.params.id)
             await this.props.setCurrBoard(board)
             if (msg.includes('cover')) this.initialBgImg()
