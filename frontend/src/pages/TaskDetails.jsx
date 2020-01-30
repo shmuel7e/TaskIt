@@ -21,7 +21,7 @@ import BoardService from '../services/BoardService.js'
 import SocketService from '../services/SocketService.js'
 class TaskDetails extends Component {
 
-    componentDidMount=()=> {
+    componentDidMount = async () => {
         this.loadTask();
         SocketService.setup();
         SocketService.on('user changes', async (msg) => {
@@ -40,7 +40,7 @@ class TaskDetails extends Component {
         }
     }
 
-    
+
     onAddActivity = (activityName) => {
         let date = new Date();
         date = date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
@@ -48,10 +48,10 @@ class TaskDetails extends Component {
         if (this.props.board) this.props.updateActivity(addedActivity, { ...this.props.board });
     }
 
-    loadTask=async()=> {
+    loadTask = async () => {
         const { topicId, taskId } = this.props.match.params;
-       await this.props.setCurrTopic(topicId);
-      await  this.props.setCurrTask(taskId);
+        await this.props.setCurrTopic(topicId);
+        await this.props.setCurrTask(taskId);
     }
 
     closeModal = () => {
@@ -180,10 +180,10 @@ class TaskDetails extends Component {
         SocketService.emit('user changes', this.props.user.username + 'has deleted todo');
     }
 
-    onUploadImg=async(ev)=>{
-      await this.props.uploadImgToTask(ev,this.props.topic,this.props.task)
-      await BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id);
-      SocketService.emit('user changes', this.props.user.username + 'has uploaded');
+    onUploadImg = async (ev) => {
+        await this.props.uploadImgToTask(ev, this.props.topic, this.props.task)
+        await BoardService.updateTask(this.props.task, this.props.board._id, this.props.topic.id);
+        SocketService.emit('user changes', this.props.user.username + 'has uploaded');
     }
 
     render() {
