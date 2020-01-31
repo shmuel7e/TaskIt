@@ -34,6 +34,12 @@ async function cloneTask(task) {
     return Promise.resolve(clonedTask);
 }
 
+ async function removeUserFromBoard(board,user){
+  board.members=  board.members.filter(member => member._id !==user._id)
+ return await updateBoard(board)
+   
+}
+
 function _createTask(taskTitle) {
     return {
         title: taskTitle,
@@ -135,5 +141,6 @@ export default {
     addNewChecklist,
     updateTask,
     uploadImg,
-    deleteBoard
+    deleteBoard,
+    removeUserFromBoard
 };

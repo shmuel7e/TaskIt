@@ -11,6 +11,7 @@ import UtilsService from '../services/UtilsService.js';
 import BoardService from '../services/BoardService.js'
 import SocketService from '../services/SocketService.js'
 import UserService from '../services/UserService.js'
+import EventBusService from '../services/EventBusService'
 
 
 import {
@@ -193,6 +194,16 @@ class TopicPage extends Component {
         await this.props.addMemberToBoard(member)
         BoardService.updateBoard(this.props.board)
     }
+    onRemoveUser=async()=>{
+      if(this.props.board.members.length === 1){
+      await  BoardService.deleteBoard(this.props.board._id)
+      }else{
+          await  BoardService.removeUserFromBoard(this.props.board,this.props.user)
+          SocketService.emit('user changes', this.props.user.username + ' has remove himself from the board');
+      }
+      EventBusService.emit('toggleModal', { msg: 'remove success', style: 'success' });
+      this.props.history.push('/board')
+    }
 
     render() {
         const { board } = this.props
@@ -201,6 +212,8 @@ class TopicPage extends Component {
             <DragDropContext onDragEnd={this.onDragEnd}>
                 <div style={this.state.style} className="trello-page-container header-padding">
                     <BoardHeader
+                        onRemoveUser={this.onRemoveUser}
+                        user={this.props.user}
                         onAddMember={this.onAddMember}
                         membersToInvite={this.state.membersToInvite}
                         onSearchUsers={this.onSearchUsers}
