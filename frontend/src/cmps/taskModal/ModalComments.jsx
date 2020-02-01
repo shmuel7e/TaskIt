@@ -11,9 +11,11 @@ export default class ModalComments extends Component {
 
     onPost = (ev) => {
          ev.preventDefault()
+         ev.stopPropagation()
         this.props.addActivityComment(this.state.activityTxt)
         document.getElementsByClassName('add-comment-txt')[0].innerHTML = '';
         this.setState({ activityTxt: '' })
+       
     }
     closeModal=()=>{
         setTimeout(()=>{

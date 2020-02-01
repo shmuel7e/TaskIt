@@ -70,7 +70,7 @@ export default function (state = initialState, action = {}) {
           }
           return topic
         })
-        return { ...state, board: { ...state.board, topics: updateTopics } };  
+        return { ...state, board: { ...state.board, topics: [...updateTopics] } };  
 
     case 'TASK_CLONE':
       state.board.topics = state.board.topics.map(topic => {
