@@ -5,5 +5,31 @@ position: relative;
 .member-mini-menu{
     background-color: white;
      position: absolute;
+     z-index: 999;
+     padding:3px 5px;
+     left:1%;
      top:106%;
+
  }
+
+ .member-name-initials-board {
+    background-color: #dfe1e6;
+    border-radius: 25em;
+    cursor: pointer;
+    display: block;
+    float: left;
+    height: 32px;
+    line-height: 33px;
+    margin: 4px 8px 4px 0;
+    overflow: visible;
+    position: relative;
+    width: 32px;
+    text-decoration: none;
+    -webkit-user-select: none;
+    user-select: none;
+    z-index: 0;
+    font-size: 12px;
+    font-weight: 700;
+    color: #172b4d;
+    text-align: center;
+  }

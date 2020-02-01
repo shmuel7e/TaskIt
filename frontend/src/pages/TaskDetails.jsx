@@ -26,7 +26,7 @@ class TaskDetails extends Component {
         SocketService.setup();
         SocketService.on('user changes', async (msg) => {
             this.onAddActivity(msg);
-            if(msg.includes(this.props.user.username ))return
+            if(msg.includes(this.props.user.username) && !msg.includes('activity comment to task'))return
             const board = await BoardService.getBoard(this.props.board._id)
             await this.props.setCurrBoard(board)
             this.loadTask();

@@ -59,7 +59,9 @@ export function addMemberToBoard(member) {
 export function loadBoard() {
     return async dispatch => {
         try {
-           const board =StorageService.loadFromStorage('board',null)
+           let board =StorageService.loadFromStorage('board',null)
+           board =(!board)?BoardService.createBoard():board
+           StorageService.saveToStorage('board',board)
             dispatch(_setBoard(board));
         } catch (err) {
             console.log('UserActions: err in getBoard', err);

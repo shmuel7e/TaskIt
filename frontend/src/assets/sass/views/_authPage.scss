@@ -1,16 +1,19 @@
-.auth-container{
+.auth-container {
   top: 0;
   position: absolute;
-  width:100%;
+  width: 100%;
   height: 100vh;
   background-color: #0000004a;
+  @include for-normal-layout {
+    background-color: white;
+  }
 }
 .form {
-
-  input, button {
+  input,
+  button {
     border: none;
     outline: none;
-    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
   }
 }
 
@@ -44,11 +47,11 @@ $diffRatio: ($contW - $imgW) / $contW;
   margin: 0 auto 100px;
   background: #fff;
   margin-top: 84px;
-  
-  @include for-normal-layout {
-  margin:0;
-}
 
+  @include for-normal-layout {
+    margin-top: 100px;
+    margin: 0;
+  }
 }
 
 .form {
@@ -71,7 +74,7 @@ $diffRatio: ($contW - $imgW) / $contW;
   transition: transform $switchAT ease-in-out;
 
   @include signUpActive {
-    transform: translate3d($formW * -1,0,0);
+    transform: translate3d($formW * -1, 0, 0);
   }
 }
 
@@ -97,30 +100,29 @@ $diffRatio: ($contW - $imgW) / $contW;
   padding-top: 360px;
 
   &:before {
-    content: '';
+    content: "";
     position: absolute;
     right: 0;
     top: 0;
     width: $contW;
     height: 100%;
-    // background-image: url('../../images/login-bg.jpg');
     background-size: cover;
     transition: transform $switchAT ease-in-out;
   }
 
   &:after {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0, 0, 0, 0.6);
   }
 
   @include signUpActive {
     &:before {
-      transform: translate3d($formW,0,0);
+      transform: translate3d($formW, 0, 0);
     }
   }
 
@@ -146,9 +148,8 @@ $diffRatio: ($contW - $imgW) / $contW;
     }
 
     &.m--up {
-
       @include signUpActive {
-        transform: translateX($imgW*2);
+        transform: translateX($imgW * 2);
       }
     }
 
@@ -173,9 +174,9 @@ $diffRatio: ($contW - $imgW) / $contW;
     text-transform: uppercase;
     font-size: 15px;
     cursor: pointer;
-    
+
     &:after {
-      content: '';
+      content: "";
       z-index: 2;
       position: absolute;
       left: 0;
@@ -196,18 +197,18 @@ $diffRatio: ($contW - $imgW) / $contW;
       width: 100%;
       height: 100%;
       transition: transform $switchAT;
-      
+
       &.m--in {
-        transform: translateY($btnH*-2);
-        
+        transform: translateY($btnH * -2);
+
         @include signUpActive {
           transform: translateY(0);
         }
       }
-      
+
       &.m--up {
         @include signUpActive {
-          transform: translateY($btnH*2);
+          transform: translateY($btnH * 2);
         }
       }
     }
@@ -240,7 +241,7 @@ h2 {
   height: 25px;
   margin-top: 5px;
   font-size: 16px;
-  border-bottom: 1px solid rgba(0,0,0,0.4);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
   text-align: center;
 }
 
@@ -274,15 +275,15 @@ h2 {
   @include signUpActive {
     transition-timing-function: ease-in-out;
     transition-duration: $switchAT;
-    transform: translate3d($formW,0,0);
+    transform: translate3d($formW, 0, 0);
   }
 }
 
 .sign-up {
-  transform: translate3d($contW * -1,0,0);
+  transform: translate3d($contW * -1, 0, 0);
 
   @include signUpActive {
-    transform: translate3d(0,0,0);
+    transform: translate3d(0, 0, 0);
   }
 }
 

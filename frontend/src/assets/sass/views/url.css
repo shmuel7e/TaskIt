@@ -14,6 +14,10 @@
   background: url("https://images.pexels.com/photos/3183151/pexels-photo-3183151.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260")
     50% 0 no-repeat;
 }
+.home-page-header-hero{
+  background: url("../../images/hero-bg.jpg")
+  10%   no-repeat;
+}
 
 .creator-section1 {
   background: url("../../images/section.jpg") center no-repeat;

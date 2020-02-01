@@ -36,7 +36,11 @@ export default class BoardHeader extends Component {
                 <div className="first-header-section flex justify-between">
                     <button className='borad-header-btn' >Boards</button>
                     <span className="board-header-divider"></span>
-                    <BoardMemberList board={board} />
+                    <BoardMemberList
+                        onRemoveUser={this.props.onRemoveUser}
+                        board={board}
+                        user={this.props.user}
+                    />
                     <span className="board-header-divider"></span>
                     <button onClick={this.onToggleUsersModal} className='borad-header-btn' >Invite</button>
                     <div className="search-user-modal">
