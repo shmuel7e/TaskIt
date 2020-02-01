@@ -126,82 +126,6 @@ function _createCheckList(checkListTitle) {
         .catch(err => console.error(err))
 }
 
-function createBoard() {
-    const board = {
-        _id:UtilsService.makeRandomId(),    
-        members: [{ _id: UtilsService.makeRandomId(), email: 'shmuel7e@gmail.com', username: 'shmuel elkis', bgColor: '#FFDFD3' },
-        { _id: UtilsService.makeRandomId(), email: 'puku@gmail.com', username: 'tal mashiah', bgColor: '#FEC8D8' },
-        { _id: UtilsService.makeRandomId(), email: 'tira@gmail.com', username: 'Tira malka', bgColor: '#957DAD' },
-        { _id: UtilsService.makeRandomId(), email: 'chuchu@gmail.com', username: 'chuchi buchi', bgColor: '#D291BC' },
-        { _id: UtilsService.makeRandomId(), email: 'dudu@gmail.com', username: 'dudu aatok', bgColor: '#E0BBE4' }],
-        cover: 'bg5.jpg',
-        activities: [{ activityName: 'shmuel deleted task', createdAt: '12:58 PM' },
-        { activityName: 'shmuel added a task', createdAt: '17:40 PM' },
-        { activityName: 'shmuel removed tal from the board', createdAt: '19:00 PM' }],
-        topics: [{
-            id: UtilsService.makeRandomId(),
-            title: 'Todo',
-            tasks: [{
-                id: UtilsService.makeRandomId(),
-                title: 'going to supermarket',
-                cover: '',
-                description: 'buy fruits and wines',
-                createdAt: new Date,
-                checkList: [{ id: UtilsService.makeRandomId(), title: 'Check List yoyo', todos: [{ id: UtilsService.makeRandomId(), title: 'buy soya milk', isDone: false }, { id: UtilsService.makeRandomId(), title: 'go to the gym', isDone: true }] }],
-                comments: [],
-                details: [],
-                members: [],
-                labels: [],
-                dueTime: '',
-                attachments: [],
-                bgColor: '',
-            }]
-        }, {
-            id: UtilsService.makeRandomId(),
-            title: 'Things To Do',
-            tasks: [
-                {
-                    id: UtilsService.makeRandomId(),
-                    title: 'make homework',
-                    cover: '',
-                    description: 'learn math',
-                    createdAt: new Date,
-                    comments: [],
-                    details: [],
-                    members: [],
-                    labels: [],
-                    dueTime: '',
-                    attachments: [],
-                    checkList:[],
-                    bgColor: '',
-                }
-            ]
-        },
-        {
-            id: UtilsService.makeRandomId(),
-            title: 'Done',
-            tasks: [
-                {
-                    id: UtilsService.makeRandomId(),
-                    title: 'go to shopping',
-                    cover: '',
-                    description: 'buy t-shirt',
-                    createdAt: new Date,
-                    comments: [],
-                    details: [],
-                    members: [],
-                    labels: [],
-                    dueTime: '',
-                    checkList:[],
-                    attachments: [],
-                    bgColor: '',
-                }
-            ]
-        }
-        ]
-    }
-    return board
-}
 
 
 export default {
@@ -219,6 +143,5 @@ export default {
     updateTask,
     uploadImg,
     deleteBoard,
-    removeUserFromBoard,
-    createBoard
+    removeUserFromBoard
 };

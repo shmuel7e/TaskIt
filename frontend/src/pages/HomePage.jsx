@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import Footer from '../cmps/footer/Footer.jsx';
-import {
-    loadBoard
-} from '../actions/BoardActions';
+
 
 
 class HomePage extends Component {
-    startTryMode = async() => {
-      await this.props.loadBoard()
-       this.props.history.push(`topic/${this.props.board._id}`)
-    }
+
     render() {
         return (
             <div>
@@ -18,8 +12,8 @@ class HomePage extends Component {
                     <div className="info flex column">
                         <h1 className="home-page-title">Taskit lets you simplify your work collaboratively and get more of it done.</h1>
                         <div className="text-box">
-                                {/* <a href="#" className="btn btn-white btn-animate">Get Started</a> */}
-                        <button onClick={this.startTryMode} >get started</button>
+                                 <a href="#" className="btn btn-white btn-animate">Get Started</a> 
+                        
                         </div>
                     </div>
                 </div>
@@ -43,12 +37,5 @@ class HomePage extends Component {
         )
     }
 }
-const mapStateToProps = state => {
-    return {
-        board: state.board.board
-    };
-};
-const mapDispatchToProps = {
-    loadBoard
-};
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+
+export default HomePage

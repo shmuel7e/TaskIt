@@ -46,10 +46,6 @@ class TopicPage extends Component {
     componentDidMount = async () => {
         this.getGalleryImgs();
         this.getGalleryColors();
-        if(!this.props.user){
-            this.props.loadBoard()
-            return
-        }
         const board = await BoardService.getBoard(this.props.match.params.id)
         await this.props.setCurrBoard(board)
         SocketService.setup();
@@ -67,13 +63,8 @@ class TopicPage extends Component {
     async  componentDidUpdate(prevProps) {
         if (prevProps.match.params.id
             !== this.props.match.params.id) {
-                if(this.props.user){
                     const board = await BoardService.getBoard(this.props.match.params.id)
                     this.props.setCurrBoard(board)
-                }else{
-                    this.props.loadBoard()
-                }
-           
         }
         if (this.props.board && Object.entries(this.state.style).length === 0) {
             if (this.props.board.cover.includes('bg')) this.initialBgImg()
