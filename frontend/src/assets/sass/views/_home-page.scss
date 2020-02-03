@@ -117,7 +117,7 @@
     margin-top: 20px;
     font-weight: 700;
     @include for-mobile-layout {
-      font-size: 1.6rem;
+      font-size: 1.3rem;
     }
   }
   & > div {
@@ -130,6 +130,7 @@
     font-size: 1.3rem;
     @include for-mobile-layout {
       font-size: 0.9rem;
+      min-width: 300px;
     }
   }
 }
@@ -186,7 +187,7 @@
     margin-top: 20px;
     font-weight: 700;
     @include for-mobile-layout {
-      font-size: 1.6rem;
+      font-size: 1.3rem;
     }
   }
   & > div {
@@ -199,6 +200,7 @@
     font-size: 1.3rem;
     @include for-mobile-layout {
       font-size: 0.9rem;
+      min-width: 300px;
     }
   }
 }
