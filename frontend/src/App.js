@@ -8,7 +8,6 @@ import Header from '../src/cmps/header/Header.jsx';
 import HomePage from './pages/HomePage.jsx';
 import TopicPage from './pages/TopicPage.jsx';
 import AuthPage from './pages/AuthPage.jsx';
-import AboutPage from './pages/AboutPage.jsx';
 import BoardPage from './pages/BoardPage.jsx';
 import MsgModal from './cmps/MsgModal.jsx'
 
@@ -31,7 +30,6 @@ class App extends Component {
             <Route component={HomePage} path="/" exact></Route>
             <Route component={TopicPage} path="/topic/:id" ></Route>
             <Route component={AuthPage} path="/auth" exact></Route>
-            <Route component={AboutPage} path="/about" exact></Route>
             <Route component={BoardPage} path="/board" exact></Route>
           </Switch>
         </Router>
