@@ -4,7 +4,7 @@
   width: 100%;
   height: 100vh;
   background-color: #0000004a;
-  @include for-normal-layout {
+  @include for-middle-layout {
     background-color: white;
   }
 }
@@ -49,8 +49,15 @@ $diffRatio: ($contW - $imgW) / $contW;
   margin-top: 84px;
 
   @include for-normal-layout {
-    margin-top: 100px;
     margin: 0;
+    position: relative;
+    width: 900px;
+    height: 469px;
+    margin: 0 auto 100px;
+    background: #fff;
+    margin-top: 58px !important;
+    left: -163px;
+    overflow: visible;
   }
 }
 
@@ -72,8 +79,14 @@ $diffRatio: ($contW - $imgW) / $contW;
   padding-left: $imgW;
   background: #fff;
   transition: transform $switchAT ease-in-out;
-
+  @include for-normal-layout {
+    left: 187px;
+    top: 386px;
+  }
   @include signUpActive {
+    @include for-normal-layout {
+      transform: translate3d($formW * -1, 0, -1);
+    }
     transform: translate3d($formW * -1, 0, 0);
   }
 }

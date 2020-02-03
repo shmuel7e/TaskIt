@@ -57,13 +57,21 @@
   height: 100vh;
   width: 100%;
   & > div {
-    padding-top: 440px;
+    @include for-normal-layout {
+      padding-left: 0 !important;
+      text-align: center;
+    }
+    padding-top: 330px;
     padding-left: 300px;
     font-family: Yanone-Regular;
     font-size: 4rem;
     color: white;
   }
   & > p {
+    @include for-normal-layout {
+      padding-left: 0 !important;
+      text-align: center;
+    }
     padding-left: 300px;
     color: white;
     font-family: lobster;
