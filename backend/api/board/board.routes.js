@@ -13,15 +13,15 @@ const router = express.Router()
 
 
 
-router.get('/:id', getBoard)
-router.get('/all/:id', getBoards)
-router.post('/', addBoard)
-router.delete('/:id', deleteBoard)
-router.put('/', updateBoard)
-router.put('/topic/:id', addNewTopic)
-router.put('/task/:topicId/:boardId', addNewTask)
-router.put('/updatetask/:boardId/:topicId/:taskId', updateTask)
-router.put('/activity/:id', updateActivity)
+router.get('/:id',requireAuth, getBoard)
+router.get('/all/:id',requireAuth, getBoards)
+router.post('/',requireAuth, addBoard)
+router.delete('/:id',requireAuth, deleteBoard)
+router.put('/',requireAuth, updateBoard)
+router.put('/topic/:id',requireAuth, addNewTopic)
+router.put('/task/:topicId/:boardId',requireAuth, addNewTask)
+router.put('/updatetask/:boardId/:topicId/:taskId',requireAuth, updateTask)
+router.put('/activity/:id',requireAuth, updateActivity)
 
 
 module.exports = router

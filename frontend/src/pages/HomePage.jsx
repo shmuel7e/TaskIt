@@ -14,7 +14,7 @@ class HomePage extends Component {
             <div className="homepage-container">
                 <div className="hero-light"></div>
                 <div className="home-page-header-hero flex align-end justify-center">
-                    <h1 className="hero-title">Taskit, lets make your work simplify.</h1>
+                    <h1 className="hero-title">Taskit, lets make your work simple.</h1>
                     <button className="start-btn" onClick={this.getStart}>get started</button>
                 </div>
                  <div className="logos-support-container flex justify-around">
