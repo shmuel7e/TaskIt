@@ -22,7 +22,7 @@ class HomePage extends Component {
                     <div className="dnd-seciton-img"></div>
                     <div className="dnd-section-desc flex column">
                         <h2>We Support Drag & Drop</h2>
-                        <div>Control your tasks in a free and comfortable way with the latest drag and drop technology</div>
+                        <div>Control your tasks in a free and comfortable way with the latest drag and drop technology.</div>
                     </div>
                 </section>
 
@@ -39,7 +39,7 @@ class HomePage extends Component {
                     <div className="dnd2-seciton-img"></div>
                     <div className="dnd-section-desc flex column">
                         <h2>Manage Your Boards</h2>
-                        <div>Create and edit your boards, TaskIt allows you to organize your work in a fun and intuitive way </div>
+                        <div>Create and edit your boards, TaskIt allows you to organize your work in a fun and intuitive way. </div>
                     </div>
                 </section>
 
