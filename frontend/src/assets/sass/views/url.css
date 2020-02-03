@@ -15,8 +15,7 @@
     50% 0 no-repeat;
 }
 .home-page-header-hero{
-  background: url("../../images/hero-bg.jpg")
-  10%   no-repeat;
+  background: url("../../images/hero-header.webp");
 }
 
 .creator-section1 {
@@ -36,5 +35,17 @@
 }
 
 .board-page-container {
-  background-image: url(http://504.co.kr/wp-content/uploads/2015/02/creative-fresh-work-desk.jpg);
+  background-image: url('../../images/creative-fresh-work-desk.jpg');
+}
+
+.dnd-seciton-img{
+  background-image:url('../../images/dnd.jpeg');
+}
+
+.dnd2-seciton-img{
+  background-image:url('../../images/boardmanage.jpeg');
+}
+
+.socket-seciton-img{
+  background-image:url('../../images/sockets.jpeg');
 }

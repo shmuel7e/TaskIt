@@ -28,11 +28,7 @@ export default class NavBar extends Component {
                     </NavLink>
                     </div>
                 }
-                <div className='link-container'>
-                    <NavLink activeClassName="active" to='/About'>
-                        About
-                    </NavLink>
-                </div>
+              
                 {!this.props.user &&
                     <div className='link-container'>
                         <NavLink activeClassName="active" to='/Auth'>
