@@ -7,6 +7,7 @@ import SignIn from '../cmps/auth/SignIn'
 import SignUp from '../cmps/auth/SignUp'
 import BoardService from '../services/BoardService'
 import EventBusService from '../services/EventBusService'
+
 class AuthPage extends Component {
     state = { signupMode: false }
     toggleMode = () => {

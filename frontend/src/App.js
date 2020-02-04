@@ -9,7 +9,9 @@ import HomePage from './pages/HomePage.jsx';
 import TopicPage from './pages/TopicPage.jsx';
 import AuthPage from './pages/AuthPage.jsx';
 import BoardPage from './pages/BoardPage.jsx';
-import MsgModal from './cmps/MsgModal.jsx'
+import MsgModal from './cmps/MsgModal.jsx';
+import GuestMode from './cmps/Guest/GuestMode.jsx';
+
 
 class App extends Component {
 
@@ -22,7 +24,7 @@ class App extends Component {
     return (
       <main>
         <Router history={history}>
-          <MsgModal/>
+          <MsgModal />
           <Header
             onLogout={this.onLogout}
             user={this.props.user}></Header>
@@ -31,6 +33,7 @@ class App extends Component {
             <Route component={TopicPage} path="/topic/:id" ></Route>
             <Route component={AuthPage} path="/auth" exact></Route>
             <Route component={BoardPage} path="/board" exact></Route>
+            <Route component={GuestMode} path="/guest" exact></Route>
           </Switch>
         </Router>
       </main>
